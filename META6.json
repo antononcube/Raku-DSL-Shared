@@ -1,0 +1,25 @@
+{
+    "perl" : "6.d",
+    "name" : "DSL::Shared",
+    "api"  : "1",
+    "auth" : "github:antononcube",
+    "version" : "0.1.0",
+    "description" : "DSL::Shared provides utilities and grammar roles form DSL translators.",
+    "authors" : [ "Anton Antonov" ],
+    "license" : "Artistic-2.0",
+    "provides" : {
+        "DSL::Shared::Roles::ErrorHandling" : "lib/DSL/Shared/Roles/ErrorHandling.rakumod",
+        "DSL::Shared::Roles::PredicateSpecification" : "lib/DSL/Shared/Roles/PredicateSpecification.rakumod",
+        "DSL::Shared::Roles::English::CommonParts" : "lib/DSL/Shared/Roles/English/CommonParts.rakumod",
+        "DSL::Shared::Roles::English::PipelineCommand" : "lib/DSL/Shared/Roles/English/PipelineCommand.rakumod",
+        "DSL::Shared::Utilities::FuzzyMatching" : "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod"
+    },
+    "depends" : [ ],
+    "build-depends" : [ ],
+    "test-depends" : [ ],
+    "resources" : [ ],
+    "tags": [
+        "parser", "interpreter", "monad", "workflow", "pipeline"
+    ],
+    "source-url" : "https://github.com/antononcube/Raku-DSL-Shared"
+}
