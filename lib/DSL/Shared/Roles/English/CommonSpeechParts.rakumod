@@ -1,4 +1,3 @@
-
 # ============================================================
 # This role class is generated from the file
 #   CommonSpeechParts-template
@@ -11,7 +10,6 @@ use v6;
 use DSL::Shared::Utilities::FuzzyMatching;
 
 role DSL::Shared::Roles::English::CommonSpeechParts {
-
     # Single words
 
     token a-determiner { 'a' | 'an' }
@@ -149,8 +147,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token without-preposition { 'without' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'without') }> }
 
     # Directives and phrases
+    rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
-    rule creation { <creation-noun> | <making-noun> <of-preposition>? }
+    rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
     rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
     rule data-frame { <data-noun> <frame-noun> }
     rule diagram-phrase { <plot> | <plots> | <graph-noun> | <chart-noun> }
