@@ -4,7 +4,7 @@ use v6;
 # <from-preposition> <to-preposition> <with-preposition> <step-noun>
 
 # This role class has common command (data, code) structure parts.
-role DSL::Shared::Roles::CommonDataStructures {
+role DSL::Shared::Roles::CommonStructures {
 
     token dataset-name { ([ \w | '_' | '-' | '.' | \d ]+) <!{ $0 eq 'and' }> }
     token variable-name { ([ \w | '_' | '-' | '.' | \d ]+) <!{ $0 eq 'and' }> }
