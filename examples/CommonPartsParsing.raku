@@ -30,8 +30,8 @@ say ParseObj.parse( 'from 5 to 105 step 2' );
 
 say "=" x 60;
 
-say ParseObj.parse( 'display the text mu bu ga' );
+say ParseObj.parse( 'var1 == "male" & var2 < 12 or var3 > 50' );
 
 say "=" x 60;
 
-say ParseObj.parse( 'var1 == "male" & var2 < 12 or var3 > 50' );
+say ParseObj.parse( 'diplay the text mu bu ga' );
