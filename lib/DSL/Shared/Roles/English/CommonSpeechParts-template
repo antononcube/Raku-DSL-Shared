@@ -2,8 +2,10 @@ use v6;
 
 # This role class has common command parts.
 role DSL::Shared::Roles::English::CommonSpeechParts {
-    # Speech parts
+
+    # Single words
     token a-determiner { 'a' | 'an'}
+    token adhere-verb { 'adhere' }
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
     token apply-verb { 'apply' }
@@ -16,16 +18,24 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token bottom-noun { 'bottom' }
     token by-preposition { 'by' | 'with' | 'using' }
     token calculation { 'calculation' }
+    token chart-noun { 'chart' }
+    token classify { 'classify' }
     token columns { 'columns' }
+    token compute-directive { 'compute' | 'find' | 'calculate' }
     token contingency-noun { 'contingency' }
     token count-verb { 'count' }
     token counts-noun { 'counts' }
     token create { 'create' }
+    token create-directive { 'create' | 'make' }
+    token creation-noun { 'creation' }
     token data-noun { 'data' }
     token dataset-noun { 'dataset' }
     token default { 'default' }
+    token delete-directive { 'delete' | 'drop' | 'erase' }
+    token diagram-noun { 'diagram' }
     token difference { 'difference' }
     token directly-adverb { 'directly' }
+    token display-directive { 'display' | 'show' | 'echo' }
     token do-verb { 'do' }
     token element { 'element' }
     token elements { 'elements' }
@@ -34,15 +44,22 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token from-preposition { 'from' }
     token function { 'function' }
     token functions { 'functions' }
+    token generate-directive { 'generate' | 'create' | 'make' }
     token get-verb { 'obtain' | 'get' | 'take' }
+    token graph { 'graph' }
     token histogram { 'histogram' }
     token histograms { 'histograms' }
     token in-preposition { 'in' }
     token is-verb { 'is' }
+    token ingest-verb { 'ingest' }
     token list-noun { 'list' }
+    token load-verb { 'load' }
+    token making-noun { 'making' }
+    token manner { 'manner' }
     token matrix-noun { 'matrix' }
     token missing-adjective { 'missing' }
     token model { 'model' }
+    token number-noun { 'number' }
     token object { 'object' }
     token of-preposition { 'of' }
     token or-conjunction { 'or' }
@@ -55,6 +72,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token rows { 'rows' }
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
+    token series-noun { 'series' }
     token simple { 'simple' | 'direct' }
     token simply-adverb { 'simply' }
     token simulate { 'simulate' }
@@ -62,7 +80,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token smallest { 'smallest' }
     token step-noun { 'step' }
     token summaries { 'summaries' }
+    token summarize-directive { 'summarize' }
     token summary { 'summary' }
+    token system { 'system' }
     token table-noun { 'table' }
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
@@ -83,30 +103,19 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token weights { 'weights' }
     token with-preposition { 'using' | 'with' | 'by' }
 
-    rule creation { 'creation' | 'making' <of-preposition>? }
-    rule for-which-phrase { 'for' 'which' | 'that' 'adhere' 'to' }
-    rule missing-values-phrase { <missing-adjective> <values-noun>? }
-    rule number-of { [ 'number' | 'count' ] 'of' }
-    rule simple-way-phrase { 'simple' [ 'way' | 'manner' ] }
-
-    # Data
-    rule time-series-data { 'time' 'series' <data-noun>? }
-    rule data-frame { <data-noun> <frame-noun> }
-    rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
-
-    # Directives
-    token classify { 'classify' }
-    token compute-directive { 'compute' | 'find' | 'calculate' }
-    token create-directive { 'create' | 'make' }
-    token delete-directive { 'delete' | 'drop' | 'erase' }
-    token diagram { <plot> | 'plots' | 'graph' | 'chart' }
-    token display-directive { 'display' | 'show' | 'echo' }
-    token generate-directive { 'generate' | 'create' | 'make' }
-    token summarize-directive { 'summarize' }
-
+    # Directives and phrases
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
-    rule load-data-directive { ( 'load' | 'ingest' ) <.the-determiner>? <data> }
-    rule plot-directive { <plot> | 'chart' | <display-directive> <diagram> }
+    rule creation { <creation-noun> | <making-noun> <of-preposition>? }
+    rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
+    rule data-frame { <data-noun> <frame-noun> }
+    rule diagram-phrase { <plot> | <plots> | <graph-noun> | <chart-noun> }
+    rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
+    rule load-data-directive { ( <load-verb> | <ingest-verb> ) <the-determiner>? <data> }
+    rule missing-values-phrase { <missing-adjective> <values-noun>? }
+    rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
+    rule plot-directive { <plot> | <chart-noun> | <display-directive> <diagram> }
+    rule records-phrase { <table-noun>? [ <rows> | <records> ] }
+    rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }
+    rule time-series-data { <time-noun> <series-noun> <data-noun>? }
     rule use-directive { [ <get-verb> <and-conjunction>? ]? <use-verb> }
-
 }
