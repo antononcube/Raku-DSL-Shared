@@ -83,6 +83,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token nearest-adjective { 'nearest' }
     token neighbors-noun { 'neighbors' }
     token no-determiner { 'no' }
+    token non-prefix { 'non' }
     token number-noun { 'number' }
     token object { 'object' }
     token of-preposition { 'of' }

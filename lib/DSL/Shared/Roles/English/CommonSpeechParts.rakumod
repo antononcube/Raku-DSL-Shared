@@ -89,7 +89,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token model { 'model' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'model') }> }
     token nearest-adjective { 'nearest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'nearest') }> }
     token neighbors-noun { 'neighbors' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'neighbors') }> }
-    token no-determiner { 'no' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'no') }> }
+    token no-determiner { 'no' }
+    token non-prefix { 'non' }
     token number-noun { 'number' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'number') }> }
     token object { 'object' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'object') }> }
     token of-preposition { 'of' }
