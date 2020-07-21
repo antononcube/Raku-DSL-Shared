@@ -60,7 +60,7 @@ role DSL::Shared::Roles::CommonStructures {
     rule r-numeric-list-spec { [ [ 'c' | 'list' ] '(' | 'c(' | 'list(' ] <number-value-list> ')' }
 
     # Operators
-    token associate-symbol { '->' }
+    token key-to-symbol { '->' }
     token equal-symbol { '=' }
     token equal2-symbol { '==' }
     token assign-to-symbol { "=" | ':=' | '<-' }
