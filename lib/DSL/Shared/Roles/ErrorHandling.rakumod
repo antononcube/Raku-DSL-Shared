@@ -27,6 +27,14 @@ role DSL::Shared::Roles::ErrorHandling {
       return $match;
     }
 
+    method subparse($target, |c) {
+      my $*HIGHWATER = 0;
+      my $*LASTRULE;
+      my $match = callsame;
+      self.error_msg($target) unless $match;
+      return $match;
+    }
+    
     method error_msg($target) {
       my $parsed = $target.substr(0, $*HIGHWATER).trim-trailing;
       my $un-parsed = $target.substr($*HIGHWATER, $target.chars).trim-trailing;
