@@ -49,6 +49,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token directly-adverb { 'directly' }
     token display-directive { <display-verb> | 'show' | 'echo' }
     token display-verb { 'display' }
+    token distance-noun { 'distance' }
     token do-verb { 'do' }
     token element { 'element' }
     token elements { 'elements' }
@@ -90,6 +91,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token or-conjunction { 'or' }
     token out-adverb { 'out' }
     token over-preposition { 'over' }
+    token parameter-noun { 'parameter' }
+    token parameters-noun { 'parameters' }
     token per-preposition { 'per' }
     token plot { 'plot' }
     token plots { 'plot' | 'plots' }
@@ -147,6 +150,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
     rule data-frame { <data-noun> <frame-noun> }
     rule diagram-phrase { <plot> | <plots> | <graph-noun> | <chart-noun> }
+    rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
     rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
     rule load-data-directive { ( <load-verb> | <ingest-verb> ) <the-determiner>? <data> }
