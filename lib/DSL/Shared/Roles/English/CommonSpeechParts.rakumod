@@ -142,6 +142,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token value-noun { 'value' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'value') }> }
     token values-noun { 'values' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'values') }> }
     token variable-noun { 'variable' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'variable') }> }
+    token variables-noun { 'variables' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'variables') }> }
     token way-noun { 'way' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'way') }> }
     token weight { 'weight' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weight') }> }
     token weights { 'weights' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weights') }> }
