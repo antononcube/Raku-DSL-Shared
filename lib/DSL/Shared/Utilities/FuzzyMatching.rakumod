@@ -33,7 +33,7 @@ multi is-fuzzy-match( Str $candidate, Str $actual ) {
     if 0 == $dist {
         return True;
     } elsif 0 < $dist and $dist <= 2  {
-        say "Possible misspelling of '$actual' as '$candidate'.";
+        note "Possible misspelling of '$actual' as '$candidate'.";
         return True;
     }
 
