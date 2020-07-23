@@ -141,6 +141,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token weight { 'weight' }
     token weights { 'weights' }
     token what-pronoun { 'what' }
+    token which-determiner { 'which' }
     token with-preposition { 'using' | 'with' | 'by' }
     token without-preposition { 'without' }
 

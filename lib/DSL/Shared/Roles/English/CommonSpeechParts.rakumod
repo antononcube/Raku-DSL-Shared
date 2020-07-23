@@ -147,6 +147,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token weight { 'weight' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weight') }> }
     token weights { 'weights' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weights') }> }
     token what-pronoun { 'what' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'what') }> }
+    token which-determiner { 'which' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'which') }> }
     token with-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'by' }
     token without-preposition { 'without' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'without') }> }
 
