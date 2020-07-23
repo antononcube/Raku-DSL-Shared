@@ -1,7 +1,7 @@
 use v6;
 
-#use lib './lib';
-#use lib '.';
+use lib './lib';
+use lib '.';
 
 use DSL::Shared::Roles::English::CommonParts;
 use DSL::Shared::Roles::English::PipelineCommand;
@@ -18,7 +18,7 @@ grammar ParseObj
 
 say "=" x 60;
 
-say ParseObj.parse( "var1, var2, and my_var77" );
+say ParseObj.subparse( "var1, var2, and my_var77" );
 
 say "=" x 60;
 
