@@ -19,6 +19,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token and-conjunction { 'and' }
     token apply-verb { 'apply' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'apply') }> }
     token are-verb { 'are' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'are') }> }
+    token as-preposition { 'as' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'as') }> }
     token assign { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> | 'set' }
     token assign-directive { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> }
     token at-preposition { 'at' }

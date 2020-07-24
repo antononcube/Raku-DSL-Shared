@@ -13,6 +13,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token and-conjunction { 'and' }
     token apply-verb { 'apply' }
     token are-verb { 'are' }
+    token as-preposition { 'as' }
     token assign { 'assign' | 'set' }
     token assign-directive { 'assign' }
     token at-preposition { 'at' }
