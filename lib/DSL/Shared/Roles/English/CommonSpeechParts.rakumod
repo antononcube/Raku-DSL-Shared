@@ -133,7 +133,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token the-determiner { 'the' }
     token them-pronoun { 'them' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'them') }> }
     token this-pronoun { 'this' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'this') }> }
-    token time-noun { 'time' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'time') }> }
+    token time-noun { 'time' }
     token to-preposition { 'to' | 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into') }> }
     token top-noun { 'top' }
     token transform-verb { 'transform' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'transform') }> }
