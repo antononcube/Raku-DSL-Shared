@@ -29,10 +29,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token chart-noun { 'chart' }
     token classify { 'classify' }
     token cluster { 'clusters' }
+    token column-noun { 'column' }
     token columns { 'columns' }
     token compute-directive { 'compute' | 'find' | 'calculate' }
     token consider-verb { 'consider' }
     token contingency-noun { 'contingency' }
+    token convert-verb { 'convert' }
     token count-verb { 'count' }
     token counts-noun { 'counts' }
     token create { 'create' }
