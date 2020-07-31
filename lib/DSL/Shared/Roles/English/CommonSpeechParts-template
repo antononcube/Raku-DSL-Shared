@@ -82,6 +82,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token minimum { 'min' | 'minimum' }
     token missing-adjective { 'missing' }
     token model { 'model' }
+    token name-noun { 'name' }
     token nearest-adjective { 'nearest' }
     token neighbors-noun { 'neighbors' }
     token no-determiner { 'no' }

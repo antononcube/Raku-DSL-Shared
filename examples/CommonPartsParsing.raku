@@ -13,7 +13,7 @@ grammar ParseObj
         does DSL::Shared::Roles::English::PipelineCommand
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Shared::Roles::PredicateSpecification {
-    regex TOP { <variable-names-list> | <range-spec> | <pipeline-command> | <predicates-list> }
+    regex TOP { <variable-names-list> | <range-spec> | <pipeline-command> | <predicates-list> | <code-expr> }
 };
 
 say "=" x 60;
@@ -34,8 +34,12 @@ say ParseObj.parse( 'var1 == "male" & var2 < 12 or var3 > 50' );
 
 say "=" x 60;
 
-say ParseObj.parse( 'diplay the text mu bu ga' );
+say ParseObj.parse( 'display the text mu bu ga' );
 
 say "=" x 60;
 
 say ParseObj.parse( 'display the full text mu bu ga' );
+
+say "=" x 60;
+
+say ParseObj.parse( '`wl 5+5`' );

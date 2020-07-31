@@ -63,8 +63,9 @@ role DSL::Shared::Roles::CommonStructures {
     token key-to-symbol { '->' }
     token equal-symbol { '=' }
     token equal2-symbol { '==' }
-    token assign-to-symbol { "=" | ':=' | '<-' }
+    token assign-to-symbol { '=' | ':=' | '<-' }
 
     # Expressions
-    token wl-expr { \S+ }
+    token wl-expr { '`' <-[`]>+ '`' }
+    token code-expr { '`' \w+ \h+ <-[`]>+ '`' }
 }

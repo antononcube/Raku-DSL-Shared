@@ -88,6 +88,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token minimum { 'min' | 'minimum' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'minimum') }> }
     token missing-adjective { 'missing' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'missing') }> }
     token model { 'model' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'model') }> }
+    token name-noun { 'name' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'name') }> }
     token nearest-adjective { 'nearest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'nearest') }> }
     token neighbors-noun { 'neighbors' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'neighbors') }> }
     token no-determiner { 'no' }
