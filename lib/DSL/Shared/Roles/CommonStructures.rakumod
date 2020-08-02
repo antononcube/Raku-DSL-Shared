@@ -54,10 +54,15 @@ role DSL::Shared::Roles::CommonStructures {
     rule range-spec-step-phrase { <with-preposition>? <step-noun> | <with-preposition> }
 
     # Programming languages ranges
-    rule wl-range-spec { [ 'Range' '[' | 'Range[' ] <number-value-list> ']' }
     rule r-range-spec { [ 'seq' '(' | 'seq(' ] <number-value-list> ')' }
-    rule wl-numeric-list-spec { '{' <number-value-list> '}' }
+    rule wl-range-spec { [ 'Range' '[' | 'Range[' ] <number-value-list> ']' }
     rule r-numeric-list-spec { [ [ 'c' | 'list' ] '(' | 'c(' | 'list(' ] <number-value-list> ')' }
+    rule wl-numeric-list-spec { '{' <number-value-list> '}' }
+
+    # Span spec
+    rule span-spec     { <from=.range-spec-from> <to=.range-spec-to> }
+    token r-span-spec  { <from=.number-value> \h* ':'  \h* <to=.number-value> }
+    token wl-span-spec { <from=.number-value> \h* ';;' \h* <to=.number-value> }
 
     # Operators
     token key-to-symbol { '->' }
