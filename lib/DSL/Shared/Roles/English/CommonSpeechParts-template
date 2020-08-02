@@ -69,6 +69,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token graph { 'graph' }
     token histogram { 'histogram' }
     token histograms { 'histograms' }
+    token id-noun { 'id' }
+    token identifier-noun { 'identifier' }
     token in-preposition { 'in' }
     token ingest-verb { 'ingest' }
     token into-preposition { 'into' }
