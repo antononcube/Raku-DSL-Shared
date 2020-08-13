@@ -16,7 +16,7 @@
         "DSL::Shared::Roles::English::PipelineCommand" : "lib/DSL/Shared/Roles/English/PipelineCommand.rakumod",
         "DSL::Shared::Utilities::FuzzyMatching" : "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod"
     },
-    "depends" : [ ],
+    "depends" : [ "Text::Levenshtein::Damerau" ],
     "build-depends" : [ ],
     "test-depends" : [ ],
     "resources" : [ ],
