@@ -100,6 +100,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token number-noun { 'number' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'number') }> }
     token object { 'object' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'object') }> }
     token of-preposition { 'of' }
+    token on-preposition { 'on' }
     token or-conjunction { 'or' }
     token out-adverb { 'out' }
     token over-preposition { 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
