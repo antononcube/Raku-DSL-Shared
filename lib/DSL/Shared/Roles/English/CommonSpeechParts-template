@@ -45,7 +45,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dataset { 'dataset' }
     token dataset-noun { 'dataset' }
     token default { 'default' }
-    token delete-directive { 'delete' | 'drop' | 'erase' }
+    token delete-directive { 'delete' | 'drop' | 'erase' | 'remove' }
     token diagram { <plot> | 'plots' | 'graph' | 'chart' }
     token diagram-noun { 'diagram' }
     token difference { 'difference' }
