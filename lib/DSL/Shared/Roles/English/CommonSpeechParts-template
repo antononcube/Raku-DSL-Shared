@@ -130,6 +130,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token summary { 'summary' }
     token system { 'system' }
     token table-noun { 'table' }
+    token take-verb { 'take' }
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
     token them-pronoun { 'them' }

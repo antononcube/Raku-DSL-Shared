@@ -136,6 +136,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token summary { 'summary' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summary') }> }
     token system { 'system' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'system') }> }
     token table-noun { 'table' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'table') }> }
+    token take-verb { 'take' }
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
     token them-pronoun { 'them' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'them') }> }
