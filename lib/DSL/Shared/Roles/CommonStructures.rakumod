@@ -11,7 +11,8 @@ role DSL::Shared::Roles::CommonStructures {
     token date-spec { [ \d ** 4 ] '-' [ \d ** 2 ] '-' [ \d ** 2 ] }
 
     # Quoted variable name
-    token quoted-variable-name { <variable-name> | <single-quoted-variable-name> | <double-quoted-variable-name> }
+    token quoted-variable-name { <single-quoted-variable-name> | <double-quoted-variable-name> }
+    token mixed-quoted-variable-name { <variable-name> | <single-quoted-variable-name> | <double-quoted-variable-name> }
 
     token single-quote-symbol { '\'' }
 
@@ -45,6 +46,7 @@ role DSL::Shared::Roles::CommonStructures {
     # Variable names list
     rule variable-names-list { <variable-name>+ % <list-separator> }
     rule quoted-variable-names-list { <quoted-variable-name>+ % <list-separator> }
+    rule mixed-quoted-variable-names-list { <mixed-quoted-variable-name>+ % <list-separator> }
 
     # Range spec
     rule range-spec { <range-spec-from> <range-spec-to> <range-spec-step>? }
