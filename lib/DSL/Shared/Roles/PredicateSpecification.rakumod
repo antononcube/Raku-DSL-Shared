@@ -31,9 +31,9 @@ role DSL::Shared::Roles::PredicateSpecification {
     token equal-relation { '=' | '==' | 'eq' | 'equals' | 'is'? \h* 'equal' \h+ 'to'? | 'is' }
     token not-equal-relation { '!=' | '¬=' | 'neq' | 'is'? \h* 'not' \h+ 'equal' \h+ 'to'? | 'is' \h+ 'not' }
     token less-relation { '<' | 'lt' | 'is'? \h* 'less' \h+ 'than'? }
-    token less-equal-relation { '<=' | '≤' | 'lte' | 'less' \h* 'or'? \h* 'equal' \h+ 'than'? }
+    token less-equal-relation { '<=' | '≤' | 'lte' | 'less' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]? }
     token greater-relation { '>' | 'gt' | 'is'? \h* 'greater' \h* 'than'? }
-    token greater-equal-relation { '>=' | '≥' | 'gte' | 'is'? \h* 'greater' \h* 'or'? \h* 'equal' \h+ 'than'? }
+    token greater-equal-relation { '>=' | '≥' | 'gte' | 'is'? \h* 'greater' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]? }
     token same-relation { '===' | 'same' \h+ 'as'? }
     token not-same-relation { '=!=' | 'is'? \h* 'not' \h+ 'the'? \h* 'same' \h+ 'as'? }
     token in-relation { 'in' | 'belongs' \h+ 'to' }
