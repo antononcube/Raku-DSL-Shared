@@ -121,10 +121,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token site-noun { 'site' }
     token smallest { 'smallest' }
     token some-determiner { 'some' }
+    token sparse-adjective { 'sparse' }
     token spread-verb { 'spread' }
     token statistical { 'statistical' }
     token step-noun { 'step' }
     token steps-noun { 'steps' }
+    token sub-prefix { 'sub' }
     token summaries { 'summaries' }
     token summarize-directive { 'summarize' }
     token summary { 'summary' }
