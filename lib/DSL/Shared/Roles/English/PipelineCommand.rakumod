@@ -9,11 +9,11 @@ role DSL::Shared::Roles::English::PipelineCommand
         does DSL::Shared::Roles::English::CommonSpeechParts {
 
   rule pipeline-command {
-    <echo-pipeline-value> |
     <echo-pipeline-function-value> |
+    <echo-pipeline-value> |
     <take-pipeline-value> |
-    <echo-pipeline-context> |
     <echo-pipeline-function-context> |
+    <echo-pipeline-context> |
     <take-pipeline-context> |
     <echo-command> }
 
@@ -27,7 +27,7 @@ role DSL::Shared::Roles::English::PipelineCommand
   rule echo-pipeline-value { <display-directive> <pipeline-value> }
   rule echo-pipeline-function-value {
     <.display-directive> <.the-determiner>? <.function> <pipeline-function-spec> <.over-preposition> <.pipeline-value> |
-    <.display-directive> <.over-preposition> <.pipeline-value> <.the-determiner>? <.function> <pipeline-function-spec> }
+    <.display-directive> <.over-preposition>? <.pipeline-value> <.with-preposition>? <.the-determiner>? <.function> <pipeline-function-spec> }
 
   # Context
   rule pipeline-context { <.pipeline-filler-phrase>? <context-noun> }
@@ -35,7 +35,7 @@ role DSL::Shared::Roles::English::PipelineCommand
   rule echo-pipeline-context { <display-directive> <pipeline-context> }
   rule echo-pipeline-function-context {
     <.display-directive> <.the-determiner>? <.function> <pipeline-function-spec> <.over-preposition> <.pipeline-context> |
-    <.display-directive> <.over-preposition> <.pipeline-context> <.the-determiner>? <.function> <pipeline-function-spec> }
+    <.display-directive> <.over-preposition>? <.pipeline-context> <.with-preposition>? <.the-determiner>? <.function> <pipeline-function-spec> }
 
   # Echo messages
   rule echo-command { <display-directive> <echo-message-spec> }
