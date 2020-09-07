@@ -14,10 +14,10 @@ grammar ParseObj
     regex TOP { <predicates-list> }
 };
 
-plan 4;
+plan 5;
 
 #-----------------------------------------------------------
-# Creation
+# Predicates parsing
 #-----------------------------------------------------------
 
 ok ParseObj.parse('v1 > 10 & v2 >= 12 | v3 == 20'),
@@ -31,5 +31,8 @@ ok ParseObj.parse('var1 == "male" & var2 < 12 or var3 > 50'),
 
 ok ParseObj.parse('var1 is "male" and var2 is less than 12 or var3 is greater than 50'),
         'var1 is "male" and var2 is less than 12 or var3 is greater than 50';
+
+ok ParseObj.parse('"v 1" > 10 & "v 2" >= 12 | v3 == 20'),
+        '"v 1" > 10 & "v 2" >= 12 | v3 == 20';
 
 done-testing;
