@@ -49,7 +49,7 @@ class DSL::Shared::Actions::English::WL::PipelineCommand
     method echo-pipeline-value($/) { make 'Echo[obj]'; }
     method echo-pipeline-funciton-value($/) { make 'Echo[ ' ~ $<pipeline-function-spec>.made ~ '[obj] ]'; }
 
-    # Value
+    # Context
     method take-pipeline-context($/) { make 'obj'; }
     method echo-pipeline-context($/) { make 'Echo[obj]'; }
     method echo-pipeline-funciton-context($/) { make 'Echo[ ' ~ $<pipeline-function-spec>.made ~ '[obj] ]'; }
