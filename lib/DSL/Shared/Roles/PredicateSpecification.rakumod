@@ -1,7 +1,10 @@
 use v6;
 
+use DSL::Shared::Roles::CommonStructures;
+
 # This role class has common command parts.
-role DSL::Shared::Roles::PredicateSpecification {
+role DSL::Shared::Roles::PredicateSpecification
+        does DSL::Shared::Roles::CommonStructures {
 
     # Predicate expression
     rule predicates-list { <predicate>+ % <list-separator> }
