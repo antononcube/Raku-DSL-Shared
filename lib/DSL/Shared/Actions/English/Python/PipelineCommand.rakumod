@@ -34,10 +34,10 @@ use v6;
 
 unit module DSL::Shared::Actions::English::Python::PipelineCommand;
 
-use DSL::Shared::Actions::CommonStructures;
+use DSL::Shared::Actions::Python::CommonStructures;
 
 class DSL::Shared::Actions::English::Python::PipelineCommand
-        is DSL::Shared::Actions::CommonStructures {
+        is DSL::Shared::Actions::Python::CommonStructures {
 
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }

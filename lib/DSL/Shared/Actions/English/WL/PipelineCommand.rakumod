@@ -34,10 +34,10 @@ use v6;
 
 unit module DSL::Shared::Actions::English::WL::PipelineCommand;
 
-use DSL::Shared::Actions::CommonStructures;
+use DSL::Shared::Actions::WL::CommonStructures;
 
 class DSL::Shared::Actions::English::WL::PipelineCommand
-        is DSL::Shared::Actions::CommonStructures {
+        is DSL::Shared::Actions::WL::CommonStructures {
 
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
