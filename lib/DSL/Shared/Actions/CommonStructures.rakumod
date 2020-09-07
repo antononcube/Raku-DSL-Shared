@@ -38,20 +38,35 @@ unit module DSL::Shared::Actions::CommonStructures;
 
 class DSL::Shared::Actions::CommonStructures {
 
-	# General
-	method dataset-name($/) { make $/.Str; }
+
+	# Date spec
+	method date-spec($/) { make $/.Str; }
+
+	# Variables
+	method variable-ws-name($/) { make $/.Str; }
 	method variable-name($/) { make $/.Str; }
+	method keyword-variable-name($/) { make $/.Str; }
+	method quoted-variable-name($/) { make $/.values[0].made; }
+	method mixed-quoted-variable-name($/) { make $/.values[0].made; }
+	method single-quoted-variable-name($/) { make '"' ~ $<variable-ws-name>.made ~ '"'; }
+	method double-quoted-variable-name($/) { make '"' ~ $<variable-ws-name>.made ~ '"'; }
+	method single-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
+	method double-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
+
+	# Value types
+	method integer-value($/) { make $/.Str; }
+	method number-value($/) { make $/.Str; }
+	method wl-expr($/) { make $/.Str.substr(1,*-1); }
+
+	method dataset-name($/) { make $/.Str; }
+
+	# Lists
 	method list-separator($/) { make ','; }
 	method variable-names-list($/) { make $<variable-name>>>.made; }
 	method quoted-variable-names-list($/) { make $<quoted-variable-name>>>.made; }
 	method mixed-quoted-variable-names-list($/) { make $<mixed-quoted-variable-name>>>.made; }
-	method integer-value($/) { make $/.Str; }
-	method number-value($/) { make $/.Str; }
-	method wl-expr($/) { make $/.Str.substr(1,*-1); }
-	method quoted-variable-name($/) { make $/.values[0].made; }
-	method mixed-quoted-variable-name($/) { make $/.values[0].made; }
-	method single-quoted-variable-name($/) { make '"' ~ $<variable-name>.made ~ '"'; }
-	method double-quoted-variable-name($/) { make '"' ~ $<variable-name>.made ~ '"'; }
+	method quoted-keyword-variable-names-list($/) { make $<quoted-keyword-variable-name>>>.made; }
+	method mixed-quoted-keyword-variable-names-list($/) { make $<mixed-quoted-keyword-variable-name>>>.made; }
 
 	# Trivial
 	method trivial-parameter($/) { make $/.values[0].made; }

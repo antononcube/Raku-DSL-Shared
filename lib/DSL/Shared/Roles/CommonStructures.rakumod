@@ -6,13 +6,14 @@ use v6;
 # This role class has common command (data, code) structure parts.
 role DSL::Shared::Roles::CommonStructures {
 
-    token dataset-name { ([ \w | '_' | '-' | '.' | \d ]+) <!{ $0 eq 'and' }> }
-    token variable-name { ([ \w | '_' | '-' | '.' | \d ]+) <!{ $0 eq 'and' }> }
+    # Date spec
     token date-spec { [ \d ** 4 ] '-' [ \d ** 2 ] '-' [ \d ** 2 ] }
 
     # Quoted variable name
+    token variable-ws-name { ([ \w | '_' | '-' | '.' | \d | \h ]+) }
+    token variable-name { ([ \w | '_' | '-' | '.' | \d ]+) <!{ $0 eq 'and' }> }
     token quoted-variable-name { <single-quoted-variable-name> | <double-quoted-variable-name> }
-    token mixed-quoted-variable-name { <variable-name> | <single-quoted-variable-name> | <double-quoted-variable-name> }
+    token mixed-quoted-variable-name { <variable-name> | <quoted-variable-name> }
 
     token single-quote-symbol { '\'' }
 
@@ -20,14 +21,34 @@ role DSL::Shared::Roles::CommonStructures {
 
     token single-quoted-variable-name {
         <.single-quote-symbol>
-        <variable-name>
+        <variable-ws-name>
         <.single-quote-symbol>
     }
     token double-quoted-variable-name {
         <.double-quote-symbol>
-        <variable-name>
+        <variable-ws-name>
         <.double-quote-symbol>
     }
+
+    # Keyword-variable name
+    token keyword-variable-name-separator { ':' }
+    token keyword-variable-name { <variable-name> <keyword-variable-name-separator> <variable-name> }
+    token quoted-keyword-variable-name { <single-quoted-keyword-variable-name> | <double-quoted-keyword-variable-name> }
+    token mixed-quoted-keyword-variable-name { <keyword-variable-name> | <quoted-keyword-variable-name> }
+
+    token single-quoted-keyword-variable-name {
+        <.single-quote-symbol>
+        <keyword-variable-name>
+        <.single-quote-symbol>
+    }
+    token double-quoted-keyword-variable-name {
+        <.double-quote-symbol>
+        <keyword-variable-name>
+        <.double-quote-symbol>
+    }
+
+    # Common programming languages tokens
+    token dataset-name  { <variable-name> }
 
     # Value types
     token number-value { (\d+ ['.' \d*]?  [ [e|E] \d+]?) }
@@ -47,6 +68,8 @@ role DSL::Shared::Roles::CommonStructures {
     rule variable-names-list { <variable-name>+ % <list-separator> }
     rule quoted-variable-names-list { <quoted-variable-name>+ % <list-separator> }
     rule mixed-quoted-variable-names-list { <mixed-quoted-variable-name>+ % <list-separator> }
+    rule quoted-keyword-variable-names-list { <quoted-keyword-variable-name>+ % <list-separator> }
+    rule mixed-quoted-keyword-variable-names-list { <mixed-quoted-keyword-variable-name>+ % <list-separator> }
 
     # Range spec
     rule range-spec { <range-spec-from> <range-spec-to> <range-spec-step>? }
