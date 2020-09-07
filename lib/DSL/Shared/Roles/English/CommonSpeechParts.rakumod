@@ -39,6 +39,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token columns { 'columns' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'columns') }> }
     token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
     token consider-verb { 'consider' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consider') }> }
+    token context-noun { 'context' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'context') }> }
     token contingency-noun { 'contingency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'contingency') }> }
     token convert-verb { 'convert' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'convert') }> }
     token count-verb { 'count' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'count') }> }
@@ -47,6 +48,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token create-directive { <create-verb> | 'make' }
     token create-verb { 'create' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'create') }> }
     token creation-noun { 'creation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'creation') }> }
+    token current-adjective { 'current' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'current') }> }
     token data-noun { 'data' }
     token dataset { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
     token dataset-noun { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
@@ -80,7 +82,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token in-preposition { 'in' }
     token ingest-verb { 'ingest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'ingest') }> }
     token into-preposition { 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into') }> }
-    token is-verb { 'is' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'is') }> }
+    token is-verb { 'is' }
     token iterations { 'iterations' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'iterations') }> }
     token list-noun { 'list' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'list') }> }
     token load-verb { 'load' }
@@ -107,6 +109,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token parameter-noun { 'parameter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'parameter') }> }
     token parameters-noun { 'parameters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'parameters') }> }
     token per-preposition { 'per' }
+    token pipeline-noun { 'pipeline' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pipeline') }> }
     token plot { 'plot' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'plot') }> }
     token plots { 'plot' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'plot') }> | 'plots' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'plots') }> }
     token random-adjective { 'random' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'random') }> }
