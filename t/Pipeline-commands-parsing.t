@@ -13,7 +13,7 @@ grammar ParseObj
     regex TOP { <pipeline-command> }
 };
 
-plan 10;
+plan 12;
 
 #-----------------------------------------------------------
 # Pipeline parsing
@@ -34,6 +34,9 @@ ok ParseObj.parse('echo over the pipeline value the function FF1'),
 ok ParseObj.parse('echo over the pipeline value the function `Print`'),
         'echo over the pipeline value the function `Print`';
 
+ok ParseObj.parse('echo pipeline value function FF1'),
+        'echo pipeline value function FF1';
+
 ok ParseObj.parse('echo context'),
         'echo context';
 
@@ -48,5 +51,8 @@ ok ParseObj.parse('echo over the pipeline context the function `#matrix&`'),
 
 ok ParseObj.parse('echo over the pipeline context the function FF1'),
         'echo over the pipeline context the function FF1';
+
+ok ParseObj.parse('echo context function FF1'),
+        'echo context function FF1';
 
 done-testing;
