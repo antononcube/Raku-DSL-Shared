@@ -52,7 +52,7 @@ class DSL::Shared::Actions::English::WL::PipelineCommand
     # Context
     method take-pipeline-context($/) { make 'obj'; }
     method echo-pipeline-context($/) { make 'Echo[obj]'; }
-    method echo-pipeline-funciton-context($/) { make 'Echo[ ' ~ $<pipeline-function-spec>.made ~ '[obj] ]'; }
+    method echo-pipeline-function-context($/) { make 'Echo[ ' ~ $<pipeline-function-spec>.made ~ '[obj] ]'; }
 
     # Echo messages
     method echo-command($/) { make 'Echo[ ' ~ $<echo-message-spec>.made ~ ' ]'; }
