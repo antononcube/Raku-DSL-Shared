@@ -1,10 +1,13 @@
 
 use v6;
+
 use DSL::Shared::Roles::PredicateSpecification;
+use DSL::Shared::Actions::Python::CommonStructures;
 
 unit module DSL::Shared::Actions::Python::PredicateSpecification;
 
-class DSL::Shared::Actions::Python::PredicateSpecification {
+class DSL::Shared::Actions::Python::PredicateSpecification
+        is DSL::Shared::Actions::Python::CommonStructures {
 
   # Predicates
   method predicates-list($/) { make $<predicate>>>.made.join(', '); }
