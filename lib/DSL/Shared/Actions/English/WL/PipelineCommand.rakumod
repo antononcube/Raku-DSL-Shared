@@ -34,13 +34,27 @@ use v6;
 
 unit module DSL::Shared::Actions::English::WL::PipelineCommand;
 
-class DSL::Shared::Actions::English::WL::PipelineCommand {
+use DSL::Shared::Actions::CommonStructures;
+
+class DSL::Shared::Actions::English::WL::PipelineCommand
+        is DSL::Shared::Actions::CommonStructures {
 
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
+
+    method pipeline-function-spec($/) { make $/.values[0].made; }
+
+    # Value
     method take-pipeline-value($/) { make 'obj'; }
     method echo-pipeline-value($/) { make 'Echo[obj]'; }
+    method echo-pipeline-funciton-value($/) { make 'Echo[ ' ~ $<pipeline-function-spec>.made ~ '[obj] ]'; }
 
+    # Value
+    method take-pipeline-context($/) { make 'obj'; }
+    method echo-pipeline-context($/) { make 'Echo[obj]'; }
+    method echo-pipeline-funciton-context($/) { make 'Echo[ ' ~ $<pipeline-function-spec>.made ~ '[obj] ]'; }
+
+    # Echo messages
     method echo-command($/) { make 'Echo[ ' ~ $<echo-message-spec>.made ~ ' ]'; }
     method echo-message-spec($/) { make $/.values[0].made; }
     method echo-words-list($/) { make '"' ~ $<variable-name>>>.made.join(' ') ~ '"'; }
