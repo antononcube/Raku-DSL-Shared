@@ -50,6 +50,7 @@ class DSL::Shared::Actions::CommonStructures {
 	method mixed-quoted-variable-name($/) { make $/.values[0].made; }
 	method single-quoted-variable-name($/) { make '"' ~ $<variable-ws-name>.made ~ '"'; }
 	method double-quoted-variable-name($/) { make '"' ~ $<variable-ws-name>.made ~ '"'; }
+	method mixed-quoted-keyword-variable-name($/) { make $/.values[0].made; }
 	method single-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
 	method double-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
 
