@@ -10,8 +10,11 @@
     "provides" : {
         "DSL::Shared::Actions::CommonStructures" : "lib/DSL/Shared/Actions/CommonStructures.rakumod",
         "DSL::Shared::Actions::English::Python::PipelineCommand" : "lib/DSL/Shared/Actions/English/Python/PipelineCommand.rakumod",
+        "DSL::Shared::Actions::English::Julia::PipelineCommand" : "lib/DSL/Shared/Actions/English/Julia/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::R::PipelineCommand" : "lib/DSL/Shared/Actions/English/R/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::WL::PipelineCommand" : "lib/DSL/Shared/Actions/English/WL/PipelineCommand.rakumod",
+        "DSL::Shared::Actions::Julia::CommonStructures" : "lib/DSL/Shared/Actions/Julia/CommonStructures.rakumod",
+        "DSL::Shared::Actions::Julia::PredicateSpecification" : "lib/DSL/Shared/Actions/Julia/PredicateSpecification.rakumod",
         "DSL::Shared::Actions::Python::CommonStructures" : "lib/DSL/Shared/Actions/Python/CommonStructures.rakumod",
         "DSL::Shared::Actions::Python::PredicateSpecification" : "lib/DSL/Shared/Actions/Python/PredicateSpecification.rakumod",
         "DSL::Shared::Actions::R::CommonStructures" : "lib/DSL/Shared/Actions/R/CommonStructures.rakumod",
