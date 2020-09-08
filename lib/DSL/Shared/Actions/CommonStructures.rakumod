@@ -43,13 +43,17 @@ class DSL::Shared::Actions::CommonStructures {
 	method date-spec($/) { make $/.Str; }
 
 	# Variables
-	method variable-ws-name($/) { make $/.Str; }
 	method variable-name($/) { make $/.Str; }
-	method keyword-variable-name($/) { make $/.Str; }
+	method variable-ws-name($/) { make $/.Str; }
+
 	method quoted-variable-name($/) { make $/.values[0].made; }
 	method mixed-quoted-variable-name($/) { make $/.values[0].made; }
+
 	method single-quoted-variable-name($/) { make '"' ~ $<variable-ws-name>.made ~ '"'; }
 	method double-quoted-variable-name($/) { make '"' ~ $<variable-ws-name>.made ~ '"'; }
+
+	method keyword-variable-name($/) { make $/.Str; }
+	method quoted-keyword-variable-name($/) { make $/.values[0].made; }
 	method mixed-quoted-keyword-variable-name($/) { make $/.values[0].made; }
 	method single-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
 	method double-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
