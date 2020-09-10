@@ -45,11 +45,11 @@ class DSL::Shared::Actions::English::Julia::PipelineCommand
     method pipeline-function-spec($/) { make $/.values[0].made; }
 
     # Value
-    method assign-pipeline-value-to($/) { make $<variable-name>.made ~ ' = obj';}
+    method assign-pipeline-value-to($/) { make $<variable-name>.made ~ ' = obj'; }
     method echo-pipeline-value($/) { make 'print(obj)'; }
     method echo-pipeline-function-value($/) { make 'print( ' ~ $<pipeline-function-spec>.made ~ '(obj) )'; }
     method set-pipeline-value($/) { make 'obj = ' ~ $<set-pipeline-value-rhs>.made; }
-    method set-pipeline-value-rhs($) { make $/.values[0].made; }
+    method set-pipeline-value-rhs($/) { make $/.values[0].made; }
     method take-pipeline-value($/) { make 'obj'; }
 
     # Context
