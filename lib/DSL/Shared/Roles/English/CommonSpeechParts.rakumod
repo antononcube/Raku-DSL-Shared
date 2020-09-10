@@ -116,6 +116,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token records { 'records' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'records') }> }
     token represent-directive { <represent> | 'render' | 'reflect' }
     token results { 'results' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'results') }> }
+    token reverse-adjective { 'reverse' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'reverse') }> }
     token rows { 'rows' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'rows') }> }
     token run-verb { 'run' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'run') }> | 'runs' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'runs') }> }
     token running-verb { 'running' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'running') }> }
