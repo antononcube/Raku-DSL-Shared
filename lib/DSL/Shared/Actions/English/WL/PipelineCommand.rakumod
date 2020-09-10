@@ -45,9 +45,12 @@ class DSL::Shared::Actions::English::WL::PipelineCommand
     method pipeline-function-spec($/) { make $/.values[0].made; }
 
     # Value
-    method take-pipeline-value($/) { make 'obj'; }
+    method assign-pipeline-value-to($/) { make $<variable-name>.made ~ ' = obj';}
     method echo-pipeline-value($/) { make 'Echo[obj]'; }
     method echo-pipeline-funciton-value($/) { make 'Echo[ ' ~ $<pipeline-function-spec>.made ~ '[obj] ]'; }
+    method set-pipeline-value($/) { make 'obj = ' ~ $<set-pipeline-value-rhs>.made; }
+    method set-pipeline-value-rhs($) { make $/.values[0].made; }
+    method take-pipeline-value($/) { make 'obj'; }
 
     # Context
     method take-pipeline-context($/) { make 'obj'; }

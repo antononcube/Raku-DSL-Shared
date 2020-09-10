@@ -9,6 +9,8 @@ role DSL::Shared::Roles::English::PipelineCommand
         does DSL::Shared::Roles::English::CommonSpeechParts {
 
   rule pipeline-command {
+    <set-pipeline-value> |
+    <assign-pipeline-value-to> |
     <echo-pipeline-function-value> |
     <echo-pipeline-value> |
     <take-pipeline-value> |
@@ -23,11 +25,16 @@ role DSL::Shared::Roles::English::PipelineCommand
 
   # Value
   rule pipeline-value { <.pipeline-filler-phrase>? <value-noun> }
-  rule take-pipeline-value { <get-verb> <pipeline-value> }
+  rule assign-pipeline-value-to {
+    <.assign-directive> <.pipeline-value> <.to-preposition> <variable-name> |
+    <.assign-directive> <.to-preposition> <variable-name> <.pipeline-value> }
   rule echo-pipeline-value { <display-directive> <pipeline-value> }
   rule echo-pipeline-function-value {
-    <.display-directive> <.the-determiner>? <.function> <pipeline-function-spec> <.over-preposition> <.pipeline-value> |
-    <.display-directive> <.over-preposition>? <.pipeline-value> <.with-preposition>? <.the-determiner>? <.function> <pipeline-function-spec> }
+  <.display-directive> <.the-determiner>? <.function> <pipeline-function-spec> <.over-preposition> <.pipeline-value> |
+  <.display-directive> <.over-preposition>? <.pipeline-value> <.with-preposition>? <.the-determiner>? <.function> <pipeline-function-spec> }
+  rule set-pipeline-value { <.set-directive> <.pipeline-value> [ <.to-preposition> <.be-verb>? | <.as-preposition> ] <set-pipeline-value-rhs> }
+  rule set-pipeline-value-rhs { <mixed-quoted-variable-name> | <wl-expr> }
+  rule take-pipeline-value { <get-verb> <pipeline-value> }
 
   # Context
   rule pipeline-context { <.pipeline-filler-phrase>? <context-noun> }

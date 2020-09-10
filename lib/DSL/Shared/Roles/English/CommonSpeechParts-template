@@ -14,7 +14,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token apply-verb { 'apply' }
     token are-verb { 'are' }
     token as-preposition { 'as' }
-    token assign-directive { 'assign' | 'set' }
+    token assign-verb { 'assign' }
     token at-preposition { 'at' }
     token automatic { 'automatic' }
     token axes-noun { 'axes' }
@@ -158,6 +158,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token without-preposition { 'without' }
 
     # Directives and phrases
+    rule assign-directive { <assign-verb> }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }

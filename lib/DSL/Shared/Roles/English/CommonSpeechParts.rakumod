@@ -20,7 +20,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token apply-verb { 'apply' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'apply') }> }
     token are-verb { 'are' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'are') }> }
     token as-preposition { 'as' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'as') }> }
-    token assign-directive { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> | 'set' }
+    token assign-verb { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> }
     token at-preposition { 'at' }
     token automatic { 'automatic' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'automatic') }> }
     token axes-noun { 'axes' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axes') }> }
@@ -165,6 +165,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token without-preposition { 'without' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'without') }> }
 
     # Directives and phrases
+    rule assign-directive { <assign-verb> }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
