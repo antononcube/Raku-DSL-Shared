@@ -14,8 +14,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token apply-verb { 'apply' }
     token are-verb { 'are' }
     token as-preposition { 'as' }
-    token assign { 'assign' | 'set' }
-    token assign-directive { 'assign' }
+    token assign-directive { 'assign' | 'set' }
     token at-preposition { 'at' }
     token automatic { 'automatic' }
     token axes-noun { 'axes' }

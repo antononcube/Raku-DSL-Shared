@@ -20,8 +20,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token apply-verb { 'apply' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'apply') }> }
     token are-verb { 'are' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'are') }> }
     token as-preposition { 'as' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'as') }> }
-    token assign { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> | 'set' }
-    token assign-directive { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> }
+    token assign-directive { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> | 'set' }
     token at-preposition { 'at' }
     token automatic { 'automatic' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'automatic') }> }
     token axes-noun { 'axes' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axes') }> }
