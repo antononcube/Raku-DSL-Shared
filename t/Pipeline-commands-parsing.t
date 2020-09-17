@@ -13,10 +13,10 @@ grammar ParseObj
     regex TOP { <pipeline-command> }
 };
 
-plan 14;
+plan 17;
 
 #-----------------------------------------------------------
-# Pipeline parsing
+# Pipeline command parsing
 #-----------------------------------------------------------
 
 ok ParseObj.parse('echo value'),
@@ -55,10 +55,19 @@ ok ParseObj.parse('echo over the pipeline context the function FF1'),
 ok ParseObj.parse('echo context function FF1'),
         'echo context function FF1';
 
-ok ParseObj.parse('use translation target R-base'),
-        'use translation target R-base';
+ok ParseObj.parse('use domain specific language translation target R-base'),
+        'use domain specific language translation target R-base';
 
-ok ParseObj.parse('TARGET Julia-DataFrames'),
-        'TARGET Julia-DataFrames';
+ok ParseObj.parse('DSL TARGET Julia-DataFrames'),
+        'DSL TARGET Julia-DataFrames';
+
+ok ParseObj.parse('DSL TARGET Julia-DataFrames'),
+        'DSL TARGET Julia-DataFrames';
+
+ok ParseObj.parse('use domain specific language module DSL::English::RecommenderWorkflows'),
+        'use domain specific language module DSL::English::RecommenderWorkflows';
+
+ok ParseObj.parse('DSL MODULE DSL::English::DataQueryWorkflows'),
+        'DSL MODULE DSL::English::DataQueryWorkflows';
 
 done-testing;
