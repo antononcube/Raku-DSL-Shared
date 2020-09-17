@@ -15,11 +15,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
     token adjacency-noun { 'adjacency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacency') }> }
     token adjacent-adjective { 'adjacent' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacent') }> }
-    token all-determiner { 'all' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'all') }> }
+    token all-determiner { 'all' }
     token and-conjunction { 'and' }
     token apply-verb { 'apply' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'apply') }> }
     token are-verb { 'are' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'are') }> }
-    token as-preposition { 'as' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'as') }> }
+    token as-preposition { 'as' }
     token assign-verb { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> }
     token at-preposition { 'at' }
     token automatic { 'automatic' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'automatic') }> }
@@ -89,6 +89,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token manner { 'manner' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'manner') }> }
     token matrix-noun { 'matrix' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'matrix') }> }
     token maximum { 'max' | 'maximum' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'maximum') }> }
+    token message-noun { 'message' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'message' ) }>}
     token method-noun { 'method' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'method') }> }
     token minimum { 'min' | 'minimum' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'minimum') }> }
     token missing-adjective { 'missing' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'missing') }> }
@@ -142,6 +143,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token system { 'system' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'system') }> }
     token table-noun { 'table' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'table') }> }
     token take-verb { 'take' }
+    token text-noun { 'text' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'text') }>}
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
     token them-pronoun { 'them' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'them') }> }
@@ -163,6 +165,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token which-determiner { 'which' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'which') }> }
     token with-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'by' }
     token without-preposition { 'without' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'without') }> }
+    token words-noun { 'words' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'words') }>}
 
     # Directives and phrases
     rule assign-directive { <assign-verb> }

@@ -83,6 +83,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token manner { 'manner' }
     token matrix-noun { 'matrix' }
     token maximum { 'max' | 'maximum' }
+    token message-noun { 'message' }
     token method-noun { 'method' }
     token minimum { 'min' | 'minimum' }
     token missing-adjective { 'missing' }
@@ -135,6 +136,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token system { 'system' }
     token table-noun { 'table' }
     token take-verb { 'take' }
+    token text-noun { 'text' }
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
     token them-pronoun { 'them' }
@@ -156,6 +158,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token which-determiner { 'which' }
     token with-preposition { 'using' | 'with' | 'by' }
     token without-preposition { 'without' }
+    token words-noun { 'words' }
 
     # Directives and phrases
     rule assign-directive { <assign-verb> }
