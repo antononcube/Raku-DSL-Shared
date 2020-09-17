@@ -9,6 +9,7 @@
     "license" : "Artistic-2.0",
     "provides" : {
         "DSL::Shared::Actions::CommonStructures" : "lib/DSL/Shared/Actions/CommonStructures.rakumod",
+        "DSL::Shared::Actions::English::PipelineCommand" : "lib/DSL/Shared/Actions/English/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::Python::PipelineCommand" : "lib/DSL/Shared/Actions/English/Python/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::Julia::PipelineCommand" : "lib/DSL/Shared/Actions/English/Julia/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::R::PipelineCommand" : "lib/DSL/Shared/Actions/English/R/PipelineCommand.rakumod",
@@ -27,7 +28,8 @@
         "DSL::Shared::Roles::English::PipelineCommand" : "lib/DSL/Shared/Roles/English/PipelineCommand.rakumod",
         "DSL::Shared::Roles::ErrorHandling" : "lib/DSL/Shared/Roles/ErrorHandling.rakumod",
         "DSL::Shared::Roles::PredicateSpecification" : "lib/DSL/Shared/Roles/PredicateSpecification.rakumod",
-        "DSL::Shared::Utilities::FuzzyMatching" : "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod"
+        "DSL::Shared::Utilities::FuzzyMatching" : "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod",
+        "DSL::Shared::Utilities::MetaSpecifications" : "lib/DSL/Shared/Utilities/MetaSpecifications.rakumod"
     },
     "depends" : [ "Text::Levenshtein::Damerau" ],
     "build-depends" : [ ],
