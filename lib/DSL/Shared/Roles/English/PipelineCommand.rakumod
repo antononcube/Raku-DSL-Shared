@@ -18,7 +18,7 @@ role DSL::Shared::Roles::English::PipelineCommand
     <echo-pipeline-context> |
     <take-pipeline-context> |
     <echo-command> |
-    <translation-target-command> }
+    <dsl-spec-command> }
 
   rule pipeline-filler-phrase { <.the-determiner>? <current-adjective>? <pipeline-noun> }
 
@@ -52,7 +52,15 @@ role DSL::Shared::Roles::English::PipelineCommand
   rule echo-variable { <variable-noun> <variable-name> }
   token echo-text { [\" ([ \w | '_' | '-' | '.' | \d ]+ | [\h]+)+ \"]  }
 
+  # DSL spec command
+  rule dsl-spec-command {  <dsl-translation-target-command> | <dsl-module-command> }
+
+  rule dsl-module-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <raku-module-name> }
+  rule dsl-phrase { 'domain' 'specific' 'language' | 'DSL' }
+  rule dsl-spec-phrase { <dsl-phrase> [ 'module' | 'MODULE' ]? }
+
   # Translation target
-  rule translation-target-command { <.use-directive>? <.the-determiner>? <.translation-target-phrase> <variable-name> }
-  rule translation-target-phrase { 'translation' 'target' | 'TARGET' }
+  rule dsl-translation-target-command { <.use-directive>? <.the-determiner>? <.dsl-phrase> <.translation-target-phrase> <variable-name> }
+  rule translation-target-phrase { 'translation' 'target' | 'TARGET'  }
+
 }

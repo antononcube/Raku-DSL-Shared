@@ -1,7 +1,7 @@
 =begin comment
 #==============================================================================
 #
-#   Pipeline Command Julia actions in Raku (Perl 6)
+#   Pipeline Command in Raku (Perl 6)
 #   Copyright (C) 2020  Anton Antonov
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -32,12 +32,12 @@
 
 use v6;
 
-unit module DSL::Shared::Actions::English::Julia::PipelineCommand;
+unit module DSL::Shared::Actions::English::PipelineCommand;
 
-use DSL::Shared::Actions::English::PipelineCommand;
+use DSL::Shared::Actions::CommonStructures;
 
-class DSL::Shared::Actions::English::Julia::PipelineCommand
-        is DSL::Shared::Actions::English::PipelineCommand {
+class DSL::Shared::Actions::English::PipelineCommand
+        is DSL::Shared::Actions::CommonStructures {
 
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
@@ -45,22 +45,27 @@ class DSL::Shared::Actions::English::Julia::PipelineCommand
     method pipeline-function-spec($/) { make $/.values[0].made; }
 
     # Value
-    method assign-pipeline-value-to($/) { make $<variable-name>.made ~ ' = obj'; }
-    method echo-pipeline-value($/) { make 'print(obj)'; }
-    method echo-pipeline-function-value($/) { make 'print( ' ~ $<pipeline-function-spec>.made ~ '(obj) )'; }
-    method set-pipeline-value($/) { make 'obj = ' ~ $<set-pipeline-value-rhs>.made; }
+    method assign-pipeline-value-to($/) { make $/.Str; }
+    method echo-pipeline-value($/) { make $/.Str; }
+    method echo-pipeline-funciton-value($/) { make $/.Str; }
+    method set-pipeline-value($/) { make $/.Str; }
     method set-pipeline-value-rhs($/) { make $/.values[0].made; }
-    method take-pipeline-value($/) { make 'obj'; }
+    method take-pipeline-value($/) { make $/.Str; }
 
     # Context
-    method take-pipeline-context($/) { make 'obj'; }
-    method echo-pipeline-context($/) { make 'print(obj)'; }
-    method echo-pipeline-function-context($/) { make 'print( ' ~ $<pipeline-function-spec>.made ~ '(obj) )'; }
+    method take-pipeline-context($/) { make $/.Str; }
+    method echo-pipeline-context($/) { make $/.Str; }
+    method echo-pipeline-function-context($/) { make $/.Str; }
 
     # Echo messages
-    method echo-command($/) { make 'print( ' ~ $<echo-message-spec>.made ~ ' )'; }
+    method echo-command($/) { make "echo:" ~ $/.values[0].made; }
     method echo-message-spec($/) { make $/.values[0].made; }
     method echo-words-list($/) { make '"' ~ $<variable-name>>>.made.join(' ') ~ '"'; }
     method echo-variable($/) { make $/.Str; }
     method echo-text($/) { make $/.Str; }
+
+    # DSL spec
+    method dsl-spec-command($/) { make $/.values[0].made; }
+    method dsl-module-command($/) { make $<raku-module-name>.made; }
+    method dsl-translation-target-command($/) { make $<variable-name>.made; }
 }

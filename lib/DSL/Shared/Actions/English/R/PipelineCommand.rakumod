@@ -34,10 +34,10 @@ use v6;
 
 unit module DSL::Shared::Actions::English::R::PipelineCommand;
 
-use DSL::Shared::Actions::R::CommonStructures;
+use DSL::Shared::Actions::English::PipelineCommand;
 
 class DSL::Shared::Actions::English::R::PipelineCommand
-        is DSL::Shared::Actions::R::CommonStructures {
+        is DSL::Shared::Actions::English::PipelineCommand {
 
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
@@ -63,7 +63,4 @@ class DSL::Shared::Actions::English::R::PipelineCommand
     method echo-words-list($/) { make '"' ~ $<variable-name>>>.made.join(' ') ~ '"'; }
     method echo-variable($/) { make $/.Str; }
     method echo-text($/) { make $/.Str; }
-
-    # Translation target
-    method translation-target-command($/) { make $<variable-name>.made; }
 }
