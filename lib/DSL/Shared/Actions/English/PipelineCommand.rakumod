@@ -66,6 +66,6 @@ class DSL::Shared::Actions::English::PipelineCommand
 
     # DSL spec
     method dsl-spec-command($/) { make $/.values[0].made; }
-    method dsl-module-command($/) { make $<raku-module-name>.made; }
-    method dsl-translation-target-command($/) { make $<variable-name>.made; }
+    method dsl-module-command($/) { make 'DSL' => $<raku-module-name>.made; }
+    method dsl-translation-target-command($/) { make 'DSL' => $<variable-name>.made; }
 }
