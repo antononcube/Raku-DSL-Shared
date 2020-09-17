@@ -17,7 +17,8 @@ role DSL::Shared::Roles::English::PipelineCommand
     <echo-pipeline-function-context> |
     <echo-pipeline-context> |
     <take-pipeline-context> |
-    <echo-command> }
+    <echo-command> |
+    <translation-target-command> }
 
   rule pipeline-filler-phrase { <.the-determiner>? <current-adjective>? <pipeline-noun> }
 
@@ -30,8 +31,8 @@ role DSL::Shared::Roles::English::PipelineCommand
     <.assign-directive> <.to-preposition> <variable-name> <.pipeline-value> }
   rule echo-pipeline-value { <display-directive> <pipeline-value> }
   rule echo-pipeline-function-value {
-  <.display-directive> <.the-determiner>? <.function> <pipeline-function-spec> <.over-preposition> <.pipeline-value> |
-  <.display-directive> <.over-preposition>? <.pipeline-value> <.with-preposition>? <.the-determiner>? <.function> <pipeline-function-spec> }
+    <.display-directive> <.the-determiner>? <.function> <pipeline-function-spec> <.over-preposition> <.pipeline-value> |
+    <.display-directive> <.over-preposition>? <.pipeline-value> <.with-preposition>? <.the-determiner>? <.function> <pipeline-function-spec> }
   rule set-pipeline-value { <.set-directive> <.pipeline-value> [ <.to-preposition> <.be-verb>? | <.as-preposition> ] <set-pipeline-value-rhs> }
   rule set-pipeline-value-rhs { <mixed-quoted-variable-name> | <wl-expr> }
   rule take-pipeline-value { <get-verb> <pipeline-value> }
@@ -47,7 +48,11 @@ role DSL::Shared::Roles::English::PipelineCommand
   # Echo messages
   rule echo-command { <display-directive> <echo-message-spec> }
   rule echo-message-spec { <echo-text> | <echo-words-list> | <echo-variable> }
-  rule echo-words-list { 'the'? [ 'text' | 'message' | 'words' ] <variable-name>+ % ( <list-separator> | \h+ )  }
+  rule echo-words-list { <the-determiner>? [ <text-noun> | <message-noun> | <words-noun> ] <variable-name>+ % [ <list-separator> | \h+ ] }
   rule echo-variable { <variable-noun> <variable-name> }
   token echo-text { [\" ([ \w | '_' | '-' | '.' | \d ]+ | [\h]+)+ \"]  }
+
+  # Translation target
+  rule translation-target-command { <.use-directive>? <.the-determiner>? <.translation-target-phrase> <variable-name> }
+  rule translation-target-phrase { 'translation' 'target' | 'TARGET' }
 }

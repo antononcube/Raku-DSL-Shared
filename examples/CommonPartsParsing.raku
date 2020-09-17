@@ -7,39 +7,61 @@ use DSL::Shared::Roles::English::CommonParts;
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::PredicateSpecification;
+use DSL::Shared::Actions::English::WL::PipelineCommand;
 
 grammar ParseObj
-        does DSL::Shared::Roles::English::CommonParts
-        does DSL::Shared::Roles::English::PipelineCommand
         does DSL::Shared::Roles::ErrorHandling
-        does DSL::Shared::Roles::PredicateSpecification {
-    regex TOP { <variable-names-list> | <range-spec> | <pipeline-command> | <predicates-list> | <code-expr> }
+        does DSL::Shared::Roles::PredicateSpecification
+        does DSL::Shared::Roles::English::PipelineCommand {
+    #regex TOP { <variable-names-list> | <range-spec> | <pipeline-command> | <predicates-list> | <code-expr> }
+    #regex TOP { <predicates-list> | <code-expr> }
+    rule TOP { <pipeline-command> | <predicates-list> | <code-expr> }
 };
 
 say "=" x 60;
 
-say ParseObj.subparse( "var1, var2, and my_var77" );
+my $command = 'translation target R-base';
+my $pres = ParseObj.parse( $command );
+
+if $pres<pipeline-command> and $pres<pipeline-command><translation-target-command> {
+    say ParseObj.parse( $command, rule => 'pipeline-command', actions => DSL::Shared::Actions::English::WL::PipelineCommand ).made;
+}
 
 say "=" x 60;
 
-say ParseObj.parse( 'from 5 to 105 step 2' );
+#say ParseObj.parse( 'set pipeline value to var2', actions => DSL::Shared::Actions::English::WL::PipelineCommand.new );
 
-say "=" x 60;
+#say ParseObj.parse( '"v 1" is greater than 10 and v2 greater or equal to 12 or v3 equals 20');
 
-say ParseObj.parse( 'from 5 to 105 step 2' );
+#say ParseObj.parse( 'v1 is greater than 10 and v2 greater or equal to 12 or v3 equals 20');
 
-say "=" x 60;
+#say ParseObj.parse( 'var1 is male and var2 is less than 12 or var3 is greater than 50' );
 
-say ParseObj.parse( 'var1 == "male" & var2 < 12 or var3 > 50' );
-
-say "=" x 60;
-
-say ParseObj.parse( 'display the text mu bu ga' );
-
-say "=" x 60;
-
-say ParseObj.parse( 'display the full text mu bu ga' );
-
-say "=" x 60;
-
-say ParseObj.parse( '`wl 5+5`' );
+#
+#say "=" x 60;
+#
+#say ParseObj.subparse( "var1, var2, and my_var77" );
+#
+#say "=" x 60;
+#
+#say ParseObj.parse( 'from 5 to 105 step 2' );
+#
+#say "=" x 60;
+#
+#say ParseObj.parse( 'from 5 to 105 step 2' );
+#
+#say "=" x 60;
+#
+#say ParseObj.parse( 'var1 == "male" & var2 < 12 or var3 > 50' );
+#
+#say "=" x 60;
+#
+#say ParseObj.parse( 'display the text mu bu ga' );
+#
+#say "=" x 60;
+#
+#say ParseObj.parse( 'display the full text mu bu ga' );
+#
+#say "=" x 60;
+#
+#say ParseObj.parse( '`wl 5+5`' );
