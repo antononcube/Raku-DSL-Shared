@@ -7,7 +7,7 @@ use DSL::Shared::Roles::English::CommonParts;
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::PredicateSpecification;
-use DSL::Shared::Actions::English::WL::PipelineCommand;
+use DSL::Shared::Utilities::MetaSpecsProcessing;
 
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
@@ -15,17 +15,17 @@ grammar ParseObj
         does DSL::Shared::Roles::English::PipelineCommand {
     #regex TOP { <variable-names-list> | <range-spec> | <pipeline-command> | <predicates-list> | <code-expr> }
     #regex TOP { <predicates-list> | <code-expr> }
-    rule TOP { <pipeline-command> | <predicates-list> | <code-expr> }
+    rule TOP { <pipeline-command> }
 };
 
 say "=" x 60;
 
-my $command = 'translation target R-base';
-my $pres = ParseObj.parse( $command );
+#say ParseObj.parse( 'use DSL TARGET r-Base');
 
-if $pres<pipeline-command> and $pres<pipeline-command><translation-target-command> {
-    say ParseObj.parse( $command, rule => 'pipeline-command', actions => DSL::Shared::Actions::English::WL::PipelineCommand ).made;
-}
+my $command = 'DSL TARGET R-base; DSL TARGET WL; DSL MODULE DSL::English::RecommenderWorkflows; ';
+say get-dsl-spec( $command, 'module');
+say get-dsl-spec( $command, 'module').^name;
+say get-dsl-spec( $command, 'target');
 
 say "=" x 60;
 
