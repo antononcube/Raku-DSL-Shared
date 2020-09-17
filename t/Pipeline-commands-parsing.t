@@ -13,7 +13,7 @@ grammar ParseObj
     regex TOP { <pipeline-command> }
 };
 
-plan 12;
+plan 14;
 
 #-----------------------------------------------------------
 # Pipeline parsing
@@ -54,5 +54,11 @@ ok ParseObj.parse('echo over the pipeline context the function FF1'),
 
 ok ParseObj.parse('echo context function FF1'),
         'echo context function FF1';
+
+ok ParseObj.parse('use translation target R-base'),
+        'use translation target R-base';
+
+ok ParseObj.parse('TARGET Julia-DataFrames'),
+        'TARGET Julia-DataFrames';
 
 done-testing;
