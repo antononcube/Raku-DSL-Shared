@@ -9,7 +9,8 @@ role DSL::Shared::Roles::CommonStructures {
     # Date spec
     token date-spec { [ \d ** 4 ] '-' [ \d ** 2 ] '-' [ \d ** 2 ] }
 
-    # Quoted variable name
+    # Variable names
+    token raku-module-name { ([ \w | '_' | '-' | ':' | \d ]+) }
     token variable-ws-name { ([ \w | '_' | '-' | '.' | \d | \h ]+) }
     token variable-name { ([ \w | '_' | '-' | '.' | \d ]+) <!{ $0 eq 'and' }> }
     token quoted-variable-name { <single-quoted-variable-name> | <double-quoted-variable-name> }

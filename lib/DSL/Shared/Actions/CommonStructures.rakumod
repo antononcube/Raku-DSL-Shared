@@ -43,8 +43,9 @@ class DSL::Shared::Actions::CommonStructures {
 	method date-spec($/) { make $/.Str; }
 
 	# Variables
-	method variable-name($/) { make $/.Str; }
+	method raku-module-name($/) { make $/.Str; }
 	method variable-ws-name($/) { make $/.Str; }
+	method variable-name($/) { make $/.Str; }
 
 	method quoted-variable-name($/) { make $/.values[0].made; }
 	method mixed-quoted-variable-name($/) { make $/.values[0].made; }
