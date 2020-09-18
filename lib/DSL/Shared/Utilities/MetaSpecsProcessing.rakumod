@@ -5,17 +5,20 @@ use DSL::Shared::Actions::English::PipelineCommand;
 
 unit module DSL::Shared::Utilities::MetaSpecsProcessing;
 
+#-----------------------------------------------------------
 my %specToRule =
-    "module"                         => "dsl-module-command",
-    "dsl-module"                     => "dsl-module-command",
-    "dsl-module-command"             => "dsl-module-command",
-    "target"                         => "dsl-translation-target-command",
-    "dsl-target"                     => "dsl-translation-target-command",
-    "dsl-translation-target-command" => "dsl-translation-target-command";
+        "any" => "dsl-spec-command",
+        "module" => "dsl-module-command",
+        "dsl-module" => "dsl-module-command",
+        "dsl-module-command" => "dsl-module-command",
+        "target" => "dsl-translation-target-command",
+        "dsl-target" => "dsl-translation-target-command",
+        "dsl-translation-target-command" => "dsl-translation-target-command";
 
+#-----------------------------------------------------------
 grammar ParseObj
         does DSL::Shared::Roles::English::PipelineCommand {
-    rule TOP { <pipeline-command> }
+    rule TOP { <pipeline-command>  }
 };
 
 #-----------------------------------------------------------
@@ -24,27 +27,27 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
-proto get-dsl-spec($c, $r) is export { * };
+proto get-dsl-spec($c, $r) is export {
+*
+};
 
-multi get-dsl-spec(Str $command where not has-semicolon($command), $ruleSpec ) {
+multi get-dsl-spec(Str $command where not has-semicolon($command), $ruleSpec) {
 
     die 'Unknown rule specification.' unless %specToRule{$ruleSpec}:exists;
 
-    my $pres = ParseObj.parse($command);
+    my $res =
+            ParseObj.parse(
+                    $command,
+                    rule => %specToRule{$ruleSpec},
+                    actions => DSL::Shared::Actions::English::PipelineCommand).made;
 
-    if $pres<pipeline-command> and
-            $pres<pipeline-command><dsl-spec-command> and
-            $pres<pipeline-command><dsl-spec-command>{%specToRule{$ruleSpec}} {
-        return
-                ParseObj.parse(
-                        $command,
-                        rule => 'dsl-spec-command',
-                        actions => DSL::Shared::Actions::English::PipelineCommand).made;
+    if $res.^name eq 'Pair' {
+        return $res
     }
-    return Nil;
+    return {};
 }
 
-multi get-dsl-spec (Str $command where has-semicolon($command), Str $ruleSpec = 'module' ) {
+multi get-dsl-spec (Str $command where has-semicolon($command), Str $ruleSpec = 'module') {
 
     die 'Unknown rule specification.' unless %specToRule{$ruleSpec}:exists;
 
@@ -52,10 +55,9 @@ multi get-dsl-spec (Str $command where has-semicolon($command), Str $ruleSpec = 
 
     @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
 
-    my @dqLines = map { get-dsl-spec($_, $ruleSpec) }, @commandLines;
+    my @dslLines = map { get-dsl-spec($_, $ruleSpec) }, @commandLines;
 
-    @dqLines = grep( { $_ }, @dqLines );
+    @dslLines = grep({ $_ }, @dslLines);
 
-    return @dqLines.elems > 0 ?? @dqLines[0] !! Nil;
+    return @dslLines.elems > 0 ?? Hash.new(@dslLines) !! {};
 }
-
