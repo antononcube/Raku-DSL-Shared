@@ -65,7 +65,9 @@ proto get-dsl-parser-residual(Grammar $grammar, Str $command, Str :$norm = 'sum'
 
 multi get-dsl-parser-residual(Grammar $grammar, Str $command where not has-semicolon($command), Str :$norm = 'sum' ) {
     my Match $res;
-    quietly $res = $grammar.subparse($command);
+    quietly {
+        $res = $grammar.subparse($command);
+    }
     return $command.chars - $res.chars;
 }
 
