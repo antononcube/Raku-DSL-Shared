@@ -55,6 +55,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token display-verb { 'display' }
     token distance-noun { 'distance' }
     token do-verb { 'do' }
+    token document-noun { 'document' }
+    token documents-noun { 'documents' }
     token element { 'element' }
     token elements { 'elements' }
     token extend-verb { 'extend' }

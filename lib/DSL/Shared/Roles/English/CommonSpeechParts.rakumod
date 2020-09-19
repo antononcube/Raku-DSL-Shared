@@ -61,6 +61,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token display-verb { 'display' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'display') }> }
     token distance-noun { 'distance' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'distance') }> }
     token do-verb { 'do' }
+    token document-noun { 'document' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'document') }>  }
+    token documents-noun { 'documents' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'documents') }>  }
     token element { 'element' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'element') }> }
     token elements { 'elements' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'elements') }> }
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }
