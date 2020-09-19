@@ -37,6 +37,29 @@ unit module DSL::Shared::Actions::WL::CommonStructures;
 class DSL::Shared::Actions::WL::CommonStructures
         is DSL::Shared::Actions::CommonStructures {
 
+    # Number list
+    method number-value-list($/) { make '{' ~ $<number-value>>>.made.join(', ') ~ '}'; }
+
+    # Programming languages ranges
+    method r-range-spec($/) { make 'Range[' ~ $<number-value-list>.made.substr(1,*-1) ~ "]"; }
+    method wl-range-spec($/) { make 'Range[' ~ $<number-value-list>.made.substr(1,*-1) ~ "]"; }
+    method r-numeric-list-spec($/) { make $<number-value-list>.made; }
+    method wl-numeric-list-spec($/) { make $<number-value-list>.made; }
+
+    # Range spec
+    method range-spec($/) {
+        if $<range-spec-step> {
+            make 'Range[' ~ $<range-spec-from>.made ~ ', ' ~ $<range-spec-to>.made ~ ', ' ~ $<range-spec-step>.made ~ ']';
+        } else {
+            make 'Range[' ~ $<range-spec-from>.made ~ ', ' ~ $<range-spec-to>.made ~ ']';
+        }
+    }
+
+    method range-spec-from($/) { make $<number-value>.made; }
+    method range-spec-to($/) { make $<number-value>.made; }
+    method range-spec-step($/) { make $<number-value>.made; }
+
+
     # Over-writing the trivial
     # Trivial
     method trivial-parameter($/) { make $/.values[0].made; }

@@ -59,12 +59,14 @@ class DSL::Shared::Actions::CommonStructures {
 	method single-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
 	method double-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
 
+	# Common programming languages tokens
+	method dataset-name($/) { make $/.Str; }
+
 	# Value types
 	method integer-value($/) { make $/.Str; }
 	method number-value($/) { make $/.Str; }
-	method wl-expr($/) { make $/.Str.substr(1,*-1); }
-
-	method dataset-name($/) { make $/.Str; }
+	method percent-value($/) { make $<number-value>.made ~ "/100"; }
+	method boolean-value($/) { make $/.Str; }
 
 	# Lists
 	method list-separator($/) { make ','; }
@@ -81,4 +83,7 @@ class DSL::Shared::Actions::CommonStructures {
 	method trivial-parameter-automatic($/) { make 'null'; }
 	method trivial-parameter-false($/) { make 'false'; }
 	method trivial-parameter-true($/) { make 'true'; }
+
+	# Expressions
+	method wl-expr($/) { make $/.Str.substr(1,*-1); }
 }
