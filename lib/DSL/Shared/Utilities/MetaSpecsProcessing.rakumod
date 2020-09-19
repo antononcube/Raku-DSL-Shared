@@ -27,11 +27,9 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
-proto get-dsl-spec($c, $r) is export {
-*
-};
+proto get-dsl-spec(Str $c, Str $r) is export {*};
 
-multi get-dsl-spec(Str $command where not has-semicolon($command), $ruleSpec) {
+multi get-dsl-spec(Str $command where not has-semicolon($command), Str $ruleSpec) {
 
     die 'Unknown rule specification.' unless %specToRule{$ruleSpec}:exists;
 
@@ -60,4 +58,33 @@ multi get-dsl-spec (Str $command where has-semicolon($command), Str $ruleSpec = 
     @dslLines = grep({ $_ }, @dslLines);
 
     return @dslLines.elems > 0 ?? Hash.new(@dslLines) !! {};
+}
+
+#-----------------------------------------------------------
+proto get-dsl-parser-residual(Grammar $grammar, Str $command, Str :$norm = 'sum' ) is export {*};
+
+multi get-dsl-parser-residual(Grammar $grammar, Str $command where not has-semicolon($command), Str :$norm = 'sum' ) {
+    my Match $res;
+    quietly $res = $grammar.subparse($command);
+    return $command.chars - $res.chars;
+}
+
+multi get-dsl-parser-residual(Grammar $grammar, Str $command where has-semicolon($command), Str :$norm = 'sum' ) {
+
+    my $knownNorms = set('sum', '1', 'max', 'inf', 'infinity');
+
+    die "Unknown norm specification. The argument norm should be one of: $knownNorms ." unless $norm ∈ $knownNorms;
+
+    my @commandLines = $command.trim.split(/ ';' \s* /);
+
+    @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
+
+    my @residuals = map { get-dsl-parser-residual($grammar, $_, :$norm) }, @commandLines;
+
+    if $norm ∈ set('inf', 'infinity', 'max') {
+        return @residuals.max;
+    } elsif  $norm ∈ set('1', 'sum') {
+        return [+] @residuals;
+    }
+    return [+] @residuals;
 }
