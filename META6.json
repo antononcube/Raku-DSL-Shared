@@ -32,7 +32,7 @@
         "DSL::Shared::Utilities::FuzzyMatching" : "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod",
         "DSL::Shared::Utilities::MetaSpecsProcessing" : "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod"
     },
-    "depends" : [ "Text::Levenshtein::Damerau" ],
+    "depends" : [ "Text::Levenshtein::Damerau", "JSON::Marshal" ],
     "build-depends" : [ ],
     "test-depends" : [ ],
     "resources" : [ ],
