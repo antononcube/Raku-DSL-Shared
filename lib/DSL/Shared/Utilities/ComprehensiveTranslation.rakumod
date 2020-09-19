@@ -97,20 +97,28 @@ my %languageDispatch =
         English => %englishModuleShortcuts;
 
 #-----------------------------------------------------------
-proto pick-dsl(Str $command, %dslToGrammar = %moduleToDSLGrammar) is export {*};
+proto dsl-most-applicable(Str $command, %dslToGrammar = %moduleToDSLGrammar, Int :$n = 10, Str :$norm = 'sum') is export {*};
 
-multi pick-dsl(Str $command, %dslToGrammar = %moduleToDSLGrammar) {
-    my %res = Hash.new( map({ $_.key => get-dsl-parser-residual($_.value, $command, norm => 'sum') }, %dslToGrammar.pairs) );
-    say %res;
-    my $minRes = %res.min({ $_.value }).value;
-    say grep( { $_.value == $minRes}, %res.pairs );
-    return %res.min({ $_.value }).key;
+multi dsl-most-applicable(Str $command, %dslToGrammar = %moduleToDSLGrammar, Int :$n = 10, Str :$norm = 'sum') {
+
+    die "The argument \$n is expected to be a postive integer." unless $n > 0;
+
+    my @pairs = map({ $_.key => get-dsl-parser-residual($_.value, $command, norm => $norm) }, %dslToGrammar.pairs);
+    @pairs = @pairs.sort({ $_.value });
+
+    return $n < @pairs.elems ?? @pairs[^$n] !! @pairs;
 }
 
 #-----------------------------------------------------------
-proto ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku', Bool :$guessGrammar = True) is export {
-*
-};
+proto dsl-pick(Str $command, %dslToGrammar = %moduleToDSLGrammar, Str :$norm = 'sum') is export {*};
+
+multi dsl-pick(Str $command, %dslToGrammar = %moduleToDSLGrammar, Str :$norm = 'sum') {
+    my @pairs = dsl-most-applicable($command, %dslToGrammar, n => 3, norm => $norm);
+    return @pairs.min({ $_.value }).key;
+}
+
+#-----------------------------------------------------------
+proto ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku', Bool :$guessGrammar = True) is export {*};
 
 multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku', Bool :$guessGrammar = True) {
 
@@ -121,7 +129,7 @@ multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku',
     if not (%dslSpecs and %dslSpecs{'DSL'}:exists) {
         die "No DSL module specification command." unless $guessGrammar;
 
-        %dslSpecs = %dslSpecs, 'DSL' => pick-dsl( $command, %moduleToDSLGrammar );
+        %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %moduleToDSLGrammar );
     }
 
     my $dsl = %dslSpecs{'DSL'};
@@ -141,7 +149,7 @@ multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku',
     } elsif $format.lc eq 'json' {
         return marshal(%rakuRes);
     } else {
-        note "Unknown format: $format. Using 'raku' instead.";
+        warn "Unknown format: $format. Using 'raku' instead.";
         return %rakuRes;
     }
 }
