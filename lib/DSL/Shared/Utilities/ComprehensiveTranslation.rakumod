@@ -114,7 +114,21 @@ proto dsl-pick(Str $command, %dslToGrammar = %moduleToDSLGrammar, Str :$norm = '
 
 multi dsl-pick(Str $command, %dslToGrammar = %moduleToDSLGrammar, Str :$norm = 'sum') {
     my @pairs = dsl-most-applicable($command, %dslToGrammar, n => 3, norm => $norm);
-    return @pairs.min({ $_.value }).key;
+
+    my @pairs2 = grep( { not( $_.key eq "DSL::English::SearchEngineQueries" ) }, @pairs );
+
+    if @pairs.elems == @pairs2.elems {
+        return @pairs.min({ $_.value }).key;
+    }
+
+    my %res = Hash.new( @pairs );
+    my Int $minVal2 = @pairs.min({ $_.value }).value;
+
+    if %res{"DSL::English::SearchEngineQueries"} == 0 and $minVal2 > 5 {
+        return "DSL::English::SearchEngineQueries";
+    } else {
+        return @pairs2.min({ $_.value }).key;
+    }
 }
 
 #-----------------------------------------------------------
