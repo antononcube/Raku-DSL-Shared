@@ -46,7 +46,7 @@ role DSL::Shared::Roles::ErrorHandling {
       $msg ~= "; target '$target' position $*HIGHWATER";
       $msg ~= "; parsed '$parsed', un-parsed '$un-parsed'";
       $msg ~= ' .';
-      note $msg;
+      warn $msg;
     }
 
 }
