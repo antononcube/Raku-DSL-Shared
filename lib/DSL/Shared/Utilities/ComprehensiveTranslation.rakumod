@@ -1,3 +1,7 @@
+
+# Most likely a better place for this file is a separate GitHub/Raku repository/package.
+# The functionality here is not "shared" -- it is "overall."
+
 use v6;
 
 use DSL::Shared::Utilities::MetaSpecsProcessing;
@@ -17,6 +21,44 @@ use DSL::English::SearchEngineQueries;
 #-----------------------------------------------------------
 # DSL target to DSL module
 #-----------------------------------------------------------
+
+my %moduleToPythonTarget =
+
+        "DSL::English::ClassificationWorkflows" => "Python-ClCon",
+        "DSL::English::DataQueryWorkflows" => "Python-pandas",
+        "DSL::English::EpidemiologyModelingWorkflows" => "Python-ECMMon",
+        "DSL::English::LatentSemanticAnalysisWorkflows" => "Python-LSAMon",
+        "DSL::English::QuantileRegressionWorkflows" => "Python-QRMon",
+        "DSL::English::RecommenderWorkflows" => "Python-SMRMon",
+        "DSL::English::SearchEngineQueries" => "Python-pandas";
+
+
+my %moduleToRTarget =
+
+        "DSL::English::ClassificationWorkflows" => "R-ClCon",
+        "DSL::English::DataQueryWorkflows" => "R-tidyverse",
+        "DSL::English::EpidemiologyModelingWorkflows" => "R-ECMMon",
+        "DSL::English::LatentSemanticAnalysisWorkflows" => "R-LSAMon",
+        "DSL::English::QuantileRegressionWorkflows" => "R-QRMon",
+        "DSL::English::RecommenderWorkflows" => "R-SMRMon",
+        "DSL::English::SearchEngineQueries" => "R-tidyverse";
+
+
+my %moduleToWLTarget =
+
+        "DSL::English::ClassificationWorkflows" => "WL-ClCon",
+        "DSL::English::DataQueryWorkflows" => "WL-System",
+        "DSL::English::EpidemiologyModelingWorkflows" => "WL-ECMMon",
+        "DSL::English::LatentSemanticAnalysisWorkflows" => "WL-LSAMon",
+        "DSL::English::QuantileRegressionWorkflows" => "WL-QRMon",
+        "DSL::English::RecommenderWorkflows" => "WL-SMRMon",
+        "DSL::English::SearchEngineQueries" => "WL-SMRMon";
+
+
+my %specToModuleToTarget =
+
+        "R" => %moduleToRTarget,
+        "WL" => %moduleToWLTarget;
 
 #-----------------------------------------------------------
 # DSL module to DSL grammar
@@ -124,7 +166,7 @@ multi dsl-pick(Str $command, %dslToGrammar = %moduleToDSLGrammar, Str :$norm = '
     my %res = Hash.new( @pairs );
     my Int $minVal2 = @pairs.min({ $_.value }).value;
 
-    if %res{"DSL::English::SearchEngineQueries"} == 0 and $minVal2 > 5 {
+    if %res{"DSL::English::SearchEngineQueries"} == 0 and $minVal2 > 15 {
         return "DSL::English::SearchEngineQueries";
     } else {
         return @pairs2.min({ $_.value }).key;
@@ -132,29 +174,42 @@ multi dsl-pick(Str $command, %dslToGrammar = %moduleToDSLGrammar, Str :$norm = '
 }
 
 #-----------------------------------------------------------
-proto ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku', Bool :$guessGrammar = True) is export {*};
+proto ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku', Bool :$guessGrammar = True, Str :$defaultTargetsSpec = 'R') is export {*};
 
-multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku', Bool :$guessGrammar = True) {
+multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku', Bool :$guessGrammar = True, Str :$defaultTargetsSpec = 'R') {
 
-    die "Unknown language: $language." unless %languageDispatch{$language}:exists;
+    die "Unknown natural language: $language." unless %languageDispatch{$language}:exists;
 
+    die "Unknown default targets spec: $defaultTargetsSpec." unless %specToModuleToTarget{$defaultTargetsSpec}:exists;
+
+    # Get DSL specifications
     my %dslSpecs = get-dsl-spec($command, 'any');
 
+    # Get DSL module
     if not (%dslSpecs and %dslSpecs{'DSL'}:exists) {
+
         die "No DSL module specification command." unless $guessGrammar;
 
         %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %moduleToDSLGrammar );
     }
 
-    my $dsl = %dslSpecs{'DSL'};
+    my Str $dsl = %dslSpecs{'DSL'};
+    $dsl = %languageDispatch{$language}{$dsl};
 
     die "Unknown DSL spec: $dsl." unless  %languageDispatch{$language}{$dsl}:exists;
 
-    my &dslFunc = %englishModuleFunctions{%languageDispatch{$language}{$dsl}};
-    my $code = &dslFunc($command);
+    # Get DSL target
+    my Str $dslTarget = %specToModuleToTarget{$defaultTargetsSpec}{$dsl};
 
-    my $dslTarget = %dslSpecs{'DSLTARGET'}:exists ?? %dslSpecs{'DSLTARGET'} !! 'None';
+    $dslTarget = %dslSpecs{'DSLTARGET'}:exists ?? %dslSpecs{'DSLTARGET'} !! $dslTarget;
 
+    # Get DSL functions
+    my &dslFunc = %englishModuleFunctions{$dsl};
+
+    # DSL translate
+    my Str $code = &dslFunc($command, $dslTarget);
+
+    # Result
     my %rakuRes = Hash.new(%dslSpecs, { Code => $code, DSLTARGET => $dslTarget, DSLFUNCTION => &dslFunc.raku });
     %rakuRes = %rakuRes.sort({ $^a.key });
 
