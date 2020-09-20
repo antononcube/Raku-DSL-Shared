@@ -60,6 +60,9 @@ my %specToModuleToTarget =
         "R" => %moduleToRTarget,
         "WL" => %moduleToWLTarget;
 
+my %targetToModule = reduce( { $^a.push( $^b.invert ) }, {}, |%specToModuleToTarget.values );
+
+
 #-----------------------------------------------------------
 # DSL module to DSL grammar
 #-----------------------------------------------------------
@@ -190,7 +193,15 @@ multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku',
 
         die "No DSL module specification command." unless $guessGrammar;
 
-        %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %moduleToDSLGrammar );
+        if %dslSpecs{'DSLTARGET'}:exists and %targetToModule{%dslSpecs{'DSLTARGET'}}:exists {
+            # Restrict the DSL guessing to the specified target DSLs
+            # Maybe there is a way to more concisely do the following line,
+            # which is equivalent to WL's KeyTake for %moduleToDSLGrammar and %targetToModule{%dslSpecs{'DSLTARGET'}} .
+            my %small = Hash.new( grep( { $_.key ∈ %targetToModule{%dslSpecs{'DSLTARGET'}} }, %moduleToDSLGrammar.pairs ) );
+            %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %small );
+        } else {
+            %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %moduleToDSLGrammar );
+        }
     }
 
     my Str $dsl = %dslSpecs{'DSL'};
@@ -203,14 +214,14 @@ multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku',
 
     $dslTarget = %dslSpecs{'DSLTARGET'}:exists ?? %dslSpecs{'DSLTARGET'} !! $dslTarget;
 
-    # Get DSL functions
+    # Get DSL function
     my &dslFunc = %englishModuleFunctions{$dsl};
 
     # DSL translate
     my Str $code = &dslFunc($command, $dslTarget);
 
     # Result
-    my %rakuRes = Hash.new(%dslSpecs, { Code => $code, DSLTARGET => $dslTarget, DSLFUNCTION => &dslFunc.raku });
+    my %rakuRes = Hash.new(%dslSpecs, { Code => $code, DSL => $dsl, DSLTARGET => $dslTarget, DSLFUNCTION => &dslFunc.raku });
     %rakuRes = %rakuRes.sort({ $^a.key });
 
     if $format.lc eq 'raku' {
