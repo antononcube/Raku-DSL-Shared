@@ -195,9 +195,7 @@ multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku',
 
         if %dslSpecs{'DSLTARGET'}:exists and %targetToModule{%dslSpecs{'DSLTARGET'}}:exists {
             # Restrict the DSL guessing to the specified target DSLs
-            # Maybe there is a way to more concisely do the following line,
-            # which is equivalent to WL's KeyTake for %moduleToDSLGrammar and %targetToModule{%dslSpecs{'DSLTARGET'}} .
-            my %small = Hash.new( grep( { $_.key ∈ %targetToModule{%dslSpecs{'DSLTARGET'}} }, %moduleToDSLGrammar.pairs ) );
+            my %small = Hash.new( %moduleToDSLGrammar{ |%targetToModule{%dslSpecs{'DSLTARGET'}} }:p );
             %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %small );
         } else {
             %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %moduleToDSLGrammar );
