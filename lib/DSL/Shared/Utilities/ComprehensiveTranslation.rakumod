@@ -195,7 +195,7 @@ multi ToDSLCode(Str $command, Str :$language = 'English', Str :$format = 'raku',
 
         if %dslSpecs{'DSLTARGET'}:exists and %targetToModule{%dslSpecs{'DSLTARGET'}}:exists {
             # Restrict the DSL guessing to the specified target DSLs
-            my %small = Hash.new( %moduleToDSLGrammar{ |%targetToModule{%dslSpecs{'DSLTARGET'}} }:p );
+            my %small = %moduleToDSLGrammar{ |%targetToModule{%dslSpecs{'DSLTARGET'}} }:p;
             %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %small );
         } else {
             %dslSpecs = %dslSpecs, 'DSL' => dsl-pick( $command, %moduleToDSLGrammar );
