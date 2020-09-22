@@ -35,9 +35,14 @@ use v6;
 unit module DSL::Shared::Actions::English::WL::PipelineCommand;
 
 use DSL::Shared::Actions::English::PipelineCommand;
+use DSL::Shared::Actions::WL::CommonStructures;
 
 class DSL::Shared::Actions::English::WL::PipelineCommand
+        is DSL::Shared::Actions::WL::CommonStructures
         is DSL::Shared::Actions::English::PipelineCommand {
+
+    # Object
+    method assign-pipeline-object-to($/) { make $<variable-name>.made ~ ' = obj'; }
 
     # Value
     method assign-pipeline-value-to($/) { make $<variable-name>.made ~ ' = obj'; }

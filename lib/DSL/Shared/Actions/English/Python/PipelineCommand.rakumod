@@ -35,14 +35,19 @@ use v6;
 unit module DSL::Shared::Actions::English::Python::PipelineCommand;
 
 use DSL::Shared::Actions::English::PipelineCommand;
+use DSL::Shared::Actions::Python::CommonStructures;
 
 class DSL::Shared::Actions::English::Python::PipelineCommand
+        is DSL::Shared::Actions::Python::CommonStructures
         is DSL::Shared::Actions::English::PipelineCommand {
 
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
 
     method pipeline-function-spec($/) { make $/.values[0].made; }
+
+    # Object
+    method assign-pipeline-object-to($/) { make $<variable-name>.made ~ ' = obj'; }
 
     # Value
     method assign-pipeline-value-to($/) { make $<variable-name>.made ~ ' = obj'; }

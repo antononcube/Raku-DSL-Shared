@@ -44,6 +44,9 @@ class DSL::Shared::Actions::English::PipelineCommand
 
     method pipeline-function-spec($/) { make $/.values[0].made; }
 
+    # Object
+    method assign-pipeline-object-to($/) { make $/.Str; }
+
     # Value
     method assign-pipeline-value-to($/) { make $/.Str; }
     method echo-pipeline-value($/) { make $/.Str; }

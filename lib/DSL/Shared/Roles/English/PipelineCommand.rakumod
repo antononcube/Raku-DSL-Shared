@@ -9,6 +9,7 @@ role DSL::Shared::Roles::English::PipelineCommand
         does DSL::Shared::Roles::English::CommonSpeechParts {
 
   rule pipeline-command {
+    <assign-pipeline-object-to> |
     <set-pipeline-value> |
     <assign-pipeline-value-to> |
     <echo-pipeline-function-value> |
@@ -23,6 +24,12 @@ role DSL::Shared::Roles::English::PipelineCommand
   rule pipeline-filler-phrase { <.the-determiner>? <current-adjective>? <pipeline-noun> }
 
   rule pipeline-function-spec { <wl-expr> | <variable-name> }
+
+  # Object
+  rule assign-pipeline-object-to {
+    <.assign-directive> <.pipeline-object> <.to-preposition> <variable-name> |
+    <.assign-directive> <.to-preposition> <variable-name> <.pipeline-object> }
+  rule pipeline-object { <.pipeline-filler-phrase>? <object> }
 
   # Value
   rule pipeline-value { <.pipeline-filler-phrase>? <value-noun> }
