@@ -17,6 +17,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token adjacent-adjective { 'adjacent' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacent') }> }
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
+    token annex-verb { 'annex'  | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'annex') }> }
+    token append-verb { 'append'  | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'append') }> }
     token apply-verb { 'apply' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'apply') }> }
     token are-verb { 'are' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'are') }> }
     token as-preposition { 'as' }
@@ -170,6 +172,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token words-noun { 'words' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'words') }>}
 
     # Directives and phrases
+    rule annex-directive { <annex-verb> | <append-verb> }
     rule assign-directive { <assign-verb> }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }

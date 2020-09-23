@@ -11,6 +11,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token adjacent-adjective { 'adjacent' }
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
+    token annex-verb { 'annex' }
+    token append-verb { 'append' }
     token apply-verb { 'apply' }
     token are-verb { 'are' }
     token as-preposition { 'as' }
@@ -163,6 +165,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token words-noun { 'words' }
 
     # Directives and phrases
+    rule annex-directive { <annex-verb> | <append-verb> }
     rule assign-directive { <assign-verb> }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
