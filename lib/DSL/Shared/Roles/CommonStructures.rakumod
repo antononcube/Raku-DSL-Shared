@@ -99,4 +99,8 @@ role DSL::Shared::Roles::CommonStructures {
     # Expressions
     token wl-expr { '`' <-[`]>+ '`' }
     token code-expr { '`' \w+ \h+ <-[`]>+ '`' }
+
+    # Expression combinations
+    rule variable-name-or-wl-expr { <variable-name> | <wl-expr> }
+    rule mixed-quoted-variable-name-or-wl-expr { <mixed-quoted-variable-name> | <wl-expr> }
 }

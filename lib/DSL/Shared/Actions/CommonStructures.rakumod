@@ -86,4 +86,9 @@ class DSL::Shared::Actions::CommonStructures {
 
 	# Expressions
 	method wl-expr($/) { make $/.Str.substr(1,*-1); }
+	method code-expr($/) { make $/.Str; }
+
+	# Expression combinations
+    method variable-name-or-wl-expr($/) { make $/.values[0].made; }
+    method mixed-quoted-variable-name-or-wl-expr($/) { make $/.values[0].made; }
 }
