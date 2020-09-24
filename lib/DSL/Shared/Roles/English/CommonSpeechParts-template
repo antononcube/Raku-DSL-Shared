@@ -75,7 +75,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token functions { 'functions' }
     token generate-directive { <generate-verb> | <create-verb> | 'make' }
     token generate-verb { 'generate' }
-    token get-verb { 'obtain' | 'get' | 'take' }
+    token get-verb { 'obtain' | 'get' | <take-verb> }
     token graph { 'graph' }
     token histogram { 'histogram' }
     token histograms { 'histograms' }
@@ -123,6 +123,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token remove-verb { 'remove' }
     token represent-directive { <represent> | 'render' | 'reflect' }
     token results { 'results' }
+    token reverse-adjective { 'reverse' }
     token rows { 'rows' }
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
