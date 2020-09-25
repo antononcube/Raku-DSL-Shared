@@ -90,5 +90,7 @@ class DSL::Shared::Actions::CommonStructures {
 
 	# Expression combinations
     method variable-name-or-wl-expr($/) { make $/.values[0].made; }
+    method variable-name-or-wl-expr-list($/) { make $<variable-name-or-wl-expr>>>.made; }
     method mixed-quoted-variable-name-or-wl-expr($/) { make $/.values[0].made; }
+    method mixed-quoted-variable-name-or-wl-expr-list($/) { make $<mixed-quoted-variable-name-or-wl-expr>>>.made; }
 }

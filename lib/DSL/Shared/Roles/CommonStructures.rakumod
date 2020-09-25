@@ -102,5 +102,7 @@ role DSL::Shared::Roles::CommonStructures {
 
     # Expression combinations
     rule variable-name-or-wl-expr { <variable-name> | <wl-expr> }
+    rule variable-name-or-wl-expr-list { <variable-name-or-wl-expr>+ % <list-separator> }
     rule mixed-quoted-variable-name-or-wl-expr { <mixed-quoted-variable-name> | <wl-expr> }
+    rule mixed-quoted-variable-name-or-wl-expr-list { <mixed-quoted-variable-name-or-wl-expr>+ % <list-separator> }
 }
