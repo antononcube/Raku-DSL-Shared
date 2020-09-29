@@ -56,6 +56,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token diagram { <plot> | 'plots' | 'graph' | 'chart' }
     token diagram-noun { 'diagram' }
     token difference { 'difference' }
+    token dimension-noun { 'dimension' }
+    token dimensions-noun { 'dimensions' }
     token directly-adverb { 'directly' }
     token display-directive { <display-verb> | 'show' | 'echo' }
     token display-verb { 'display' }
@@ -129,6 +131,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token running-verb { 'running' }
     token series-noun { 'series' }
     token set-directive { 'set' }
+    token shape-noun { 'shape' }
     token simple { 'simple' | 'direct' }
     token simply-adverb { 'simply' }
     token simulate { 'simulate' }
