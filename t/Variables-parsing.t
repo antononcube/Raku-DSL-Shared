@@ -13,7 +13,7 @@ grammar ParseObj
     regex TOP { <pipeline-command> }
 };
 
-plan 10;
+plan 11;
 
 #-----------------------------------------------------------
 # Variables parse
@@ -42,6 +42,9 @@ ok ParseObj.parse('set pipeline value to a223'),
 
 ok ParseObj.parse('set pipeline value to A'),
         'set pipeline value to A';
+
+ok ParseObj.parse('set pipeline value to __Arw'),
+        'set pipeline value to __Arw';
 
 nok ParseObj.parse('set pipeline value to Arw-'),
         'set pipeline value to Arw-';
