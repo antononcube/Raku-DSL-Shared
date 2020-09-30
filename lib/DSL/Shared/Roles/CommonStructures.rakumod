@@ -12,7 +12,7 @@ role DSL::Shared::Roles::CommonStructures {
     # Variable names
     token raku-module-name { [ <alnum> | '-' | ':' ]+ }
     token variable-ws-name { [ <alnum> | '-' | '.' | ':' | \h ]+ }
-    regex variable-name { <alpha> [ <alnum> | '-' | '.' ]* <alnum> | <alpha> }
+    regex variable-name { <alnum> [ <alnum> | '-' | '.' ]* <alnum> | <alnum> }
     token quoted-variable-name { <single-quoted-variable-name> | <double-quoted-variable-name> }
     token mixed-quoted-variable-name { <variable-name> | <quoted-variable-name> }
 

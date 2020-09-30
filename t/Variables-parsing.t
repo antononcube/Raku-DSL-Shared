@@ -46,11 +46,10 @@ ok ParseObj.parse('set pipeline value to A'),
 ok ParseObj.parse('set pipeline value to __Arw'),
         'set pipeline value to __Arw';
 
-nok ParseObj.parse('set pipeline value to Arw-'),
-        'set pipeline value to Arw-';
-
-nok ParseObj.parse('set pipeline value to 2'),
+ok ParseObj.parse('set pipeline value to 2'),
         'set pipeline value to 2';
 
+nok ParseObj.parse('set pipeline value to Arw-'),
+        'set pipeline value to Arw-';
 
 done-testing;
