@@ -19,7 +19,8 @@ role DSL::Shared::Roles::English::PipelineCommand
         <echo-pipeline-context> |
         <take-pipeline-context> |
         <echo-command> |
-        <dsl-spec-command> }
+        <dsl-spec-command> |
+        <code-line> }
 
     rule pipeline-filler-phrase { <.the-determiner>? <current-adjective>? <pipeline-noun> }
 
@@ -70,4 +71,6 @@ role DSL::Shared::Roles::English::PipelineCommand
     rule dsl-translation-target-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <.translation-target-phrase> <variable-name> }
     rule translation-target-phrase { 'translation' 'target' | 'TARGET'  }
 
+    # Code line
+    rule code-line { <wl-expr> }
 }

@@ -13,7 +13,7 @@ grammar ParseObj
     regex TOP { <pipeline-command> }
 };
 
-plan 17;
+plan 19;
 
 #-----------------------------------------------------------
 # Pipeline command parsing
@@ -69,5 +69,11 @@ ok ParseObj.parse('use domain specific language module DSL::English::Recommender
 
 ok ParseObj.parse('DSL MODULE DSL::English::DataQueryWorkflows'),
         'DSL MODULE DSL::English::DataQueryWorkflows';
+
+ok ParseObj.parse('`Transpose[obj]`'),
+        '`Transpose[obj]`';
+
+ok ParseObj.parse('`ResourceFunction["CrossTabulate"]`'),
+        '`ResourceFunction["CrossTabulate"]`';
 
 done-testing;
