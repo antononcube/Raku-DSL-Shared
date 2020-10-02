@@ -39,6 +39,9 @@ use DSL::Shared::Actions::CommonStructures;
 class DSL::Shared::Actions::English::PipelineCommand
         is DSL::Shared::Actions::CommonStructures {
 
+    # Useful for parsing with saving state.
+    my %.properties;
+
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
 
