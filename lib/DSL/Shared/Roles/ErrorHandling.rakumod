@@ -17,7 +17,6 @@ role DSL::Shared::Roles::ErrorHandling {
     method error_die($msg) {
         my $parsed-so-far = self.target.substr(0, self.pos);
         my @lines = $parsed-so-far.lines;
-        note "error_die HERE";
         die "Cannot parse: $msg at line @lines.elems(), after '@lines[*-1]'";
     }
 
