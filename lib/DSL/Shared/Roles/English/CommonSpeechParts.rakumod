@@ -46,8 +46,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token context-noun { 'context' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'context') }> }
     token contingency-noun { 'contingency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'contingency') }> }
     token convert-verb { 'convert' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'convert') }> }
-    token count-verb { 'count' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'count') }> }
-    token counts-noun { 'counts' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'counts') }> }
+    token count-verb { 'count' | ([\w]+) <?{ $0.Str ne 'counts' and is-fuzzy-match( $0.Str, 'count') }> }
+    token counts-noun { 'counts' | ([\w]+) <?{ $0.Str ne 'count' and is-fuzzy-match( $0.Str, 'counts') }> }
     token create { 'create' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'create') }> }
     token create-directive { <create-verb> | 'make' }
     token create-verb { 'create' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'create') }> }
