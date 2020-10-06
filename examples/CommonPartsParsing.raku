@@ -7,7 +7,7 @@ use DSL::Shared::Roles::English::CommonParts;
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::PredicateSpecification;
-use DSL::Shared::Utilities::MetaSpecsProcessing;
+use DSL::Shared::Actions::English::WL::PipelineCommand;
 
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
@@ -18,18 +18,19 @@ grammar ParseObj
     rule TOP { <pipeline-command> }
 };
 
+
 say "=" x 60;
 
 #say ParseObj.parse( 'use DSL TARGET r-Base');
-
+#
 my $command = 'DSL TARGET R-base; DSL TARGET WL; DSL MODULE DSL::English::RecommenderWorkflows; ';
-say get-dsl-spec( $command, 'module');
-say get-dsl-spec( $command, 'module').^name;
-say get-dsl-spec( $command, 'target');
+#say get-dsl-spec( $command, 'module');
+#say get-dsl-spec( $command, 'module').^name;
+#say get-dsl-spec( $command, 'target');
 
 say "=" x 60;
 
-#say ParseObj.parse( 'set pipeline value to var2', actions => DSL::Shared::Actions::English::WL::PipelineCommand.new );
+say ParseObj.parse( 'set pipeline value to "A2 er"', actions => DSL::Shared::Actions::English::WL::PipelineCommand.new );
 
 #say ParseObj.parse( '"v 1" is greater than 10 and v2 greater or equal to 12 or v3 equals 20');
 
