@@ -28,7 +28,8 @@
         "DSL::Shared::Roles::English::PipelineCommand" : "lib/DSL/Shared/Roles/English/PipelineCommand.rakumod",
         "DSL::Shared::Roles::ErrorHandling" : "lib/DSL/Shared/Roles/ErrorHandling.rakumod",
         "DSL::Shared::Roles::PredicateSpecification" : "lib/DSL/Shared/Roles/PredicateSpecification.rakumod",
-        "DSL::Shared::Utilities::FuzzyMatching" : "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod"
+        "DSL::Shared::Utilities::FuzzyMatching" : "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod",
+        "DSL::Shared::Utilities::MetaSpecsProcessing" : "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod"
     },
     "depends" : [ "Text::Levenshtein::Damerau" ],
     "build-depends" : [ ],

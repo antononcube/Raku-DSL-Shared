@@ -8,6 +8,7 @@ use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Actions::English::WL::PipelineCommand;
+use DSL::Shared::Utilities::MetaSpecsProcessing;
 
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
@@ -24,9 +25,9 @@ say "=" x 60;
 #say ParseObj.parse( 'use DSL TARGET r-Base');
 #
 my $command = 'DSL TARGET R-base; DSL TARGET WL; DSL MODULE DSL::English::RecommenderWorkflows; ';
-#say get-dsl-spec( $command, 'module');
-#say get-dsl-spec( $command, 'module').^name;
-#say get-dsl-spec( $command, 'target');
+say get-dsl-spec( $command, 'module');
+say get-dsl-spec( $command, 'module').^name;
+say get-dsl-spec( $command, 'target');
 
 say "=" x 60;
 
