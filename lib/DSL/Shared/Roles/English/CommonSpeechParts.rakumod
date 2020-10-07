@@ -37,8 +37,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token chart-noun { 'chart' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'chart') }> }
     token classify { 'classify' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'classify') }> }
     token cluster { 'clusters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'clusters') }> }
-    token column-noun { 'column' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'column') }> }
-    token columns { 'columns' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'columns') }> }
+    token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
+    token columns { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
     token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
     token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link') }> }
     token consider-verb { 'consider' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consider') }> }
@@ -193,6 +193,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
     rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
+    rule data-column-phrase { <data-noun>? [ <column-noun> | <variable-noun> ] }
+    rule data-columns-phrase { <data-noun>? [ <columns> | <variables-noun> ] }
     rule data-frame { <data-noun> <frame-noun> }
     rule diagram-phrase { <plot> | <plots> | <graph-noun> | <chart-noun> }
     rule distance-function-phrase { <distance-noun> <function> }
