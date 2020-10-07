@@ -62,6 +62,10 @@ class DSL::Shared::Actions::CommonStructures {
 	# Common programming languages tokens
 	method dataset-name($/) { make $/.Str; }
 
+	# Regex
+    method regex-pattern($/) { make $/.Str; }
+    method regex-pattern-spec($/) { make $<regex-pattern>.made; }
+
 	# Value types
 	method integer-value($/) { make $/.Str; }
 	method number-value($/) { make $/.Str; }

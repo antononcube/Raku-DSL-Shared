@@ -51,6 +51,10 @@ role DSL::Shared::Roles::CommonStructures {
     # Common programming languages tokens
     token dataset-name  { <variable-name> }
 
+    # Regex
+    regex regex-pattern { .* }
+    regex regex-pattern-spec { [ 'rx/' | '/' ] <regex-pattern> '/' }
+
     # Value types
     token number-value { (\d+ ['.' \d*]?  [ [e|E] \d+]?) }
     token integer-value { \d+ }
