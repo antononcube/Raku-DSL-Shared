@@ -69,7 +69,7 @@ role DSL::Shared::Roles::English::PipelineCommand
 
     # Translation target
     rule dsl-translation-target-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <.dsl-translation-target-phrase> <variable-name> }
-    rule dsl-translation-target-phrase { 'translation' 'target' | 'TARGET' | '⊙' | '⊚' | '⊛' | '©' | '(*)' | '(o)' | '(O)' }
+    rule dsl-translation-target-phrase { 'translation' 'target' | 'TARGET' | '⨁' | '⨀' | '©' | '®' | '(*)' | '(o)' | '(O)' }
 
     # Code line
     rule code-line { <wl-expr> }
