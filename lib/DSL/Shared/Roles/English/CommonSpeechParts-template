@@ -6,7 +6,6 @@ use DSL::Shared::Utilities::FuzzyMatching;
 role DSL::Shared::Roles::English::CommonSpeechParts {
 
     # Single words
-
     token a-determiner { 'a' | 'an'}
     token adhere-verb { 'adhere' }
     token adjacency-noun { 'adjacency' }
@@ -116,6 +115,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token over-preposition { 'over' }
     token parameter-noun { 'parameter' }
     token parameters-noun { 'parameters' }
+    token pattern-noun { 'pattern' }
     token per-preposition { 'per' }
     token pipeline-noun { 'pipeline' }
     token plot { 'plot' }
@@ -129,6 +129,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token rows { 'rows' }
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
+    token separate-verb { 'separate' }
     token series-noun { 'series' }
     token set-directive { 'set' }
     token shape-noun { 'shape' }
@@ -142,10 +143,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token smallest { 'smallest' }
     token some-determiner { 'some' }
     token sparse-adjective { 'sparse' }
+    token split-verb { 'split' }
     token spread-verb { 'spread' }
     token statistical { 'statistical' }
     token step-noun { 'step' }
     token steps-noun { 'steps' }
+    token string-noun { 'string' }
     token sub-prefix { 'sub' }
     token summaries { 'summaries' }
     token summarize-directive { 'summarize' }

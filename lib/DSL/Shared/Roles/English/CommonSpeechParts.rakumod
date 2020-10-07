@@ -10,7 +10,6 @@ use v6;
 use DSL::Shared::Utilities::FuzzyMatching;
 
 role DSL::Shared::Roles::English::CommonSpeechParts {
-
     # Single words
     token a-determiner { 'a' | 'an' }
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
@@ -29,7 +28,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token away-adverb { 'away' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'away') }> }
     token axes-noun { 'axes' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axes') }> }
     token axis-noun { 'axis' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axis') }> }
-    token be-verb { 'be'}
+    token be-verb { 'be' }
     token both-determiner { 'both' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'both') }> }
     token bottom-noun { 'bottom' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'bottom') }> }
     token broaden-verb { 'broaden' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'broaden') }> }
@@ -82,7 +81,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token functions { 'functions' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'functions') }> }
     token generate-directive { <generate-verb> | <create-verb> | 'make' }
     token generate-verb { 'generate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'generate') }> }
-    token get-verb { 'obtain' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'obtain') }> | 'get' | <take-verb>  }
+    token get-verb { 'obtain' | 'get' | <take-verb> }
     token graph { 'graph' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'graph') }> }
     token histogram { 'histogram' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'histogram') }> }
     token histograms { 'histograms' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'histograms') }> }
@@ -121,6 +120,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token over-preposition { 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
     token parameter-noun { 'parameter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'parameter') }> }
     token parameters-noun { 'parameters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'parameters') }> }
+    token pattern-noun { 'pattern' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pattern') }> }
     token per-preposition { 'per' }
     token pipeline-noun { 'pipeline' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pipeline') }> }
     token plot { 'plot' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'plot') }> }
@@ -134,6 +134,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token rows { 'rows' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'rows') }> }
     token run-verb { 'run' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'run') }> | 'runs' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'runs') }> }
     token running-verb { 'running' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'running') }> }
+    token separate-verb { 'separate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'separate') }> }
     token series-noun { 'series' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'series') }> }
     token set-directive { 'set' }
     token shape-noun { 'shape' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'shape') }> }
@@ -147,10 +148,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token smallest { 'smallest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'smallest') }> }
     token some-determiner { 'some' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'some') }> }
     token sparse-adjective { 'sparse' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'sparse') }> }
+    token split-verb { 'split' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'split') }> }
     token spread-verb { 'spread' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'spread') }> }
     token statistical { 'statistical' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'statistical') }> }
     token step-noun { 'step' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'step') }> }
     token steps-noun { 'steps' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'steps') }> }
+    token string-noun { 'string' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'string') }> }
     token sub-prefix { 'sub' }
     token summaries { 'summaries' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summaries') }> }
     token summarize-directive { 'summarize' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summarize') }> }
@@ -163,9 +166,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token the-determiner { 'the' }
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
-    token time-noun { 'time' }
+    token time-noun { 'time' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'time') }> }
     token to-preposition { 'to' | 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into') }> }
-    token top-noun { 'top' }
+    token top-noun { 'top' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'top') }> }
     token transform-verb { 'transform' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'transform') }> }
     token type-noun { 'type' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'type') }> }
     token use-verb { 'use' | 'utilize' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'utilize') }> }
