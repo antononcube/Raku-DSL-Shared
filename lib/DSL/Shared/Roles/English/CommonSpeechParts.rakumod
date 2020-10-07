@@ -166,7 +166,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token the-determiner { 'the' }
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
-    token time-noun { 'time' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'time') }> }
+    token time-noun { 'time' | ([\w]+) <?{ $0.Str ne 'the' and is-fuzzy-match( $0.Str, 'time') }> }
     token to-preposition { 'to' | 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into') }> }
     token top-noun { 'top' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'top') }> }
     token transform-verb { 'transform' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'transform') }> }
