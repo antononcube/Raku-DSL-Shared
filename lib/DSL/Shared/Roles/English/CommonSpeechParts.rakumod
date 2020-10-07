@@ -70,21 +70,21 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token document-noun { 'document' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'document') }> }
     token documents-noun { 'documents' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'documents') }> }
     token drop-verb { 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> }
-    token element { 'element' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'element') }> }
-    token elements { 'elements' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'elements') }> }
+    token element { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
+    token elements { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }
     token extract-directive { 'extract' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extract') }> }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'frame') }> }
     token from-preposition { 'from' }
-    token function { 'function' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'function') }> }
-    token functions { 'functions' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'functions') }> }
+    token function { 'function' | ([\w]+) <?{ $0.Str ne 'functions' and is-fuzzy-match( $0.Str, 'function') }> }
+    token functions { 'functions' | ([\w]+) <?{ $0.Str ne 'function' and is-fuzzy-match( $0.Str, 'functions') }> }
     token generate-directive { <generate-verb> | <create-verb> | 'make' }
     token generate-verb { 'generate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'generate') }> }
     token get-verb { 'obtain' | 'get' | <take-verb> }
     token graph { 'graph' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'graph') }> }
-    token histogram { 'histogram' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'histogram') }> }
-    token histograms { 'histograms' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'histograms') }> }
+    token histogram { 'histogram' | ([\w]+) <?{  $0.Str ne 'histograms' and is-fuzzy-match( $0.Str, 'histogram') }> }
+    token histograms { 'histograms' | ([\w]+) <?{  $0.Str ne 'histogram' and is-fuzzy-match( $0.Str, 'histograms') }> }
     token id-noun { 'id' }
     token identifier-noun { 'identifier' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'identifier') }> }
     token in-preposition { 'in' }
@@ -118,13 +118,13 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token or-conjunction { 'or' }
     token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out') }> }
     token over-preposition { 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
-    token parameter-noun { 'parameter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'parameter') }> }
-    token parameters-noun { 'parameters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'parameters') }> }
+    token parameter-noun { 'parameter' | ([\w]+) <?{ $0.Str ne 'parameters' and is-fuzzy-match( $0.Str, 'parameter') }> }
+    token parameters-noun { 'parameters' | ([\w]+) <?{ $0.Str ne 'parameter' and is-fuzzy-match( $0.Str, 'parameters') }> }
     token pattern-noun { 'pattern' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pattern') }> }
     token per-preposition { 'per' }
     token pipeline-noun { 'pipeline' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pipeline') }> }
-    token plot { 'plot' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'plot') }> }
-    token plots { 'plot' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'plot') }> | 'plots' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'plots') }> }
+    token plot { 'plot' | ([\w]+) <?{ $0.Str ne 'plots' and is-fuzzy-match( $0.Str, 'plot') }> }
+    token plots { <plot> | 'plots' | ([\w]+) <?{ $0.Str ne 'plot' and is-fuzzy-match( $0.Str, 'plots') }> }
     token random-adjective { 'random' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'random') }> }
     token records { 'records' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'records') }> }
     token remove-verb { 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
@@ -151,12 +151,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token split-verb { 'split' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'split') }> }
     token spread-verb { 'spread' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'spread') }> }
     token statistical { 'statistical' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'statistical') }> }
-    token step-noun { 'step' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'step') }> }
-    token steps-noun { 'steps' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'steps') }> }
+    token step-noun { 'step' | ([\w]+) <?{ $0.Str ne 'steps' and is-fuzzy-match( $0.Str, 'step') }> }
+    token steps-noun { 'steps' | ([\w]+) <?{ $0.Str ne 'step' and is-fuzzy-match( $0.Str, 'steps') }> }
     token string-noun { 'string' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'string') }> }
     token sub-prefix { 'sub' }
-    token summaries { 'summaries' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summaries') }> }
-    token summarize-directive { 'summarize' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summarize') }> }
+    token summaries { 'summaries' | ([\w]+) <?{ $0.Str ne 'summarize' and is-fuzzy-match( $0.Str, 'summaries') }> }
+    token summarize-directive { 'summarize' | ([\w]+) <?{ $0.Str ne 'summarise' and is-fuzzy-match( $0.Str, 'summarize') }> }
     token summary { 'summary' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summary') }> }
     token system { 'system' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'system') }> }
     token table-noun { 'table' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'table') }> }
@@ -173,13 +173,13 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token type-noun { 'type' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'type') }> }
     token use-verb { 'use' | 'utilize' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'utilize') }> }
     token using-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
-    token value-noun { 'value' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'value') }> }
-    token values-noun { 'values' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'values') }> }
-    token variable-noun { 'variable' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'variable') }> }
-    token variables-noun { 'variables' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'variables') }> }
+    token value-noun { 'value' | ([\w]+) <?{ $0.Str ne 'values' and is-fuzzy-match( $0.Str, 'value') }> }
+    token values-noun { 'values' | ([\w]+) <?{ $0.Str ne 'value' and is-fuzzy-match( $0.Str, 'values') }> }
+    token variable-noun { 'variable' | ([\w]+) <?{ $0.Str ne 'variables' and is-fuzzy-match( $0.Str, 'variable') }> }
+    token variables-noun { 'variables' | ([\w]+) <?{ $0.Str ne 'variable' and is-fuzzy-match( $0.Str, 'variables') }> }
     token way-noun { 'way' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'way') }> }
-    token weight { 'weight' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weight') }> }
-    token weights { 'weights' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weights') }> }
+    token weight { 'weight' | ([\w]+) <?{ $0.Str ne 'weights' and is-fuzzy-match( $0.Str, 'weight') }> }
+    token weights { 'weights' | ([\w]+) <?{ $0.Str ne 'weight' and is-fuzzy-match( $0.Str, 'weights') }> }
     token what-pronoun { 'what' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'what') }> }
     token which-determiner { 'which' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'which') }> }
     token with-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'by' }
