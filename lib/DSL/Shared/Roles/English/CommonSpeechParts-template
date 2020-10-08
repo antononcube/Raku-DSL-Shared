@@ -6,6 +6,8 @@ use DSL::Shared::Utilities::FuzzyMatching;
 role DSL::Shared::Roles::English::CommonSpeechParts {
 
     # Single words
+    token MODULE-noun { 'MODULE' }
+    token TARGET-noun { 'TARGET' }
     token a-determiner { 'a' | 'an'}
     token adhere-verb { 'adhere' }
     token adjacency-noun { 'adjacency' }
@@ -64,6 +66,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token do-verb { 'do' }
     token document-noun { 'document' }
     token documents-noun { 'documents' }
+    token domain-noun { 'domain' }
     token drop-verb { 'drop' }
     token element { 'element' }
     token elements { 'elements' }
@@ -88,6 +91,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token is-verb { 'is' }
     token iterations { 'iterations' }
     token join-verb { 'join' }
+    token language-noun { 'language' }
     token link-noun { 'link' }
     token list-noun { 'list' }
     token load-verb { 'load' }
@@ -100,6 +104,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token minimum { 'min' | 'minimum' }
     token missing-adjective { 'missing' }
     token model { 'model' }
+    token module-noun { 'module' }
+    token module-noun { 'module' }
     token name-noun { 'name' }
     token nearest-adjective { 'nearest' }
     token neighbors-noun { 'neighbors' }
@@ -143,6 +149,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token smallest { 'smallest' }
     token some-determiner { 'some' }
     token sparse-adjective { 'sparse' }
+    token specific-adjective { 'specific' }
     token split-verb { 'split' }
     token spread-verb { 'spread' }
     token statistical { 'statistical' }
@@ -156,6 +163,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token system { 'system' }
     token table-noun { 'table' }
     token take-verb { 'take' }
+    token target-noun { 'target' }
     token text-noun { 'text' }
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
@@ -165,6 +173,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token to-preposition { 'to' | 'into' }
     token top-noun { 'top' }
     token transform-verb { 'transform' }
+    token translation-noun { 'translation' }
     token type-noun { 'type' }
     token use-verb { 'use' | 'utilize' }
     token using-preposition { 'using' | 'with' | 'over' }

@@ -64,12 +64,12 @@ role DSL::Shared::Roles::English::PipelineCommand
     rule dsl-spec-command {  <dsl-translation-target-command> | <dsl-module-command> }
 
     rule dsl-module-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <raku-module-name> }
-    rule dsl-phrase { 'domain' 'specific' 'language' | 'DSL' }
-    rule dsl-spec-phrase { <dsl-phrase> [ 'module' | 'MODULE' ]? }
+    rule dsl-phrase { <domain-noun> <specific-adjective> <language-noun> | 'DSL' }
+    rule dsl-spec-phrase { <dsl-phrase> [ <module-noun> | <MODULE-noun> ]? }
 
     # Translation target
     rule dsl-translation-target-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <.dsl-translation-target-phrase> <variable-name> }
-    rule dsl-translation-target-phrase { 'translation' 'target' | 'TARGET' | '⨁' | '⨀' | '©' | '®' | '(*)' | '(o)' | '(O)' }
+    rule dsl-translation-target-phrase { <translation-noun> <target-noun> | <TARGET-noun> | '⨁' | '⨀' | '©' | '®' | '(*)' | '(o)' | '(O)' }
 
     # Code line
     rule code-line { <wl-expr> }
