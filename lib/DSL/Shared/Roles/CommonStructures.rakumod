@@ -10,9 +10,9 @@ role DSL::Shared::Roles::CommonStructures {
     token date-spec { [ \d ** 4 ] '-' [ \d ** 2 ] '-' [ \d ** 2 ] }
 
     # Variable names
-    token raku-module-name { [ <alnum> | '-' | ':' ]+ }
-    token variable-ws-name { [ <alnum> | '-' | '.' | ':' | \h ]+ }
-    regex variable-name { <alnum> [ <alnum> | '-' | '.' ]* <alnum> | <alnum> }
+    token raku-module-name { [ <.alnum> | '-' | ':' ]+ }
+    token variable-ws-name { [ <.alnum> | '-' | '.' | ':' | \h ]+ }
+    regex variable-name { <.alnum> [ <.alnum> | '-' | '.' ]* <.alnum> | <.alnum> }
     token quoted-variable-name { <single-quoted-variable-name> | <double-quoted-variable-name> }
     token mixed-quoted-variable-name { <variable-name> | <quoted-variable-name> }
 
