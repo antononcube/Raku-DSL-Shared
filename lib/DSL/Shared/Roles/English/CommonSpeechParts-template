@@ -54,7 +54,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dataset-noun { 'dataset' }
     token default { 'default' }
     token delete-directive { 'delete' | 'drop' | 'erase' | 'remove' }
-    token diagram { <plot> | <plots-noun> | <graph-noun> | <chart-noun> }
+    token diagram { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     token diagram-noun { 'diagram' }
     token difference { 'difference' }
     token dimension-noun { 'dimension' }
@@ -72,6 +72,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token elements { 'elements' }
     token extend-verb { 'extend' }
     token extract-directive { 'extract' }
+    token filter { 'filter' }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' }
     token from-preposition { 'from' }
@@ -125,10 +126,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token pattern-noun { 'pattern' }
     token per-preposition { 'per' }
     token pipeline-noun { 'pipeline' }
-    token plot { 'plot' }
-    token plots { 'plot' | 'plots' }
+    token plot-noun { 'plot' }
+    token plots-noun { 'plot' | 'plots' }
     token random-adjective { 'random' }
     token records { 'records' }
+    token reduce-verb { 'reduce' }
     token remove-verb { 'remove' }
     token represent-directive { <represent> | 'render' | 'reflect' }
     token results { 'results' }
@@ -184,6 +186,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token values-noun { 'values' }
     token variable-noun { 'variable' }
     token variables-noun { 'variables' }
+    token versus-preposition { 'vs' | 'vs.' | 'versus' }
     token way-noun { 'way' }
     token weight { 'weight' }
     token weights { 'weights' }
@@ -201,7 +204,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
     rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
     rule data-frame { <data-noun> <frame-noun> }
-    rule diagram-phrase { <plot> | <plots> | <graph-noun> | <chart-noun> }
+    rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
     rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
@@ -212,7 +215,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule missing-values-phrase { <missing-adjective> <values-noun>? }
     rule nearest-neighbors-phrase { <nearest-adjective>? <neighbors-noun> | 'nns' }
     rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
-    rule plot-directive { <plot> | <chart-noun> | <display-directive> <diagram> }
+    rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
     rule records-phrase { <table-noun>? [ <rows> | <records> ] }
     rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away> }
     rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }

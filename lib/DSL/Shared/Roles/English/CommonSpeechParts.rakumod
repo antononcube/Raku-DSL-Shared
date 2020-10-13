@@ -59,7 +59,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dataset-noun { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
     token default { 'default' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'default') }> }
     token delete-directive { 'delete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'delete') }> | 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> | 'erase' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'erase') }> | 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
-    token diagram { <plot> | <plots-noun> | <graph-noun> | <chart-noun> }
+    token diagram { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     token diagram-noun { 'diagram' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'diagram') }> }
     token difference { 'difference' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'difference') }> }
     token dimension-noun { 'dimension' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dimension') }> }
@@ -77,6 +77,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token elements { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }
     token extract-directive { 'extract' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extract') }> }
+    token filter-verb { 'filter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'filter') }> }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'frame') }> }
     token from-preposition { 'from' }
@@ -129,10 +130,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token pattern-noun { 'pattern' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pattern') }> }
     token per-preposition { 'per' }
     token pipeline-noun { 'pipeline' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pipeline') }> }
-    token plot { 'plot' | ([\w]+) <?{ $0.Str ne 'plots' and is-fuzzy-match( $0.Str, 'plot') }> }
-    token plots { <plot> | 'plots' | ([\w]+) <?{ $0.Str ne 'plot' and is-fuzzy-match( $0.Str, 'plots') }> }
+    token plot-noun { 'plot' | ([\w]+) <?{ $0.Str ne 'plots' and is-fuzzy-match( $0.Str, 'plot') }> }
+    token plots-noun { <plot-noun> | 'plots' | ([\w]+) <?{ $0.Str ne 'plot' and is-fuzzy-match( $0.Str, 'plots') }> }
     token random-adjective { 'random' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'random') }> }
     token records { 'records' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'records') }> }
+    token reduce-verb { 'reduce' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'reduce') }> }
     token remove-verb { 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
     token represent-directive { <represent> | 'render' | 'reflect' }
     token results { 'results' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'results') }> }
@@ -188,6 +190,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token values-noun { 'values' | ([\w]+) <?{ $0.Str ne 'value' and is-fuzzy-match( $0.Str, 'values') }> }
     token variable-noun { 'variable' | ([\w]+) <?{ $0.Str ne 'variables' and is-fuzzy-match( $0.Str, 'variable') }> }
     token variables-noun { 'variables' | ([\w]+) <?{ $0.Str ne 'variable' and is-fuzzy-match( $0.Str, 'variables') }> }
+    token versus-preposition { 'vs' | 'vs.' | 'versus' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'versus') }> }
     token way-noun { 'way' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'way') }> }
     token weight { 'weight' | ([\w]+) <?{ $0.Str ne 'weights' and is-fuzzy-match( $0.Str, 'weight') }> }
     token weights { 'weights' | ([\w]+) <?{ $0.Str ne 'weight' and is-fuzzy-match( $0.Str, 'weights') }> }
@@ -207,7 +210,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule data-column-phrase { <data-noun>? [ <column-noun> | <variable-noun> ] }
     rule data-columns-phrase { <data-noun>? [ <columns> | <variables-noun> ] }
     rule data-frame { <data-noun> <frame-noun> }
-    rule diagram-phrase { <plot> | <plots> | <graph-noun> | <chart-noun> }
+    rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
     rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
@@ -218,7 +221,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule missing-values-phrase { <missing-adjective> <values-noun>? }
     rule nearest-neighbors-phrase { <nearest-adjective>? <neighbors-noun> | 'nns' }
     rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
-    rule plot-directive { <plot> | <chart-noun> | <display-directive> <diagram> }
+    rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
     rule records-phrase { <table-noun>? [ <rows> | <records> ] }
     rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away> }
     rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }
