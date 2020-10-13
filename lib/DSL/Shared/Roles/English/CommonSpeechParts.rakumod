@@ -59,7 +59,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dataset-noun { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
     token default { 'default' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'default') }> }
     token delete-directive { 'delete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'delete') }> | 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> | 'erase' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'erase') }> | 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
-    token diagram { <plot> | 'plots' | 'graph' | 'chart' }
+    token diagram { <plot> | <plots-noun> | <graph-noun> | <chart-noun> }
     token diagram-noun { 'diagram' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'diagram') }> }
     token difference { 'difference' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'difference') }> }
     token dimension-noun { 'dimension' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dimension') }> }
@@ -85,9 +85,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token generate-directive { <generate-verb> | <create-verb> | 'make' }
     token generate-verb { 'generate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'generate') }> }
     token get-verb { 'obtain' | 'get' | <take-verb> }
-    token graph { 'graph' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'graph') }> }
+    token graph-noun { 'graph' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'graph') }> }
     token histogram { 'histogram' | ([\w]+) <?{  $0.Str ne 'histograms' and is-fuzzy-match( $0.Str, 'histogram') }> }
     token histograms { 'histograms' | ([\w]+) <?{  $0.Str ne 'histogram' and is-fuzzy-match( $0.Str, 'histograms') }> }
+    token how-adverb { 'how' }
     token id-noun { 'id' }
     token identifier-noun { 'identifier' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'identifier') }> }
     token in-preposition { 'in' }
@@ -156,7 +157,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token specific-adjective { 'specific' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'specific') }> }
     token split-verb { 'split' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'split') }> }
     token spread-verb { 'spread' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'spread') }> }
-    token statistical { 'statistical' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'statistical') }> }
+    token stats-noun { 'stats' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'stats') }> }
+    token statistical { 'statistical' | ([\w]+) <?{  $0.Str ne 'statistics' and is-fuzzy-match( $0.Str, 'statistical') }> }
+    token statistics-noun { 'statistics' | ([\w]+) <?{  $0.Str ne 'statistical' and  is-fuzzy-match( $0.Str, 'statistics') }> }
     token step-noun { 'step' | ([\w]+) <?{ $0.Str ne 'steps' and is-fuzzy-match( $0.Str, 'step') }> }
     token steps-noun { 'steps' | ([\w]+) <?{ $0.Str ne 'step' and is-fuzzy-match( $0.Str, 'steps') }> }
     token string-noun { 'string' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'string') }> }

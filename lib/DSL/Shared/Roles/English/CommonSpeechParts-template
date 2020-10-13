@@ -54,7 +54,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dataset-noun { 'dataset' }
     token default { 'default' }
     token delete-directive { 'delete' | 'drop' | 'erase' | 'remove' }
-    token diagram { <plot> | 'plots' | 'graph' | 'chart' }
+    token diagram { <plot> | <plots-noun> | <graph-noun> | <chart-noun> }
     token diagram-noun { 'diagram' }
     token difference { 'difference' }
     token dimension-noun { 'dimension' }
@@ -80,9 +80,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token generate-directive { <generate-verb> | <create-verb> | 'make' }
     token generate-verb { 'generate' }
     token get-verb { 'obtain' | 'get' | <take-verb> }
-    token graph { 'graph' }
+    token graph-noun { 'graph' }
     token histogram { 'histogram' }
     token histograms { 'histograms' }
+    token how-adverb { 'how' }
     token id-noun { 'id' }
     token identifier-noun { 'identifier' }
     token in-preposition { 'in' }
@@ -152,7 +153,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token specific-adjective { 'specific' }
     token split-verb { 'split' }
     token spread-verb { 'spread' }
+    token stats-noun { 'stats' }
     token statistical { 'statistical' }
+    token statistics-noun { 'statistics' }
     token step-noun { 'step' }
     token steps-noun { 'steps' }
     token string-noun { 'string' }
