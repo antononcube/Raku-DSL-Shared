@@ -32,7 +32,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token by-preposition { 'by' | 'with' | 'using' }
     token calculation { 'calculation' }
     token chart-noun { 'chart' }
-    token classify { 'classify' }
+    token classify-verb { 'classify' }
     token cluster { 'clusters' }
     token column-noun { 'column' }
     token columns { 'columns' }
@@ -54,6 +54,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dataset-noun { 'dataset' }
     token default { 'default' }
     token delete-directive { 'delete' | 'drop' | 'erase' | 'remove' }
+    token detect-verb { 'detect' }
     token diagram { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     token diagram-noun { 'diagram' }
     token difference { 'difference' }
@@ -94,9 +95,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token iterations { 'iterations' }
     token join-verb { 'join' }
     token language-noun { 'language' }
+    token largest-adjective { 'largest' }
     token link-noun { 'link' }
     token list-noun { 'list' }
     token load-verb { 'load' }
+    token locate-verb { 'locate' }
     token making-noun { 'making' }
     token manner { 'manner' }
     token matrix-noun { 'matrix' }
@@ -150,14 +153,16 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token single-adjective { 'single' }
     token site-noun { 'site' }
     token smallest { 'smallest' }
+    token smallest-adjective { 'smallest' }
     token some-determiner { 'some' }
     token sparse-adjective { 'sparse' }
     token specific-adjective { 'specific' }
     token split-verb { 'split' }
+    token spot-verb { 'spot' }
     token spread-verb { 'spread' }
-    token stats-noun { 'stats' }
     token statistical { 'statistical' }
     token statistics-noun { 'statistics' }
+    token stats-noun { 'stats' }
     token step-noun { 'step' }
     token steps-noun { 'steps' }
     token string-noun { 'string' }
@@ -208,6 +213,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
     rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
+    rule find-directive { <find-verb> | <locate-verb> | <spot-verb> | <detect-verb> }
     rule join-directive { <join-verb> | <connect-verb> | <link-noun> }
     rule load-data-directive { ( <load-verb> | <ingest-verb> ) <the-determiner>? <data> }
     rule load-directive { <load-verb> | <get-verb> | <consider-verb> }
@@ -217,7 +223,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
     rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
     rule records-phrase { <table-noun>? [ <rows> | <records> ] }
-    rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away> }
+    rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away-phrase> }
     rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }
     rule simulate-and-display { <simulate-directive> [ <and-conjunction> <display-directive> ]? }
     rule take-away-phrase { <take-verb> <away-adverb> }

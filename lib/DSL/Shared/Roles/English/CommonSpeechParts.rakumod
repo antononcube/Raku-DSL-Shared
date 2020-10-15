@@ -37,7 +37,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token by-preposition { 'by' | 'with' | 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> }
     token calculation { 'calculation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculation') }> }
     token chart-noun { 'chart' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'chart') }> }
-    token classify { 'classify' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'classify') }> }
+    token classify-verb { 'classify' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'classify') }> }
     token cluster { 'clusters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'clusters') }> }
     token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
     token columns { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
@@ -59,6 +59,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dataset-noun { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
     token default { 'default' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'default') }> }
     token delete-directive { 'delete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'delete') }> | 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> | 'erase' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'erase') }> | 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
+    token detect-verb { 'detect' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'detect') }> }
     token diagram { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     token diagram-noun { 'diagram' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'diagram') }> }
     token difference { 'difference' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'difference') }> }
@@ -78,6 +79,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }
     token extract-directive { 'extract' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extract') }> }
     token filter-verb { 'filter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'filter') }> }
+    token find-verb { 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'frame') }> }
     token from-preposition { 'from' }
@@ -99,9 +101,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token iterations { 'iterations' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'iterations') }> }
     token join-verb { 'join' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'join') }> }
     token language-noun { 'language' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'language') }> }
+    token largest-adjective { 'largest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'largest') }> }
     token link-noun { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link') }> }
     token list-noun { 'list' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'list') }> }
     token load-verb { 'load' }
+    token locate-verb { 'locate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'locate') }> }
     token making-noun { 'making' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'making') }> }
     token manner { 'manner' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'manner') }> }
     token matrix-noun { 'matrix' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'matrix') }> }
@@ -124,6 +128,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token on-preposition { 'on' }
     token or-conjunction { 'or' }
     token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out') }> }
+    token outlier-noun { 'outlier' | ([\w]+) <?{ $0.Str ne 'outliers' and is-fuzzy-match( $0.Str, 'outlier') }> }
+    token outliers-noun { 'outliers' | ([\w]+) <?{ $0.Str ne 'outlier' and is-fuzzy-match( $0.Str, 'outliers') }> }
     token over-preposition { 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
     token parameter-noun { 'parameter' | ([\w]+) <?{ $0.Str ne 'parameters' and is-fuzzy-match( $0.Str, 'parameter') }> }
     token parameters-noun { 'parameters' | ([\w]+) <?{ $0.Str ne 'parameter' and is-fuzzy-match( $0.Str, 'parameters') }> }
@@ -154,14 +160,16 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token single-adjective { 'single' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'single') }> }
     token site-noun { 'site' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'site') }> }
     token smallest { 'smallest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'smallest') }> }
+    token smallest-adjective { 'smallest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'smallest') }> }
     token some-determiner { 'some' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'some') }> }
     token sparse-adjective { 'sparse' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'sparse') }> }
     token specific-adjective { 'specific' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'specific') }> }
     token split-verb { 'split' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'split') }> }
+    token spot-verb { 'spot' }
     token spread-verb { 'spread' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'spread') }> }
-    token stats-noun { 'stats' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'stats') }> }
     token statistical { 'statistical' | ([\w]+) <?{  $0.Str ne 'statistics' and is-fuzzy-match( $0.Str, 'statistical') }> }
     token statistics-noun { 'statistics' | ([\w]+) <?{  $0.Str ne 'statistical' and  is-fuzzy-match( $0.Str, 'statistics') }> }
+    token stats-noun { 'stats' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'stats') }> }
     token step-noun { 'step' | ([\w]+) <?{ $0.Str ne 'steps' and is-fuzzy-match( $0.Str, 'step') }> }
     token steps-noun { 'steps' | ([\w]+) <?{ $0.Str ne 'step' and is-fuzzy-match( $0.Str, 'steps') }> }
     token string-noun { 'string' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'string') }> }
@@ -213,6 +221,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
+    rule find-directive { <find-verb> | <locate-verb> | <spot-verb> | <detect-verb> }
     rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
     rule join-directive { <join-verb> | <connect-verb> | <link-noun> }
     rule load-data-directive { ( <load-verb> | <ingest-verb> ) <the-determiner>? <data> }
@@ -223,7 +232,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
     rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
     rule records-phrase { <table-noun>? [ <rows> | <records> ] }
-    rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away> }
+    rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away-phrase> }
     rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }
     rule simulate-and-display { <simulate-directive> [ <and-conjunction> <display-directive> ]? }
     rule take-away-phrase { <take-verb> <away-adverb> }
