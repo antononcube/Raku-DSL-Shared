@@ -12,6 +12,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token adhere-verb { 'adhere' }
     token adjacency-noun { 'adjacency' }
     token adjacent-adjective { 'adjacent' }
+    token algorithm-noun { 'algorithm' }
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
     token annex-verb { 'annex' }

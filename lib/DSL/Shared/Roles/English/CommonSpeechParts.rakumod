@@ -17,6 +17,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
     token adjacency-noun { 'adjacency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacency') }> }
     token adjacent-adjective { 'adjacent' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacent') }> }
+    token algorithm-noun { 'algorithm' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'algorithm') }> }
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
     token annex-verb { 'annex' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'annex') }> }
