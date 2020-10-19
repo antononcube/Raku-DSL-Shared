@@ -13,6 +13,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token adjacency-noun { 'adjacency' }
     token adjacent-adjective { 'adjacent' }
     token algorithm-noun { 'algorithm' }
+    token algorithms-noun { 'algorithms' }
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
     token annex-verb { 'annex' }

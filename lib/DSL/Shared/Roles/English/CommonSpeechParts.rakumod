@@ -17,7 +17,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
     token adjacency-noun { 'adjacency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacency') }> }
     token adjacent-adjective { 'adjacent' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacent') }> }
-    token algorithm-noun { 'algorithm' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'algorithm') }> }
+    token algorithm-noun { 'algorithm' | ([\w]+) <?{ $0.Str ne 'algorithms' and is-fuzzy-match( $0.Str, 'algorithm') }> }
+    token algorithms-noun { 'algorithms' | ([\w]+) <?{ $0.Str ne 'algorithm' and is-fuzzy-match( $0.Str, 'algorithms') }> }
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
     token annex-verb { 'annex' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'annex') }> }
@@ -112,7 +113,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token matrix-noun { 'matrix' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'matrix') }> }
     token maximum { 'max' | 'maximum' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'maximum') }> }
     token message-noun { 'message' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'message') }> }
-    token method-noun { 'method' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'method') }> }
+    token method-noun { 'method' | ([\w]+) <?{ $0.Str ne 'methods' and is-fuzzy-match( $0.Str, 'method') }> }
+    token methods-noun { 'methods' | ([\w]+) <?{ $0.Str ne 'method' and is-fuzzy-match( $0.Str, 'methods') }> }
     token minimum { 'min' | 'minimum' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'minimum') }> }
     token missing-adjective { 'missing' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'missing') }> }
     token model { 'model' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'model') }> }
