@@ -119,7 +119,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token no-determiner { 'no' }
     token non-prefix { 'non' }
     token number-noun { 'number' }
-    token object { 'object' }
+    token object-noun { 'object' }
     token of-preposition { 'of' }
     token off-adverb { 'off' }
     token on-preposition { 'on' }

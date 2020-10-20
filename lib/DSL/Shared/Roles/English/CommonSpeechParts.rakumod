@@ -125,7 +125,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token no-determiner { 'no' }
     token non-prefix { 'non' }
     token number-noun { 'number' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'number') }> }
-    token object { 'object' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'object') }> }
+    token object-noun { 'object' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'object') }> }
     token of-preposition { 'of' }
     token off-adverb { 'off' }
     token on-preposition { 'on' }
