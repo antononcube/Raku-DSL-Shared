@@ -217,7 +217,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
     rule find-directive { <find-verb> | <locate-verb> | <spot-verb> | <detect-verb> }
     rule join-directive { <join-verb> | <connect-verb> | <link-noun> }
-    rule load-data-directive { ( <load-verb> | <ingest-verb> ) <the-determiner>? <data> }
+    rule load-data-directive { [ <load-verb> | <ingest-verb> ] <the-determiner>? <data> }
     rule load-directive { <load-verb> | <get-verb> | <consider-verb> }
     rule max-iterations-phrase { <maximum>? <number-of>? [ <iterations> | <steps-noun> ] }
     rule missing-values-phrase { <missing-adjective> <values-noun>? }
