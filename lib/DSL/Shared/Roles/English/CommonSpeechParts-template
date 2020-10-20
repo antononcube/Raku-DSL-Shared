@@ -172,7 +172,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token summaries { 'summaries' }
     token summarize-directive { 'summarize' }
     token summary { 'summary' }
-    token system { 'system' }
+    token system-noun { 'system' }
     token table-noun { 'table' }
     token take-verb { 'take' }
     token target-noun { 'target' }

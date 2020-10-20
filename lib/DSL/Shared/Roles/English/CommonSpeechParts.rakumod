@@ -180,7 +180,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token summaries { 'summaries' | ([\w]+) <?{ $0.Str ne 'summarize' and is-fuzzy-match( $0.Str, 'summaries') }> }
     token summarize-directive { 'summarize' | ([\w]+) <?{ $0.Str ne 'summarise' and is-fuzzy-match( $0.Str, 'summarize') }> }
     token summary { 'summary' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summary') }> }
-    token system { 'system' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'system') }> }
+    token system-noun { 'system' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'system') }> }
     token table-noun { 'table' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'table') }> }
     token take-verb { 'take' }
     token target-noun { 'target' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'target') }> }
