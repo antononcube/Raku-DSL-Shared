@@ -26,7 +26,7 @@ sub edits2(Str $word) {
 }
 
 # Generate possible spelling corrections for word
-sub candidates(Str $word) {
+sub edit-candidates(Str $word) is export {
     edits1($word) || edits2($word) || ($word,);
 }
 
@@ -74,7 +74,7 @@ multi is-fuzzy-match(Str $candidate, Str $actual) {
 #multi is-fuzzy-match( Str $candidate, Str $actual ) {
 #    if $actual.chars < 5 {
 #        return dld( $candidate, $actual ) <= 2;
-#    } elsif candidates($actual).contains($candidate) {
+#    } elsif edit-candidates($actual).contains($candidate) {
 #        say "Possible misspelling of '$actual' as '$candidate'.";
 #        return True;
 #    }
