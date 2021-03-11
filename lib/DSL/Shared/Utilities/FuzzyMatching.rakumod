@@ -85,3 +85,73 @@ multi is-fuzzy-match(Str $candidate, Str $actual) {
 # Pick fuzzy match(es)
 #============================================================
 # TBD...
+
+
+sub known-string-candidates(Set $knownStrings, Str:D $candidate) is export {
+
+    my @res;
+    for edit-candidates($candidate) -> $var {
+        if $var (elem) $knownStrings {
+            @res.append($var)
+        }
+    }
+    if @res.elems == 0 { Nil } else { @res }
+
+}
+
+sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :$warn = True) is export {
+
+    if $candidate (elem) $knownStrings {
+        if $bool { return True } else { return $candidate }
+    } else {
+        for edit-candidates($candidate) -> $var {
+            if $var (elem) $knownStrings {
+                if $warn { warn "Possible misspelling of '$var' as '$candidate'."; }
+                if $bool { return True } else { return $candidate }
+            }
+        }
+    }
+    if $bool { False } else { Nil }
+}
+
+sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) is export {
+
+    ## First test
+    my Bool $res = known-string($knownPhrases, $phrase, :bool, :$warn);
+
+    if $res {
+        if $bool { return True } else { return $phrase }
+    }
+
+    ## Split the phrase into words
+    my @words = $phrase.split(/\s+/);
+
+    ## If one word then fail
+    if @words.elems == 1 {
+        if $bool { return False } else { return Nil }
+    }
+
+    ## Get known job title words
+    my @candidates = do for @words -> $w {
+        my $ws = known-string-candidates($knownStrings, $w);
+        if !$ws {
+            if $bool { return False } else { return Nil }
+        }
+        $ws
+    }
+
+    ## Cross product of known words
+    @candidates = ([X] @candidates).map(*.join(' '));
+
+    ## Find if any of the cross product candidates is known
+    for @candidates -> $c {
+        $res = known-string($knownPhrases, $c, :bool, :!warn);
+        if $res {
+            if $warn { warn "Possible misspelling of '$c' as '$phrase'."; }
+            if $bool { return True } else { return $c }
+        }
+    }
+
+    ## Final result
+    False
+}
