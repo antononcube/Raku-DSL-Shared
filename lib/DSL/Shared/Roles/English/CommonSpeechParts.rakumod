@@ -111,8 +111,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token list-noun { 'list' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'list') }> }
     token load-verb { 'load' }
     token locate-verb { 'locate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'locate') }> }
-    token low-adjective { 'low' | ([\w]+) <?{  $0.Str ne 'low' and is-fuzzy-match( $0.Str, 'lower') }> }
-    token lower-adjective { 'low' | ([\w]+) <?{  $0.Str ne 'lower' and is-fuzzy-match( $0.Str, 'low') }> }
+    token low-adjective { 'low' }
+    token lower-adjective { 'lower' | ([\w]+) <?{  $0.Str ne 'low' and is-fuzzy-match( $0.Str, 'lower') }> }
     token making-noun { 'making' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'making') }> }
     token manner { 'manner' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'manner') }> }
     token matrix-noun { 'matrix' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'matrix') }> }

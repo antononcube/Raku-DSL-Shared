@@ -106,7 +106,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token load-verb { 'load' }
     token locate-verb { 'locate' }
     token low-adjective { 'low' }
-    token lower-adjective { 'low' }
+    token lower-adjective { 'lower' }
     token making-noun { 'making' }
     token manner { 'manner' }
     token matrix-noun { 'matrix' }
