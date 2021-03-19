@@ -76,6 +76,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token documents-noun { 'documents' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'documents') }> }
     token domain-noun { 'domain' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'words') }> }
     token drop-verb { 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> }
+    token during-preposition { 'during' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'during') }> }
     token element { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
     token elements { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }

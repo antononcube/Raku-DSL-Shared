@@ -71,6 +71,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token documents-noun { 'documents' }
     token domain-noun { 'domain' }
     token drop-verb { 'drop' }
+    token during-preposition { 'during' }
     token element { 'element' }
     token elements { 'elements' }
     token extend-verb { 'extend' }
