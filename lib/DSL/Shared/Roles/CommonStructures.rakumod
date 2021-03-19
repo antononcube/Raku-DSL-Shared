@@ -61,6 +61,8 @@ role DSL::Shared::Roles::CommonStructures {
     token percent { '%' | 'percent' }
     token percent-value { <number-value> \h* <.percent> }
     token boolean-value { 'True' | 'False' | 'true' | 'false' | 'TRUE' | 'FALSE' }
+    token word-value { <.alnum> [ <.alnum> | '-' ]* }
+    token letter-word-value { \w [ \w | '-' ]* }
 
     # Lists of things
     token list-separator-symbol { ',' | '&' | 'and' | ',' \h* 'and' }
