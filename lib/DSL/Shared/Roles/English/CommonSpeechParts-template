@@ -88,6 +88,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token graph-noun { 'graph' }
     token histogram { 'histogram' }
     token histograms { 'histograms' }
+    token high-adjective { 'high' }
+    token higher-adjective { 'higher' }
     token how-adverb { 'how' }
     token id-noun { 'id' }
     token identifier-noun { 'identifier' }
@@ -103,6 +105,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token list-noun { 'list' }
     token load-verb { 'load' }
     token locate-verb { 'locate' }
+    token low-adjective { 'low' }
+    token lower-adjective { 'low' }
     token making-noun { 'making' }
     token manner { 'manner' }
     token matrix-noun { 'matrix' }
