@@ -107,7 +107,7 @@ sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :
         for edit-candidates($candidate) -> $var {
             if $var (elem) $knownStrings {
                 if $warn { warn "Possible misspelling of '$var' as '$candidate'."; }
-                if $bool { return True } else { return $candidate }
+                if $bool { return True } else { return $var }
             }
         }
     }
@@ -153,5 +153,5 @@ sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bo
     }
 
     ## Final result
-    False
+    if $bool { return False } else { return Nil }
 }
