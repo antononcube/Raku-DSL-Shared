@@ -92,8 +92,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token generate-verb { 'generate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'generate') }> }
     token get-verb { 'obtain' | 'get' | <take-verb> }
     token graph-noun { 'graph' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'graph') }> }
-    token high-adjective { 'high' | ([\w]+) <?{  $0.Str ne 'height' and is-fuzzy-match( $0.Str, 'high') }> }
-    token higher-adjective { 'higher' | ([\w]+) <?{  $0.Str ne 'height' and is-fuzzy-match( $0.Str, 'higher') }> }
+    token high-adjective { 'high' | ([\w]+) <?{ $0.Str ne 'dish' and $0.Str ne 'height' and is-fuzzy-match( $0.Str, 'high') }> }
+    token higher-adjective { 'higher' | ([\w]+) <?{ $0.Str ne 'height' and is-fuzzy-match( $0.Str, 'higher') }> }
     token histogram { 'histogram' | ([\w]+) <?{  $0.Str ne 'histograms' and is-fuzzy-match( $0.Str, 'histogram') }> }
     token histograms { 'histograms' | ([\w]+) <?{  $0.Str ne 'histogram' and is-fuzzy-match( $0.Str, 'histograms') }> }
     token how-adverb { 'how' }
