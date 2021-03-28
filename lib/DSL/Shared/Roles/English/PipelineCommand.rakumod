@@ -64,7 +64,7 @@ role DSL::Shared::Roles::English::PipelineCommand
     rule dsl-spec-command {  <dsl-translation-target-command> | <dsl-module-command> }
 
     rule dsl-module-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <raku-module-name> }
-    rule dsl-phrase { <domain-noun> <specific-adjective> <language-noun> | 'DSL' }
+    rule dsl-phrase { <domain-noun> <specific-adjective> <language-noun> | 'DSL' | 'dsl' }
     rule dsl-spec-phrase { <dsl-phrase> [ <module-noun> | <MODULE-noun> ]? }
 
     # Translation target
