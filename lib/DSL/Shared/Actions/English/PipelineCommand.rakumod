@@ -75,6 +75,9 @@ class DSL::Shared::Actions::English::PipelineCommand
     method dsl-module-command($/) { make 'DSL' => $<raku-module-name>.made; }
     method dsl-translation-target-command($/) { make 'DSLTARGET' => $<variable-name>.made; }
 
+    # User ID spec
+    method user-id-spec-command($/) { make 'USERID' => $<userid>.made; }
+
     # Code line
     method code-line($/) { make $/.values[0].made; }
 }

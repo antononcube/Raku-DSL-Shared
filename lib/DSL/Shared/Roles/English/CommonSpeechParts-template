@@ -6,8 +6,11 @@ use DSL::Shared::Utilities::FuzzyMatching;
 role DSL::Shared::Roles::English::CommonSpeechParts {
 
     # Single words
+    token ID-noun { 'ID' }
+    token IDENTIFIER-noun { 'IDENTIFIER' }
     token MODULE-noun { 'MODULE' }
     token TARGET-noun { 'TARGET' }
+    token USER-noun { 'USER' }
     token a-determiner { 'a' | 'an'}
     token adhere-verb { 'adhere' }
     token adjacency-noun { 'adjacency' }
@@ -209,6 +212,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token words-noun { 'words' }
 
     # Directives and phrases
+    rule USER-ID-phrase { <USER-noun> [ <ID-noun> | <IDENTIFIER-noun> ] }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule annex-directive { <annex-verb> | <append-verb> }
     rule assign-directive { <assign-verb> }

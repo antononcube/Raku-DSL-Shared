@@ -11,8 +11,11 @@ use DSL::Shared::Utilities::FuzzyMatching;
 
 role DSL::Shared::Roles::English::CommonSpeechParts {
     # Single words
+    token ID-noun { 'ID' }
+    token IDENTIFIER-noun { 'IDENTIFIER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'IDENTIFIER') }> }
     token MODULE-noun { 'MODULE' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'MODULE') }> }
     token TARGET-noun { 'TARGET' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
+    token USER-noun { 'USER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'USER') }> }
     token a-determiner { 'a' | 'an' }
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
     token adjacency-noun { 'adjacency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacency') }> }
@@ -217,6 +220,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token words-noun { 'words' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'words') }> }
 
     # Directives and phrases
+    rule USER-ID-phrase { <USER-noun> [ <ID-noun> | <IDENTIFIER-noun> ] }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule annex-directive { <annex-verb> | <append-verb> }
     rule assign-directive { <assign-verb> }

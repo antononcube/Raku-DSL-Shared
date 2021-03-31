@@ -13,7 +13,10 @@ my %specToRule =
         "dsl-module-command" => "dsl-module-command",
         "target" => "dsl-translation-target-command",
         "dsl-target" => "dsl-translation-target-command",
-        "dsl-translation-target-command" => "dsl-translation-target-command";
+        "dsl-translation-target-command" => "dsl-translation-target-command",
+        "user-id" => "user-id-spec-command",
+        "user-id-spec" => "user-id-spec-command",
+        "user-id-spec-command" => "user-id-spec-command";
 
 #-----------------------------------------------------------
 grammar ParseObj

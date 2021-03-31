@@ -17,7 +17,7 @@ grammar ParseObj
         does DSL::Shared::Roles::English::PipelineCommand {
     #regex TOP { <variable-names-list> | <range-spec> | <pipeline-command> | <predicates-list> | <code-expr> }
     #regex TOP { <predicates-list> | <code-expr> }
-    rule TOP { <pipeline-command> | <regex-pattern-spec> }
+    rule TOP { <pipeline-command> | <regex-pattern-spec> | <user-id-spec-command>}
 };
 
 
@@ -29,6 +29,15 @@ my $command = 'DSL TARGET R-base; DSL TARGET WL; DSL MODULE DSL::English::Recomm
 say get-dsl-spec( $command, 'module');
 say get-dsl-spec( $command, 'module').^name;
 say get-dsl-spec( $command, 'target');
+
+say "=" x 60;
+
+$command = 'USER ID mimiMal323';
+say ParseObj.parse( $command, actions => DSL::Shared::Actions::English::WL::PipelineCommand.new );
+
+say "-" x 60;
+
+say get-dsl-spec( $command, 'user-id');
 
 say "=" x 60;
 
