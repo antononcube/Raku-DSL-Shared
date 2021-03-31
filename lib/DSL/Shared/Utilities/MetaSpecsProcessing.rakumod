@@ -15,7 +15,7 @@ my %specToRule =
         "target" => "dsl-translation-target-command",
         "dsl-target" => "dsl-translation-target-command",
         "dsl-translation-target-command" => "dsl-translation-target-command",
-        "user-any" => "user-id-spec-command",
+        "user-any" => "user-spec-command",
         "user-id" => "user-id-spec-command",
         "user-id-spec" => "user-id-spec-command",
         "user-id-spec-command" => "user-id-spec-command";
@@ -32,13 +32,13 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
-proto get-user-id-spec(Str $c, | ) is export {*};
+proto get-user-spec(Str $c, | ) is export {*};
 
-multi get-user-id-spec(Str $command) {
+multi get-user-spec(Str $command) {
     get-dsl-spec( $command, "user-id")
 }
 
-multi get-user-id-spec(Str $command, Str $ruleSpec) {
+multi get-user-spec(Str $command, Str $ruleSpec) {
     get-dsl-spec( $command, $ruleSpec)
 }
 

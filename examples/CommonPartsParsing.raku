@@ -39,8 +39,8 @@ say "-" x 60;
 
 say get-dsl-spec( $command, 'user-id');
 
-say get-user-id-spec( $command );
-say get-user-id-spec( $command, "user-any");
+say get-user-spec( $command );
+say get-user-spec( $command, "user-any");
 
 say "=" x 60;
 

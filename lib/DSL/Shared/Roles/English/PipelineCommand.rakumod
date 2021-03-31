@@ -20,7 +20,7 @@ role DSL::Shared::Roles::English::PipelineCommand
         <take-pipeline-context> |
         <echo-command> |
         <dsl-spec-command> |
-        <user-id-spec-command> |
+        <user-spec-command> |
         <code-line> }
 
     rule pipeline-filler-phrase { <.the-determiner>? <current-adjective>? <pipeline-noun> }
@@ -73,6 +73,7 @@ role DSL::Shared::Roles::English::PipelineCommand
     rule dsl-translation-target-phrase { <translation-noun> <target-noun> | <TARGET-noun> | '⨁' | '⨀' | '©' | '®' | '(*)' | '(o)' | '(O)' }
 
     # User ID spec command
+    rule user-spec-command { <user-id-spec-command> }
     rule user-id-spec-command { <.USER-ID-phrase> <userid=.variable-name> }
 
     # Code line

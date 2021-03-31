@@ -76,6 +76,7 @@ class DSL::Shared::Actions::English::PipelineCommand
     method dsl-translation-target-command($/) { make 'DSLTARGET' => $<variable-name>.made; }
 
     # User ID spec
+    method user-spec-command($/) { make $/.values[0].made; }
     method user-id-spec-command($/) { make 'USERID' => $<userid>.made; }
 
     # Code line
