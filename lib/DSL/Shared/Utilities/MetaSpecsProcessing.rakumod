@@ -8,12 +8,14 @@ unit module DSL::Shared::Utilities::MetaSpecsProcessing;
 #-----------------------------------------------------------
 my %specToRule =
         "any" => "dsl-spec-command",
+        "dsl-any" => "dsl-spec-command",
         "module" => "dsl-module-command",
         "dsl-module" => "dsl-module-command",
         "dsl-module-command" => "dsl-module-command",
         "target" => "dsl-translation-target-command",
         "dsl-target" => "dsl-translation-target-command",
         "dsl-translation-target-command" => "dsl-translation-target-command",
+        "user-any" => "user-id-spec-command",
         "user-id" => "user-id-spec-command",
         "user-id-spec" => "user-id-spec-command",
         "user-id-spec-command" => "user-id-spec-command";
@@ -30,11 +32,23 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
+proto get-user-id-spec(Str $c, | ) is export {*};
+
+multi get-user-id-spec(Str $command) {
+    get-dsl-spec( $command, "user-id")
+}
+
+multi get-user-id-spec(Str $command, Str $ruleSpec) {
+    get-dsl-spec( $command, $ruleSpec)
+}
+
+#-----------------------------------------------------------
 proto get-dsl-spec(Str $c, Str $r) is export {*};
 
 multi get-dsl-spec(Str $command where not has-semicolon($command), Str $ruleSpec) {
 
-    die 'Unknown rule specification.' unless %specToRule{$ruleSpec}:exists;
+    die 'Unknown rule specification. The second argument is expected to be one of: "' ~ %specToRule.keys.sort.join('", "') ~ '".',
+    unless %specToRule{$ruleSpec}:exists;
 
     my $res =
             ParseObj.parse(

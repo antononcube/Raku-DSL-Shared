@@ -39,6 +39,9 @@ say "-" x 60;
 
 say get-dsl-spec( $command, 'user-id');
 
+say get-user-id-spec( $command );
+say get-user-id-spec( $command, "user-any");
+
 say "=" x 60;
 
 say ParseObj.parse( 'set pipeline value to "A2 er"', actions => DSL::Shared::Actions::English::WL::PipelineCommand.new );
