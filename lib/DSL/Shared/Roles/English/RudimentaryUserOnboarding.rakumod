@@ -1,5 +1,7 @@
 use v6;
 
+use DSL::Shared::Utilities::FuzzyMatching;
+
 role DSL::Shared::Roles::English::RudimentaryUserOnboarding {
     
     rule user-onboarding-command {
@@ -48,32 +50,33 @@ role DSL::Shared::Roles::English::RudimentaryUserOnboarding {
     ##-------------------------------------------------------
     rule user-weight-spec { <human-weight-spec> <user-weight-unit-spec> }
     token human-weight-spec { (\d+) <?{ 5 <= $0.Str.Num <= 450 }> }
-    token user-weight-unit-spec { 'pounds' | 'lbs' | 'kilograms' | 'kg' }
+    token user-weight-unit-spec { :i 'pounds' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pounds') }> | 'lbs' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'lbs') }> | 'kilograms' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'kilograms') }> | 'kg' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'kg') }> }
 
     ##-------------------------------------------------------
-    token user-bio-sex-spec { 'male' | 'female' }
+    token user-bio-sex-spec { :i 'male' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'male') }> | 'female' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'female') }> }
 
     ##-------------------------------------------------------
-    token african-user-onboarding-word { 'african' }
-    token age-user-onboarding-word { 'age' }
-    token am-user-onboarding-word { 'am' }
-    token american-user-onboarding-word { 'american' }
-    token asian-user-onboarding-word { 'asian' }
-    token black-user-onboarding-word { 'black' }
-    token caucasian-user-onboarding-word { 'caucasian' }
-    token female-user-onboarding-word { 'female' }
-    token i-user-onboarding-word { 'i' }
-    token is-user-onboarding-word { 'is' }
-    token kilograms-user-onboarding-word { 'kilograms' }
-    token my-user-onboarding-word { 'my' }
-    token name-user-onboarding-word { 'name' }
-    token native-user-onboarding-word { 'native' }
-    token nina-user-onboarding-word { 'nina' }
-    token old-user-onboarding-word { 'old' }
-    token pounds-user-onboarding-word { 'pounds' }
-    token race-user-onboarding-word { 'race' }
-    token weight-user-onboarding-word { 'weight' }
-    token white-user-onboarding-word { 'white' }
-    token years-user-onboarding-word { 'years' }
+    token african-user-onboarding-word { :i 'african' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'african') }> }
+    token age-user-onboarding-word { :i 'age' }
+    token am-user-onboarding-word { :i 'am' }
+    token american-user-onboarding-word { :i 'american' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'american') }> }
+    token asian-user-onboarding-word { :i 'asian' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'asian') }> }
+    token black-user-onboarding-word { :i 'black' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'black') }> }
+    token caucasian-user-onboarding-word { :i 'caucasian' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'caucasian') }> }
+    token female-user-onboarding-word { :i 'female' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'female') }> }
+    token i-user-onboarding-word { :i 'i' }
+    token is-user-onboarding-word { :i 'is' }
+    token kilograms-user-onboarding-word { :i 'kilograms' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'kilograms') }> }
+    token my-user-onboarding-word { :i 'my' }
+    token name-user-onboarding-word { :i 'name' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'name') }> }
+    token native-user-onboarding-word { :i 'native' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'native') }> }
+    token nina-user-onboarding-word { :i 'nina' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'nina') }> }
+    token old-user-onboarding-word { :i 'old' }
+    token pounds-user-onboarding-word { :i 'pounds' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pounds') }> }
+    token race-user-onboarding-word { :i 'race' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'race') }> }
+    token weight-user-onboarding-word { :i 'weight' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weight') }> }
+    token white-user-onboarding-word { :i 'white' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'white') }> }
+    token years-user-onboarding-word { :i 'years' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'years') }> }
 
 }
+
