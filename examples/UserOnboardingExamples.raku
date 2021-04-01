@@ -20,11 +20,12 @@ say "=" x 60;
 
 my @commands = (
 'i am nina markova',
-'i am asian',
+'i am asiana',
+'my name is asiana',
 'i am 25 years old',
 'my race is african american',
 'my age is 40',
-'i am nina, i am 25 years old',
+'i am nina, i am 25 year old',
 'i am nina and i am 25 years old',
 'my name is sonya bartok, i am asian, and i am 55',
 'my weight is 130 lbs'
