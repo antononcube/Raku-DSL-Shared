@@ -39,8 +39,8 @@ ok ParseObj.parse('i am asian'),
         'i am asian';
 
 ## 5
-ok ParseObj.parse('my race is african american'),
-        'my race is african american';
+ok ParseObj.parse('my race is african'),
+        'my race is african';
 
 ## 6
 ok ParseObj.parse('i am 25 years old'),
