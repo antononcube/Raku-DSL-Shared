@@ -55,8 +55,13 @@ say "=" x 60;
 my $actuals = <fpr tpr npr ppv spc>;
 say "Actuals: ", $actuals;
 
-say "List  : ", is-fuzzy-match( 'ffr', $actuals );
-say "Array : ", is-fuzzy-match( 'kpr', @($actuals) );
+say "List  : ", is-fuzzy-match( 'ffr', $actuals, 0 );
+say "List  : ", is-fuzzy-match( 'ffr', $actuals, 1 );
+say "List  : ", is-fuzzy-match( 'ffr', $actuals, 2 );
+
+say "Array : ", is-fuzzy-match( 'kpr', @($actuals), 0 );
+say "Array : ", is-fuzzy-match( 'kpr', @($actuals), 1 );
+say "Array : ", is-fuzzy-match( 'kpr', @($actuals), 2 );
 
 #say ParseObj.parse( '"v 1" is greater than 10 and v2 greater or equal to 12 or v3 equals 20');
 
