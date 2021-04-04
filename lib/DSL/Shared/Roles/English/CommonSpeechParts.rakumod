@@ -32,7 +32,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token assign-verb { 'assign' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'assign') }> }
     token at-preposition { 'at' }
     token automatic { 'automatic' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'automatic') }> }
-    token away-adverb { 'away' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'away') }> }
+    token away-adverb { 'away' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'away', 1) }> }
     token axes-noun { 'axes' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axes') }> }
     token axis-noun { 'axis' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axis') }> }
     token be-verb { 'be' }
@@ -138,7 +138,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token off-adverb { 'off' }
     token on-preposition { 'on' }
     token or-conjunction { 'or' }
-    token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out') }> }
+    token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out', 1) }> }
     token outlier-noun { 'outlier' | ([\w]+) <?{ $0.Str ne 'outliers' and is-fuzzy-match( $0.Str, 'outlier') }> }
     token outliers-noun { 'outliers' | ([\w]+) <?{ $0.Str ne 'outlier' and is-fuzzy-match( $0.Str, 'outliers') }> }
     token over-preposition { 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
@@ -156,7 +156,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token represent-directive { <represent> | 'render' | 'reflect' }
     token results { 'results' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'results') }> }
     token reverse-adjective { 'reverse' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'reverse') }> }
-    token rows { 'rows' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'rows') }> }
+    token rows { 'rows' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'rows', 1) }> }
     token run-verb { 'run' | 'runs' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'runs') }> }
     token running-verb { 'running' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'running') }> }
     token separate-verb { 'separate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'separate') }> }
@@ -172,7 +172,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token site-noun { 'site' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'site') }> }
     token smallest { 'smallest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'smallest') }> }
     token smallest-adjective { 'smallest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'smallest') }> }
-    token some-determiner { 'some' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'some') }> }
+    token some-determiner { 'some' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'some', 1) }> }
     token sparse-adjective { 'sparse' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'sparse') }> }
     token specific-adjective { 'specific' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'specific') }> }
     token split-verb { 'split' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'split') }> }
@@ -197,23 +197,23 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token the-determiner { 'the' }
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
-    token time-noun { 'time' | ([\w]+) <?{ $0.Str ne 'the' and is-fuzzy-match( $0.Str, 'time') }> }
-    token to-preposition { 'to' | 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into') }> }
-    token top-noun { 'top' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'top') }> }
+    token time-noun { 'time' | ([\w]+) <?{ $0.Str ne 'the' and is-fuzzy-match( $0.Str, 'time', 1) }> }
+    token to-preposition { 'to' | 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into', 1) }> }
+    token top-noun { 'top' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'top', 1) }> }
     token transform-verb { 'transform' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'transform') }> }
     token translation-noun { 'translation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
     token type-noun { 'type' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'type') }> }
     token use-verb { 'use' | 'utilize' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'utilize') }> }
-    token using-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
+    token using-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over', 1) }> }
     token value-noun { 'value' | ([\w]+) <?{ $0.Str ne 'values' and is-fuzzy-match( $0.Str, 'value') }> }
     token values-noun { 'values' | ([\w]+) <?{ $0.Str ne 'value' and is-fuzzy-match( $0.Str, 'values') }> }
     token variable-noun { 'variable' | ([\w]+) <?{ $0.Str ne 'variables' and is-fuzzy-match( $0.Str, 'variable') }> }
     token variables-noun { 'variables' | ([\w]+) <?{ $0.Str ne 'variable' and is-fuzzy-match( $0.Str, 'variables') }> }
     token versus-preposition { 'vs' | 'vs.' | 'versus' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'versus') }> }
-    token way-noun { 'way' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'way') }> }
+    token way-noun { 'way' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'way', 1) }> }
     token weight { 'weight' | ([\w]+) <?{ $0.Str ne 'weights' and is-fuzzy-match( $0.Str, 'weight') }> }
     token weights { 'weights' | ([\w]+) <?{ $0.Str ne 'weight' and is-fuzzy-match( $0.Str, 'weights') }> }
-    token what-pronoun { 'what' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'what') }> }
+    token what-pronoun { 'what' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'what', 1) }> }
     token which-determiner { 'which' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'which') }> }
     token with-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'by' }
     token without-preposition { 'without' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'without') }> }
