@@ -30,7 +30,7 @@ role DSL::Shared::Roles::English::RudimentaryUserOnboarding {
 
     ##-------------------------------------------------------
     rule user-race-spec {
-        <african-user-onboarding-word> <american-user-onboarding-word>    |
+        <african-user-onboarding-word>  |
         <asian-user-onboarding-word>    |
         <black-user-onboarding-word>    |
         <caucasian-user-onboarding-word>    |
