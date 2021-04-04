@@ -35,9 +35,9 @@ sub edit-candidates(Str $word) is export {
 # Fuzzy match checks
 #============================================================
 
-proto is-fuzzy-match($c, $a) is export {*};
+proto is-fuzzy-match($c, $a, $maxDist = 2) is export {*};
 
-multi is-fuzzy-match(Str $candidate, @actuals) {
+multi is-fuzzy-match(Str $candidate, @actuals, UInt $maxDist = 2) {
 
     my %dists = map({ $_ => dld($candidate, $_) }, @actuals);
 
@@ -45,7 +45,7 @@ multi is-fuzzy-match(Str $candidate, @actuals) {
 
     if 0 == $distPair.value {
         return True;
-    } elsif 0 < $distPair.value and $distPair.value <= 2 {
+    } elsif 0 < $distPair.value and $distPair.value <= $maxDist {
         my %dists2 = grep({ $_.value eq $distPair.value }, %dists);
         if %dists2.elems == 1 {
             warn "Possible misspelling of '{$distPair.key}' as '$candidate'.";
@@ -58,12 +58,12 @@ multi is-fuzzy-match(Str $candidate, @actuals) {
     return False;
 }
 
-multi is-fuzzy-match(Str $candidate, Str $actual) {
+multi is-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
     my $dist = dld($candidate, $actual);
 
     if 0 == $dist {
         return True;
-    } elsif 0 < $dist and $dist <= 2 {
+    } elsif 0 < $dist and $dist <= $maxDist {
         warn "Possible misspelling of '$actual' as '$candidate'.";
         return True;
     }
