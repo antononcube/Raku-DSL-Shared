@@ -14,9 +14,14 @@ grammar ParseObj
         does DSL::Shared::Roles::English::TimeIntervalSpec
         does DSL::Shared::Roles::English::PipelineCommand {
 
-    rule TOP { <pipeline-command> || <time-interval-spec> ||  <worded-number-spec> }
+    rule TOP { <pipeline-command> || <time-interval-spec> || <worded-number-spec> }
 };
 
+#say ParseObj.parse( 'twenty five thousand', rule => 'worded_number_up_to_1000000' );
+#
+#say "-" x 60;
+#
+#say ParseObj.parse( 'thirty eight thousand', rule => 'worded-number-spec' );
 
 say "=" x 60;
 
