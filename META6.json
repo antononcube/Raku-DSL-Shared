@@ -9,6 +9,7 @@
     "license" : "Artistic-2.0",
     "provides" : {
         "DSL::Shared::Actions::CommonStructures" : "lib/DSL/Shared/Actions/CommonStructures.rakumod",
+        "DSL::Shared::Actions::WordedNumberSpec" : "lib/DSL/Shared/Actions/WordedNumberSpec.rakumod",
         "DSL::Shared::Actions::English::PipelineCommand" : "lib/DSL/Shared/Actions/English/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::Julia::PipelineCommand" : "lib/DSL/Shared/Actions/English/Julia/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::Python::PipelineCommand" : "lib/DSL/Shared/Actions/English/Python/PipelineCommand.rakumod",
