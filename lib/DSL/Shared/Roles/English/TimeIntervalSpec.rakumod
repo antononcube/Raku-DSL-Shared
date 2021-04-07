@@ -17,7 +17,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
   rule time-interval-from-to-spec {
     <between-time-spec-word> <time-spec> <.and-conjunction> <time-spec> |
     <.from-preposition> <time-spec> <.to-preposition> <time-spec> |
-    [ <in-time-spec-word> | <during-time-spec-word> ]? <named-time-intervals> |
+    [ <in-preposition> | <during-time-spec-word> ]? <named-time-intervals> |
     <between-time-spec-word> <time-spec-number> <.and-conjunction> <number-of-time-units> }
   rule time-spec { <right-now> | <day-name> | <week-of-year> | <week-number> | <month-of-year> | <month-name> | <holiday-name> | <hour-spec> | <holiday-offset> }
   rule right-now { <now-time-spec-word> | <right-time-spec-word> <now-time-spec-word> | <just-time-spec-word> <now-time-spec-word> }
@@ -33,12 +33,19 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
   rule month-name { <month-name-long> | <month-name-abbr> }
   rule month-of-year { <month-name> <.of-preposition>? <year-spec>? }
   rule year-spec { <year-time-spec-word> <year-number-range> | <year-number-range> }
-  rule holiday-name { <ramadan-time-spec-word> | <christmas-time-spec-word> | <thanksgiving-time-spec-word> | <memorial-time-spec-word> <day-time-spec-word> | <lincoln-time-spec-word> <day-time-spec-word> | <new-time-spec-word> <year-time-spec-word> | <mother-time-spec-word> <day-time-spec-word> }
+  rule holiday-name {
+    <christmas-time-spec-word> |
+    <lincoln-time-spec-word> <day-time-spec-word> |
+    <memorial-time-spec-word> <day-time-spec-word> |
+    <mother-time-spec-word> <day-time-spec-word> |
+    <new-time-spec-word> <year-time-spec-word> |
+    <ramadan-time-spec-word> |
+    <thanksgiving-time-spec-word> }
   rule holiday-offset {<number-of-time-units> [ <before-time-spec-word> | <after-time-spec-word> ] <holiday-name>}
   rule hour-spec { [\d+] [ <am-time-spec-word> | <pm-time-spec-word> ]? }
   rule full-date-spec {[ <time-spec-number> <month-name> | <month-name> <time-spec-number> ] <time-spec-number> [ <time-spec-number> [ <am-time-spec-word> | <pm-time-spec-word> ] ]?}
 
-  token week-number-range { (\d+) <?{ 0 <= $0.Str.Num <= 52 }> }
+  token week-number-range { (\d+) <?{ 1 <= $0.Str.Num <= 52 }> }
   token year-number-range { (\d+) <?{ 1900 <= $0.Str.Num <= 2100 }> }
   token time-spec-number { \d+ }
   
@@ -65,7 +72,6 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
   token fridays-time-spec-word { 'fridays' };
   token hour-time-spec-word { 'hour' };
   token hours-time-spec-word { 'hours' };
-  token in-time-spec-word { 'in' };
   token jan-time-spec-word { 'jan' };
   token january-time-spec-word { 'january' };
   token jul-time-spec-word { 'jul' };
