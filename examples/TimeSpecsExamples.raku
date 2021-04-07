@@ -8,6 +8,8 @@ use DSL::Shared::Roles::English::WordedNumberSpec;
 use DSL::Shared::Roles::English::TimeIntervalSpec;
 use DSL::Shared::Roles::English::PipelineCommand;
 
+use DSL::Shared::Actions::WordedNumberSpec;
+
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Shared::Roles::English::WordedNumberSpec
@@ -17,13 +19,16 @@ grammar ParseObj
     rule TOP { <pipeline-command> || <time-interval-spec> || <worded-number-spec> }
 };
 
-#say ParseObj.parse( 'twenty five thousand', rule => 'worded_number_up_to_1000000' );
-#
+say ParseObj.parse( 'six hundred million', rule => 'worded-number-spec', actions => DSL::Shared::Actions::WordedNumberSpec.new ).made;
+
 #say "-" x 60;
 #
-#say ParseObj.parse( 'thirty eight thousand', rule => 'worded-number-spec' );
+say ParseObj.parse( 'thirty eight thousand', rule => 'worded-number-spec', actions => DSL::Shared::Actions::WordedNumberSpec.new ).made;
 
 say "=" x 60;
+
+
+#my @commands = ( 'one', 'two', 'eleven' );
 
 #my @commands = (
 #'thirty eight',
@@ -42,18 +47,18 @@ say "=" x 60;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
-my @commands = (
-'between christmas and ramadan',
-'from jan to mar',
-'from january 2020 to march 2021',
-'2 week of 2019',
-'two weeks ago'
-);
-
-for @commands -> $c {
-    say "=" x 60;
-    say $c;
-    say "-" x 40;
-    say ParseObj.parse( $c )
-};
+#my @commands = (
+#'between christmas and ramadan',
+#'from jan to mar',
+#'from january 2020 to march 2021',
+#'2 week of 2019',
+#'two weeks ago'
+#);
+#
+#for @commands -> $c {
+#    say "=" x 60;
+#    say $c;
+#    say "-" x 40;
+#    say ParseObj.parse( $c )
+#};
 
