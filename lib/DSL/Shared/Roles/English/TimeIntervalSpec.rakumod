@@ -42,12 +42,12 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
     <ramadan-time-spec-word> |
     <thanksgiving-time-spec-word> }
   rule holiday-offset {<number-of-time-units> [ <before-time-spec-word> | <after-time-spec-word> ] <holiday-name>}
-  rule hour-spec { [\d+] [ <am-time-spec-word> | <pm-time-spec-word> ]? }
+  rule hour-spec { [ <integer-value> | <worded-number-spec> ] [ <am-time-spec-word> | <pm-time-spec-word> ]? }
   rule full-date-spec {[ <time-spec-number> <month-name> | <month-name> <time-spec-number> ] <time-spec-number> [ <time-spec-number> [ <am-time-spec-word> | <pm-time-spec-word> ] ]?}
 
-  token week-number-range { (\d+) <?{ 1 <= $0.Str.Num <= 52 }> }
-  token year-number-range { (\d+) <?{ 1900 <= $0.Str.Num <= 2100 }> }
-  token time-spec-number { \d+ }
+  token week-number-range { (\d+) <?{ 1 <= $0.Str.Num <= 52 }> | <worded-number-spec> }
+  token year-number-range { (\d+) <?{ 1900 <= $0.Str.Num <= 2100 }> | <worded-number-spec> }
+  token time-spec-number { <integer-value> | <worded-number-spec> }
   
   token after-time-spec-word { 'after' };
   token ago-time-spec-word { 'ago' };
