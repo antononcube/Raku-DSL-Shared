@@ -7,6 +7,8 @@ use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::WordedNumberSpec;
 use DSL::Shared::Roles::English::PipelineCommand;
 
+use DSL::Shared::Actions::WordedNumberSpec;
+
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Shared::Roles::English::WordedNumberSpec
@@ -16,6 +18,9 @@ grammar ParseObj
     }
 };
 
+sub parse-func( Str:D $spec) {
+    ParseObj.parse($spec.lc, rule => 'worded-number-spec', actions => DSL::Shared::Actions::WordedNumberSpec.new ).made,
+}
 
 plan 41;
 
@@ -24,79 +29,79 @@ plan 41;
 #-----------------------------------------------------------
 
 ## 1
-ok ParseObj.parse('fifteen hundred'.lc),
+is parse-func('fifteen hundred'), '1500',
         'fifteen hundred';
 
 ## 2
-ok ParseObj.parse('five hundred thirty eight'.lc),
+is parse-func('five hundred thirty eight'), '538',
         'five hundred thirty eight';
 
 ## 3
-ok ParseObj.parse('one thousand and five hundred'.lc),
+is parse-func('one thousand and five hundred'), '1500',
         'one thousand and five hundred';
 
 ## 4
-ok ParseObj.parse('six hundred million'.lc),
+is parse-func('six hundred million'), '600000000',
         'six hundred million';
 
 ## 5
-ok ParseObj.parse('thirteen hundred ninety nine million'.lc),
+is parse-func('thirteen hundred ninety nine million'), '1399000000',
         'thirteen hundred ninety nine million';
 
 ## 6
-ok ParseObj.parse('thirty - eight'.lc),
+is parse-func('thirty - eight'), '38',
         'thirty - eight';
 
 ## 7
-ok ParseObj.parse('thirty-eight'.lc),
+is parse-func('thirty-eight'), '38',
         'thirty-eight';
 
 ## 8
-ok ParseObj.parse('thirty eight'.lc),
+is parse-func('thirty eight'), '38',
         'thirty eight';
 
 ## 9
-ok ParseObj.parse('thirty - eight thousand'.lc),
+is parse-func('thirty - eight thousand'), '38000',
         'thirty - eight thousand';
 
 ## 10
-ok ParseObj.parse('thirty-eight thousand'.lc),
+is parse-func('thirty-eight thousand'), '38000',
         'thirty-eight thousand';
 
 ## 11
-ok ParseObj.parse('thirty eight thousand'.lc),
+is parse-func('thirty eight thousand'), '38000',
         'thirty eight thousand';
 
 ## 12
-ok ParseObj.parse('three hundred and thirty eight'.lc),
+is parse-func('three hundred and thirty eight'), '338',
         'three hundred and thirty eight';
 
 ## 13
-ok ParseObj.parse('three hundred thirty eight'.lc),
+is parse-func('three hundred thirty eight'), '338',
         'three hundred thirty eight';
 
 ## 14
-ok ParseObj.parse('two hundred and thirty eight thousand'.lc),
+is parse-func('two hundred and thirty eight thousand'), '238000',
         'two hundred and thirty eight thousand';
 
 ## 15
-ok ParseObj.parse('two hundred thirty eight thousand'.lc),
+is parse-func('two hundred thirty eight thousand'), '238000',
         'two hundred thirty eight thousand';
 
 ## 16
-ok ParseObj.parse('eight'.lc),
+is parse-func('eight'), '8',
         'eight';
 
 ## 17
-ok ParseObj.parse('eight hundred seventy - five thousand and twenty'.lc),
+is parse-func('eight hundred seventy - five thousand and twenty'), '875020',
         'eight hundred seventy - five thousand and twenty';
 
 ## 18
-ok ParseObj.parse('eight hundred thousand, five hundred'.lc),
+is parse-func('eight hundred thousand, five hundred'), '800500',
         'eight hundred thousand, five hundred';
 
 ## 19
-ok ParseObj.parse('eighty six'.lc),
+is parse-func('eighty six'), '86',
         'eighty six';
 
 ## 20
@@ -108,7 +113,7 @@ ok ParseObj.parse('eleven hundred thousand , sixteen hundred'.lc),
         'eleven hundred thousand , sixteen hundred';
 
 ## 22
-ok ParseObj.parse('fifteen hundred and seventeen'.lc),
+is parse-func('fifteen hundred and seventeen'), '1517',
         'fifteen hundred and seventeen';
 
 ## 23
@@ -120,11 +125,11 @@ ok ParseObj.parse('fifty - two'.lc),
         'fifty - two';
 
 ## 25
-ok ParseObj.parse('five hundred ninety'.lc),
+is parse-func('five hundred ninety'), '590',
         'five hundred ninety';
 
 ## 26
-ok ParseObj.parse('forty six'.lc),
+is parse-func('forty six'), '46',
         'forty six';
 
 ## 27
@@ -140,11 +145,11 @@ ok ParseObj.parse('four thousand and two hundred thirty million three hundred th
         'four thousand and two hundred thirty million three hundred thousand';
 
 ## 30
-ok ParseObj.parse('nineteen hundred fourteen'.lc),
+is parse-func('nineteen hundred fourteen'), '1914',
         'nineteen hundred fourteen';
 
 ## 31
-ok ParseObj.parse('ninety'.lc),
+is parse-func('ninety'), '90',
         'ninety';
 
 ## 32
@@ -152,15 +157,15 @@ ok ParseObj.parse('one hundred million'.lc),
         'one hundred million';
 
 ## 33
-ok ParseObj.parse('seven hundred and ninety'.lc),
+is parse-func('seven hundred and ninety'), '790',
         'seven hundred and ninety';
 
 ## 34
-ok ParseObj.parse('seven hundred million'.lc),
+is parse-func('seven hundred million'), '700000000',
         'seven hundred million';
 
 ## 35
-ok ParseObj.parse('seventy'.lc),
+is parse-func('seventy'), '70',
         'seventy';
 
 ## 36
@@ -172,7 +177,7 @@ ok ParseObj.parse('sixteen hundred zero thousand million and two thousand, ten h
         'sixteen hundred zero thousand million and two thousand, ten hundred thirty';
 
 ## 38
-ok ParseObj.parse('sixty thousand'.lc),
+is parse-func('sixty thousand'.lc), '60000',
         'sixty thousand';
 
 ## 39
@@ -180,11 +185,11 @@ ok ParseObj.parse('thirty - ten thousand zero'.lc),
         'thirty - ten thousand zero';
 
 ## 40
-ok ParseObj.parse('three hundred and ninety eight thousand'.lc),
+is parse-func('three hundred and ninety eight thousand'), '398000',
         'three hundred and ninety eight thousand';
 
 ## 41
-ok ParseObj.parse('zero'.lc),
+is parse-func('zero'), '0',
         'zero';
 
 done-testing;
