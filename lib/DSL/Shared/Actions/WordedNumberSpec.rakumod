@@ -77,8 +77,8 @@ class DSL::Shared::Actions::WordedNumberSpec {
   method worded_number_up_to_bil($/) {
     if $<worded_number_1000000s> and $<worded_number_up_to_1000000> {
       make ( $<worded_number_1000000s>.made.Int + $<worded_number_up_to_1000000>.made.Int ).Str
-    } elsif $<worded_number_1000s> {
-      make $<worded_number_1000s>.made
+    } elsif $<worded_number_1000000s> {
+      make $<worded_number_1000000s>.made
     } else {
       make $<worded_number_up_to_1000000>.made
     }
