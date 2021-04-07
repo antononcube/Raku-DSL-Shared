@@ -4,11 +4,13 @@ use lib './lib';
 use lib '.';
 
 use DSL::Shared::Roles::ErrorHandling;
+use DSL::Shared::Roles::English::WordedNumberSpec;
 use DSL::Shared::Roles::English::TimeIntervalSpec;
 use DSL::Shared::Roles::English::PipelineCommand;
 
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
+        does DSL::Shared::Roles::English::WordedNumberSpec
         does DSL::Shared::Roles::English::TimeIntervalSpec
         does DSL::Shared::Roles::English::PipelineCommand {
 
@@ -16,7 +18,7 @@ grammar ParseObj
 };
 
 
-plan 6;
+plan 10;
 
 #-----------------------------------------------------------
 # Time interval specifications parsing
@@ -39,11 +41,27 @@ ok ParseObj.parse('2 weeks'),
         '2 weeks';
 
 ## 5
+ok ParseObj.parse('twelve weeks'),
+        'twelve weeks';
+
+## 6
 ok ParseObj.parse('week 23 of 2013'),
         'week 23 of 2013';
 
-## 6
+## 7
+ok ParseObj.parse('week twenty three of 2013'),
+        'week twenty three of 2013';
+
+## 7
+ok ParseObj.parse('week twenty three of two thousand and thirteen'),
+        'week twenty three of two thousand and thirteen';
+
+## 9
 ok ParseObj.parse('2 weeks ago'),
         '2 weeks ago';
+
+## 10
+ok ParseObj.parse('two weeks ago'),
+        'two weeks ago';
 
 done-testing;
