@@ -16,10 +16,10 @@ grammar ParseObj
 };
 
 
-plan 5;
+plan 6;
 
 #-----------------------------------------------------------
-# User onboarding commands parsing
+# Time interval specifications parsing
 #-----------------------------------------------------------
 
 ## 1
@@ -41,5 +41,9 @@ ok ParseObj.parse('2 weeks'),
 ## 5
 ok ParseObj.parse('week 23 of 2013'),
         'week 23 of 2013';
+
+## 6
+ok ParseObj.parse('2 weeks ago'),
+        '2 weeks ago';
 
 done-testing;
