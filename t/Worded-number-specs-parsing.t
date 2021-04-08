@@ -13,7 +13,7 @@ grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Shared::Roles::English::WordedNumberSpec
         does DSL::Shared::Roles::English::PipelineCommand {
-    regex TOP {
+    rule TOP {
         <pipeline-command> | <worded-number-spec>
     }
 };
