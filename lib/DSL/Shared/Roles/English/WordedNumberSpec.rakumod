@@ -12,7 +12,7 @@ role DSL::Shared::Roles::English::WordedNumberSpec {
   regex worded_number_1000s    { <worded_number_up_to_1000>    \h+ <name_of_1000> }
   regex worded_number_1000000s { <worded_number_up_to_1000000> \h+ <name_of_1000000> }
 
-  regex worded_number_up_to_100     { <name_of_10s>             [ [ \h* <.hyphen-symbol> \h* | \h+ ]?                    <name_1_to_10> ]?                 || <name_up_to_19> }
+  regex worded_number_up_to_100     { <name_of_10s>             [ [ \h* <.hyphen-symbol> \h* | \h+ ]?                     <name_1_to_10> ]?                || <name_up_to_19> }
   regex worded_number_up_to_1000    { <worded_number_100s>      [ [ [ \h+ <.and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_100> ]?     || <worded_number_up_to_100> }
   regex worded_number_up_to_1000000 { <worded_number_1000s>     [ [ [ \h+ <.and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000> ]?    || <worded_number_up_to_1000> }
   regex worded_number_up_to_bil     { <worded_number_1000000s>  [ [ [ \h+ <.and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000000> ]? || <worded_number_up_to_1000000> }
