@@ -1,10 +1,15 @@
+# ============================================================
+# This role class is generated from the file
+#   CommonSpeechParts-template
+# using the function addFuzzyMatch from
+#   DSL::Shared::Utilities::AddFuzzyMatching
+# ============================================================
+
 use v6;
 
 use DSL::Shared::Utilities::FuzzyMatching;
 
-# This role class has common command parts.
 role DSL::Shared::Roles::English::CommonSpeechParts {
-
     # Single words
     token ID-noun { 'ID' }
     token IDENTIFIER-noun { 'IDENTIFIER' }
@@ -190,6 +195,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
     token time-noun { 'time' }
+    token times-noun { 'times' }
+    token timeline-noun { 'timeline' }
     token to-preposition { 'to' | 'into' }
     token top-noun { 'top' }
     token transform-verb { 'transform' }
@@ -206,6 +213,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token weight { 'weight' }
     token weights { 'weights' }
     token what-pronoun { 'what' }
+    token when-pronoun { 'when' }
     token which-determiner { 'which' }
     token with-preposition { 'using' | 'with' | 'by' }
     token without-preposition { 'without' }

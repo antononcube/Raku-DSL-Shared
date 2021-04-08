@@ -197,7 +197,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token the-determiner { 'the' }
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
-    token time-noun { 'time' | ([\w]+) <?{ $0.Str ne 'the' and is-fuzzy-match( $0.Str, 'time', 1) }> }
+    token time-noun { 'time' | ([\w]+) <?{ $0.Str !(elem) <the times> and is-fuzzy-match( $0.Str, 'time', 1) }> }
+    token timeline-noun { 'timeline' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'timeline') }> }
+    token times-noun { 'time' | ([\w]+) <?{ $0.Str ne 'time' and is-fuzzy-match( $0.Str, 'times', 1) }> }
     token to-preposition { 'to' | 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into', 1) }> }
     token top-noun { 'top' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'top', 1) }> }
     token transform-verb { 'transform' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'transform') }> }
@@ -214,6 +216,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token weight { 'weight' | ([\w]+) <?{ $0.Str ne 'weights' and is-fuzzy-match( $0.Str, 'weight') }> }
     token weights { 'weights' | ([\w]+) <?{ $0.Str ne 'weight' and is-fuzzy-match( $0.Str, 'weights') }> }
     token what-pronoun { 'what' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'what', 1) }> }
+    token when-pronoun { 'when' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'when', 1) }> }
     token which-determiner { 'which' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'which') }> }
     token with-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'by' }
     token without-preposition { 'without' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'without') }> }
