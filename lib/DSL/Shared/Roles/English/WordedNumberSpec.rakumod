@@ -22,16 +22,16 @@ role DSL::Shared::Roles::English::WordedNumberSpec {
   token name_up_to_19 { <name_of_0> | <name_1_to_19> }
 
   token name_of_10s { <name_of_20> | <name_of_30> | <name_of_40> | <name_of_50> | <name_of_60> | <name_of_70> | <name_of_80> | <name_of_90> }
-  token name_of_0 {'zero'}
-  token name_of_1 {'one'}
-  token name_of_2 {'two'}
-  token name_of_3 {'three'}
-  token name_of_4 {'four'}
-  token name_of_5 {'five'}
-  token name_of_6 {'six'}
-  token name_of_7 {'seven'}
-  token name_of_8 {'eight'}
-  token name_of_9 {'nine'}
+  token name_of_0  {'zero'}
+  token name_of_1  {'one'}
+  token name_of_2  {'two'}
+  token name_of_3  {'three'}
+  token name_of_4  {'four'}
+  token name_of_5  {'five'}
+  token name_of_6  {'six'}
+  token name_of_7  {'seven'}
+  token name_of_8  {'eight'}
+  token name_of_9  {'nine'}
   token name_of_10 {'ten'}
   token name_of_11 {'eleven'}
   token name_of_12 {'twelve'}
@@ -50,8 +50,8 @@ role DSL::Shared::Roles::English::WordedNumberSpec {
   token name_of_70 {'seventy'}
   token name_of_80 {'eighty'}
   token name_of_90 {'ninety'}
-  token name_of_100 {'hundred'}
-  token name_of_1000 {'thousand'}
-  token name_of_1000000 {'million'}
+  token name_of_100 {'hundred' | 'hundreds'}
+  token name_of_1000 {'thousand' | 'thousands' }
+  token name_of_1000000 {'million' | 'millions'}
   token hyphen-symbol { '-' }
 }
