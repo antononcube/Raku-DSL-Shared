@@ -18,7 +18,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #   Written by Anton Antonov,
-#   antononcube @ gmai l . c om,
+#   antononcube @@ @ posteo .... net
 #   Windermere, Florida, USA.
 #
 #==============================================================================
@@ -32,56 +32,53 @@
 # (And natural languages too.)
 
 use v6;
-use DSL::Shared::Roles::English::WordedNumberSpec;
 
-unit module DSL::Shared::Actions::CommonStructures;
-
-class DSL::Shared::Actions::WordedNumberSpec {
+class DSL::Shared::Actions::English::WordedNumberSpec {
 
   method worded-number-spec($/)     { make $/.values[0].made; }
-  
+
   method worded_number_100s($/)     { make ( $<name_1_to_19>.made.Int * 100 ).Str }
   method worded_number_1000s($/)    { make ( $<worded_number_up_to_1000>.made.Int * 1_000 ).Str }
   method worded_number_1000000s($/) { make ( $<worded_number_up_to_1000000>.made.Int * 1_000_000 ).Str }
 
   method worded_number_up_to_100($/) {
-    if $<name_of_10s> and $<name_1_to_10> {
-      make ( $<name_of_10s>.made.Int + $<name_1_to_10>.made.Int ).Str
-    } elsif $<name_of_10s> {
-      make $<name_of_10s>.made
-    } else {
-      make $<name_up_to_19>.made
-    }
+      if $<name_of_10s> and $<name_1_to_10> {
+          make ( $<name_of_10s>.made.Int + $<name_1_to_10>.made.Int ).Str
+      } elsif $<name_of_10s> {
+          make $<name_of_10s>.made
+      } else {
+          make $<name_up_to_19>.made
+      }
   }
 
   method worded_number_up_to_1000($/) {
-    if $<worded_number_100s> and $<worded_number_up_to_100> {
-      make ( $<worded_number_100s>.made.Int + $<worded_number_up_to_100>.made.Int ).Str
-    } elsif $<worded_number_100s> {
-      make $<worded_number_100s>.made
-    } else {
-      make $<worded_number_up_to_100>.made
-    }
+      if $<worded_number_100s> and $<worded_number_up_to_100> {
+          make ( $<worded_number_100s>.made.Int + $<worded_number_up_to_100>.made.Int ).Str
+      } elsif $<worded_number_100s> {
+          make $<worded_number_100s>.made
+      } else {
+          make $<worded_number_up_to_100>.made
+      }
   }
 
   method worded_number_up_to_1000000($/) {
-    if $<worded_number_1000s> and $<worded_number_up_to_1000> {
-      make ( $<worded_number_1000s>.made.Int + $<worded_number_up_to_1000>.made.Int ).Str
-    } elsif $<worded_number_1000s> {
-      make $<worded_number_1000s>.made
-    } else {
-      make $<worded_number_up_to_1000>.made
-    }
+      if $<worded_number_1000s> and $<worded_number_up_to_1000> {
+          make ( $<worded_number_1000s>.made.Int + $<worded_number_up_to_1000>.made.Int ).Str
+      } elsif $<worded_number_1000s> {
+          make $<worded_number_1000s>.made
+      } else {
+          make $<worded_number_up_to_1000>.made
+      }
   }
 
   method worded_number_up_to_bil($/) {
-    if $<worded_number_1000000s> and $<worded_number_up_to_1000000> {
-      make ( $<worded_number_1000000s>.made.Int + $<worded_number_up_to_1000000>.made.Int ).Str
-    } elsif $<worded_number_1000000s> {
-      make $<worded_number_1000000s>.made
-    } else {
-      make $<worded_number_up_to_1000000>.made
-    }
+      if $<worded_number_1000000s> and $<worded_number_up_to_1000000> {
+          make ( $<worded_number_1000000s>.made.Int + $<worded_number_up_to_1000000>.made.Int ).Str
+      } elsif $<worded_number_1000000s> {
+          make $<worded_number_1000000s>.made
+      } else {
+          make $<worded_number_up_to_1000000>.made
+      }
   }
 
   method name_1_to_10($/)  { make $/.values[0].made }
