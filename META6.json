@@ -9,8 +9,9 @@
     "license" : "Artistic-2.0",
     "provides" : {
         "DSL::Shared::Actions::CommonStructures" : "lib/DSL/Shared/Actions/CommonStructures.rakumod",
-        "DSL::Shared::Actions::WordedNumberSpec" : "lib/DSL/Shared/Actions/WordedNumberSpec.rakumod",
+        "DSL::Shared::Actions::Bulgarian::WordedNumberSpec" : "lib/DSL/Shared/Actions/Bulgarian/WordedNumberSpec.rakumod",
         "DSL::Shared::Actions::English::PipelineCommand" : "lib/DSL/Shared/Actions/English/PipelineCommand.rakumod",
+        "DSL::Shared::Actions::English::WordedNumberSpec" : "lib/DSL/Shared/Actions/English/WordedNumberSpec.rakumod",
         "DSL::Shared::Actions::English::Julia::PipelineCommand" : "lib/DSL/Shared/Actions/English/Julia/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::Python::PipelineCommand" : "lib/DSL/Shared/Actions/English/Python/PipelineCommand.rakumod",
         "DSL::Shared::Actions::English::R::PipelineCommand" : "lib/DSL/Shared/Actions/English/R/PipelineCommand.rakumod",
@@ -23,6 +24,7 @@
         "DSL::Shared::Actions::R::PredicateSpecification" : "lib/DSL/Shared/Actions/R/PredicateSpecification.rakumod",
         "DSL::Shared::Actions::WL::CommonStructures" : "lib/DSL/Shared/Actions/WL/CommonStructures.rakumod",
         "DSL::Shared::Actions::WL::PredicateSpecification" : "lib/DSL/Shared/Actions/WL/PredicateSpecification.rakumod",
+        "DSL::Shared::Roles::Bulgarian::WordedNumberSpec" : "lib/DSL/Shared/Roles/Bulgarian/WordedNumberSpec.rakumod",
         "DSL::Shared::Roles::CommonStructures" : "lib/DSL/Shared/Roles/CommonStructures.rakumod",
         "DSL::Shared::Roles::English::CommonParts" : "lib/DSL/Shared/Roles/English/CommonParts.rakumod",
         "DSL::Shared::Roles::English::CommonSpeechParts" : "lib/DSL/Shared/Roles/English/CommonSpeechParts.rakumod",
