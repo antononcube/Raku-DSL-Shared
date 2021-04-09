@@ -6,16 +6,18 @@ use v6;
 
 role DSL::Shared::Roles::English::WordedNumberSpec {
 
-  rule worded-number-spec { <worded_number_up_to_bil> }
+  rule worded-number-spec { <worded_number_up_to_tril> }
 
-  regex worded_number_100s     { <name_1_to_19>                \h+ <name_of_100> }
+  regex worded_number_100s     { <name_1_to_19>                \h+ <name_of_100> | <name_of_100> }
   regex worded_number_1000s    { <worded_number_up_to_1000>    \h+ <name_of_1000> }
   regex worded_number_1000000s { <worded_number_up_to_1000000> \h+ <name_of_1000000> }
+  regex worded_number_bils     { <worded_number_up_to_bil>     \h+ <name_of_bil> }
 
   regex worded_number_up_to_100     { <name_of_10s>             [ [ \h* <.hyphen-symbol> \h* | \h+ ]?                     <name_1_to_10> ]?                || <name_up_to_19> }
   regex worded_number_up_to_1000    { <worded_number_100s>      [ [ [ \h+ <.and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_100> ]?     || <worded_number_up_to_100> }
   regex worded_number_up_to_1000000 { <worded_number_1000s>     [ [ [ \h+ <.and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000> ]?    || <worded_number_up_to_1000> }
   regex worded_number_up_to_bil     { <worded_number_1000000s>  [ [ [ \h+ <.and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000000> ]? || <worded_number_up_to_1000000> }
+  regex worded_number_up_to_tril    { <worded_number_bils>      [ [ [ \h+ <.and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_bil> ]?     || <worded_number_up_to_bil> }
 
   token name_1_to_10 { <name_of_1> | <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> | <name_of_10> }
   token name_1_to_19 {
@@ -55,5 +57,6 @@ role DSL::Shared::Roles::English::WordedNumberSpec {
   token name_of_100 {'hundred' | 'hundreds'}
   token name_of_1000 {'thousand' | 'thousands' }
   token name_of_1000000 {'million' | 'millions'}
-  token hyphen-symbol { '-' }
+  token name_of_bil {'billion' | 'billions'}
+  token hyphen-symbol { '-' | '‐' }
 }

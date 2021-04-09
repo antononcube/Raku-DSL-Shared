@@ -40,6 +40,7 @@ class DSL::Shared::Actions::Bulgarian::WordedNumberSpec {
   method bg_worded_number_100s($/)     { make ( $<bg_name_of_100> ?? 100 !! $<bg_name_2_to_9>.made.Int * 100 ).Str }
   method bg_worded_number_1000s($/)    { make ( $<bg_worded_number_up_to_1000>.made.Int * 1_000 ).Str }
   method bg_worded_number_1000000s($/) { make ( $<bg_worded_number_up_to_1000000>.made.Int * 1_000_000 ).Str }
+  method bg_worded_number_bils($/)     { make ( $<bg_worded_number_up_to_bil>.made.Int * 1_000_000_000 ).Str }
 
   method bg_worded_number_up_to_100($/) {
       if $<bg_name_of_10s> and $<bg_name_1_to_10> {
@@ -81,6 +82,16 @@ class DSL::Shared::Actions::Bulgarian::WordedNumberSpec {
       }
   }
 
+  method bg_worded_number_up_to_tril($/) {
+      if $<bg_worded_number_bils> and $<bg_worded_number_up_to_bil> {
+          make ( $<bg_worded_number_bils>.made.Int + $<bg_worded_number_up_to_bil>.made.Int ).Str
+      } elsif $<bg_worded_number_bils> {
+          make $<bg_worded_number_bils>.made
+      } else {
+          make $<bg_worded_number_up_to_bil>.made
+      }
+  }
+
   method bg_name_1_to_10($/)  { make $/.values[0].made }
   method bg_name_2_to_9($/)   { make $/.values[0].made }
   method bg_name_1_to_19($/)  { make $/.values[0].made }
@@ -119,4 +130,5 @@ class DSL::Shared::Actions::Bulgarian::WordedNumberSpec {
   method bg_suffix_for_100($/) { make '100'}
   method bg_name_of_1000($/) { make '1000'}
   method bg_name_of_1000000($/) { make '1000000'}
+  method bg_name_of_bil($/) { make '1000000000'}
 }

@@ -40,6 +40,7 @@ class DSL::Shared::Actions::English::WordedNumberSpec {
   method worded_number_100s($/)     { make ( $<name_1_to_19>.made.Int * 100 ).Str }
   method worded_number_1000s($/)    { make ( $<worded_number_up_to_1000>.made.Int * 1_000 ).Str }
   method worded_number_1000000s($/) { make ( $<worded_number_up_to_1000000>.made.Int * 1_000_000 ).Str }
+  method worded_number_bils($/)     { make ( $<worded_number_up_to_bil>.made.Int * 1_000_000_000 ).Str }
 
   method worded_number_up_to_100($/) {
       if $<name_of_10s> and $<name_1_to_10> {
@@ -81,6 +82,16 @@ class DSL::Shared::Actions::English::WordedNumberSpec {
       }
   }
 
+  method worded_number_up_to_tril($/) {
+      if $<worded_number_bils> and $<worded_number_up_to_bil> {
+          make ( $<worded_number_bils>.made.Int + $<worded_number_up_to_bil>.made.Int ).Str
+      } elsif $<worded_number_bils> {
+          make $<worded_number_bils>.made
+      } else {
+          make $<worded_number_up_to_bil>.made
+      }
+  }
+
   method name_1_to_10($/)  { make $/.values[0].made }
   method name_1_to_19($/)  { make $/.values[0].made }
   method name_up_to_19($/) { make $/.values[0].made }
@@ -117,4 +128,5 @@ class DSL::Shared::Actions::English::WordedNumberSpec {
   method name_of_100($/) { make '100'}
   method name_of_1000($/) { make '1000'}
   method name_of_1000000($/) { make '1000000'}
+  method name_of_bil($/) { make '1000000000'}
 }
