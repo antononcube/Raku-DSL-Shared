@@ -7,7 +7,7 @@ use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::WordedNumberSpec;
 use DSL::Shared::Roles::English::PipelineCommand;
 
-use DSL::Shared::Actions::WordedNumberSpec;
+use DSL::Shared::Actions::English::WordedNumberSpec;
 
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
@@ -19,7 +19,7 @@ grammar ParseObj
 };
 
 sub parse-func( Str:D $spec) {
-    ParseObj.parse($spec.lc, rule => 'worded-number-spec', actions => DSL::Shared::Actions::WordedNumberSpec.new ).made,
+    ParseObj.parse($spec.lc, rule => 'worded-number-spec', actions => DSL::Shared::Actions::English::WordedNumberSpec.new ).made,
 }
 
 plan 41;
