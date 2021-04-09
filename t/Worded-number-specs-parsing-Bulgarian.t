@@ -32,6 +32,7 @@ plan 42;
 #-----------------------------------------------------------
 # The tests below are generated with the following Mathematica code:
 #SeedRandom[39902];
+#testLanguage = "Bulgarian";
 #k = 6;
 #lsTestNumbers =
 #  Union[Join @@

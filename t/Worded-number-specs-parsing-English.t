@@ -27,6 +27,30 @@ sub parse-func(Str:D $spec) {
 
 plan 42;
 
+#-----------------------------------------------------------
+# Worded number specifications parsing
+#-----------------------------------------------------------
+# The tests below are generated with the following Mathematica code:
+#SeedRandom[39902];
+#testLanguage = "English";
+#k = 6;
+#lsTestNumbers =
+#  Union[Join @@
+#    Map[RandomInteger[#, k] &, {{0, 19}, {20, 100}, {101,
+#       1000}, {1001, 10000}, {10001, 10^6}, {10^6, 10^9}, {10^9,
+#       10^12}}]];
+#Length[lsTestNumbers]
+#
+#lsSentences =
+#  Map[IntegerName[#, {"Bulgarian", "Words"}] &, lsTestNumbers];
+#Shallow[lsSentences]
+#
+#StringRiffle[
+# MapThread[
+#  "## " <> #3 <> "\n" <> "is parse-func('" <> #1 <> "'), " <> #2 <>
+#    ",\n'" <> #1 <> "';" &, {lsSentences, ToString /@ lsTestNumbers,
+#   ToString /@ Range[Length[lsTestNumbers]]}], "\n\n"]
+
 ## 1
 is parse-func('zero'), 0,
         'zero';
