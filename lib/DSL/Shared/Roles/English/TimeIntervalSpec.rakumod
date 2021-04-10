@@ -5,7 +5,7 @@ use v6;
 #   https://github.com/antononcube/ConversationalAgents/blob/master/Packages/WL/EBNFGrammarToRakuPerl6.m
 
 role DSL::Shared::Roles::English::TimeIntervalSpec {
-  rule time-interval-spec { <week-of-year> || <month-of-year> || <time-interval-from-to-spec> || <number-of-time-units> }
+  rule time-interval-spec { <week-of-year> || <month-of-year> || <time-interval-from-to-spec> || <time-interval-into-spec> || <time-interval-in-units-spec> || <number-of-time-units> }
   rule time-unit  { <hour-time-spec-word>  | <day-time-spec-word>  | <week-time-spec-word>  | <month-time-spec-word>  | <year-time-spec-word>  | <lifetime-time-spec-word> }
   rule time-units { <hours-time-spec-word> | <days-time-spec-word> | <weeks-time-spec-word> | <months-time-spec-word> | <years-time-spec-word> | <lifetimes-time-spec-word> }
   rule number-of-time-units { <time-spec-number> <time-units> | [ <.a-determiner> | <one-time-spec-word> ] <time-unit> }
@@ -15,9 +15,11 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
     <number-of-time-units> <ago-time-spec-word>
   }
   rule time-interval-from-to-spec {
-    <between-time-spec-word> <time-spec> <.and-conjunction> <time-spec> |
-    <.from-preposition> <time-spec> <.to-preposition> <time-spec> |
-    [ <in-preposition> | <during-time-spec-word> ]? <named-time-intervals> |
+    <between-time-spec-word> <from=.time-spec> <.and-conjunction> <to=.time-spec> |
+    <.from-preposition> <from=.time-spec> <.to-preposition> <to=.time-spec> }
+  rule time-interval-into-spec {
+    [ <in-preposition> | <during-time-spec-word> ]? <named-time-intervals> }
+  rule time-interval-in-units-spec {
     <between-time-spec-word> <time-spec-number> <.and-conjunction> <number-of-time-units> }
   rule time-spec { <right-now> | <day-name> | <week-of-year> | <week-number> | <month-of-year> | <month-name> | <holiday-name> | <hour-spec> | <holiday-offset> }
   rule right-now { <now-time-spec-word> | <right-time-spec-word> <now-time-spec-word> | <just-time-spec-word> <now-time-spec-word> }
