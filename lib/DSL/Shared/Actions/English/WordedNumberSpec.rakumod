@@ -1,41 +1,8 @@
-=begin comment
-#==============================================================================
-#
-#   Worded Number Spec actions in Raku (Perl 6)
-#   Copyright (C) 2021  Anton Antonov
-#
-#   This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-#
-#   This program is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#   Written by Anton Antonov,
-#   antononcube @@ @ posteo .... net
-#   Windermere, Florida, USA.
-#
-#==============================================================================
-#
-#   For more details about Raku (Perl6) see https://raku.org/ .
-#
-#==============================================================================
-=end comment
-
-# The "General" section should be the same across all programming languages.
-# (And natural languages too.)
-
 use v6;
 
 class DSL::Shared::Actions::English::WordedNumberSpec {
 
-  method worded-number-spec($/)     { make $/.values[0].made; }
+  method numeric-word-form($/)     { make $/.values[0].made; }
 
   method worded_number_100s($/)     { make ( $<name_1_to_19>.made.Int * 100 ).Str }
   method worded_number_1000s($/)    { make ( $<worded_number_up_to_1000>.made.Int * 1_000 ).Str }

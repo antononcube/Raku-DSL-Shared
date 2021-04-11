@@ -2,7 +2,7 @@ use v6;
 
 role DSL::Shared::Roles::Bulgarian::WordedNumberSpec {
 
-  rule bg-worded-number-spec { <bg_worded_number_up_to_tril> }
+  rule bg-numeric-word-form { <bg_worded_number_up_to_tril> }
 
   regex bg_worded_number_100s     { <bg_name_2_to_9> <bg_suffix_for_100> | <bg_name_of_100> }
   regex bg_worded_number_1000s    { <bg_worded_number_up_to_1000>    \h+ <bg_name_of_1000> }

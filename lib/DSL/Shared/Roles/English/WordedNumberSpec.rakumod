@@ -6,7 +6,7 @@ use v6;
 
 role DSL::Shared::Roles::English::WordedNumberSpec {
 
-  rule worded-number-spec { <worded_number_up_to_tril> }
+  rule numeric-word-form { <worded_number_up_to_tril> }
 
   regex worded_number_100s     { <name_1_to_19>                \h+ <name_of_100> | <name_of_100> }
   regex worded_number_1000s    { <worded_number_up_to_1000>    \h+ <name_of_1000> }
