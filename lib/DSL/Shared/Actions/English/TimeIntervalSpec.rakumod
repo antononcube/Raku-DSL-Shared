@@ -15,14 +15,15 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     has Str $!unit;
 
     method time-interval-spec($/)  {
-        make $/.values[0].made
+        my %res = $/.values[0].made;
+        %res = %res, %( Timestamp => DateTime.now );
+        make %res
     }
 
     ##----------------------------------------------------------
     method time-unit($/) { make $/.Str; }
 
-    method time-units($/) { make $/.Str.substr(0,*-1); }
-
+    method time-units($/) { make $/.Str.trim.substr(0,*-1); }
 
     ##----------------------------------------------------------
     method week-of-year($/) {
@@ -41,13 +42,6 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!refPoint = %res<RefPoint> ~ '-' ~ $<month-name>.made;
         make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit )
     }
-#    method month-of-year($/) {
-#        my $year = $<year-spec> ?? ($<year-spec>.made)<RefPoint> !! Date.today.year.Str;
-#        $!refPoint = $year ~ '-' ~ $<month-name>.made.Str;
-#        $!unit = 'year-month';
-#        $!length = 1;
-#        make %( Length => $!length, RefPoint => $!refPoint, Unit => $!unit)
-#    }
 
     ##----------------------------------------------------------
     method time-interval-from-to-spec($/) {
@@ -65,8 +59,12 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
     ##----------------------------------------------------------
     method time-interval-in-units-spec($/) {
-        die 'Not implemented : time-interval-in-units-spec';
-        make $/.values[0].made;
+
+        my %num = $<time-spec-number>.made;
+        my %res = $<number-of-time-units>.made;
+
+        %res = %res, %( From => %num<Length>, To => %res<Length>, Length => (%res<Length> + %num<Length>)/2 );
+        make %res
     }
 
     ##----------------------------------------------------------
@@ -133,7 +131,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     method month-name($/) { make $/.values[0].made }
 
     method month-name-long($/) {
-        my %m = %(january=>1, february=>2, march=>3, april=>4, may=>5, june=>6, july=>7, august=>8, september=>9, october=>10, november=>11, december=>12);
+        my %m = %(january => 1, february => 2, march => 3, april => 4, may => 5, june => 6, july => 7, august => 8, september => 9, october => 10, november => 11, december => 12);
         make %m{$/.Str.trim}
     }
 

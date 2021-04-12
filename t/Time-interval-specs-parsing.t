@@ -4,13 +4,13 @@ use lib './lib';
 use lib '.';
 
 use DSL::Shared::Roles::ErrorHandling;
-use DSL::Shared::Roles::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 use DSL::Shared::Roles::English::TimeIntervalSpec;
 use DSL::Shared::Roles::English::PipelineCommand;
 
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
-        does DSL::Shared::Roles::English::WordedNumberSpec
+        does Lingua::NumericWordForms::Roles::English::WordedNumberSpec
         does DSL::Shared::Roles::English::TimeIntervalSpec
         does DSL::Shared::Roles::English::PipelineCommand {
 

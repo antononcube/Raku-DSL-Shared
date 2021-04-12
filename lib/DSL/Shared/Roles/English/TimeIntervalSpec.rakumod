@@ -5,7 +5,7 @@ use v6;
 #   https://github.com/antononcube/ConversationalAgents/blob/master/Packages/WL/EBNFGrammarToRakuPerl6.m
 
 role DSL::Shared::Roles::English::TimeIntervalSpec {
-  rule time-interval-spec { <week-of-year> || <month-of-year> || <time-interval-from-to-spec> || <time-interval-into-spec> || <time-interval-in-units-spec> || <number-of-time-units> }
+  rule time-interval-spec { <week-of-year> || <month-of-year> || <time-interval-in-units-spec> || <time-interval-from-to-spec> || <time-interval-into-spec> || <number-of-time-units> }
 
   rule time-unit  { <hour-time-spec-word>  | <day-time-spec-word>  | <week-time-spec-word>  | <month-time-spec-word>  | <year-time-spec-word>  | <lifetime-time-spec-word> }
 
@@ -27,10 +27,10 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
     <.from-preposition> <from=.time-spec> <.to-preposition> <to=.time-spec> }
 
   rule time-interval-into-spec {
-    [ <in-preposition> | <during-time-spec-word> ]? <named-time-intervals> }
+    [ <.in-preposition> | <.during-time-spec-word> ]? <named-time-intervals> }
 
   rule time-interval-in-units-spec {
-    <between-time-spec-word> <time-spec-number> <.and-conjunction> <number-of-time-units> }
+    [ <.between-time-spec-word> | <.within-time-spec-word>] <time-spec-number> <.and-conjunction> <number-of-time-units> }
 
   rule time-spec { <right-now> | <day-name> | <week-of-year> | <week-number> | <month-of-year> | <month-name> | <holiday-name> | <hour-spec> | <holiday-offset> }
   rule right-now { <now-time-spec-word> | <right-time-spec-word> <now-time-spec-word> | <just-time-spec-word> <now-time-spec-word> }
@@ -140,6 +140,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
   token wednesdays-time-spec-word { 'wednesdays' };
   token week-time-spec-word { 'week' };
   token weeks-time-spec-word { 'weeks' };
+  token within-time-spec-word { 'within' };
   token year-time-spec-word { 'year' };
   token years-time-spec-word { 'years' };
   token yesterday-time-spec-word { 'yesterday' };

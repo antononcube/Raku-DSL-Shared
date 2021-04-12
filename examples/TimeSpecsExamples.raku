@@ -4,14 +4,9 @@ use lib './lib';
 use lib '.';
 
 use DSL::Shared::Roles::ErrorHandling;
-use DSL::Shared::Roles::Bulgarian::WordedNumberSpec;
-use DSL::Shared::Roles::English::WordedNumberSpec;
 use DSL::Shared::Roles::English::TimeIntervalSpec;
 use DSL::Shared::Roles::English::PipelineCommand;
-use DSL::Shared::Actions::English::WordedNumberSpec;
-use DSL::Shared::Actions::Bulgarian::WordedNumberSpec;
 use DSL::Shared::Actions::English::TimeIntervalSpec;
-
 
 use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
@@ -47,7 +42,8 @@ my @commands = (
 'from january 2020 to march 2021',
 '2 week of 2019',
 'two weeks ago',
-'in the last three weeks'
+'in the last three weeks',
+'between 30 and 40 days'
 );
 
 for @commands -> $c {
