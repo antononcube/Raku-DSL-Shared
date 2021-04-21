@@ -14,9 +14,45 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     has Int $!length;
     has Str $!unit;
 
+    ##----------------------------------------------------------
+    method normalize-time-interval-spec( %tiSpec ) {
+        with %tiSpec<From> && %tiSpec<To> {
+           %tiSpec
+        }
+        orwith %tiSpec<RefPoint> && %tiSpec<Direction> {
+            given ( %tiSpec<RefPoint>, %tiSpec<Direction>, %tiSpec<Unit> ) {
+                when <now past year> {
+                    %tiSpec , { From => Date.today, To => Date.today - %tiSpec<Length> * 365 }
+                }
+                when <now future year> {
+                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 365 }
+                }
+                when <now past month> {
+                    %tiSpec , { From => Date.today, To => Date.today - %tiSpec<Length> * 31 }
+                }
+                when <now future month> {
+                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 31 }
+                }
+                when <now past week> {
+                    %tiSpec , { From => Date.today, To => Date.today - %tiSpec<Length> * 7 }
+                }
+                when <now future week> {
+                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 7 }
+                }
+                when <now past day> {
+                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> }
+                }
+                when <now future day> {
+                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> }
+                }
+            }
+        }
+    }
+
+    ##----------------------------------------------------------
     method time-interval-spec($/)  {
         my %res = $/.values[0].made;
-        %res = %res, %( Timestamp => DateTime.now );
+        %res = %res, %( Timestamp => DateTime.now, Command => $/.Str );
         make %res
     }
 
