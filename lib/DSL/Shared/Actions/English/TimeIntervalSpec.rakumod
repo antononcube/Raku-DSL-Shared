@@ -22,25 +22,25 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         orwith %tiSpec<RefPoint> && %tiSpec<Direction> {
             given ( %tiSpec<RefPoint>, %tiSpec<Direction>, %tiSpec<Unit> ) {
                 when <now past year> {
-                    %tiSpec , { From => Date.today, To => Date.today - %tiSpec<Length> * 365 }
+                    %tiSpec , { From => Date.today - %tiSpec<Length> * 365, To => Date.today }
                 }
                 when <now future year> {
                     %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 365 }
                 }
                 when <now past month> {
-                    %tiSpec , { From => Date.today, To => Date.today - %tiSpec<Length> * 31 }
+                    %tiSpec , { From => Date.today - %tiSpec<Length> * 31, To => Date.today }
                 }
                 when <now future month> {
                     %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 31 }
                 }
                 when <now past week> {
-                    %tiSpec , { From => Date.today, To => Date.today - %tiSpec<Length> * 7 }
+                    %tiSpec , { From => Date.today - %tiSpec<Length> * 7, To => Date.today }
                 }
                 when <now future week> {
                     %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 7 }
                 }
                 when <now past day> {
-                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> }
+                    %tiSpec , { From => Date.today - %tiSpec<Length>, To => Date.today }
                 }
                 when <now future day> {
                     %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> }
