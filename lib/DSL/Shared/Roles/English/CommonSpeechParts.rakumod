@@ -146,7 +146,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token parameters-noun { 'parameters' | ([\w]+) <?{ $0.Str ne 'parameter' and is-fuzzy-match( $0.Str, 'parameters') }> }
     token pattern-noun { 'pattern' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pattern') }> }
     token per-preposition { 'per' }
-    token pipeline-noun { 'pipeline' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pipeline') }> }
+    token pipeline-noun { 'pipeline' | ([\w]+) <?{ $0.Str ne 'timeline' and is-fuzzy-match( $0.Str, 'pipeline') }> }
     token plot-noun { 'plot' | ([\w]+) <?{ $0.Str ne 'plots' and is-fuzzy-match( $0.Str, 'plot') }> }
     token plots-noun { <plot-noun> | 'plots' | ([\w]+) <?{ $0.Str ne 'plot' and is-fuzzy-match( $0.Str, 'plots') }> }
     token random-adjective { 'random' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'random') }> }
@@ -198,7 +198,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
     token time-noun { 'time' | ([\w]+) <?{ $0.Str !(elem) <the times> and is-fuzzy-match( $0.Str, 'time', 1) }> }
-    token timeline-noun { 'timeline' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'timeline') }> }
+    token timeline-noun { 'timeline' | ([\w]+) <?{ $0.Str ne 'pipeline' and is-fuzzy-match( $0.Str, 'timeline') }> }
     token times-noun { 'time' | ([\w]+) <?{ $0.Str ne 'time' and is-fuzzy-match( $0.Str, 'times', 1) }> }
     token to-preposition { 'to' | 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into', 1) }> }
     token top-noun { 'top' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'top', 1) }> }
