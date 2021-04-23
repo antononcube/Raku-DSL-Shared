@@ -112,13 +112,17 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     method time-interval-relative($/) {
         $!refPoint = 'now';
 
-        if $<ago-time-spec-word> {
+        with $<ago-time-spec-word> {
             $!dir = 'past';
         } else {
             $!dir = $<next-time-spec-word> ?? 'future' !! 'past';
         }
 
         my %res = $<number-of-time-units>.made, %( RefPoint => $!refPoint, Direction => $!dir );
+
+        if %res<Unit> eq 'year' and $<last-time-spec-word> {
+            %res = %res , %(  From => (Date.today.year - 1).Str ~ '-01-01', To => (Date.today.year - 1).Str ~ '-12-31' )
+        }
 
         make %res
     }

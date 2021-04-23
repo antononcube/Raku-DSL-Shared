@@ -37,6 +37,8 @@ grammar ParseObj
 
 my @commands = (
 #'between christmas and ramadan',
+'past year',
+'last year',
 'from week 12 to week 20',
 'from jan to mar',
 'from january 2020 to march 2021',

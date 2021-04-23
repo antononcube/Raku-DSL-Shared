@@ -18,7 +18,7 @@ grammar ParseObj
 };
 
 
-plan 10;
+plan 12;
 
 #-----------------------------------------------------------
 # Time interval specifications parsing
@@ -63,5 +63,13 @@ ok ParseObj.parse('2 weeks ago'),
 ## 10
 ok ParseObj.parse('two weeks ago'),
         'two weeks ago';
+
+## 11
+ok ParseObj.parse('last year'),
+        'last year';
+
+## 12
+ok ParseObj.parse('past year'),
+        'past year';
 
 done-testing;

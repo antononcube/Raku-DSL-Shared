@@ -19,7 +19,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
   rule named-time-intervals { <day-name-relative> | <time-interval-relative> | <month-name> }
 
   rule time-interval-relative {
-    <.the-determiner>? [ <next-time-spec-word> | <last-time-spec-word> ] <number-of-time-units> |
+    <.the-determiner>? [ <next-time-spec-word> | <last-time-spec-word> | <past-time-spec-word> ] <number-of-time-units> |
     <number-of-time-units> <ago-time-spec-word>
   }
   rule time-interval-from-to-spec {
@@ -115,6 +115,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
   token october-time-spec-word { 'october' };
   token of-time-spec-word { 'of' };
   token one-time-spec-word { 'one' };
+  token past-time-spec-word { 'past' };
   token pm-time-spec-word { 'pm' };
   token ramadan-time-spec-word { 'ramadan' };
   token right-time-spec-word { 'right' };
