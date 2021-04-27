@@ -127,6 +127,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token missing-adjective { 'missing' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'missing') }> }
     token model { 'model' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'model') }> }
     token module-noun { 'module' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'module') }> }
+    token my-determiner { 'my' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'my', 1) }> }
     token name-noun { 'name' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'name') }> }
     token nearest-adjective { 'nearest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'nearest') }> }
     token neighbors-noun { 'neighbors' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'neighbors') }> }
@@ -138,6 +139,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token off-adverb { 'off' }
     token on-preposition { 'on' }
     token or-conjunction { 'or' }
+    token our-determiner { 'our' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'our', 1) }> }
     token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out', 1) }> }
     token outlier-noun { 'outlier' | ([\w]+) <?{ $0.Str ne 'outliers' and is-fuzzy-match( $0.Str, 'outlier') }> }
     token outliers-noun { 'outliers' | ([\w]+) <?{ $0.Str ne 'outlier' and is-fuzzy-match( $0.Str, 'outliers') }> }

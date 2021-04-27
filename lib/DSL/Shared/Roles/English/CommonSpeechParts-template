@@ -126,6 +126,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token model { 'model' }
     token module-noun { 'module' }
     token module-noun { 'module' }
+    token my-determiner { 'my' }
     token name-noun { 'name' }
     token nearest-adjective { 'nearest' }
     token neighbors-noun { 'neighbors' }
@@ -137,6 +138,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token off-adverb { 'off' }
     token on-preposition { 'on' }
     token or-conjunction { 'or' }
+    token our-determiner { 'our' }
     token out-adverb { 'out' }
     token over-preposition { 'over' }
     token parameter-noun { 'parameter' }
