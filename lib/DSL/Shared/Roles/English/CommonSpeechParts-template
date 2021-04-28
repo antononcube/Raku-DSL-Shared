@@ -125,7 +125,6 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token missing-adjective { 'missing' }
     token model { 'model' }
     token module-noun { 'module' }
-    token module-noun { 'module' }
     token my-determiner { 'my' }
     token name-noun { 'name' }
     token nearest-adjective { 'nearest' }
