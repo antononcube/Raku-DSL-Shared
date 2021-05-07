@@ -130,7 +130,7 @@ sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bo
         if $bool { return False } else { return Nil }
     }
 
-    ## Get known job title words
+    ## Get known phrase words
     my @candidates = do for @words -> $w {
         my $ws = known-string-candidates($knownStrings, $w);
         if !$ws {
