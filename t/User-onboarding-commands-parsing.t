@@ -16,7 +16,7 @@ grammar ParseObj
 };
 
 
-plan 11;
+plan 12;
 
 #-----------------------------------------------------------
 # User onboarding commands parsing
@@ -65,5 +65,13 @@ ok ParseObj.parse('i am nina and i am 25 years old'),
 ## 11
 ok ParseObj.parse('my name is sonya bartok, i am asian, and i am 55'),
         'my name is sonya bartok, i am asian, and i am 55';
+
+## 12
+ok ParseObj.parse('i am twenty five years old'),
+        'i am twenty five years old';
+
+## 13
+#ok ParseObj.parse('i am one hundred and twenty five pounds'),
+#        'i am one hundred and twenty five pounds';
 
 done-testing;
