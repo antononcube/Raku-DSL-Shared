@@ -2,11 +2,13 @@ use v6;
 
 use DSL::Shared::Roles::CommonStructures;
 use DSL::Shared::Roles::English::CommonSpeechParts;
+use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 
 # This role class has pipeline commands.
 role DSL::Shared::Roles::English::PipelineCommand
         does DSL::Shared::Roles::CommonStructures
-        does DSL::Shared::Roles::English::CommonSpeechParts {
+        does DSL::Shared::Roles::English::CommonSpeechParts
+        does Lingua::NumericWordForms::Roles::English::WordedNumberSpec {
 
     rule pipeline-command {
         <assign-pipeline-object-to> |
