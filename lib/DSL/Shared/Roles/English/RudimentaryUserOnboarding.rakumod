@@ -5,7 +5,7 @@ use DSL::Shared::Utilities::FuzzyMatching;
 role DSL::Shared::Roles::English::RudimentaryUserOnboarding {
     
     rule user-onboarding-command {
-       [ <i-am-user-onboarding-command> | <my-attribute-is-onboarding-command> ]+ % <.list-separator>
+        [ <i-am-user-onboarding-command> | <my-attribute-is-onboarding-command> ]+ % <.list-separator>
     }
 
     rule i-am-user-onboarding-command {
@@ -14,17 +14,17 @@ role DSL::Shared::Roles::English::RudimentaryUserOnboarding {
 
     rule my-attribute-is-onboarding-command {
         <.my-user-onboarding-word> [
-           <.race-user-onboarding-word>   <.is-user-onboarding-word> <user-race-spec> |
-           <.name-user-onboarding-word>   <.is-user-onboarding-word> <user-name-spec> |
-           <.weight-user-onboarding-word> <.is-user-onboarding-word> <user-weight-spec> |
-           <.age-user-onboarding-word>    <.is-user-onboarding-word> <user-age-spec> ]
+           <.age-user-onboarding-word>    <.is-user-onboarding-word> <user-age-spec>    ||
+           <.weight-user-onboarding-word> <.is-user-onboarding-word> <user-weight-spec> ||
+           <.race-user-onboarding-word>   <.is-user-onboarding-word> <user-race-spec>   ||
+           <.name-user-onboarding-word>   <.is-user-onboarding-word> <user-name-spec> ]
     }
 
     rule user-attribute-spec {
-        <user-age-spec>     |
-        <user-weight-spec>  |
-        <user-race-spec>    |
-        <user-bio-sex-spec> |
+        <user-age-spec>     ||
+        <user-weight-spec>  ||
+        <user-race-spec>    ||
+        <user-bio-sex-spec> ||
         <user-name-spec>
     }
 
@@ -44,12 +44,14 @@ role DSL::Shared::Roles::English::RudimentaryUserOnboarding {
 
     ##-------------------------------------------------------
     rule user-age-spec { <human-age-spec> <.human-age-pos-phrase>? }
-    token human-age-spec { (\d+) <?{ 0 <= $0.Str.Num <= 110 }> }
+    rule human-age-spec { <human-age-num-spec> || <numeric-word-form> }
+    token human-age-num-spec { (\d+) <?{ 0 <= $0.Str.Num <= 110 }> }
     rule human-age-pos-phrase { <years-user-onboarding-word> <old-user-onboarding-word> }
 
     ##-------------------------------------------------------
     rule user-weight-spec { <human-weight-spec> <user-weight-unit-spec> }
-    token human-weight-spec { (\d+) <?{ 5 <= $0.Str.Num <= 450 }> }
+    rule human-weight-spec { <human-weight-num-spec> || <numeric-word-form> }
+    token human-weight-num-spec { (\d+) <?{ 5 <= $0.Str.Num <= 450 }> }
     token user-weight-unit-spec { :i 'pounds' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pounds') }> | 'lbs' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'lbs') }> | 'kilograms' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'kilograms') }> | 'kg' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'kg') }> }
 
     ##-------------------------------------------------------
@@ -68,12 +70,12 @@ role DSL::Shared::Roles::English::RudimentaryUserOnboarding {
     token is-user-onboarding-word { :i 'is' }
     token kilograms-user-onboarding-word { :i 'kilograms' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'kilograms') }> }
     token my-user-onboarding-word { :i 'my' }
-    token name-user-onboarding-word { :i 'name' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'name') }> }
+    token name-user-onboarding-word { :i 'name' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'name', 1) }> }
     token native-user-onboarding-word { :i 'native' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'native') }> }
     token nina-user-onboarding-word { :i 'nina' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'nina') }> }
     token old-user-onboarding-word { :i 'old' }
     token pounds-user-onboarding-word { :i 'pounds' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pounds') }> }
-    token race-user-onboarding-word { :i 'race' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'race') }> }
+    token race-user-onboarding-word { :i 'race' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'race', 1) }> }
     token weight-user-onboarding-word { :i 'weight' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'weight') }> }
     token white-user-onboarding-word { :i 'white' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'white') }> }
     token years-user-onboarding-word { :i 'years' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'years') }> }
