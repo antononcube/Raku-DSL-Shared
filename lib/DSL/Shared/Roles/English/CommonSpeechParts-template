@@ -62,6 +62,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token data-noun { 'data' }
     token dataset { 'dataset' }
     token dataset-noun { 'dataset' }
+    token datasets-noun { 'datasets' }
     token default { 'default' }
     token delete-directive { 'delete' | 'drop' | 'erase' | 'remove' }
     token detect-verb { 'detect' }
@@ -87,6 +88,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token filter { 'filter' }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' }
+    token frames-noun { 'frames' }
     token from-preposition { 'from' }
     token function { 'function' }
     token functions { 'functions' }
@@ -229,6 +231,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
     rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
     rule data-frame { <data-noun> <frame-noun> }
+    rule data-frames { <data-noun> <frames-noun> }
     rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }

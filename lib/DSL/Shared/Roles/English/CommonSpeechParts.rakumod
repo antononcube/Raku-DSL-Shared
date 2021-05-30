@@ -61,7 +61,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token current-adjective { 'current' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'current') }> }
     token data-noun { 'data' }
     token dataset { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
-    token dataset-noun { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
+    token dataset-noun { 'dataset' | ([\w]+) <?{ $0.Str ne 'datasets' and is-fuzzy-match( $0.Str, 'dataset') }> }
+    token datasets-noun { 'datasets' | ([\w]+) <?{ $0.Str ne 'dataset' and is-fuzzy-match( $0.Str, 'datasets') }> }
     token default { 'default' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'default') }> }
     token delete-directive { 'delete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'delete') }> | 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> | 'erase' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'erase') }> | 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
     token detect-verb { 'detect' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'detect') }> }
@@ -87,7 +88,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token filter-verb { 'filter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'filter') }> }
     token find-verb { 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> }
     token for-preposition { 'for' | 'with' }
-    token frame-noun { 'frame' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'frame') }> }
+    token frame-noun { 'frame' | ([\w]+) <?{ $0.Str ne 'frames' and is-fuzzy-match( $0.Str, 'frame') }> }
+    token frames-noun { 'frames' | ([\w]+) <?{ $0.Str ne 'frame' and is-fuzzy-match( $0.Str, 'frames') }> }
     token from-preposition { 'from' }
     token function { 'function' | ([\w]+) <?{ $0.Str ne 'functions' and is-fuzzy-match( $0.Str, 'function') }> }
     token functions { 'functions' | ([\w]+) <?{ $0.Str ne 'function' and is-fuzzy-match( $0.Str, 'functions') }> }
@@ -235,6 +237,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule data-column-phrase { <data-noun>? [ <column-noun> | <variable-noun> ] }
     rule data-columns-phrase { <data-noun>? [ <columns> | <variables-noun> ] }
     rule data-frame { <data-noun> <frame-noun> }
+    rule data-frames { <data-noun> <frames-noun> }
     rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
