@@ -60,6 +60,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token creation-noun { 'creation' }
     token current-adjective { 'current' }
     token data-noun { 'data' }
+    token datum-noun { 'datum' }
     token dataset { 'dataset' }
     token dataset-noun { 'dataset' }
     token datasets-noun { 'datasets' }
