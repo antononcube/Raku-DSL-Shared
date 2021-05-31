@@ -48,7 +48,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token cluster { 'clusters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'clusters') }> }
     token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
     token columns { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
-    token complete-ajective { 'complete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'complete') }> }
+    token complete-adjective { 'complete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'complete') }> }
     token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
     token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link') }> }
     token consider-verb { 'consider' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consider') }> }
@@ -262,6 +262,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule simulate-and-display { <simulate-directive> [ <and-conjunction> <display-directive> ]? }
     rule take-away-phrase { <take-verb> <away-adverb> }
     rule take-off-phrase { <take-verb> <off-adverb> }
-    rule time-series-data { <time-noun> <series-noun> <data-noun>? }
+    rule time-series-phrase { <time-noun> <series-noun> }
+    rule time-series-data { <time-series-phrase> <data-noun>? }
     rule use-directive { [ <get-verb> <and-conjunction>? ]? <use-verb> }
 }
