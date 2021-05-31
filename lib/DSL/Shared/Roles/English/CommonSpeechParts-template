@@ -231,6 +231,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule annex-directive { <annex-verb> | <append-verb> }
     rule assign-directive { <assign-verb> }
+    rule complete-cases-phrase { <complete-adjective> <cases-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
     rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
