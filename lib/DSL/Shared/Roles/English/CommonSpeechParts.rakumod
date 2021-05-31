@@ -41,11 +41,14 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token broaden-verb { 'broaden' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'broaden') }> }
     token by-preposition { 'by' | 'with' | 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> }
     token calculation { 'calculation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculation') }> }
+    token case-noun { 'case' | ([\w]+) <?{ $0.Str ne 'case' and is-fuzzy-match( $0.Str, 'case', 1) }> }
+    token cases-noun { 'cases' | ([\w]+) <?{ $0.Str ne 'cases' and is-fuzzy-match( $0.Str, 'cases', 1) }> }
     token chart-noun { 'chart' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'chart') }> }
     token classify-verb { 'classify' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'classify') }> }
     token cluster { 'clusters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'clusters') }> }
     token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
     token columns { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
+    token complete-ajective { 'complete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'complete') }> }
     token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
     token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link') }> }
     token consider-verb { 'consider' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consider') }> }

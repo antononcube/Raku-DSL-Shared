@@ -41,11 +41,14 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token broaden-verb { 'broaden' }
     token by-preposition { 'by' | 'with' | 'using' }
     token calculation { 'calculation' }
+    token case-noun { 'case' }
+    token cases-noun { 'cases' }
     token chart-noun { 'chart' }
     token classify-verb { 'classify' }
     token cluster { 'clusters' }
     token column-noun { 'column' }
     token columns { 'columns' }
+    token complete-adjective { 'complete' }
     token compute-directive { 'compute' | 'find' | 'calculate' }
     token connect-verb { 'link' }
     token consider-verb { 'consider' }
