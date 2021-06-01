@@ -15,7 +15,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token IDENTIFIER-noun { 'IDENTIFIER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'IDENTIFIER') }> }
     token MODULE-noun { 'MODULE' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'MODULE') }> }
     token TARGET-noun { 'TARGET' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
-    token USER-noun { 'USER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'USER') }> }
+    token USER-noun { 'USER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'USER', 1) }> }
     token a-determiner { 'a' | 'an' }
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
     token adjacency-noun { 'adjacency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacency') }> }
@@ -33,10 +33,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token at-preposition { 'at' }
     token automatic { 'automatic' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'automatic') }> }
     token away-adverb { 'away' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'away', 1) }> }
-    token axes-noun { 'axes' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axes') }> }
-    token axis-noun { 'axis' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axis') }> }
+    token axes-noun { 'axes' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axes', 1) }> }
+    token axis-noun { 'axis' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'axis', 1) }> }
     token be-verb { 'be' }
-    token both-determiner { 'both' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'both') }> }
+    token both-determiner { 'both' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'both', 1) }> }
     token bottom-noun { 'bottom' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'bottom') }> }
     token broaden-verb { 'broaden' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'broaden') }> }
     token by-preposition { 'by' | 'with' | 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> }
@@ -49,8 +49,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
     token columns { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
     token complete-adjective { 'complete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'complete') }> }
-    token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
-    token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link') }> }
+    token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find', 1) }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
+    token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link', 1) }> }
     token consider-verb { 'consider' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consider') }> }
     token context-noun { 'context' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'context') }> }
     token contingency-noun { 'contingency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'contingency') }> }
@@ -121,7 +121,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token load-verb { 'load' }
     token locate-verb { 'locate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'locate') }> }
     token low-adjective { 'low' }
-    token lower-adjective { 'lower' | ([\w]+) <?{  $0.Str ne 'low' and is-fuzzy-match( $0.Str, 'lower') }> }
+    token lower-adjective { 'lower' | ([\w]+) <?{ $0.Str ne 'low' and is-fuzzy-match( $0.Str, 'lower') }> }
+    token make-verb { 'make' | ([\w]+) <?{ $0.Str ne 'make' and is-fuzzy-match( $0.Str, 'make', 1) }> }
     token making-noun { 'making' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'making') }> }
     token manner { 'manner' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'manner') }> }
     token matrix-noun { 'matrix' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'matrix') }> }
