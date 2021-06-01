@@ -18,7 +18,7 @@ grammar ParseObj
 };
 
 
-plan 12;
+plan 14;
 
 #-----------------------------------------------------------
 # Time interval specifications parsing
@@ -71,5 +71,13 @@ ok ParseObj.parse('last year'),
 ## 12
 ok ParseObj.parse('past year'),
         'past year';
+
+## 13
+ok ParseObj.parse('each year'),
+        'each year';
+
+## 14
+ok ParseObj.parse('every two months'),
+        'every two months';
 
 done-testing;
