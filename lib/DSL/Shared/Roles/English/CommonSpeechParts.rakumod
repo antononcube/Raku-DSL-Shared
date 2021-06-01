@@ -43,7 +43,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token calculation { 'calculation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculation') }> }
     token case-noun { 'case' | ([\w]+) <?{ $0.Str ne 'case' and is-fuzzy-match( $0.Str, 'case', 1) }> }
     token cases-noun { 'cases' | ([\w]+) <?{ $0.Str ne 'cases' and is-fuzzy-match( $0.Str, 'cases', 1) }> }
-    token chart-noun { 'chart' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'chart') }> }
+    token chart-noun { 'chart' | ([\w]+) <?{ $0.Str ne 'what' and is-fuzzy-match( $0.Str, 'chart', 1) }> }
     token classify-verb { 'classify' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'classify') }> }
     token cluster { 'clusters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'clusters') }> }
     token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
@@ -64,11 +64,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token current-adjective { 'current' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'current') }> }
     token data-noun { 'data' | ([\w]+) <?{  $0.Str !(elem) <date dates datum> and is-fuzzy-match( $0.Str, 'data', 1) }>}
     token datum-noun { 'datum' | ([\w]+) <?{  $0.Str !(elem) <data> and is-fuzzy-match( $0.Str, 'datum') }>}
-    token dataset { 'dataset' | ([\w]+) <?{ $0.Str ne 'datasets' and is-fuzzy-match( $0.Str, 'dataset') }> }
-    token dataset-noun { 'dataset' | ([\w]+) <?{ $0.Str ne 'datasets' and is-fuzzy-match( $0.Str, 'dataset') }> }
-    token datasets-noun { 'datasets' | ([\w]+) <?{ $0.Str ne 'dataset' and is-fuzzy-match( $0.Str, 'datasets') }> }
+    token dataset { 'dataset' | ([\w]+) <?{ $0.Str !(elem) ('datasets', 'a dataset') and is-fuzzy-match( $0.Str, 'dataset') }> }
+    token dataset-noun { 'dataset' | ([\w]+) <?{ $0.Str !(elem) ('datasets', 'a dataset') and is-fuzzy-match( $0.Str, 'dataset') }> }
+    token datasets-noun { 'datasets' | ([\w]+) <?{ $0.Str !(elem) ('dataset', 'a dataset') and is-fuzzy-match( $0.Str, 'datasets') }> }
     token default { 'default' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'default') }> }
-    token delete-directive { 'delete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'delete') }> | 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> | 'erase' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'erase') }> | 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
+    token delete-directive { 'delete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'delete') }> | 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop', 1) }> | 'erase' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'erase') }> | 'remove' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'remove') }> }
     token detect-verb { 'detect' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'detect') }> }
     token diagram { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     token diagram-noun { 'diagram' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'diagram') }> }
@@ -83,7 +83,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token document-noun { 'document' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'document') }> }
     token documents-noun { 'documents' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'documents') }> }
     token domain-noun { 'domain' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'words') }> }
-    token drop-verb { 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop') }> }
+    token drop-verb { 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop', 1) }> }
     token during-preposition { 'during' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'during') }> }
     token element { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
     token elements { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
@@ -101,7 +101,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token generate-verb { 'generate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'generate') }> }
     token get-verb { 'obtain' | 'get' | <take-verb> }
     token graph-noun { 'graph' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'graph') }> }
-    token high-adjective { 'high' | ([\w]+) <?{ $0.Str ne 'dish' and $0.Str ne 'height' and is-fuzzy-match( $0.Str, 'high') }> }
+    token high-adjective { 'high' | ([\w]+) <?{ $0.Str ne 'dish' and $0.Str ne 'height' and is-fuzzy-match( $0.Str, 'high', 1) }> }
     token higher-adjective { 'higher' | ([\w]+) <?{ $0.Str ne 'height' and is-fuzzy-match( $0.Str, 'higher') }> }
     token histogram { 'histogram' | ([\w]+) <?{  $0.Str ne 'histograms' and is-fuzzy-match( $0.Str, 'histogram') }> }
     token histograms { 'histograms' | ([\w]+) <?{  $0.Str ne 'histogram' and is-fuzzy-match( $0.Str, 'histograms') }> }
@@ -110,14 +110,14 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token identifier-noun { 'identifier' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'identifier') }> }
     token in-preposition { 'in' }
     token ingest-verb { 'ingest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'ingest') }> }
-    token into-preposition { 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into') }> }
+    token into-preposition { 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into', 1) }> }
     token is-verb { 'is' }
     token iterations { 'iterations' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'iterations') }> }
     token join-verb { 'join' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'join') }> }
     token language-noun { 'language' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'language') }> }
     token largest-adjective { 'largest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'largest') }> }
-    token link-noun { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link') }> }
-    token list-noun { 'list' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'list') }> }
+    token link-noun { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link', 1) }> }
+    token list-noun { 'list' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'list', 1) }> }
     token load-verb { 'load' }
     token locate-verb { 'locate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'locate') }> }
     token low-adjective { 'low' }
@@ -189,7 +189,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token statistical { 'statistical' | ([\w]+) <?{  $0.Str ne 'statistics' and is-fuzzy-match( $0.Str, 'statistical') }> }
     token statistics-noun { 'statistics' | ([\w]+) <?{  $0.Str ne 'statistical' and  is-fuzzy-match( $0.Str, 'statistics') }> }
     token stats-noun { 'stats' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'stats') }> }
-    token step-noun { 'step' | ([\w]+) <?{ $0.Str ne 'steps' and is-fuzzy-match( $0.Str, 'step') }> }
+    token step-noun { 'step' | ([\w]+) <?{ $0.Str ne 'steps' and is-fuzzy-match( $0.Str, 'step', 1) }> }
     token steps-noun { 'steps' | ([\w]+) <?{ $0.Str ne 'step' and is-fuzzy-match( $0.Str, 'steps') }> }
     token string-noun { 'string' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'string') }> }
     token sub-prefix { 'sub' }
@@ -223,9 +223,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token way-noun { 'way' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'way', 1) }> }
     token weight { 'weight' | ([\w]+) <?{ $0.Str ne 'weights' and is-fuzzy-match( $0.Str, 'weight') }> }
     token weights { 'weights' | ([\w]+) <?{ $0.Str ne 'weight' and is-fuzzy-match( $0.Str, 'weights') }> }
-    token what-pronoun { 'what' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'what', 1) }> }
-    token when-pronoun { 'when' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'when', 1) }> }
-    token which-determiner { 'which' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'which') }> }
+    token what-pronoun { 'what' | ([\w]+) <?{ $0.Str !(elem) <when which whith chart> and is-fuzzy-match( $0.Str, 'what', 1) }> }
+    token when-pronoun { 'when' | ([\w]+) <?{ $0.Str !(elem) <what which whith chart> and is-fuzzy-match( $0.Str, 'when', 1) }> }
+    token which-determiner { 'which' | ([\w]+) <?{ $0.Str !(elem) <what when whith chart> and is-fuzzy-match( $0.Str, 'which') }> }
     token with-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'by' }
     token without-preposition { 'without' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'without') }> }
     token words-noun { 'words' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'words') }> }
