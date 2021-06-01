@@ -64,7 +64,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token current-adjective { 'current' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'current') }> }
     token data-noun { 'data' | ([\w]+) <?{  $0.Str !(elem) <date dates datum> and is-fuzzy-match( $0.Str, 'data', 1) }>}
     token datum-noun { 'datum' | ([\w]+) <?{  $0.Str !(elem) <data> and is-fuzzy-match( $0.Str, 'datum') }>}
-    token dataset { 'dataset' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dataset') }> }
+    token dataset { 'dataset' | ([\w]+) <?{ $0.Str ne 'datasets' and is-fuzzy-match( $0.Str, 'dataset') }> }
     token dataset-noun { 'dataset' | ([\w]+) <?{ $0.Str ne 'datasets' and is-fuzzy-match( $0.Str, 'dataset') }> }
     token datasets-noun { 'datasets' | ([\w]+) <?{ $0.Str ne 'dataset' and is-fuzzy-match( $0.Str, 'datasets') }> }
     token default { 'default' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'default') }> }
