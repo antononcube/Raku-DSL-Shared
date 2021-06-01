@@ -88,6 +88,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token each-determiner { 'each' }
     token element { 'element' }
     token elements { 'elements' }
+    token every-determiner { 'every' }
     token extend-verb { 'extend' }
     token extract-directive { 'extract' }
     token filter { 'filter' }

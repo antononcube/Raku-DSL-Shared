@@ -88,6 +88,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token each-determiner { 'each' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'each', 1) }> }
     token element { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
     token elements { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
+    token every-determiner { 'every' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'every', 1) }> }
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }
     token extract-directive { 'extract' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extract') }> }
     token filter-verb { 'filter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'filter') }> }
