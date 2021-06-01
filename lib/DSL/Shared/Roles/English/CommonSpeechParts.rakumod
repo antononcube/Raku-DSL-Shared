@@ -85,6 +85,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token domain-noun { 'domain' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'words') }> }
     token drop-verb { 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop', 1) }> }
     token during-preposition { 'during' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'during') }> }
+    token each-determiner { 'each' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'each', 1) }> }
     token element { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
     token elements { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }

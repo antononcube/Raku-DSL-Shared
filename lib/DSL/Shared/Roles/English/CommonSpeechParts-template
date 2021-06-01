@@ -85,6 +85,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token domain-noun { 'domain' }
     token drop-verb { 'drop' }
     token during-preposition { 'during' }
+    token each-determiner { 'each' }
     token element { 'element' }
     token elements { 'elements' }
     token extend-verb { 'extend' }
