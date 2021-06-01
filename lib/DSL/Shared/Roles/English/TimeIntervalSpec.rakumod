@@ -5,7 +5,7 @@ use v6;
 #   https://github.com/antononcube/ConversationalAgents/blob/master/Packages/WL/EBNFGrammarToRakuPerl6.m
 
 role DSL::Shared::Roles::English::TimeIntervalSpec {
-  rule time-interval-spec { <week-of-year> || <month-of-year> || <time-interval-in-units-spec> || <time-interval-from-to-spec> || <time-interval-into-spec> || <number-of-time-units> }
+  rule time-interval-spec { <week-of-year> || <month-of-year> || <time-interval-in-units-spec> || <time-interval-from-to-spec> || <time-interval-into-spec> || <time-interval-every-spec> || <number-of-time-units> }
 
   rule time-unit  { <hour-time-spec-word>  | <day-time-spec-word>  | <week-time-spec-word>  | <month-time-spec-word>  | <year-time-spec-word>  | <lifetime-time-spec-word> }
 
@@ -28,6 +28,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpec {
 
   rule time-interval-into-spec {
     [ <.in-preposition> | <.during-time-spec-word> ]? <named-time-intervals> }
+
+  rule time-interval-every-spec {
+    [ <.each-determiner> <time-unit> | <.every-determiner> <number-of-time-units> ] }
 
   rule time-interval-in-units-spec {
     [ <.between-time-spec-word> | <.within-time-spec-word>] <time-spec-number> <.and-conjunction> <number-of-time-units> }
