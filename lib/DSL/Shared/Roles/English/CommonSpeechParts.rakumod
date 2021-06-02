@@ -62,8 +62,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token create-verb { 'create' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'create') }> }
     token creation-noun { 'creation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'creation') }> }
     token current-adjective { 'current' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'current') }> }
-    token data-noun { 'data' | ([\w]+) <?{  $0.Str !(elem) <date dates datum> and is-fuzzy-match( $0.Str, 'data', 1) }>}
-    token datum-noun { 'datum' | ([\w]+) <?{  $0.Str !(elem) <data> and is-fuzzy-match( $0.Str, 'datum') }>}
+    token data-noun { 'data' | ([\w]+) <?{ $0.Str !(elem) <date dates datum> and is-fuzzy-match( $0.Str, 'data', 1) }>}
+    token datum-noun { 'datum' | ([\w]+) <?{ $0.Str !(elem) <data date dates> and is-fuzzy-match( $0.Str, 'datum') }>}
     token dataset { 'dataset' | ([\w]+) <?{ $0.Str !(elem) ('datasets', 'a dataset') and is-fuzzy-match( $0.Str, 'dataset') }> }
     token dataset-noun { 'dataset' | ([\w]+) <?{ $0.Str !(elem) ('datasets', 'a dataset') and is-fuzzy-match( $0.Str, 'dataset') }> }
     token datasets-noun { 'datasets' | ([\w]+) <?{ $0.Str !(elem) ('dataset', 'a dataset') and is-fuzzy-match( $0.Str, 'datasets') }> }
