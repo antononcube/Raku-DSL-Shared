@@ -86,40 +86,44 @@ multi is-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
 # TBD...
 
 
-sub known-string-candidates(Set $knownStrings, Str:D $candidate) is export {
+sub known-string-candidates(Set $knownStrings, Str:D $candidate, UInt :$maxDist = 2) is export {
 
     my @res;
-    for edit-candidates($candidate) -> $var {
+    my @candidates = $maxDist < 2 ?? edits1($candidate) !! edit-candidates($candidate);
+    for @candidates  -> $var {
         if $var (elem) $knownStrings {
             @res.append($var)
         }
     }
-    if @res.elems == 0 { Nil } else { @res }
+
+     @res.elems == 0 ?? Nil !! @res
 
 }
 
-sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :$warn = True) is export {
+sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
 
     if $candidate (elem) $knownStrings {
         if $bool { return True } else { return $candidate }
     } else {
-        for edit-candidates($candidate) -> $var {
+        my @candidates = $maxDist < 2 ?? edits1($candidate) !! edit-candidates($candidate);
+        for @candidates -> $var {
             if $var (elem) $knownStrings {
                 if $warn { warn "Possible misspelling of '$var' as '$candidate'."; }
                 if $bool { return True } else { return $var }
             }
         }
     }
-    if $bool { False } else { Nil }
+
+    $bool ?? False !! Nil
 }
 
-sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) is export {
+sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
 
     ## First test
-    my Bool $res = known-string($knownPhrases, $phrase, :bool, :$warn);
+    my Bool $res = known-string($knownPhrases, $phrase, :bool, :$warn, :$maxDist);
 
     if $res {
-        if $bool { return True } else { return $phrase }
+        return $bool ?? True !! $phrase
     }
 
     ## Split the phrase into words
@@ -127,14 +131,14 @@ sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bo
 
     ## If one word then fail
     if @words.elems == 1 {
-        if $bool { return False } else { return Nil }
+        return $bool ?? False !! Nil
     }
 
     ## Get known phrase words
     my @candidates = do for @words -> $w {
-        my $ws = known-string-candidates($knownStrings, $w);
+        my $ws = known-string-candidates($knownStrings, $w, :$maxDist);
         if !$ws {
-            if $bool { return False } else { return Nil }
+            return $bool ?? False !! Nil
         }
         $ws
     }
@@ -144,13 +148,13 @@ sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bo
 
     ## Find if any of the cross product candidates is known
     for @candidates -> $c {
-        $res = known-string($knownPhrases, $c, :bool, :!warn);
+        $res = known-string($knownPhrases, $c, :bool, :!warn, :$maxDist);
         if $res {
             if $warn { warn "Possible misspelling of '$c' as '$phrase'."; }
-            if $bool { return True } else { return $c }
+            return $bool ?? True !! return $c
         }
     }
 
     ## Final result
-    if $bool { return False } else { return Nil }
+    return $bool ?? False !! Nil
 }
