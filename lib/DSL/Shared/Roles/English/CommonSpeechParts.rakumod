@@ -48,6 +48,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token cluster { 'clusters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'clusters') }> }
     token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
     token columns { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
+    token columns-noun { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
     token complete-adjective { 'complete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'complete') }> }
     token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find', 1) }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
     token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link', 1) }> }
@@ -137,7 +138,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token model { 'model' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'model') }> }
     token module-noun { 'module' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'module') }> }
     token my-determiner { 'my' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'my', 1) }> }
-    token name-noun { 'name' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'name') }> }
+    token name-noun { 'name' | ([\w]+) <?{ $0.Str ne 'names' and is-fuzzy-match( $0.Str, 'name') }> }
+    token names-noun { 'names' | ([\w]+) <?{ $0.Str ne 'name' and is-fuzzy-match( $0.Str, 'names') }> }
     token nearest-adjective { 'nearest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'nearest') }> }
     token neighbors-noun { 'neighbors' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'neighbors') }> }
     token no-determiner { 'no' }

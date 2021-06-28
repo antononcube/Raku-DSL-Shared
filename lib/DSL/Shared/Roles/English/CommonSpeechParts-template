@@ -48,6 +48,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token cluster { 'clusters' }
     token column-noun { 'column' }
     token columns { 'columns' }
+    token columns-noun { 'columns' }
     token complete-adjective { 'complete' }
     token compute-directive { 'compute' | 'find' | 'calculate' }
     token connect-verb { 'link' }
@@ -136,6 +137,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token module-noun { 'module' }
     token my-determiner { 'my' }
     token name-noun { 'name' }
+    token names-noun { 'names' }
     token nearest-adjective { 'nearest' }
     token neighbors-noun { 'neighbors' }
     token no-determiner { 'no' }
