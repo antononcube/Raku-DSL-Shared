@@ -197,6 +197,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token summary { 'summary' }
     token system-noun { 'system' }
     token table-noun { 'table' }
+    token tabular-adjective { 'tabular' }
     token take-verb { 'take' }
     token target-noun { 'target' }
     token text-noun { 'text' }

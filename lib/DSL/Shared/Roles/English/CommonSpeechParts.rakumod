@@ -201,6 +201,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token summary { 'summary' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'summary') }> }
     token system-noun { 'system' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'system') }> }
     token table-noun { 'table' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'table') }> }
+    token tabular-adjective { 'tabular' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'tabular') }> }
     token take-verb { 'take' }
     token target-noun { 'target' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'target') }> }
     token text-noun { 'text' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'text') }> }
