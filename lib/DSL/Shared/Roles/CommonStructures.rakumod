@@ -111,4 +111,18 @@ role DSL::Shared::Roles::CommonStructures {
     rule variable-name-or-wl-expr-list { <variable-name-or-wl-expr>+ % <list-separator> }
     rule mixed-quoted-variable-name-or-wl-expr { <mixed-quoted-variable-name> | <wl-expr> }
     rule mixed-quoted-variable-name-or-wl-expr-list { <mixed-quoted-variable-name-or-wl-expr>+ % <list-separator> }
+
+    # Assign-pairs and as-pairs
+    rule assign-pair { <assign-pair-lhs> [ <.assign-to-symbol> ] <assign-pair-rhs> }
+    rule as-pair     { <assign-pair-rhs> <.as-preposition>   <assign-pair-lhs> }
+    rule assign-pairs-list { <assign-pair>+ % <.list-separator> }
+    rule as-pairs-list     { <as-pair>+     % <.list-separator> }
+    rule assign-pair-lhs { <mixed-quoted-variable-name> }
+    rule assign-pair-rhs { <mixed-quoted-variable-name> | <wl-expr> }
+
+    # Correspondence pairs
+    rule key-pairs-list { <key-pair>+ % <.list-separator> }
+    rule key-pair { <key-pair-lhs>  [ <.equal-symbol> | <.equal2-symbol> | <.key-to-symbol> | <.equal-relation> ] <key-pair-rhs> }
+    rule key-pair-lhs { <mixed-quoted-variable-name> }
+    rule key-pair-rhs { <mixed-quoted-variable-name> }
 }
