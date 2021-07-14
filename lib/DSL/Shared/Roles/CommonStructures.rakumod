@@ -67,6 +67,8 @@ role DSL::Shared::Roles::CommonStructures {
     # Lists of things
     token list-separator-symbol { ',' | '&' | 'and' | ',' \h* 'and' }
     token list-separator { <.ws>? <list-separator-symbol> <.ws>? }
+    token list-of-commands-separator-symbol { ';' }
+    token list-of-commands-separator { <.ws>? <list-of-commands-separator-symbol> <.ws>? }
 
     # Number list
     rule number-value-list { <number-value>+ % <list-separator>? }
