@@ -18,10 +18,11 @@ class DSL::Shared::Actions::WL::PredicateSpecification
   method predicate-group($/) { make '(' ~ $/<predicate-term>.made ~ ')'; }
 
   method predicate-simple($/) {
+    my Str $objCol = self.double-quote-if-not-already($<lhs>.made);
     if $<predicate-relation>.made eq 'like' {
-      make 'MatchQ[ #["' ~ $<lhs>.made ~ '"], ' ~ $<rhs>.made ~ ']';
+      make 'MatchQ[ #[' ~ $objCol ~ '], ' ~ $<rhs>.made ~ ']';
     } else {
-      make '#["' ~ $<lhs>.made ~ '"] ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
+      make '#[' ~ $objCol ~ '] ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
     }
   }
   method logical-connective($/) { make $/.values[0].made; }
