@@ -59,6 +59,11 @@ class DSL::Shared::Actions::CommonStructures {
 	method single-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
 	method double-quoted-keyword-variable-name($/) { make '"' ~ $<keyword-variable-name>.made ~ '"'; }
 
+	# General method helpful in forming variable expressions
+	method is-single-quoted( Str:D $m ) { $m ~~ / ^ '\'' .* '\'' $ / }
+	method is-double-quoted( Str:D $m ) { $m ~~ / ^ '"' .* '"' $ / }
+    method double-quote-if-not-already( Str:D $m ) { self.is-double-quoted($m) ?? $m !! '"' ~ $m ~ '"' }
+
 	# Common programming languages tokens
 	method dataset-name($/) { make $/.Str; }
 
