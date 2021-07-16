@@ -71,7 +71,7 @@ role DSL::Shared::Roles::English::PipelineCommand
     rule dsl-spec-phrase { <dsl-phrase> [ <module-noun> | <MODULE-noun> ]? }
 
     # Translation target
-    rule dsl-translation-target-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <.dsl-translation-target-phrase> <variable-name> }
+    rule dsl-translation-target-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <.dsl-translation-target-phrase> <raku-module-name> }
     rule dsl-translation-target-phrase { <translation-noun> <target-noun> | <TARGET-noun> | '⨁' | '⨀' | '©' | '®' | '(*)' | '(o)' | '(O)' }
 
     # User ID spec command
