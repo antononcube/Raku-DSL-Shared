@@ -35,9 +35,11 @@ use v6;
 unit module DSL::Shared::Actions::English::PipelineCommand;
 
 use DSL::Shared::Actions::CommonStructures;
+use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
 
 class DSL::Shared::Actions::English::PipelineCommand
-        is DSL::Shared::Actions::CommonStructures {
+        is DSL::Shared::Actions::CommonStructures
+        is Lingua::NumericWordForms::Actions::English::WordedNumberSpec {
 
     # Useful for parsing with saving state.
     my %.properties;
