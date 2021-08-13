@@ -37,6 +37,7 @@
     "DSL::Shared::Utilities::MetaSpecsProcessing": "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod"
   },
   "depends": [
+    "silently",
     "Text::Levenshtein::Damerau",
     "Lingua::NumericWordForms"
   ],
