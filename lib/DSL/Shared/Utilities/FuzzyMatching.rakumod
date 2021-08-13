@@ -47,9 +47,9 @@ multi is-fuzzy-match(Str $candidate, @actuals, UInt $maxDist = 2) {
     } elsif 0 < $distPair.value and $distPair.value <= $maxDist {
         my %dists2 = grep({ $_.value eq $distPair.value }, %dists);
         if %dists2.elems == 1 {
-            warn "Possible misspelling of '{$distPair.key}' as '$candidate'.";
+            note "Possible misspelling of '{$distPair.key}' as '$candidate'.";
         } else {
-            warn "Possible misspelling of one of { map( { '\'' ~ $_ ~ '\'' }, %dists2.keys ).join(', ') } as '$candidate'.";
+            note "Possible misspelling of one of { map( { '\'' ~ $_ ~ '\'' }, %dists2.keys ).join(', ') } as '$candidate'.";
         }
         return True;
     }
@@ -63,7 +63,7 @@ multi is-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
     if 0 == $dist {
         return True;
     } elsif 0 < $dist and $dist <= $maxDist {
-        warn "Possible misspelling of '$actual' as '$candidate'.";
+        note "Possible misspelling of '$actual' as '$candidate'.";
         return True;
     }
 
@@ -108,7 +108,7 @@ sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :
         my @candidates = $maxDist < 2 ?? edits1($candidate) !! edit-candidates($candidate);
         for @candidates -> $var {
             if $var (elem) $knownStrings {
-                if $warn { warn "Possible misspelling of '$var' as '$candidate'."; }
+                if $warn { note "Possible misspelling of '$var' as '$candidate'."; }
                 if $bool { return True } else { return $var }
             }
         }
@@ -150,7 +150,7 @@ sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bo
     for @candidates -> $c {
         $res = known-string($knownPhrases, $c, :bool, :!warn, :$maxDist);
         if $res {
-            if $warn { warn "Possible misspelling of '$c' as '$phrase'."; }
+            if $warn { note "Possible misspelling of '$c' as '$phrase'."; }
             return $bool ?? True !! return $c
         }
     }

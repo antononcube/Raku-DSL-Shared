@@ -2,6 +2,7 @@ use v6;
 
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Actions::English::PipelineCommand;
+use silently;
 
 unit module DSL::Shared::Utilities::MetaSpecsProcessing;
 
@@ -82,7 +83,7 @@ proto get-dsl-parser-residual(Grammar $grammar, Str $command, Str :$norm = 'sum'
 
 multi get-dsl-parser-residual(Grammar $grammar, Str $command where not has-semicolon($command), Str :$norm = 'sum' ) {
     my Match $res;
-    quietly {
+    silently {
         $res = $grammar.subparse($command);
     }
     return $command.chars - $res.chars;

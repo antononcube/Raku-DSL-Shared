@@ -60,14 +60,15 @@ role DSL::Shared::Roles::ErrorHandling {
         $msg ~= "; parsed '$parsed', un-parsed '$un-parsed'";
         $msg ~= ' .';
 
-        # Here I use warn not note because I cannot figure out how to make note quiet
+        # Here I initially used warn not note because I could not figure out how to make note quiet
         # when looping through different grammars in order to find the one that fits.
         # But on the other hand, as the documentation says about warn:
         #   Throws a resumable warning exception, which is considered a control exception,
         #   and hence is invisible to most normal exception handlers.
         #   [...] To simply print to $*ERR, please use note instead. warn should be reserved
         #   for use in threatening situations when you don't quite want to throw an exception.
-        warn $msg;
+        # Luckily, Elizabeth wrote silently, and with that package I can bravely use note.
+        note $msg;
     }
 
 }
