@@ -2,12 +2,21 @@ use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
 
 class DSL::Shared::Entity::ResourceAccess {
+
+    ##--------------------------------------------------------
+    ## OVERRIDE all below until OVERRIDE-END
+    ##--------------------------------------------------------
+
     ##========================================================
     ## Data
     ##========================================================
-    my Hash %nameToEntityID{Str};
-    my Set %knownNames{Str};
-    my Set %knownNameWords{Str};
+    my Hash %nameToEntityID{Str} = %();
+    my Set %knownNames{Str} = %();
+    my Set %knownNameWords{Str} = %();
+
+    method getNameToEntityID( --> Hash) { %nameToEntityID }
+    method getKnownNames( --> Hash) { %knownNames }
+    method getKnownNameWords( --> Hash) { %knownNameWords }
 
     ##========================================================
     ## BUILD
@@ -40,13 +49,17 @@ class DSL::Shared::Entity::ResourceAccess {
     }
 
     #| Get resource file names with keys,
-    #| This function has to be over-written in the descendants of this class.
+    #| This function has to be overridden in the descendants of this class.
     method get-resource-files( --> Hash) {
         my @fileNames = <DataFormatNameToEntityID_EN.csv MetadataTypeNameToEntityID_EN.csv>;
         my %resources = @fileNames.map({ $_.subst( / '.csv' $$ /, '' ) }) Z=> @fileNames;
         %resources = %resources.map({ $_.key => %?RESOURCES{$_.value} });
         return %resources;
     }
+
+    ##--------------------------------------------------------
+    ## OVERRIDE-END
+    ##--------------------------------------------------------
 
     #| Make the entity name dictionaries.
     method make() {
@@ -62,11 +75,11 @@ class DSL::Shared::Entity::ResourceAccess {
             my %nameRules = @nameIDPairs.map({ $_.split(',') }).flat;
             %nameRules = %nameRules.keys.map(*.lc) Z=> %nameRules.values;
 
-            %nameToEntityID.push( $fileNameKey => %nameRules );
+            self.getNameToEntityID().push( $fileNameKey => %nameRules );
 
-            %knownNames.push( $fileNameKey => Set(%nameRules) );
+            self.getKnownNames().push( $fileNameKey => Set(%nameRules) );
 
-            %knownNameWords.push( $fileNameKey => Set(%nameRules.keys.map({ $_.split(/h+/) }).flat) );
+            self.getKnownNameWords().push( $fileNameKey => Set(%nameRules.keys.map({ $_.split(/h+/) }).flat) );
         }
 
         #-----------------------------------------------------------
@@ -78,33 +91,33 @@ class DSL::Shared::Entity::ResourceAccess {
     ##========================================================
     method is-known-name-word(Str:D $word) {
         my Bool $res = False;
-        for %knownNameWords.keys -> $c {
-            $res = known-string(%knownNameWords{$c}, $word, :bool, :!warn);
+        for self.getKnownNameWords().keys -> $c {
+            $res = known-string(self.getKnownNameWords(){$c}, $word, :bool, :!warn);
             last when $res
         }
         $res
     }
 
     method known-name-word(Str:D $class, Str:D $word, Bool :$bool = True, Bool :$warn = True) {
-        known-string(%knownNameWords{$class}, $word, :$bool, :$warn)
+        known-string(self.getKnownNameWords(){$class}, $word, :$bool, :$warn)
     }
 
     #-----------------------------------------------------------
     method known-name(Str:D $class, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
-        known-phrase(%knownNames{$class}, %knownNameWords{$class}, $phrase, :$bool, :$warn)
+        known-phrase(self.getKnownNames(){$class}, self.getKnownNameWords(){$class}, $phrase, :$bool, :$warn)
     }
 
     #-----------------------------------------------------------
     multi method name-to-entity-id(Str:D $phrase, Bool :$warn = False) {
-        for %nameToEntityID.keys -> $class {
+        for self.getNameToEntityID().keys -> $class {
             my $name = self.known-name($class, $phrase, :!bool, :!warn);
-            return %nameToEntityID{$class}{$name} if $name
+            return self.getNameToEntityID{$class}{$name} if $name
         }
     }
 
     #-----------------------------------------------------------
     multi method name-to-entity-id(Str:D $class, Str:D $phrase, Bool :$warn = False) {
         my $name = self.known-name($class, $phrase.lc, :!bool, :$warn);
-        $name ?? %nameToEntityID{$class}{$name} !! Nil
+        $name ?? self.getNameToEntityID{$class}{$name} !! Nil
     }
 }
