@@ -1,0 +1,270 @@
+Name,EntityID
+3DS,3DS
+ACO,ACO
+AIFF,AIFF
+AU,AU
+AVI,AVI
+base 64,Base64
+Base64,Base64
+binary,Binary
+Binary,Binary
+bit,Bit
+Bit,Bit
+BMP,BMP
+BSON,BSON
+byte,Byte
+Byte,Byte
+BYU,BYU
+bzip 2,BZIP2
+BZIP2,BZIP2
+C,C
+CDF,CDF
+CDXML,CDXML
+character 16,Character16
+Character16,Character16
+character 32,Character32
+Character32,Character32
+character 8,Character8
+Character8,Character8
+CML,CML
+complex 128,Complex128
+Complex128,Complex128
+complex 256,Complex256
+Complex256,Complex256
+complex 64,Complex64
+Complex64,Complex64
+CSV,CSV
+cube,Cube
+Cube,Cube
+CUR,CUR
+DAE,DAE
+DICOM,DICOM
+DIF,DIF
+DIMACS,DIMACS
+DOT,DOT
+d s,3DS
+DXF,DXF
+EPS,EPS
+expression json,ExpressionJSON
+ExpressionJSON,ExpressionJSON
+expression ml,ExpressionML
+ExpressionML,ExpressionML
+FASTA,FASTA
+FASTQ,FASTQ
+FBX,FBX
+FCS,FCS
+FITS,FITS
+FLAC,FLAC
+FLV,FLV
+FMU,FMU
+geo json,GeoJSON
+GeoJSON,GeoJSON
+GIF,GIF
+graph 6,Graph6
+Graph6,Graph6
+graphlet,Graphlet
+Graphlet,Graphlet
+graph ml,GraphML
+GraphML,GraphML
+GXL,GXL
+GZIP,GZIP
+harwell boeing,HarwellBoeing
+HarwellBoeing,HarwellBoeing
+HDF,HDF
+hdf 5,HDF5
+HDF5,HDF5
+HEIF,HEIF
+HIN,HIN
+HTML,HTML
+html fragment,HTMLFragment
+HTMLFragment,HTMLFragment
+http request,HTTPRequest
+HTTPRequest,HTTPRequest
+http response,HTTPResponse
+HTTPResponse,HTTPResponse
+ICNS,ICNS
+ICO,ICO
+ini,Ini
+Ini,Ini
+integer 128,Integer128
+Integer128,Integer128
+integer 16,Integer16
+Integer16,Integer16
+integer 24,Integer24
+Integer24,Integer24
+integer 32,Integer32
+Integer32,Integer32
+integer 64,Integer64
+Integer64,Integer64
+integer 8,Integer8
+Integer8,Integer8
+ISO,ISO
+java properties,JavaProperties
+JavaProperties,JavaProperties
+java script expression,JavaScriptExpression
+JavaScriptExpression,JavaScriptExpression
+JPEG,JPEG
+jpeg 2000,JPEG2000
+JPEG2000,JPEG2000
+JSON,JSON
+JSONLD,JSONLD
+JVX,JVX
+KML,KML
+LEDA,LEDA
+list,List
+List,List
+LWO,LWO
+MAT,MAT
+math ml,MathML
+MathML,MathML
+matroska,Matroska
+Matroska,Matroska
+maya,Maya
+Maya,Maya
+MCTT,MCTT
+MGF,MGF
+MIDI,MIDI
+MO,MO
+MOL,MOL
+m o l 2,MOL2
+MOL2,MOL2
+m p 3,MP3
+MP3,MP3
+m p 4,MP4
+MP4,MP4
+MTX,MTX
+MX,MX
+m x net,MXNet
+MXNet,MXNet
+NASACDF,NASACDF
+NB,NB
+net c d f,NetCDF
+NetCDF,NetCDF
+NEXUS,NEXUS
+NOFF,NOFF
+n quads,NQuads
+NQuads,NQuads
+n triples,NTriples
+NTriples,NTriples
+OBJ,OBJ
+OFF,OFF
+ogg,Ogg
+Ogg,Ogg
+ONNX,ONNX
+owl functional,OWLFunctional
+OWLFunctional,OWLFunctional
+pajek,Pajek
+Pajek,Pajek
+PBM,PBM
+PCX,PCX
+PDB,PDB
+PDF,PDF
+PGM,PGM
+p h p ini,PHPIni
+PHPIni,PHPIni
+PLY,PLY
+PNG,PNG
+PNM,PNM
+POV,POV
+PPM,PPM
+PXR,PXR
+python expression,PythonExpression
+PythonExpression,PythonExpression
+quick time,QuickTime
+QuickTime,QuickTime
+raw bitmap,RawBitmap
+RawBitmap,RawBitmap
+raw json,RawJSON
+RawJSON,RawJSON
+RDFXML,RDFXML
+real 128,Real128
+Real128,Real128
+real 32,Real32
+Real32,Real32
+real 64,Real64
+Real64,Real64
+RIB,RIB
+RLE,RLE
+RTF,RTF
+SCT,SCT
+SDF,SDF
+SMA,SMA
+SMILES,SMILES
+SND,SND
+sparql query,SPARQLQuery
+SPARQLQuery,SPARQLQuery
+sparql results json,SPARQLResultsJSON
+SPARQLResultsJSON,SPARQLResultsJSON
+sparql results xml,SPARQLResultsXML
+SPARQLResultsXML,SPARQLResultsXML
+sparql update,SPARQLUpdate
+SPARQLUpdate,SPARQLUpdate
+sparse 6,Sparse6
+Sparse6,Sparse6
+STL,STL
+string,String
+String,String
+surfer grid,SurferGrid
+SurferGrid,SurferGrid
+SVG,SVG
+table,Table
+Table,Table
+TAR,TAR
+terminated string,TerminatedString
+TerminatedString,TerminatedString
+te x,TeX
+TeX,TeX
+te x fragment,TeXFragment
+TeXFragment,TeXFragment
+text,Text
+Text,Text
+TGA,TGA
+TGF,TGF
+TIFF,TIFF
+tri g,TriG
+TriG,TriG
+TSV,TSV
+turtle,Turtle
+Turtle,Turtle
+UBJSON,UBJSON
+unsigned integer 128,UnsignedInteger128
+UnsignedInteger128,UnsignedInteger128
+unsigned integer 16,UnsignedInteger16
+UnsignedInteger16,UnsignedInteger16
+unsigned integer 24,UnsignedInteger24
+UnsignedInteger24,UnsignedInteger24
+unsigned integer 32,UnsignedInteger32
+UnsignedInteger32,UnsignedInteger32
+unsigned integer 64,UnsignedInteger64
+UnsignedInteger64,UnsignedInteger64
+unsigned integer 8,UnsignedInteger8
+UnsignedInteger8,UnsignedInteger8
+UUE,UUE
+video frames,VideoFrames
+VideoFrames,VideoFrames
+VRML,VRML
+VTK,VTK
+WAV,WAV
+wave 64,Wave64
+Wave64,Wave64
+WDX,WDX
+web p,WebP
+WebP,WebP
+WL,WL
+w l net,WLNet
+WLNet,WLNet
+WMLF,WMLF
+WXF,WXF
+x 3 d,X3D
+X3D,X3D
+XBM,XBM
+XHTML,XHTML
+x html math ml,XHTMLMathML
+XHTMLMathML,XHTMLMathML
+XLS,XLS
+XLSX,XLSX
+XML,XML
+XYZ,XYZ
+ZIP,ZIP
+ZPR,ZPR
+ZSTD,ZSTD

@@ -34,7 +34,10 @@
     "DSL::Shared::Roles::ErrorHandling": "lib/DSL/Shared/Roles/ErrorHandling.rakumod",
     "DSL::Shared::Roles::PredicateSpecification": "lib/DSL/Shared/Roles/PredicateSpecification.rakumod",
     "DSL::Shared::Utilities::FuzzyMatching": "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod",
-    "DSL::Shared::Utilities::MetaSpecsProcessing": "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod"
+    "DSL::Shared::Utilities::MetaSpecsProcessing": "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod",
+    "DSL::Shared::Entity::Actions::WL::System": "lib/DSL/Shared/Entity/Actions/WL/System.rakumod",
+    "DSL::Shared::Entity::Grammar::EntityNames": "lib/DSL/Shared/Entity/Grammar/EntityNames.rakumod",
+    "DSL::Shared::Entity::ResourceAccess": "lib/DSL/Shared/Entity/ResourceAccess.rakumod"
   },
   "depends": [
     "silently",
@@ -43,7 +46,10 @@
   ],
   "build-depends": [],
   "test-depends": [],
-  "resources": [],
+  "resources": [
+    "DataFormatNameToEntityID_EN.csv",
+    "MetadataTypeNameToEntityID_EN.csv"
+  ],
   "tags": [
     "parser",
     "interpreter",
