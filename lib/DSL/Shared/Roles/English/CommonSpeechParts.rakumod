@@ -46,11 +46,15 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token chart-noun { 'chart' | ([\w]+) <?{ $0.Str ne 'what' and is-fuzzy-match( $0.Str, 'chart', 1) }> }
     token classify-verb { 'classify' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'classify') }> }
     token cluster { 'clusters' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'clusters') }> }
+    token code-noun { 'code' | ([\w]+) <?{ $0.Str ne 'codes' and is-fuzzy-match( $0.Str, 'code') }> }
+    token codes-noun { 'codes' | ([\w]+) <?{ $0.Str ne 'code' and is-fuzzy-match( $0.Str, 'codes') }> }
     token column-noun { 'column' | ([\w]+) <?{ $0.Str ne 'columns' and is-fuzzy-match( $0.Str, 'column') }> }
     token columns { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
     token columns-noun { 'columns' | ([\w]+) <?{ $0.Str ne 'column' and is-fuzzy-match( $0.Str, 'columns') }> }
     token complete-adjective { 'complete' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'complete') }> }
     token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find', 1) }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
+    token config-noun { 'config' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'config') }> }
+    token configuration-noun { 'configuration' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'configuration') }> }
     token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link', 1) }> }
     token consider-verb { 'consider' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consider') }> }
     token context-noun { 'context' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'context') }> }
@@ -112,6 +116,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token id-noun { 'id' }
     token identifier-noun { 'identifier' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'identifier') }> }
     token in-preposition { 'in' }
+    token include-verb { 'include' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'include') }> }
     token ingest-verb { 'ingest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'ingest') }> }
     token into-preposition { 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into', 1) }> }
     token is-verb { 'is' }
@@ -175,6 +180,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token separate-verb { 'separate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'separate') }> }
     token series-noun { 'series' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'series') }> }
     token set-directive { 'set' }
+    token setup-noun { 'setup' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'setup') }> }
     token shape-noun { 'shape' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'shape') }> }
     token simple { 'simple' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'simple') }> | 'direct' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'direct') }> }
     token simply-adverb { 'simply' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'simply') }> }

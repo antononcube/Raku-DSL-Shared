@@ -23,6 +23,7 @@ role DSL::Shared::Roles::English::PipelineCommand
         <echo-command> |
         <dsl-spec-command> |
         <user-spec-command> |
+        <setup-code-command> |
         <code-line> }
 
     rule pipeline-filler-phrase { <.the-determiner>? <current-adjective>? <pipeline-noun> }
@@ -77,6 +78,10 @@ role DSL::Shared::Roles::English::PipelineCommand
     # User ID spec command
     rule user-spec-command { <user-id-spec-command> }
     rule user-id-spec-command { <.USER-ID-phrase> <userid=.variable-name> }
+
+    # Setup code commend
+    rule setup-code-command { <setup-code-simple> }
+    rule setup-code-simple { <include-verb>? [ <setup-noun> | <configuration-noun> ] <code-noun> }
 
     # Code line
     rule code-line { <wl-expr> }

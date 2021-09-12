@@ -13,7 +13,7 @@ grammar ParseObj
     regex TOP { <pipeline-command> }
 };
 
-plan 21;
+plan 23;
 
 #-----------------------------------------------------------
 # Pipeline command parsing
@@ -75,6 +75,12 @@ ok ParseObj.parse('USER ID 6767-AA4-6543'),
 
 ok ParseObj.parse('USER IDENTIFIER Mimi.Mal.99'),
         'USER IDENTIFIER Mimi.Mal.99';
+
+ok ParseObj.parse('setup code'),
+        'setup code';
+
+ok ParseObj.parse('include setup code'),
+        'include setup code';
 
 ok ParseObj.parse('`Transpose[obj]`'),
         '`Transpose[obj]`';

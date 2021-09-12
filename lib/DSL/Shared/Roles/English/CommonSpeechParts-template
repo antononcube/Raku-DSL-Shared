@@ -46,11 +46,15 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token chart-noun { 'chart' }
     token classify-verb { 'classify' }
     token cluster { 'clusters' }
+    token code-noun { 'code' }
+    token codes-noun { 'codes' }
     token column-noun { 'column' }
     token columns { 'columns' }
     token columns-noun { 'columns' }
     token complete-adjective { 'complete' }
     token compute-directive { 'compute' | 'find' | 'calculate' }
+    token config-noun { 'config' }
+    token configuration-noun { 'configuration' }
     token connect-verb { 'link' }
     token consider-verb { 'consider' }
     token context-noun { 'context' }
@@ -111,6 +115,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token id-noun { 'id' }
     token identifier-noun { 'identifier' }
     token in-preposition { 'in' }
+    token include-verb { 'include' }
     token ingest-verb { 'ingest' }
     token into-preposition { 'into' }
     token is-verb { 'is' }
@@ -171,6 +176,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token separate-verb { 'separate' }
     token series-noun { 'series' }
     token set-directive { 'set' }
+    token setup-noun { 'setup' }
     token shape-noun { 'shape' }
     token simple { 'simple' | 'direct' }
     token simply-adverb { 'simply' }
