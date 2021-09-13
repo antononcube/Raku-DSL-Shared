@@ -33,7 +33,7 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
-proto get-user-spec(Str $c, | ) is export {*};
+our proto get-user-spec(Str $c, | ) is export {*};
 
 multi get-user-spec(Str $command) {
     get-dsl-spec( $command, "user-id")
@@ -44,7 +44,7 @@ multi get-user-spec(Str $command, Str $ruleSpec) {
 }
 
 #-----------------------------------------------------------
-proto get-dsl-spec(Str $c, Str $r) is export {*};
+our proto get-dsl-spec(Str $c, Str $r) is export {*};
 
 multi get-dsl-spec(Str $command where not has-semicolon($command), Str $ruleSpec) {
 
@@ -79,7 +79,7 @@ multi get-dsl-spec (Str $command where has-semicolon($command), Str $ruleSpec = 
 }
 
 #-----------------------------------------------------------
-proto get-dsl-parser-residual(Grammar $grammar, Str $command, Str :$norm = 'sum' ) is export {*};
+our proto get-dsl-parser-residual(Grammar $grammar, Str $command, Str :$norm = 'sum' ) is export {*};
 
 multi get-dsl-parser-residual(Grammar $grammar, Str $command where not has-semicolon($command), Str :$norm = 'sum' ) {
     my Match $res;
