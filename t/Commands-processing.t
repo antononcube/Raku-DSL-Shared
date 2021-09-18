@@ -40,11 +40,37 @@ class ExampleActions
     }
 }
 
+class ExampleUserActions is ExampleActions {
+
+    has Str $.userID;
+
+    method makeUserIDTag() {
+        ( ! $.userID.defined or $.userID.chars == 0 or $.userID (elem) <NONE NULL>) ?? '' !! '"UserID:' ~ $.userID ~ '"';
+    }
+    method generic-command($/) {
+        make $/.Str ~ ( self.makeUserIDTag() ?? ' for ' !! '') ~ self.makeUserIDTag()
+    }
+}
+
+##===========================================================
+## Target rules
+##===========================================================
+
+my %targetToAction{Str} =
+        'R-SMRMon' => ExampleActions,
+        'Type1' => ExampleActions,
+        'Type2' => ExampleUserActions;
+
+my Str %targetToSeparator{Str} =
+        'R-SMRMon' => " %>%\n",
+        'Type1'    => " ==>\n",
+        'Type2'    => " ==>\n";
 
 ##===========================================================
 ## Example definitions
 ##===========================================================
 
+# Using the basic call signature of ToWorkflowCode
 sub ToExampleWorkflowCode($command, *%args) {
     DSL::Shared::Utilities::CommandProcessing::ToWorkflowCode($command,
                                                               grammar => ExampleGrammar,
@@ -52,6 +78,15 @@ sub ToExampleWorkflowCode($command, *%args) {
                                                               |%args)
 }
 
+# Using the extended ("original") call signature of ToWorkflowCode
+sub ToExampleUserWorkflowCode($command, $target, *%args) {
+    DSL::Shared::Utilities::CommandProcessing::ToWorkflowCode($command,
+                                                              grammar => ExampleGrammar,
+                                                              :%targetToAction,
+                                                              :%targetToSeparator,
+                                                              :$target,
+                                                              |%args)
+}
 
 ##===========================================================
 ## Example commands
@@ -71,7 +106,7 @@ my $command1 = $command0.subst("\n", ";\n"):g;
 
 my $command2 = $command0.subst("\n", " # \n"):g;
 
-plan 6;
+plan 8;
 
 ##-----------------------------------------------------------
 ## Splitters tests
@@ -117,5 +152,24 @@ is-deeply ToExampleWorkflowCode($command0, format => 'hash', splitter => Whateve
           :USERID("kdkwe823") },
         'deep equivalence for interpretting into a hash';
 
+##-----------------------------------------------------------
+## Action classes with user fields tests
+##-----------------------------------------------------------
+
+## 7
+## See how ExampleUserActions.generic-command is defined.
+## The CODE pair should be equivalent:
+##   :CODE("use recommender smrObj for \"UserID:kdkwe823\" \%>\%\nrecommend by profile Groceries for \"UserID:kdkwe823\" \%>\%\njoin across with dfMint by column ID for \"UserID:kdkwe823\" \%>\%\nEcho[obj]"),
+is-deeply ToExampleUserWorkflowCode($command0, 'Type2', format => 'hash', splitter => Whatever),
+        {:CODE( ($command0.split("\n").Array)[ 2..^(*-3) ].map({ $_ ~ ' for ' ~ '"UserID:kdkwe823"'}).join( %targetToSeparator<R-SMRMon> ).subst( / 'echo pipeline value' .* /, 'Echo[obj]') ),
+         :DSLTARGET("R-SMRMon"),
+         :SETUPCODE("SetItUp[]"),
+         :USERID("kdkwe823")},
+        'expected result for actions classes with user ID fields';
+
+## 8
+is ToExampleUserWorkflowCode($command0, 'Type2', format => 'hash', splitter => Whatever),
+        ToExampleUserWorkflowCode($command1, 'Type2', format => 'hash', splitter => Whatever),
+        'interpretation equivalence for actions classes with user ID fields';
 
 done-testing;
