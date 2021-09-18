@@ -88,7 +88,7 @@ multi ToWorkflowCode( Str $command,
     # Get the separator
     my Str $sep;
     if $separator.isa(Whatever) {
-        if 'separator' !(elem) $actions.^method_names {
+        if 'separator' !(elem) $actions.^methods>>.name {
             die 'Cannot get a separator with the specified actions.'
         } else {
             $sep = $actions.separator()
