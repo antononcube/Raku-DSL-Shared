@@ -16,9 +16,9 @@ use DSL::Shared::Utilities::MetaSpecsProcessing;
 
 #-----------------------------------------------------------
 #| Single line / basic parsing
-multi ToWorkflowCodeBasic(Str $command, Grammar :$grammar!, :$actions!) {
+sub ToWorkflowCodeBasic(Str $command, Grammar :$grammar!, :$actions!) {
 
-    die 'The argument :$actions is not an actions class.' unless 'TOP' (elem) $actions.^method_names;
+    die 'The argument :$actions is not an actions class.' unless 'TOP' (elem) $actions.^methods>>.name;
 
     my $match = $grammar.parse($command.trim, :$actions):ignorecase;
 
@@ -43,8 +43,8 @@ multi ToWorkflowCode( Str $command,
 
     # Get target (e.g. 'R::tidyverse') using
     #   DSL::Shared::Utilities::MetaSpecsProcessing::get-dsl-spec
-    my $specTarget = get-dsl-spec($command, 'target');
-    my $specUserID = get-dsl-spec($command, 'user-id');
+    my $specTarget = get-dsl-spec($command, 'target', :$splitter);
+    my $specUserID = get-dsl-spec($command, 'user-id', :$splitter);
 
     $specTarget = $specTarget ?? $specTarget<DSLTARGET> !! $target;
     $specUserID = ($specUserID and $specUserID<USERID> !(elem) <NONE NULL>) ?? $specUserID<USERID> !! $userID;
@@ -69,12 +69,7 @@ multi ToWorkflowCode( Str $command,
 
 
     # Determine splitter
-    my &rxSplit;
-    given $splitter {
-        when Str { &rxSplit = / $splitter \s* / }
-        when Whatever { &rxSplit = rx/ [ ';' | \n ] \s* / }
-        default { &rxSplit = $splitter }
-    }
+    my &rxSplit = process-splitter($splitter);
 
     # Split in single line commands
     my @commandLines = $command.trim.split(&rxSplit);
