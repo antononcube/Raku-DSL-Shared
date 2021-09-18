@@ -104,15 +104,18 @@ isa-ok ToExampleWorkflowCode($command2, format => 'hash', splitter => rx/ '#' "\
 ## 5
 is ToExampleWorkflowCode($command1, format => 'code', splitter => Whatever),
         "use recommender smrObj |>\nrecommend by profile Groceries |>\njoin across with dfMint by column ID |>\nEcho[obj]",
-        'interpretting "\n" separated commands into a string-code with a Whatever splitter';
+        'equivalence for interpretting into a code-string';;
 
 ## 6
+## Note that here we test is the separator defined in the actions class used in the interpreted result.
+## The CODE pair should be equivalent:
+##   :CODE("use recommender smrObj |>\nrecommend by profile Groceries |>\njoin across with dfMint by column ID |>\nEcho[obj]")
 is-deeply ToExampleWorkflowCode($command0, format => 'hash', splitter => Whatever),
-        { :CODE("use recommender smrObj |>\nrecommend by profile Groceries |>\njoin across with dfMint by column ID |>\nEcho[obj]"),
+        { :CODE( ($command0.split("\n").Array)[ 2..^(*-3) ].join( ExampleActions.separator() ).subst('echo pipeline value', 'Echo[obj]') ),
           :DSLTARGET("R-SMRMon"),
           :SETUPCODE("SetItUp[]"),
           :USERID("kdkwe823") },
-        'interpretting "\n" separated commands into a string-code with a Whatever splitter';
+        'deep equivalence for interpretting into a hash';
 
 
 done-testing;
