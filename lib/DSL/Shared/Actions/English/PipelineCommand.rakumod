@@ -81,8 +81,8 @@ class DSL::Shared::Actions::English::PipelineCommand
     method user-spec-command($/) { make $/.values[0].made; }
     method user-id-spec-command($/) { make 'USERID' => $<userid>.made; }
 
-    # Code line
-    method setup-code-command($/) { make ''; }
+    # Setup code
+    method setup-code-command($/) { make 'SETUPCODE' => ''; }
 
     # Code line
     method code-line($/) { make $/.values[0].made; }
