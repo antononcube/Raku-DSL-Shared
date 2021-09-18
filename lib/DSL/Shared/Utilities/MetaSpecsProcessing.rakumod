@@ -35,23 +35,20 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
-our proto get-user-spec(Str $c, | ) is export {*};
-
-multi get-user-spec(Str $command) {
-    get-dsl-spec( $command, "user-id")
-}
-
-multi get-user-spec(Str $command, Str $ruleSpec) {
-    get-dsl-spec( $command, $ruleSpec)
+#| Determine splitter
+sub process-splitter( $splitter ) is export {
+    given $splitter {
+        when Str { / $splitter \s* / }
+        when Whatever { rx/ [';' | \n] \s* / }
+        default { $splitter }
+    }
 }
 
 #-----------------------------------------------------------
-our proto get-dsl-spec(Str $c, Str $r) is export {*};
-
-multi get-dsl-spec(Str $command where not has-semicolon($command), Str $ruleSpec) {
+sub get-dsl-spec-basic(Str $command, Str $ruleSpec) {
 
     die 'Unknown rule specification. The second argument is expected to be one of: "' ~ %specToRule.keys.sort.join('", "') ~ '".',
-    unless %specToRule{$ruleSpec}:exists;
+            unless %specToRule{$ruleSpec}:exists;
 
     my $res =
             ParseObj.parse(
@@ -65,15 +62,19 @@ multi get-dsl-spec(Str $command where not has-semicolon($command), Str $ruleSpec
     return {};
 }
 
-multi get-dsl-spec (Str $command where has-semicolon($command), Str $ruleSpec = 'module') {
+#-----------------------------------------------------------
+#| Get DSL spec
+our proto get-dsl-spec(Str $c, Str $r, |) is export {*};
+
+multi get-dsl-spec (Str $command, Str $ruleSpec = 'module', :$splitter = Whatever) {
 
     die 'Unknown rule specification.' unless %specToRule{$ruleSpec}:exists;
 
-    my @commandLines = $command.trim.split(/ ';' \s* /);
+    my @commandLines = $command.trim.split( process-splitter($splitter) );
 
     @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
 
-    my @dslLines = map { get-dsl-spec($_, $ruleSpec) }, @commandLines;
+    my @dslLines = map { get-dsl-spec-basic($_, $ruleSpec) }, @commandLines;
 
     @dslLines = grep({ $_ }, @dslLines);
 
@@ -81,6 +82,19 @@ multi get-dsl-spec (Str $command where has-semicolon($command), Str $ruleSpec = 
 }
 
 #-----------------------------------------------------------
+#| Get user spec
+our proto get-user-spec(Str $c, | ) is export {*};
+
+multi get-user-spec(Str $command) {
+    get-dsl-spec( $command, "user-id")
+}
+
+multi get-user-spec(Str $command, Str $ruleSpec) {
+    get-dsl-spec( $command, $ruleSpec)
+}
+
+#-----------------------------------------------------------
+#| Get DSL parser residual
 our proto get-dsl-parser-residual(Grammar $grammar, Str $command, Str :$norm = 'sum' ) is export {*};
 
 multi get-dsl-parser-residual(Grammar $grammar, Str $command where not has-semicolon($command), Str :$norm = 'sum' ) {
