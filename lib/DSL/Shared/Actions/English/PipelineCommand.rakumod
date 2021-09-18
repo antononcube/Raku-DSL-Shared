@@ -44,6 +44,9 @@ class DSL::Shared::Actions::English::PipelineCommand
     # Useful for parsing with saving state.
     my %.properties;
 
+    # "Universal" separator
+    method separator() { ';' }
+
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
 

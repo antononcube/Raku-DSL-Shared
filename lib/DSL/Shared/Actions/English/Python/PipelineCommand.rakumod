@@ -41,6 +41,9 @@ class DSL::Shared::Actions::English::Python::PipelineCommand
         is DSL::Shared::Actions::Python::CommonStructures
         is DSL::Shared::Actions::English::PipelineCommand {
 
+    # The Python "separator"
+    method separator() { "\n" }
+
     # Pipeline command
     method pipeline-command($/) { make $/.values[0].made; }
 
