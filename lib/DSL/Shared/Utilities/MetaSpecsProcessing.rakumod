@@ -19,7 +19,9 @@ my %specToRule =
         "user-any" => "user-spec-command",
         "user-id" => "user-id-spec-command",
         "user-id-spec" => "user-id-spec-command",
-        "user-id-spec-command" => "user-id-spec-command";
+        "user-id-spec-command" => "user-id-spec-command",
+        "setup-code" => "setup-code-command",
+        "setup-code-command" => "setup-code-command";
 
 #-----------------------------------------------------------
 grammar ParseObj
