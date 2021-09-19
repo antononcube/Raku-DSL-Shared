@@ -52,7 +52,7 @@ multi ToWorkflowCode( Str $command,
     die 'Unknown target.' unless %targetToAction{$specTarget}:exists;
 
     # Get the actions class for target
-    my $actions = $specUserID.isa(Str) ?? %targetToAction{$target}.new(userID => $specUserID) !! %targetToAction{$target};
+    my $actions = $specUserID.isa(Str) ?? %targetToAction{$specTarget}.new(userID => $specUserID) !! %targetToAction{$specTarget}.new;
 
     # Delegate
     ToWorkflowCode($command, :$grammar, :$actions, separator => %targetToSeparator{$specTarget}, :$format, :$splitter)
