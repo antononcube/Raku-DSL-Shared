@@ -57,7 +57,7 @@ class ExampleUserActions is ExampleActions {
 ##===========================================================
 
 my %targetToAction{Str} =
-        'R-SMRMon' => ExampleActions,
+        'R-SMRMon' => ExampleUserActions,
         'Type1' => ExampleActions,
         'Type2' => ExampleUserActions;
 
@@ -157,10 +157,13 @@ is-deeply ToExampleWorkflowCode($command0, format => 'hash', splitter => Whateve
 ##-----------------------------------------------------------
 
 ## 7
-## See how ExampleUserActions.generic-command is defined.
-## The CODE pair should be equivalent:
-##   :CODE("use recommender smrObj for \"UserID:kdkwe823\" \%>\%\nrecommend by profile Groceries for \"UserID:kdkwe823\" \%>\%\njoin across with dfMint by column ID for \"UserID:kdkwe823\" \%>\%\nEcho[obj]"),
-is-deeply ToExampleUserWorkflowCode($command0, 'Type2', format => 'hash', splitter => Whatever),
+## (1) Note that 'Type1' corresponds to an actions class without userID field;
+##     in the test below the actions class ExampleUserActions is picked because 'R-SMRMon'
+##     is specified in the string of commands.
+## (2) See how ExampleUserActions.generic-command is defined.
+##     The CODE pair should be equivalent:
+##       :CODE("use recommender smrObj for \"UserID:kdkwe823\" \%>\%\nrecommend by profile Groceries for \"UserID:kdkwe823\" \%>\%\njoin across with dfMint by column ID for \"UserID:kdkwe823\" \%>\%\nEcho[obj]"),
+is-deeply ToExampleUserWorkflowCode($command0, 'Type1', format => 'hash', splitter => Whatever),
         {:CODE( ($command0.split("\n").Array)[ 2..^(*-3) ].map({ $_ ~ ' for ' ~ '"UserID:kdkwe823"'}).join( %targetToSeparator<R-SMRMon> ).subst( / 'echo pipeline value' .* /, 'Echo[obj]') ),
          :DSLTARGET("R-SMRMon"),
          :SETUPCODE("SetItUp[]"),
@@ -168,8 +171,8 @@ is-deeply ToExampleUserWorkflowCode($command0, 'Type2', format => 'hash', splitt
         'expected result for actions classes with user ID fields';
 
 ## 8
-is ToExampleUserWorkflowCode($command0, 'Type2', format => 'hash', splitter => Whatever),
-        ToExampleUserWorkflowCode($command1, 'Type2', format => 'hash', splitter => Whatever),
+is ToExampleUserWorkflowCode($command0, 'Type1', format => 'hash', splitter => Whatever),
+        ToExampleUserWorkflowCode($command1, 'Type1', format => 'hash', splitter => Whatever),
         'interpretation equivalence for actions classes with user ID fields';
 
 done-testing;
