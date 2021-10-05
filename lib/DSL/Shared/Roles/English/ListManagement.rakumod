@@ -1,11 +1,9 @@
-use Grammar::PrettyErrors;
-
-use DSL::Shared::Utilities::FuzzyMatching;
+use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::PipelineCommand;
 
 role DSL::Shared::Roles::English::ListManagement
-        does DSL::Shared::Roles::English::PipelineCommand
-        does Grammar::PrettyErrors {
+        does DSL::Shared::Roles::ErrorHandling
+        does DSL::Shared::Roles::English::PipelineCommand {
 
     rule list-management-command { 
         <list-management-replace-part> |
