@@ -28,6 +28,7 @@
     "DSL::Shared::Roles::CommonStructures": "lib/DSL/Shared/Roles/CommonStructures.rakumod",
     "DSL::Shared::Roles::English::CommonParts": "lib/DSL/Shared/Roles/English/CommonParts.rakumod",
     "DSL::Shared::Roles::English::CommonSpeechParts": "lib/DSL/Shared/Roles/English/CommonSpeechParts.rakumod",
+    "DSL::Shared::Roles::English::ListManagement": "lib/DSL/Shared/Roles/English/ListManagement.rakumod",
     "DSL::Shared::Roles::English::RudimentaryUserOnboarding": "lib/DSL/Shared/Roles/English/RudimentaryUserOnboarding.rakumod",
     "DSL::Shared::Roles::English::PipelineCommand": "lib/DSL/Shared/Roles/English/PipelineCommand.rakumod",
     "DSL::Shared::Roles::English::TimeIntervalSpec": "lib/DSL/Shared/Roles/English/TimeIntervalSpec.rakumod",
