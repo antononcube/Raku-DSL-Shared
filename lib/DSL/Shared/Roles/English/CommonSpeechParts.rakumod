@@ -154,6 +154,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token of-preposition { 'of' }
     token off-adverb { 'off' }
     token on-preposition { 'on' }
+    token one-pronoun { 'one' }
     token or-conjunction { 'or' }
     token our-determiner { 'our' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'our', 1) }> }
     token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out', 1) }> }
