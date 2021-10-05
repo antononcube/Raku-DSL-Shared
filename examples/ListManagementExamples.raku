@@ -7,6 +7,8 @@ use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::ListManagement;
 use DSL::Shared::Roles::English::PipelineCommand;
 
+use DSL::Shared::Actions::English::WL::ListManagement;
+
 grammar ParseObj
         does DSL::Shared::Roles::English::ListManagement {
 
@@ -18,6 +20,7 @@ say "=" x 60;
 
 my @commands = (
     "element 21 st",
+    "element twenty first",
     "the 2nd element",
     "the head",
     "head of mylist",
@@ -31,7 +34,7 @@ my @commands = (
     "drop the 25 th element",
     "delete the last element of the 3rd element of rjewe",
     "replace the 2nd element with 34",
-    "replace the 2nd element with the value 34",
+    "replace the second element with the value 34",
     "delete all",
     "drop all elements of the list"
 );
@@ -40,6 +43,8 @@ for @commands.kv -> $i, $c {
     say "=" x 60;
     say "$i : $c";
     say "-" x 60;
-    say ParseObj.parse( $c )
+    say ParseObj.parse( $c );
+    say "-" x 60;
+    say ParseObj.parse( $c, actions => DSL::Shared::Actions::English::WL::ListManagement ).made;
 };
 
