@@ -30,8 +30,9 @@ role DSL::Shared::Roles::English::ListManagement
 
     rule list-management-clear { [ 'clear' | 'empty' ] <list-noun>? | <delete-directive> 'all' [ <list-noun> ]? <elements>? [ <in-preposition> | <of-preposition> ]? <the-determiner>? <list-phrase>? }
 
-    rule variable-spec { <list-phrase> || <.variable-noun>? <variable-name> }
+    rule variable-spec { <the-list-reference> || <.variable-noun>? <variable-name> }
     rule value-spec { <.value-noun>? [ <word-value> | <number-value> ] }
+    rule the-list-reference {<list-phrase>}
     rule list-phrase {<list-noun>}
 
     rule position-query-link {
