@@ -16,6 +16,7 @@
     "DSL::Shared::Actions::English::Julia::PipelineCommand": "lib/DSL/Shared/Actions/English/Julia/PipelineCommand.rakumod",
     "DSL::Shared::Actions::English::Python::PipelineCommand": "lib/DSL/Shared/Actions/English/Python/PipelineCommand.rakumod",
     "DSL::Shared::Actions::English::R::PipelineCommand": "lib/DSL/Shared/Actions/English/R/PipelineCommand.rakumod",
+    "DSL::Shared::Actions::English::WL::ListManagement": "lib/DSL/Shared/Actions/English/WL/ListManagement.rakumod",
     "DSL::Shared::Actions::English::WL::PipelineCommand": "lib/DSL/Shared/Actions/English/WL/PipelineCommand.rakumod",
     "DSL::Shared::Actions::Julia::CommonStructures": "lib/DSL/Shared/Actions/Julia/CommonStructures.rakumod",
     "DSL::Shared::Actions::Julia::PredicateSpecification": "lib/DSL/Shared/Actions/Julia/PredicateSpecification.rakumod",
