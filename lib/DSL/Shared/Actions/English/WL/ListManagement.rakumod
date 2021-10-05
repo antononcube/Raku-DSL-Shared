@@ -13,7 +13,13 @@ class DSL::Shared::Actions::English::WL::ListManagement
 
     method list-management-assignment($/) { $<variable-spec>.made ~ ' = ' ~ $<value-spec>.made; }
 
-    method list-management-take($/) { make 'obj = Take[obj, {' ~ $/.values[0].made ~ '}]'; }
+    method list-management-take($/) {
+        if $<list-management-position-query> {
+            make $<list-management-position-query>.made;
+        } else {
+            make 'obj = Take[obj, {' ~ $/.values[0].made ~ '}]';
+        }
+    }
 
     method list-management-drop($/) { make 'obj = Drop[obj, {' ~ $/.values[0].made ~ '}]'; }
 
