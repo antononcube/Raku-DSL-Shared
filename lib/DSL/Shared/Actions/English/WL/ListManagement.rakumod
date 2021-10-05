@@ -25,8 +25,8 @@ class DSL::Shared::Actions::English::WL::ListManagement
     method list-management-clear($/) { make 'obj = {}'; }
 
     method variable-spec($/) { make $/.values[0].made; }
-
     method value-spec($/) { make $/.values[0].made; }
+    method the-list-reference($/) { make 'obj'; }
 
     method position-query-link($/) { make $/.values[0].made; }
 
