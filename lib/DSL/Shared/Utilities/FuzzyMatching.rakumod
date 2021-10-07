@@ -120,10 +120,10 @@ sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :
 sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
 
     ## First test
-    my Bool $res = known-string($knownPhrases, $phrase, :bool, :$warn, :$maxDist);
+    my Str $res = known-string($knownPhrases, $phrase, :!bool, :$warn, :$maxDist);
 
     if $res {
-        return $bool ?? True !! $phrase
+        return $bool ?? True !! $res
     }
 
     ## Split the phrase into words
