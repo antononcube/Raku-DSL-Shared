@@ -27,7 +27,7 @@ role DSL::Shared::Roles::PredicateSpecification {
         <equal-relation> | <not-equal-relation> |
         <less-relation> | <less-equal-relation> |
         <greater-relation> | <greater-equal-relation> |
-        <same-relation> | <not-same-relation>
+        <same-relation> | <not-same-relation> |
         <in-relation> | <not-in-relation> |
         <like-relation> }
 
