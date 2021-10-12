@@ -20,6 +20,12 @@ class DSL::Shared::Actions::WL::PredicateSpecification
   method predicate-simple($/) {
     my Str $objCol = self.double-quote-if-not-already($<lhs>.made);
     if $<predicate-relation>.made eq 'like' {
+      make 'StringMatchQ[ #[' ~ $objCol ~ '], ' ~ $<rhs>.made ~ ']';
+    } elsif $<predicate-relation>.made eq 'like-start' {
+      make 'StringMatchQ[ #[' ~ $objCol ~ '], ' ~ $<rhs>.made ~ ' ~~ ___ ]';
+    } elsif $<predicate-relation>.made eq 'like-end' {
+      make 'StringMatchQ[ #[' ~ $objCol ~ '], ___ ~~ ' ~ $<rhs>.made ~ ']';
+    } elsif $<predicate-relation>.made eq 'match' {
       make 'MatchQ[ #[' ~ $objCol ~ '], ' ~ $<rhs>.made ~ ']';
     } else {
       make '#[' ~ $objCol ~ '] ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
@@ -42,6 +48,9 @@ class DSL::Shared::Actions::WL::PredicateSpecification
   method in-relation($/) { make '\[Element]'; }
   method not-in-relation($/) { make '\[NotElement]'; }
   method like-relation($/) { make 'like'; }
+  method like-start-relation($/) { make 'like-start'; }
+  method like-end-relation($/) { make 'like-end'; }
+  method match-relation($/) { make 'match'; }
 
 }
 
