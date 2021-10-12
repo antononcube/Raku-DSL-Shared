@@ -42,7 +42,7 @@ class DSL::Shared::Actions::English::PipelineCommand
         is Lingua::NumericWordForms::Actions::English::WordedNumberSpec {
 
     # Useful for parsing with saving state.
-    my %.properties;
+    has %.properties;
 
     # "Universal" separator
     method separator() { ';' }
