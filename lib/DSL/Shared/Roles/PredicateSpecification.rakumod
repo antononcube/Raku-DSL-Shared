@@ -16,7 +16,7 @@ role DSL::Shared::Roles::PredicateSpecification {
 
     # Simple predicate
     regex predicate-simple { <lhs=predicate-value> <predicate-relation> <rhs=predicate-value> }
-    rule predicate-value { <mixed-quoted-variable-name> | <number-value> }
+    rule predicate-value { <mixed-quoted-variable-name> | <number-value> | <wl-expr> }
     rule predicate-operator { <logical-connective> | <predicate-relation> }
     rule logical-connective { <and-operator> | <or-operator> }
     token and-operator { 'and' | '&&' | '&' }
@@ -29,7 +29,8 @@ role DSL::Shared::Roles::PredicateSpecification {
         <greater-relation> | <greater-equal-relation> |
         <same-relation> | <not-same-relation> |
         <in-relation> | <not-in-relation> |
-        <like-relation> }
+        <like-relation> | <like-start-relation> | <like-end-relation> |
+        <match-relation> }
 
     token equal-relation { '=' | '==' | 'eq' | 'equals' | 'is'? \h* 'equal' \h+ 'to'? | 'is' }
     token not-equal-relation { '!=' | '¬=' | 'neq' | 'is'? \h* 'not' \h+ 'equal' \h+ 'to'? | 'is' \h+ 'not' }
@@ -42,4 +43,7 @@ role DSL::Shared::Roles::PredicateSpecification {
     token in-relation { 'in' | 'belongs' \h+ 'to' }
     token not-in-relation { '!in' | '¬in' | 'is'? \h* 'not' \h+ 'in' | [ 'does' \h+ 'not' | 'doesn\'t' ] 'belong' \h+ 'to' }
     token like-relation { 'is'? \h* [ 'like' | 'similar' \h+ 'to' ] }
+    token like-start-relation { [ 'starts' | 'start' ] \h+ 'with' }
+    token like-end-relation { [ 'ends' | 'end' ] \h+ 'with' }
+    token match-relation { 'match' | 'matches' | 'is'? \h+ 'matching' }
 }
