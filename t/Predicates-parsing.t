@@ -14,7 +14,7 @@ grammar ParseObj
     regex TOP { <predicates-list> }
 };
 
-plan 5;
+plan 8;
 
 #-----------------------------------------------------------
 # Predicates parsing
@@ -34,5 +34,14 @@ ok ParseObj.parse('var1 is "male" and var2 is less than 12 or var3 is greater th
 
 ok ParseObj.parse('"v 1" > 10 & "v 2" >= 12 | v3 == 20'),
         '"v 1" > 10 & "v 2" >= 12 | v3 == 20';
+
+ok ParseObj.parse('Title is like `air_`'),
+        'Title is like `air_`';
+
+ok ParseObj.parse('Title starts with "air"'),
+        'Title starts with "air"';
+
+ok ParseObj.parse('Title ends with "snow"'),
+        'Title ends with "snow"';
 
 done-testing;
