@@ -21,7 +21,15 @@ class DSL::Shared::Actions::R::PredicateSpecification
     if $<predicate-relation>.made eq '%!in%' {
       make '!(' ~ $<lhs>.made ~ ' %in% ' ~ $<rhs>.made ~ ')';
     } elsif $<predicate-relation>.made eq 'like' {
-      make 'grepl( pattern = ' ~ $<rhs>.made ~ ', x = ' ~ $<lhs>.made ~ ')';
+      with $<rhs><regex-pattern-spec> {
+        make 'grepl( pattern = ' ~ $<rhs>.made ~ ', x = ' ~ $<lhs>.made ~ ')';
+      } else {
+        make 'grepl( pattern = ' ~ $<rhs>.made.subst(/^\"/, '".*').subst(/\"$/, '.*"') ~ ', x = ' ~ $<lhs>.made ~ ')';
+      }
+    } elsif $<predicate-relation>.made eq 'like-start' {
+      make 'grepl( pattern = ' ~ $<rhs>.made.subst( /^\"/, '"^' ) ~ ', x = ' ~ $<lhs>.made ~ ')';
+    } elsif $<predicate-relation>.made eq 'like-end' {
+      make 'grepl( pattern = ' ~ $<rhs>.made.subst( /\"$/, '$"' ) ~ ', x = ' ~ $<lhs>.made ~ ')';
     } else {
       make $<lhs>.made ~ ' ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
     }
@@ -43,6 +51,9 @@ class DSL::Shared::Actions::R::PredicateSpecification
   method in-relation($/) { make '%in%'; }
   method not-in-relation($/) { make '%!in%'; }
   method like-relation($/) { make 'like'; }
+  method like-start-relation($/) { make 'like-start'; }
+  method like-end-relation($/) { make 'like-end'; }
+  method match-relation($/) { make 'match'; }
 
 }
 
