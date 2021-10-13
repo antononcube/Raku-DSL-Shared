@@ -17,18 +17,24 @@ role DSL::Shared::Roles::CommonStructures {
     token mixed-quoted-variable-name { <variable-name> | <quoted-variable-name> }
 
     token single-quote-symbol { '\'' }
+    token single-quote2-symbol { '‘' }
+    token single-quote3-symbol { '’' }
 
     token double-quote-symbol { '"' }
+    token double-quote2-symbol { '“' }
+    token double-quote3-symbol { '”' }
+    token double-quote4-symbol { '„' }
 
     token single-quoted-variable-name {
-        <.single-quote-symbol>
-        <variable-ws-name>
-        <.single-quote-symbol>
+        <.single-quote-symbol> <variable-ws-name> <.single-quote-symbol> ||
+        <.single-quote2-symbol> <variable-ws-name> <.single-quote2-symbol> ||
+        <.single-quote2-symbol> <variable-ws-name> <.single-quote3-symbol>
     }
+
     token double-quoted-variable-name {
-        <.double-quote-symbol>
-        <variable-ws-name>
-        <.double-quote-symbol>
+        <.double-quote-symbol> <variable-ws-name> <.double-quote-symbol> ||
+        <.double-quote2-symbol> <variable-ws-name> <.double-quote2-symbol> ||
+        [ <.double-quote2-symbol> | <.double-quote4-symbol> ] <variable-ws-name> <.double-quote3-symbol>
     }
 
     # Keyword-variable name
@@ -38,14 +44,14 @@ role DSL::Shared::Roles::CommonStructures {
     token mixed-quoted-keyword-variable-name { <keyword-variable-name> | <quoted-keyword-variable-name> }
 
     token single-quoted-keyword-variable-name {
-        <.single-quote-symbol>
-        <keyword-variable-name>
-        <.single-quote-symbol>
+        <.single-quote-symbol> <keyword-variable-name> <.single-quote-symbol> ||
+        <.single-quote2-symbol> <keyword-variable-name> <.single-quote2-symbol> ||
+        <.single-quote2-symbol> <keyword-variable-name> <.single-quote3-symbol>
     }
     token double-quoted-keyword-variable-name {
-        <.double-quote-symbol>
-        <keyword-variable-name>
-        <.double-quote-symbol>
+        <.double-quote-symbol> <keyword-variable-name> <.double-quote-symbol> ||
+        <.double-quote2-symbol> <keyword-variable-name> <.double-quote2-symbol> ||
+        [ <.double-quote2-symbol> | <.double-quote4-symbol> ] <keyword-variable-name> <.double-quote3-symbol>
     }
 
     # Common programming languages tokens
