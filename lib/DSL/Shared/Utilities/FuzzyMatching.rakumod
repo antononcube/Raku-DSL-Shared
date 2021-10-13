@@ -148,8 +148,8 @@ sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bo
 
     ## Find if any of the cross product candidates is known
     for @candidates -> $c {
-        $res = known-string($knownPhrases, $c, :bool, :!warn, :$maxDist);
-        if $res {
+        my Bool $bres = known-string($knownPhrases, $c, :bool, :!warn, :$maxDist);
+        if $bres {
             if $warn { note "Possible misspelling of '$c' as '$phrase'."; }
             return $bool ?? True !! return $c
         }
