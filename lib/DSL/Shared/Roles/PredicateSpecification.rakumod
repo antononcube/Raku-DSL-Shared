@@ -16,7 +16,7 @@ role DSL::Shared::Roles::PredicateSpecification {
 
     # Simple predicate
     regex predicate-simple { <lhs=predicate-value> <predicate-relation> <rhs=predicate-value> }
-    rule predicate-value { <mixed-quoted-variable-name> | <number-value> | <wl-expr> }
+    rule predicate-value { <mixed-quoted-variable-name> | <number-value> | <wl-expr> | <regex-pattern-spec> }
     rule predicate-operator { <logical-connective> | <predicate-relation> }
     rule logical-connective { <and-operator> | <or-operator> }
     token and-operator { 'and' | '&&' | '&' }
