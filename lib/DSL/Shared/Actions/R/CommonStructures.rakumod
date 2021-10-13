@@ -62,6 +62,9 @@ class DSL::Shared::Actions::R::CommonStructures
     method range-spec-to($/) { make $<number-value>.made; }
     method range-spec-step($/) { make $<number-value>.made; }
 
+    # Regex
+    method regex-pattern-spec($/) { make '"' ~ $<regex-pattern>.made ~ '"'; }
+
     # Over-writing the trivial
 	# Trivial
 	method trivial-parameter($/) { make $/.values[0].made; }

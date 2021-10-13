@@ -59,6 +59,8 @@ class DSL::Shared::Actions::WL::CommonStructures
     method range-spec-to($/) { make $<number-value>.made; }
     method range-spec-step($/) { make $<number-value>.made; }
 
+    # Regex
+    method regex-pattern-spec($/) { make 'RegularExpression["' ~ $<regex-pattern>.made ~ '"]'; }
 
     # Over-writing the trivial
     # Trivial
