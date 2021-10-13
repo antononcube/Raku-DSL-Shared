@@ -223,6 +223,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token translation-noun { 'translation' }
     token type-noun { 'type' }
     token use-verb { 'use' | 'utilize' }
+    token used-verb { 'used' | 'utilized' }
     token using-preposition { 'using' | 'with' | 'over' }
     token value-noun { 'value' }
     token values-noun { 'values' }

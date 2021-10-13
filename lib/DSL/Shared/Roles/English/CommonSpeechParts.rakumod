@@ -227,6 +227,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token translation-noun { 'translation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
     token type-noun { 'type' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'type') }> }
     token use-verb { 'use' | 'utilize' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'utilize') }> }
+    token used-verb { 'used' | 'utilized' | ([\w]+) <?{ $0.Str ne 'utilize' and is-fuzzy-match( $0.Str, 'utilized') }> }
     token using-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over', 1) }> }
     token value-noun { 'value' | ([\w]+) <?{ $0.Str ne 'values' and is-fuzzy-match( $0.Str, 'value') }> }
     token values-noun { 'values' | ([\w]+) <?{ $0.Str ne 'value' and is-fuzzy-match( $0.Str, 'values') }> }
