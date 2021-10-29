@@ -1,4 +1,3 @@
-use Test;
 
 use lib './lib';
 use lib '.';
@@ -105,6 +104,9 @@ USER ID kdkwe823
 my $command1 = $command0.subst("\n", ";\n"):g;
 
 my $command2 = $command0.subst("\n", " # \n"):g;
+
+
+use Test;
 
 plan 8;
 

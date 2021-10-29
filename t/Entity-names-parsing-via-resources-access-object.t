@@ -1,4 +1,3 @@
-use Test;
 
 use lib './lib';
 use lib '.';
@@ -22,6 +21,9 @@ sub parse-func(Str $class, Str:D $spec) {
             ).made
 }
 
+use Test;
+
+plan 2;
 
 ## 1
 is-deeply
