@@ -1,11 +1,8 @@
 use v6;
 
 use DSL::Shared::Entity::ResourceAccess;
-use DSL::Shared::Roles::English::PipelineCommand;
-use DSL::Shared::Utilities::FuzzyMatching;
 
-role DSL::Shared::Entity::Grammar::EntityNames
-        does DSL::Shared::Roles::English::PipelineCommand {
+role DSL::Shared::Entity::Grammar::EntityNames {
 
     token name-punct-char { '-' | '.' | '+' | '#' }
 
