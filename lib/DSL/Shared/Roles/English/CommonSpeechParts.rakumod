@@ -181,6 +181,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token separate-verb { 'separate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'separate') }> }
     token series-noun { 'series' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'series') }> }
     token set-directive { 'set' }
+    token set-noun { 'set' }
     token setup-noun { 'setup' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'setup') }> }
     token shape-noun { 'shape' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'shape') }> }
     token simple { 'simple' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'simple') }> | 'direct' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'direct') }> }
@@ -252,7 +253,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule complete-cases-phrase { <complete-adjective> <cases-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
-    rule data { <data-frame> | <data-noun> | <dataset-noun> | <time-series-data> }
+    rule data { <data-frame> | <data-noun> | <dataset-noun> | <data-noun> <set-noun> | <time-series-data> }
     rule data-column-phrase { <data-noun>? [ <column-noun> | <variable-noun> ] }
     rule data-columns-phrase { <data-noun>? [ <columns> | <variables-noun> ] }
     rule data-frame { <data-noun> <frame-noun> }
