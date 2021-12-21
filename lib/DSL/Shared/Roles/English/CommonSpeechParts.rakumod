@@ -11,11 +11,11 @@ use DSL::Shared::Utilities::FuzzyMatching;
 
 role DSL::Shared::Roles::English::CommonSpeechParts {
     # Single words
-    token ID-noun { 'ID' }
-    token IDENTIFIER-noun { 'IDENTIFIER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'IDENTIFIER') }> }
-    token MODULE-noun { 'MODULE' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'MODULE') }> }
-    token TARGET-noun { 'TARGET' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
-    token USER-noun { 'USER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'USER', 1) }> }
+    token ID-noun {:i' ID' }
+    token IDENTIFIER-noun {:i 'IDENTIFIER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'IDENTIFIER') }> }
+    token MODULE-noun {:i 'MODULE' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'MODULE') }> }
+    token TARGET-noun {:i 'TARGET' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
+    token USER-noun {:i 'USER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'USER', 1) }> }
     token a-determiner { 'a' | 'an' }
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
     token adjacency-noun { 'adjacency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacency') }> }
