@@ -11,7 +11,7 @@ use DSL::Shared::Utilities::FuzzyMatching;
 
 role DSL::Shared::Roles::English::CommonSpeechParts {
     # Single words
-    token ID-noun {:i' ID' }
+    token ID-noun {:i 'ID' }
     token IDENTIFIER-noun {:i 'IDENTIFIER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'IDENTIFIER') }> }
     token MODULE-noun {:i 'MODULE' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'MODULE') }> }
     token TARGET-noun {:i 'TARGET' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
