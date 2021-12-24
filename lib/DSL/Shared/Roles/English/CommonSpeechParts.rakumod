@@ -253,7 +253,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule complete-cases-phrase { <complete-adjective> <cases-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
-    rule data { <data-frame> | <data-noun> | <dataset-noun> | <data-noun> <set-noun> | <time-series-data> }
+    rule data { <data-frame> | <data-noun> <set-noun> | <time-series-data> | <data-noun> | <dataset-noun> }
     rule data-column-phrase { <data-noun>? [ <column-noun> | <variable-noun> ] }
     rule data-columns-phrase { <data-noun>? [ <columns> | <variables-noun> ] }
     rule data-frame { <data-noun> <frame-noun> }
