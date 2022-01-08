@@ -49,6 +49,8 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
     has Str $.currentStateID;
     has &.choose-transition is rw;
 
+    has &.re-say is rw = &say;
+    has &.re-warn is rw = &warn;
     has &.ECHOLOGGING is rw = &say;
 
     #------------------------------------------------------
@@ -77,7 +79,7 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
         }
 
         if %!states{$initID}:!exists {
-            note "Unknown initial state ID: $initID .";
+            &!re-warn( "Unknown initial state ID: $initID ." );
             return Nil;
         }
 
@@ -158,7 +160,9 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
 
     #------------------------------------------------------
     multi method choose-transition(*@transitions --> Str) {
-        say "[{.key + 1}] {.value.id}" for @transitions.pairs;
+
+        &!re-say( "[{.key + 1}] {.value.id}" ) for @transitions.pairs;
+
         loop {
             my $n = val get;
             return @transitions[$n - 1].to if $n ~~ Int && $n ~~ 1..@transitions;
@@ -171,7 +175,7 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
         my $n;
         my @transitions = %!states{$stateID}.explicitNext;
 
-        say "[{.key + 1}] {.value.id}" for @transitions.pairs;
+        &!re-say( "[{.key + 1}] {.value.id}" ) for @transitions.pairs;
 
         my $k = 0;
         while $k < $maxLoops {
@@ -183,17 +187,17 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
                 $n = $input;
             }
 
-            say "ChooseTransition: Selection ", (:$n);
+            &!re-say("ChooseTransition: Selection ", (:$n));
 
             if $n ~~ Int && $n ~~ 1..@transitions {
                 return @transitions[$n - 1].to;
             } else {
-                say "Invalid input; try again. (One of {(1..^(@transitions.elems+1)).Str}.)";
+                &!re-say("Invalid input; try again. (One of {(1..^(@transitions.elems+1)).Str}.)");
             }
         }
 
         &!ECHOLOGGING("ChoseTransition: Reached $maxLoops -- giving up!");
-        warn("ChoseTransition: Reached $maxLoops -- giving up!");
+        &!re-warn("ChoseTransition: Reached $maxLoops -- giving up!");
 
         return @transitions[0].to;
     }
