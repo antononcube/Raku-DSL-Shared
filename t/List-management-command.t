@@ -2,12 +2,16 @@ use lib './lib';
 use lib '.';
 
 use DSL::Shared::Roles::ErrorHandling;
-use DSL::Shared::Roles::English::ListManagement;
+use DSL::Shared::Roles::English::ListManagementCommand;
 use DSL::Shared::Roles::English::PipelineCommand;
+use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 
 grammar ParseObj
-        does DSL::Shared::Roles::English::ListManagement {
-    rule TOP { <list-management-command>  }
+        does DSL::Shared::Roles::English::ListManagementCommand
+        does Lingua::NumericWordForms::Roles::English::WordedNumberSpec
+        does DSL::Shared::Roles::ErrorHandling
+        does DSL::Shared::Roles::English::PipelineCommand {
+    rule TOP { <pipeline-command> | <list-management-command> }
 };
 
 sub parse-func(Str $c) {

@@ -2,10 +2,7 @@ use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::PipelineCommand;
 use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 
-role DSL::Shared::Roles::English::ListManagement
-        does Lingua::NumericWordForms::Roles::English::WordedNumberSpec
-        does DSL::Shared::Roles::ErrorHandling
-        does DSL::Shared::Roles::English::PipelineCommand {
+role DSL::Shared::Roles::English::ListManagementCommand {
 
     rule list-management-command { 
         <list-management-replace-part> |
