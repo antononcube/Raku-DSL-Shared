@@ -1,10 +1,10 @@
 
-unit module DSL::Shared::Actions::English::Raku::ListManagement;
+unit module DSL::Shared::Actions::English::Raku::ListManagementCommand;
 
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
 use DSL::Shared::Actions::English::PipelineCommand;
 
-class DSL::Shared::Actions::English::Raku::ListManagement
+class DSL::Shared::Actions::English::Raku::ListManagementCommand
         is DSL::Shared::Actions::English::PipelineCommand {
 
     method TOP($/) { make $/.values[0].made; }
@@ -21,7 +21,7 @@ class DSL::Shared::Actions::English::Raku::ListManagement
         }
     }
 
-    method list-management-drop($/) { make '$obj = $obj.tail(' ~ $/.values[0].made ~ '}]'; }
+    method list-management-drop($/) { make '$obj = $obj.tail(' ~ $/.values[0].made ~ ')'; }
 
     method list-management-replace-part($/) {
         my $valPart = $<pos2> ?? $<pos2>.made !! $<value-spec>.made;
@@ -51,11 +51,11 @@ class DSL::Shared::Actions::English::Raku::ListManagement
         my Str $t = $/.Str.trim.lc;
         my $res =
                 do given $t {
-                    when 'head' { '1' }
-                    when $_ (elem) <rest tail> { '2;;-1' }
-                    when 'former' { '1' }
-                    when 'latter' { '2' }
-                    when 'last' { '-1' }
+                    when 'head' { '0' }
+                    when $_ (elem) <rest tail> { '1..*' }
+                    when 'former' { '0' }
+                    when 'latter' { '1' }
+                    when 'last' { '*-1' }
                     default { note "problem with $t"; $t }
                 };
         make $res;

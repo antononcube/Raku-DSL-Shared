@@ -1,10 +1,10 @@
 
-unit module DSL::Shared::Actions::English::WL::ListManagement;
+unit module DSL::Shared::Actions::English::WL::ListManagementCommand;
 
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
 use DSL::Shared::Actions::English::PipelineCommand;
 
-class DSL::Shared::Actions::English::WL::ListManagement
+class DSL::Shared::Actions::English::WL::ListManagementCommand
         is DSL::Shared::Actions::English::PipelineCommand {
 
     method TOP($/) { make $/.values[0].made; }
