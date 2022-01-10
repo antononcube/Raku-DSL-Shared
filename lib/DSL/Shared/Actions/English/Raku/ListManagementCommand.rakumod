@@ -21,7 +21,7 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
         }
     }
 
-    method list-management-drop($/) { make '$obj = $obj.tail(' ~ $/.values[0].made ~ ')'; }
+    method list-management-drop($/) { make '$obj.splice(' ~ $/.values[0].made ~ ', 1)'; }
 
     method list-management-replace-part($/) {
         my $valPart = $<pos2> ?? $<pos2>.made !! $<value-spec>.made;
@@ -37,7 +37,7 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
     method position-query-link($/) { make $/.values[0].made; }
 
     method list-management-position-query($/) {
-        my Str $res =  $<variable-spec>.made;
+        my Str $res = $<variable-spec>.made;
         for $<position-query-link>».made.reverse -> $p {
             $res = $res ~ '[' ~ $p ~ ']'
         }
