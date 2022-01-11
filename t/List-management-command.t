@@ -20,7 +20,7 @@ sub parse-func(Str $c) {
 
 use Test;
 
-plan 19;
+plan 21;
 
 ## 1
 ok parse-func('element 21 st'),
@@ -97,5 +97,13 @@ ok parse-func('delete all'),
 ## 19
 ok parse-func('drop all elements of the list'),
         'drop all elements of the list';
+
+## 20
+ok parse-func('take top 20 elements'),
+        'take top 20 elements';
+
+## 21
+ok parse-func('last seven'),
+        'last seven';
 
 done-testing;
