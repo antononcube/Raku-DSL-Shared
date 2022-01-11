@@ -25,10 +25,10 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
 
     method list-management-range($/) { make $/.values[0].made; }
     method list-management-top-range($/) {
-        make '$obj = $obj.head(' ~ $<position-index>.made ~ ')';
+        make '$obj = $obj.head(' ~ $/.values[0].made ~ ')';
     }
     method list-management-bottom-range($/) {
-        make '$obj = $obj.tail(' ~ $<position-index>.made ~ ')';
+        make '$obj = $obj.tail(' ~ $/.values[0].made ~ ')';
     }
 
     method list-management-drop($/) { make '$obj.splice(' ~ $/.values[0].made ~ ', 1)'; }

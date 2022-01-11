@@ -33,11 +33,11 @@ class DSL::Shared::Actions::English::RakuObject::ListManagementCommand
 
     method list-management-range($/) { make $/.values[0].made; }
     method list-management-top-range($/) {
-        $!object = $!object.head( $<position-index>.made );
+        $!object = $!object.head( $/.values[0].made );
         make $!object;
     }
     method list-management-bottom-range($/) {
-        $!object = $!object.tail( $<position-index>.made );
+        $!object = $!object.tail( $/.values[0].made );
         make $!object;
     }
 
