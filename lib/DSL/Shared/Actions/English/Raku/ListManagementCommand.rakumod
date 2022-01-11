@@ -14,18 +14,28 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
     method list-management-assignment($/) { $<variable-spec>.made ~ ' = ' ~ $<value-spec>.made; }
 
     method list-management-take($/) {
-        if $<list-management-position-query> {
+        if $<list-management-range> {
+            make $<list-management-range>.made;
+        } elsif $<list-management-position-query> {
             make $<list-management-position-query>.made;
         } else {
-            make '$obj = $obj.head(' ~ $/.values[0].made ~ ')';
+            make '$obj = $obj[' ~ $/.values[0].made ~ '-1]';
         }
+    }
+
+    method list-management-range($/) { make $/.values[0].made; }
+    method list-management-top-range($/) {
+        make '$obj = $obj.head(' ~ $<position-index>.made ~ ')';
+    }
+    method list-management-bottom-range($/) {
+        make '$obj = $obj.tail(' ~ $<position-index>.made ~ ')';
     }
 
     method list-management-drop($/) { make '$obj.splice(' ~ $/.values[0].made ~ ', 1)'; }
 
     method list-management-replace-part($/) {
         my $valPart = $<pos2> ?? $<pos2>.made !! $<value-spec>.made;
-        make '$obj[' ~ $<pos1>.made ~ '] = ' ~ $valPart;
+        make '$obj[' ~ $<pos1>.made ~ '-1] = ' ~ $valPart;
     }
 
     method list-management-clear($/) { make 'obj = ()'; }
@@ -39,7 +49,7 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
     method list-management-position-query($/) {
         my Str $res = $<variable-spec>.made;
         for $<position-query-link>».made.reverse -> $p {
-            $res = $res ~ '[' ~ $p ~ ']'
+            $res = $res ~ '[' ~ $p ~ '-1]'
         }
         make $res;
     }
@@ -51,11 +61,11 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
         my Str $t = $/.Str.trim.lc;
         my $res =
                 do given $t {
-                    when $_ (elem) <first head> { '0' }
-                    when $_ (elem) <rest tail> { '1..*' }
-                    when 'former' { '0' }
-                    when 'latter' { '1' }
-                    when 'last' { '*-1' }
+                    when $_ (elem) <first head> { '1' }
+                    when $_ (elem) <rest tail> { '2..*' }
+                    when 'former' { '1' }
+                    when 'latter' { '2' }
+                    when 'last' { '*' }
                     default { note "problem with $t"; $t }
                 };
         make $res;

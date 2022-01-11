@@ -16,7 +16,11 @@ role DSL::Shared::Roles::English::ListManagementCommand {
         [ <.set-directive> <variable-spec> [ <.to-preposition> | <.as-conjunction> ] <value-spec>] |
         <.assign-verb> <value-spec> <.to-preposition> <variable-spec> }
 
-    rule list-management-take {[ <.take-verb> | <.get-verb> ]? [ <list-management-position-query> | <list-management-position-spec> ]}
+    rule list-management-take {[ <.take-verb> | <.get-verb> ]? [ <list-management-position-query> | <list-management-position-spec> | <list-management-range> ]}
+
+    rule list-management-range { <list-management-top-range> | <list-management-bottom-range> }
+    rule list-management-top-range { [ 'top' | 'first' ] <position-index> <.elements>? }
+    rule list-management-bottom-range { [ 'bottom' | 'last' ] <position-index> <.elements>? }
 
     rule list-management-drop { <.delete-directive> [ <list-management-position-query> | <list-management-position-spec> ]}
 
