@@ -51,7 +51,7 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
         my Str $t = $/.Str.trim.lc;
         my $res =
                 do given $t {
-                    when 'head' { '0' }
+                    when $_ (elem) <first head> { '0' }
                     when $_ (elem) <rest tail> { '1..*' }
                     when 'former' { '0' }
                     when 'latter' { '1' }
