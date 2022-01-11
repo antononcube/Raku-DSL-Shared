@@ -98,6 +98,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token extract-directive { 'extract' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extract') }> }
     token filter-verb { 'filter' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'filter') }> }
     token find-verb { 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find') }> }
+    token first-adjective { 'first' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'first', 1) }> }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' | ([\w]+) <?{ $0.Str ne 'frames' and is-fuzzy-match( $0.Str, 'frame') }> }
     token frames-noun { 'frames' | ([\w]+) <?{ $0.Str ne 'frame' and is-fuzzy-match( $0.Str, 'frames') }> }
@@ -123,6 +124,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token iterations { 'iterations' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'iterations') }> }
     token join-verb { 'join' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'join') }> }
     token language-noun { 'language' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'language') }> }
+    token last-adjective { 'last' | ([\w]+) <?{ $0.Str !(elem) <list link> and is-fuzzy-match( $0.Str, 'last', 1) }> }
     token largest-adjective { 'largest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'largest') }> }
     token link-noun { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link', 1) }> }
     token list-noun { 'list' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'list', 1) }> }

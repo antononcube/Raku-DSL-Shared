@@ -97,6 +97,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token extend-verb { 'extend' }
     token extract-directive { 'extract' }
     token filter { 'filter' }
+    token first-adjective { 'first' }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' }
     token frames-noun { 'frames' }
@@ -123,6 +124,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token join-verb { 'join' }
     token language-noun { 'language' }
     token largest-adjective { 'largest' }
+    token last-adjective { 'last' }
     token link-noun { 'link' }
     token list-noun { 'list' }
     token load-verb { 'load' }
