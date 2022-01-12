@@ -46,7 +46,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     rule list-management-position-spec { <.the-determiner>? <.element>? [ <position-index> | <position-word> ] <.element-phrase>? <.list-phrase>?}
     token position-index { <integer-value> }
     rule position-word { <position-ordinal> | <position-reference> }
-    rule position-reference { 'first' | 'head' | 'rest' | 'last' | <one-pronoun> 'before' <the-determiner>? 'last' | 'former' | 'latter' }
+    rule position-reference { <first-adjective> | 'head' | 'rest' | <last-adjective> | <one-pronoun> 'before' <the-determiner>? <last-adjective> | 'former' | 'latter' }
     rule position-ordinal { <position-ordinal-gen> || <position-ordinal-enum> }
     regex position-ordinal-gen { <position-index> \h* [ 'st' | 'nd' | 'rd' | 'th' ]? }
     rule position-ordinal-enum { <numeric-word-form> }
