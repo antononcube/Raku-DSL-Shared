@@ -38,7 +38,7 @@ class DSL::Shared::FiniteStateMachines::Transition {
     }
 
     method gist {
-        return "Transition object < id => {:$!id}, to => {:$!to} >"
+        return "Transition object < id => {$!id}, to => {$!to} >"
     }
 }
 
@@ -87,17 +87,23 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
         my Str $stateID = $initID;
         my $state = %!states{$initID};
 
+        &!ECHOLOGGING("Run: Initial state ID:", (:$initID));
+
         # Loop to process a sequence of inputs (given or manually entered)
         &!ECHOLOGGING("Run: Main loop...");
         my $k = 0;
         while $k < $maxLoops && ( !$inputs.isa(Array) || $inputs.elems > 0 ) {
             $k++;
 
-            &!ECHOLOGGING("\t", '$state.id' => $state.id );
-            &!ECHOLOGGING("\t", '$state.Str' => $state.Str );
+            if so $state {
+                &!ECHOLOGGING("\t", '$state.id' => $state.id);
+                &!ECHOLOGGING("\t", '$state.Str' => $state.Str);
+            } else {
+                &!ECHOLOGGING("\t", '$state => Nil');
+            }
 
             # Execute the action
-            $state.action.(self);
+            $state.action.(self) if so $state;
 
             if so $state.implicitNext {
                 # Switch with implicit state
@@ -133,8 +139,12 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
             }
 
             &!ECHOLOGGING("\tloop cycle end : ", '$inputs.Str' => ($inputs.isa(Whatever) ?? 'Whatever' !! $inputs.Str) );
-            &!ECHOLOGGING("\tloop cycle end : ", '$state.Str' => $state.Str );
-            &!ECHOLOGGING("\tloop cycle end : ", '$state.implicitNext.so' => $state.implicitNext.so );
+            if so $state {
+                &!ECHOLOGGING("\tloop cycle end : ", '$state.Str' => $state.Str);
+                &!ECHOLOGGING("\tloop cycle end : ", '$state.implicitNext.so' => $state.implicitNext.so);
+            } else {
+                &!ECHOLOGGING("\tloop cycle end : ", '$state => Nil');
+            }
         }
         &!ECHOLOGGING("Run: ...DONE");
 
