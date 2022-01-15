@@ -1,3 +1,6 @@
+# Arguably this actions class is not needed since we can use EVAL and
+#  DSL::Shared::Actions::English::Raku::ListManagementCommand .
+# Nevertheless, this class was implemented for exemplification and explanation purposes.
 
 use DSL::Shared::Actions::English::Raku::ListManagementCommand;
 
