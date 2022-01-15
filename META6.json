@@ -1,14 +1,19 @@
 {
-  "perl": "6.d",
   "name": "DSL::Shared",
-  "api": "1",
-  "auth": "github:antononcube",
-  "version": "0.1.0",
   "description": "DSL::Shared provides utilities and grammar roles for making DSL translators.",
+  "version": "0.1.0",
+  "perl": "6.d",
   "authors": [
     "Anton Antonov"
   ],
-  "license": "Artistic-2.0",
+  "auth": "github:antononcube",
+  "depends": [
+    "silently",
+    "Text::Levenshtein::Damerau",
+    "Lingua::NumericWordForms"
+  ],
+  "build-depends": [],
+  "test-depends": [],
   "provides": {
     "DSL::Shared::Actions::CommonStructures": "lib/DSL/Shared/Actions/CommonStructures.rakumod",
     "DSL::Shared::Actions::English::Julia::PipelineCommand": "lib/DSL/Shared/Actions/English/Julia/PipelineCommand.rakumod",
@@ -17,6 +22,7 @@
     "DSL::Shared::Actions::English::R::PipelineCommand": "lib/DSL/Shared/Actions/English/R/PipelineCommand.rakumod",
     "DSL::Shared::Actions::English::Raku::ListManagementCommand": "lib/DSL/Shared/Actions/English/Raku/ListManagementCommand.rakumod",
     "DSL::Shared::Actions::English::Raku::PipelineCommand": "lib/DSL/Shared/Actions/English/Raku/PipelineCommand.rakumod",
+    "DSL::Shared::Actions::English::RakuObject::ListManagementCommand": "lib/DSL/Shared/Actions/English/RakuObject/ListManagementCommand.rakumod",
     "DSL::Shared::Actions::English::TimeIntervalSpec": "lib/DSL/Shared/Actions/English/TimeIntervalSpec.rakumod",
     "DSL::Shared::Actions::English::WL::ListManagementCommand": "lib/DSL/Shared/Actions/English/WL/ListManagementCommand.rakumod",
     "DSL::Shared::Actions::English::WL::PipelineCommand": "lib/DSL/Shared/Actions/English/WL/PipelineCommand.rakumod",
@@ -48,17 +54,11 @@
     "DSL::Shared::Utilities::FuzzyMatching": "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod",
     "DSL::Shared::Utilities::MetaSpecsProcessing": "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod"
   },
-  "depends": [
-    "silently",
-    "Text::Levenshtein::Damerau",
-    "Lingua::NumericWordForms"
-  ],
-  "build-depends": [],
-  "test-depends": [],
   "resources": [
     "DataFormatNameToEntityID_EN.csv",
     "MetadataTypeNameToEntityID_EN.csv"
   ],
+  "license": "Artistic-2.0",
   "tags": [
     "parser",
     "interpreter",
@@ -66,5 +66,6 @@
     "workflow",
     "pipeline"
   ],
+  "api": "1",
   "source-url": "https://github.com/antononcube/Raku-DSL-Shared.git"
 }
