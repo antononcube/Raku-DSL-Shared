@@ -30,6 +30,13 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
     method list-management-bottom-range($/) {
         make '$obj = $obj.tail(' ~ $/.values[0].made ~ ')';
     }
+    method range-spec($/) {
+        if $<range-spec-step> {
+            make '$obj = $obj[ (' ~ $<range-spec-from>.made ~ ' - 1), (' ~ $<range-spec-from>.made ~ ' + ' ~ $<range-spec-step>.made ~ ' - 1) ... (' ~ $<range-spec-to>.made ~ ' - 1) ]'
+        } else {
+            make '$obj = $obj[ (' ~ $<range-spec-from>.made ~ ' - 1) ... (' ~ $<range-spec-to>.made ~ ' - 1 ) ]'
+        }
+    }
 
     method list-management-drop($/) { make '$obj.splice(' ~ $/.values[0].made ~ ', 1)'; }
 

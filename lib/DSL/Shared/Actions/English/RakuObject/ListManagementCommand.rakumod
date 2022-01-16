@@ -43,7 +43,15 @@ class DSL::Shared::Actions::English::RakuObject::ListManagementCommand
         $!object = $!object.tail( $/.values[0].made );
         make $!object;
     }
-
+    method range-spec($/) {
+        if $<range-spec-step> {
+            $!object = $!object[ ($<range-spec-from>.made - 1), ($<range-spec-from>.made + $<range-spec-step>.made - 1) ... ( $<range-spec-to>.made - 1)];
+            make $!object
+        } else {
+            $!object = $!object[ ($<range-spec-from>.made - 1) ... ($<range-spec-to>.made - 1)];
+            make $!object
+        }
+    }
     method list-management-drop($/) {
         my $p = $/.values[0].made;
         if $p - 1 < $!object.elems {

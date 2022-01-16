@@ -18,7 +18,8 @@ role DSL::Shared::Roles::English::ListManagementCommand {
 
     rule list-management-take {[ <.take-verb> | <.get-verb> ]? [ <list-management-position-query> | <list-management-position-spec> | <list-management-range> ]}
 
-    rule list-management-range { <list-management-top-range> | <list-management-bottom-range> }
+    # <range-spec>, <r-range-spec>, and <wl-range-spec> are from DSL::Shared::Roles::CommonStructures
+    rule list-management-range { <list-management-top-range> | <list-management-bottom-range> | <range-spec> }
     rule list-management-top-range    { [ <.top-noun>    | <.first-adjective> ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
     rule list-management-bottom-range { [ <.bottom-noun> | <.last-adjective>  ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
 
