@@ -95,15 +95,19 @@ role DSL::Shared::Roles::CommonStructures {
     rule range-spec-step-phrase { <with-preposition>? <step-noun> | <with-preposition> }
 
     # Programming languages ranges
+    # Note that Raku's Sequence is WL's Range.
     rule r-range-spec { [ 'seq' '(' | 'seq(' ] <number-value-list> ')' }
+    regex raku-range-spec { <from=.number-value> \h* '...' \h* <to=.number-value> }
     rule wl-range-spec { [ 'Range' '[' | 'Range[' ] <number-value-list> ']' }
     rule r-numeric-list-spec { [ [ 'c' | 'list' ] '(' | 'c(' | 'list(' ] <number-value-list> ')' }
     rule wl-numeric-list-spec { '{' <number-value-list> '}' }
 
     # Span spec
-    rule span-spec     { <from=.range-spec-from> <to=.range-spec-to> }
-    token r-span-spec  { <from=.number-value> \h* ':'  \h* <to=.number-value> }
-    token wl-span-spec { <from=.number-value> \h* ';;' \h* <to=.number-value> }
+    # Note that Raku's Range is WL's Span.
+    rule span-spec       { <from=.range-spec-from> <to=.range-spec-to> }
+    token r-span-spec    { <from=.number-value> \h* ':'  \h* <to=.number-value> }
+    token raku-span-spec { <from=.number-value> \h* '..' \h* <to=.number-value> }
+    token wl-span-spec   { <from=.number-value> \h* ';;' \h* <to=.number-value> }
 
     # Operators
     token key-to-symbol { '->' }
