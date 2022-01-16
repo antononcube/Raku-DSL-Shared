@@ -45,11 +45,11 @@ class DSL::Shared::Actions::English::Raku::ListManagementCommand
         make '$obj[' ~ $<pos1>.made ~ '-1] = ' ~ $valPart;
     }
 
-    method list-management-clear($/) { make 'obj = ()'; }
+    method list-management-clear($/) { make '$obj = ()'; }
 
     method variable-spec($/) { make $/.values[0].made; }
     method value-spec($/) { make $/.values[0].made; }
-    method the-list-reference($/) { make 'obj'; }
+    method the-list-reference($/) { make '$obj'; }
 
     method position-query-link($/) { make $/.values[0].made; }
 
