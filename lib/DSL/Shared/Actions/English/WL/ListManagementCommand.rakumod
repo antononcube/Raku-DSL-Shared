@@ -21,6 +21,21 @@ class DSL::Shared::Actions::English::WL::ListManagementCommand
         }
     }
 
+    method list-management-range($/) { make $/.values[0].made; }
+    method list-management-top-range($/) {
+        make 'obj = obj[1;;' ~ $/.values[0].made ~ ']';
+    }
+    method list-management-bottom-range($/) {
+        make 'obj = obj[' ~ $/.values[0].made ~ ';;-1]';
+    }
+    method range-spec($/) {
+        if $<range-spec-step> {
+            make 'obj = obj[Range[' ~ $<range-spec-from>.made ~ ', ' ~ $<range-spec-to>.made ~ ', ' ~ $<range-spec-step>.made ~ ']]'
+        } else {
+            make 'obj = obj[' ~ $<range-spec-from>.made ~ ';;' ~ $<range-spec-to>.made ~ ']'
+        }
+    }
+    
     method list-management-drop($/) { make 'obj = Drop[obj, {' ~ $/.values[0].made ~ '}]'; }
 
     method list-management-replace-part($/) {
