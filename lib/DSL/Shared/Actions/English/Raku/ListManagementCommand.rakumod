@@ -2,10 +2,10 @@
 unit module DSL::Shared::Actions::English::Raku::ListManagementCommand;
 
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
-use DSL::Shared::Actions::English::PipelineCommand;
+use DSL::Shared::Actions::English::Raku::PipelineCommand;
 
 class DSL::Shared::Actions::English::Raku::ListManagementCommand
-        is DSL::Shared::Actions::English::PipelineCommand {
+        is DSL::Shared::Actions::English::Raku::PipelineCommand {
 
     method TOP($/) { make $/.values[0].made; }
 
