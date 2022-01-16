@@ -77,6 +77,9 @@ class DSL::Shared::Actions::CommonStructures {
 	method percent-value($/) { make $<number-value>.made ~ "/100"; }
 	method boolean-value($/) { make $/.Str; }
 
+	# Number list
+	method number-value-list($/) { make $<number-value>>>.made }
+
 	# Lists
 	method list-separator($/) { make ','; }
 	method variable-names-list($/) { make $<variable-name>>>.made; }
@@ -84,6 +87,16 @@ class DSL::Shared::Actions::CommonStructures {
 	method mixed-quoted-variable-names-list($/) { make $<mixed-quoted-variable-name>>>.made; }
 	method quoted-keyword-variable-names-list($/) { make $<quoted-keyword-variable-name>>>.made; }
 	method mixed-quoted-keyword-variable-names-list($/) { make $<mixed-quoted-keyword-variable-name>>>.made; }
+
+	# Range
+	method range-spec($/) { $/.values>>.made }
+	method range-spec-from($/) { make $<number-value>.made }
+	method range-spec-to($/) { make $<number-value>.made }
+	method range-spec-step($/) { make $<number-value>.made }
+	method r-range-spec($/) { make $/.values[0].made }
+	method wl-range-spec($/) { make $/.values[0].made }
+	method r-numeric-list-spec($/) { make $/.values[0].made }
+	method wl-numeric-list-spec($/) { make $/.values[0].made }
 
 	# Trivial
 	method trivial-parameter($/) { make $/.values[0].made; }
