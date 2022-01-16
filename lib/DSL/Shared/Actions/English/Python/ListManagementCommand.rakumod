@@ -31,14 +31,21 @@ class DSL::Shared::Actions::English::Python::ListManagementCommand
         make 'obj = obj[len(obj)-' ~ $/.values[0].made ~ ':len(obj)]';
     }
     method range-spec($/) {
+        my $from = $<range-spec-from>.made.Int;
+        my $to = $<range-spec-to>.made.Int;
+
         if $<range-spec-step> {
-            make 'obj = obj[range(' ~ $<range-spec-from>.made ~ '-1, ' ~ $<range-spec-to>.made ~ ', ' ~ $<range-spec-step>.made ~ ')]'
+            make 'obj = [obj[i] for i in range(' ~ $<range-spec-from>.made ~ '-1, ' ~ $<range-spec-to>.made ~ ', ' ~$<range-spec-step>.made ~ ')]'
+        } elsif $from > $to  {
+            make 'obj = [obj[i] for i in range(' ~ $<range-spec-from>.made ~ '-1, ' ~ $<range-spec-to>.made ~ ', -1)]'
         } else {
-            make 'obj = obj[range(' ~ $<range-spec-from>.made ~ '-1, ' ~ $<range-spec-to>.made ~ ')]'
+            make 'obj = [obj[i] for i in range(' ~ $<range-spec-from>.made ~ '-1, ' ~ $<range-spec-to>.made ~ ')]'
         }
     }
 
-    method list-management-drop($/) { make 'obj = obj[ list(range(0,' ~ $/.values[0].made ~ ')) + list(range(' ~ $/.values[0].made ~ '+1,len(obj))) ]'; }
+    method list-management-drop($/) {
+        make 'obj = [ obj[i] for i in list(range(0,' ~ $/.values[0].made ~ ')) + list(range(' ~ $/.values[0].made ~ '+1,len(obj))) ]';
+    }
 
     method list-management-replace-part($/) {
         my $valPart = $<pos2> ?? $<pos2>.made !! $<value-spec>.made;
