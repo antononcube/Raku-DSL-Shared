@@ -19,6 +19,7 @@ class DSL::Shared::Actions::Raku::PredicateSpecification
 
   method predicate-simple($/) {
     my Str $objCol = self.double-quote-if-not-already($<lhs>.made);
+    $objCol = '$_{' ~ $objCol ~ '} ';
     if $<predicate-relation>.made eq 'like' {
       make $objCol ~ ' ~~ ' ~ $<rhs>.made;
     } elsif $<predicate-relation>.made eq 'like-start' {
@@ -28,7 +29,7 @@ class DSL::Shared::Actions::Raku::PredicateSpecification
     } elsif $<predicate-relation>.made eq 'match' {
       make $objCol ~ ' ~~ ' ~ $<rhs>.made;
     } else {
-      make '$_{' ~ $objCol ~ '} ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
+      make $objCol ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
     }
   }
   method logical-connective($/) { make $/.values[0].made; }
