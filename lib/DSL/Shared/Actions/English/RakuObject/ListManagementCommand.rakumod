@@ -34,6 +34,13 @@ class DSL::Shared::Actions::English::RakuObject::ListManagementCommand
         }
     }
 
+    method list-management-show($/) { make $/.values[0].made; }
+    method list-management-show-simple($/) { say $!object; make $!object; }
+    method list-management-show-a-take($/) {
+        warn "<list-management-show-a-take>: Not implemented.";
+        make $!object;
+    }
+
     method list-management-range($/) { make $/.values[0].made; }
     method list-management-top-range($/) {
         $!object = $!object.head( $/.values[0].made );

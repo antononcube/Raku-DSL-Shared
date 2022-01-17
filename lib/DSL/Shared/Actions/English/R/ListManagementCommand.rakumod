@@ -13,14 +13,25 @@ class DSL::Shared::Actions::English::R::ListManagementCommand
 
     method list-management-assignment($/) { $<variable-spec>.made ~ ' = ' ~ $<value-spec>.made; }
 
-    method list-management-take($/) {
+    method list-management-take-expr($/) {
         if $<list-management-range> {
-            make $<list-management-range>.made;
+            $<list-management-range>.made;
         } elsif $<list-management-position-query> {
-            make $<list-management-position-query>.made;
+            $<list-management-position-query>.made;
         } else {
-            make 'obj <- obj[' ~ $/.values[0].made ~ ']';
+            'obj <- obj[' ~ $/.values[0].made ~ ']';
         }
+    }
+
+    method list-management-take($/) {
+        make self.list-management-take-expr($/)
+    }
+
+    method list-management-show($/) { make $/.values[0].made; }
+    method list-management-show-simple($/) { make 'print(obj)'; }
+    method list-management-show-a-take($/) {
+        my $res = self.list-management-take-expr($/);
+        make $res.subst('obj <-', 'print(') ~ ')'
     }
 
     method list-management-range($/) { make $/.values[0].made; }
