@@ -7,7 +7,8 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     rule list-management-command { 
         <list-management-replace-part> |
         <list-management-drop> | 
-        <list-management-take> | 
+        <list-management-take> |
+        <list-management-show> |
         <list-management-assignment> | 
         <list-management-clear> | 
         <list-management-position-query> }
@@ -16,7 +17,11 @@ role DSL::Shared::Roles::English::ListManagementCommand {
         [ <.set-directive> <variable-spec> [ <.to-preposition> | <.as-conjunction> ] <value-spec>] |
         <.assign-verb> <value-spec> <.to-preposition> <variable-spec> }
 
-    rule list-management-take {[ <.take-verb> | <.get-verb> ]? [ <list-management-position-query> | <list-management-position-spec> | <list-management-range> ]}
+    rule list-management-take {[ <.take-verb> | <.get-verb> ]? <.the-determiner>? <.elements-phrase>? [ <list-management-position-query> | <list-management-position-spec> | <list-management-range> ]}
+
+    rule list-management-show { <list-management-show-a-take> | <list-management-show-simple> }
+    rule list-management-show-simple { <display-directive> [ <it-pronoun> | <the-directive>? <list-noun> ] }
+    rule list-management-show-a-take { <.display-directive> <.the-determiner>? <.elements-phrase>? [ <list-management-position-query> | <list-management-position-spec> | <list-management-range> ]}
 
     # <range-spec>, <r-range-spec>, and <wl-range-spec> are from DSL::Shared::Roles::CommonStructures
     rule list-management-range { <list-management-top-range> | <list-management-bottom-range> | <range-spec> }
@@ -52,6 +57,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     regex position-ordinal-gen { <position-index> \h* [ 'st' | 'nd' | 'rd' | 'th' ]? }
     rule position-ordinal-enum { <numeric-word-form> }
 
-    rule element-phrase {<element> | <one-pronoun>}
+    rule element-phrase { <element> | <one-pronoun>}
+    rule elements-phrase { <elements> | <ones-pronoun>}
 }
 
