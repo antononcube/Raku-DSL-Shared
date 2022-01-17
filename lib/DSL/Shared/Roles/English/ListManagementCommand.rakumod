@@ -17,14 +17,14 @@ role DSL::Shared::Roles::English::ListManagementCommand {
         [ <.set-directive> <variable-spec> [ <.to-preposition> | <.as-conjunction> ] <value-spec>] |
         <.assign-verb> <value-spec> <.to-preposition> <variable-spec> }
 
-    rule list-management-take {[ <.take-verb> | <.get-verb> ]? <.the-determiner>? <.elements-phrase>? [ <list-management-position-query> | <list-management-position-spec> | <list-management-range> ]}
+    rule list-management-take { [ <.take-verb> | <.get-verb> ]? [ <list-management-position-query> | <list-management-range> | <list-management-position-spec> ] }
 
     rule list-management-show { <list-management-show-a-take> | <list-management-show-simple> }
     rule list-management-show-simple { <display-directive> [ <it-pronoun> | <the-directive>? <list-noun> ] }
-    rule list-management-show-a-take { <.display-directive> <.the-determiner>? <.elements-phrase>? [ <list-management-position-query> | <list-management-position-spec> | <list-management-range> ]}
+    rule list-management-show-a-take { <.display-directive> [ <list-management-position-query> | <list-management-range> | <list-management-position-spec> ] }
 
     # <range-spec>, <r-range-spec>, and <wl-range-spec> are from DSL::Shared::Roles::CommonStructures
-    rule list-management-range { <list-management-top-range> | <list-management-bottom-range> | <range-spec> }
+    rule list-management-range { [<.the-determiner>? <.elements-phrase>]? [ <list-management-top-range> | <list-management-bottom-range> | <range-spec> ] }
     rule list-management-top-range    { [ <.top-noun>    | <.first-adjective> ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
     rule list-management-bottom-range { [ <.bottom-noun> | <.last-adjective>  ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
 
@@ -57,7 +57,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     regex position-ordinal-gen { <position-index> \h* [ 'st' | 'nd' | 'rd' | 'th' ]? }
     rule position-ordinal-enum { <numeric-word-form> }
 
-    rule element-phrase { <element> | <one-pronoun>}
-    rule elements-phrase { <elements> | <ones-pronoun>}
+    rule element-phrase { <element> | <one-pronoun> }
+    rule elements-phrase { <elements> | <ones-pronoun> }
 }
 
