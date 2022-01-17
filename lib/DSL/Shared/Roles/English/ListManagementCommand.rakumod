@@ -20,7 +20,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     rule list-management-take { [ <.take-verb> | <.get-verb> ]? [ <list-management-position-query> | <list-management-range> | <list-management-position-spec> ] }
 
     rule list-management-show { <list-management-show-a-take> | <list-management-show-simple> }
-    rule list-management-show-simple { <display-directive> [ <it-pronoun> | <the-directive>? <list-noun> ] }
+    rule list-management-show-simple { <display-directive> [ <it-pronoun> | <the-determiner>? <list-noun> ] }
     rule list-management-show-a-take { <.display-directive> [ <list-management-position-query> | <list-management-range> | <list-management-position-spec> ] }
 
     # <range-spec>, <r-range-spec>, and <wl-range-spec> are from DSL::Shared::Roles::CommonStructures
