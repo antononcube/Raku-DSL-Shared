@@ -23,9 +23,9 @@ class DSL::Shared::Actions::Raku::PredicateSpecification
     if $<predicate-relation>.made eq 'like' {
       make $objCol ~ ' ~~ ' ~ $<rhs>.made;
     } elsif $<predicate-relation>.made eq 'like-start' {
-      make $objCol ~ ' ~~ rx/ ' ~ $<rhs>.made ~ ' . * /';
+      make $objCol ~ ' ~~ rx/ ^ ' ~ $<rhs>.made ~ ' . * /';
     } elsif $<predicate-relation>.made eq 'like-end' {
-      make $objCol ~ ' ~~ rx/ . * ' ~ $<rhs>.made ~ ' /';
+      make $objCol ~ ' ~~ rx/ . * ' ~ $<rhs>.made ~ ' $ /';
     } elsif $<predicate-relation>.made eq 'match' {
       make $objCol ~ ' ~~ ' ~ $<rhs>.made;
     } else {
