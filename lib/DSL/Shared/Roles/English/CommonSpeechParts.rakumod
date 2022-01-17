@@ -121,6 +121,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token ingest-verb { 'ingest' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'ingest') }> }
     token into-preposition { 'into' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'into', 1) }> }
     token is-verb { 'is' }
+    token it-pronoun { 'it' }
     token iterations { 'iterations' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'iterations') }> }
     token join-verb { 'join' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'join') }> }
     token language-noun { 'language' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'language') }> }
@@ -157,6 +158,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token off-adverb { 'off' }
     token on-preposition { 'on' }
     token one-pronoun { 'one' }
+    token ones-pronoun { 'ones' }
     token or-conjunction { 'or' }
     token our-determiner { 'our' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'our', 1) }> }
     token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out', 1) }> }

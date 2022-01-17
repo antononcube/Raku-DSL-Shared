@@ -120,6 +120,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token ingest-verb { 'ingest' }
     token into-preposition { 'into' }
     token is-verb { 'is' }
+    token it-pronoun { 'it' }
     token iterations { 'iterations' }
     token join-verb { 'join' }
     token language-noun { 'language' }
@@ -155,6 +156,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token off-adverb { 'off' }
     token on-preposition { 'on' }
     token one-pronoun { 'one' }
+    token ones-pronoun { 'ones' }
     token or-conjunction { 'or' }
     token our-determiner { 'our' }
     token out-adverb { 'out' }
