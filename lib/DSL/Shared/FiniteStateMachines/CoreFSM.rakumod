@@ -225,7 +225,6 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
     }
 
     method to-wl() {
-        .say for %.states.values>>.to-wl;
         return "List[{%.states.values>>.to-wl.join(',')}]"
     }
 }
