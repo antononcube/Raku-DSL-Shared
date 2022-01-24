@@ -91,8 +91,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token drop-verb { 'drop' }
     token during-preposition { 'during' }
     token each-determiner { 'each' }
-    token element { 'element' }
-    token elements { 'elements' }
+    token element-noun { 'element' }
+    token elements-noun { 'elements' }
+    token element { <element-noun> }
+    token elements { <elements-noun> }
     token every-determiner { 'every' }
     token extend-verb { 'extend' }
     token extract-directive { 'extract' }

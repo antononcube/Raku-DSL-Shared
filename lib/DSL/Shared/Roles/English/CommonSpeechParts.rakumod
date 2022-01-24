@@ -91,8 +91,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token drop-verb { 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop', 1) }> }
     token during-preposition { 'during' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'during') }> }
     token each-determiner { 'each' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'each', 1) }> }
-    token element { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
-    token elements { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
+    token element { <element-noun> }
+    token elements { <elements-noun> }
+    token element-noun { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
+    token elements-noun { 'elements' | ([\w]+) <?{ $0.Str ne 'element' and is-fuzzy-match( $0.Str, 'elements') }> }
     token every-determiner { 'every' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'every', 1) }> }
     token extend-verb { 'extend' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extend') }> }
     token extract-directive { 'extract' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'extract') }> }
