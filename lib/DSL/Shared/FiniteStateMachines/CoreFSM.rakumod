@@ -26,6 +26,18 @@ class DSL::Shared::FiniteStateMachines::State {
         return "State object < id => {$!id}, action => {self.action ?? self.action.raku !! 'None'} >";
     }
 
+    method to-wl() {
+        if $.explicitNext {
+            my @res = do for @!explicitNext -> $tr {
+                "DirectedEdge[\"$!id\",\"{$tr.to}\",\"{$tr.id}\"]";
+            }
+            @res.join(',')
+        } elsif $.implicitNext {
+            "DirectedEdge[\"$!id\",\"{$.implicitNext}\"]";
+        } else {
+            'Nothing'
+        }
+    }
 }
 
 #-----------------------------------------------------------
@@ -210,5 +222,10 @@ class DSL::Shared::FiniteStateMachines::CoreFSM {
         &!re-warn("ChoseTransition: Reached $maxLoops -- giving up!");
 
         return @transitions[0].to;
+    }
+
+    method to-wl() {
+        .say for %.states.values>>.to-wl;
+        return "List[{%.states.values>>.to-wl.join(',')}]"
     }
 }
