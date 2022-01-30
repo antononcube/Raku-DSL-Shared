@@ -10,10 +10,10 @@ class DSL::Shared::Actions::English::Raku::PipelineCommand
         is DSL::Shared::Actions::English::PipelineCommand {
 
     # Object
-    method assign-pipeline-object-to($/) { make $<variable-name>.made ~ ' = $obj'; }
+    method assign-pipeline-object-to($/) { make 'my ' ~ $<variable-name>.made ~ ' = $obj'; }
 
     # Value
-    method assign-pipeline-value-to($/) { make $<variable-name>.made ~ ' = $obj'; }
+    method assign-pipeline-value-to($/) { make 'my ' ~ $<variable-name>.made ~ ' = $obj'; }
     method echo-pipeline-value($/) { make 'say(obj)'; }
     method echo-pipeline-funciton-value($/) { make 'say( ' ~ $<pipeline-function-spec>.made ~ '($obj) )'; }
     method set-pipeline-value($/) { make '$obj = ' ~ $<set-pipeline-value-rhs>.made; }
