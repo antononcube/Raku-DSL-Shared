@@ -38,6 +38,7 @@
     "DSL::Shared::Actions::Raku::PredicateSpecification": "lib/DSL/Shared/Actions/Raku/PredicateSpecification.rakumod",
     "DSL::Shared::Actions::WL::CommonStructures": "lib/DSL/Shared/Actions/WL/CommonStructures.rakumod",
     "DSL::Shared::Actions::WL::PredicateSpecification": "lib/DSL/Shared/Actions/WL/PredicateSpecification.rakumod",
+    "DSL::Shared::Entity::Actions::Raku::System": "lib/DSL/Shared/Entity/Actions/Raku/System.rakumod",
     "DSL::Shared::Entity::Actions::WL::System": "lib/DSL/Shared/Entity/Actions/WL/System.rakumod",
     "DSL::Shared::Entity::Grammar::EntityNames": "lib/DSL/Shared/Entity/Grammar/EntityNames.rakumod",
     "DSL::Shared::Entity::ResourceAccess": "lib/DSL/Shared/Entity/ResourceAccess.rakumod",
