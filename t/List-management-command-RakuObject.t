@@ -69,7 +69,7 @@ ok parse-func('last element of the 3rd element of the variable rjewe'),
         'last element of the 3rd element of the variable rjewe';
 
 ## 11
-is-deeply parse-func('take the first one'), @temp[0],
+is-deeply parse-func('take the first one'), (@temp[0],),
         'take the first one';
 
 ## 12
