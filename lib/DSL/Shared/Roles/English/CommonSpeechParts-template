@@ -17,6 +17,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token TARGET-noun { 'TARGET' }
     token USER-noun { 'USER' }
     token a-determiner { 'a' | 'an'}
+    token add-verb { 'add' }
     token adhere-verb { 'adhere' }
     token adjacency-noun { 'adjacency' }
     token adjacent-adjective { 'adjacent' }
@@ -229,6 +230,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token transform-verb { 'transform' }
     token translation-noun { 'translation' }
     token type-noun { 'type' }
+    token up-adverb { 'up' }
     token use-verb { 'use' | 'utilize' }
     token used-verb { 'used' | 'utilized' }
     token using-preposition { 'using' | 'with' | 'over' }

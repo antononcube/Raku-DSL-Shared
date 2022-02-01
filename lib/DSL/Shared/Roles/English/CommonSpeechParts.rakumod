@@ -17,6 +17,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token TARGET-noun {:i 'TARGET' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
     token USER-noun {:i 'USER' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'USER', 1) }> }
     token a-determiner { 'a' | 'an' }
+    token add-verb { 'add' }
     token adhere-verb { 'adhere' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adhere') }> }
     token adjacency-noun { 'adjacency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacency') }> }
     token adjacent-adjective { 'adjacent' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'adjacent') }> }
@@ -233,6 +234,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token transform-verb { 'transform' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'transform') }> }
     token translation-noun { 'translation' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'TARGET') }> }
     token type-noun { 'type' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'type') }> }
+    token up-adverb { 'up' }
     token use-verb { 'use' | 'utilize' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'utilize') }> }
     token used-verb { 'used' | 'utilized' | ([\w]+) <?{ $0.Str ne 'utilize' and is-fuzzy-match( $0.Str, 'utilized') }> }
     token using-preposition { 'using' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'using') }> | 'with' | 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over', 1) }> }

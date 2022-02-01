@@ -73,7 +73,7 @@ role DSL::Shared::Roles::English::PipelineCommand
 
     # Translation target
     rule dsl-translation-target-command { <.use-directive>? <.the-determiner>? <.dsl-spec-phrase> <.dsl-translation-target-phrase> <raku-module-name> }
-    rule dsl-translation-target-phrase { <translation-noun> <target-noun> | <TARGET-noun> | '⨁' | '⨀' | '©' | '®' | '(*)' | '(o)' | '(O)' }
+    rule dsl-translation-target-phrase { <translation-noun> <target-noun> | <TARGET-noun> | '⨁' | '⨀' | '©' | '®' | '(*)' | '(o)' | '(O)' | '🎯' }
 
     # User ID spec command
     rule user-spec-command { <user-id-spec-command> }
@@ -81,7 +81,7 @@ role DSL::Shared::Roles::English::PipelineCommand
 
     # Setup code commend
     rule setup-code-command { <setup-code-simple> }
-    rule setup-code-simple { <include-verb>? [ <setup-noun> | <configuration-noun> ] <code-noun> }
+    rule setup-code-simple { [<include-verb> | <add-verb>]? <the-determiner>? [ <setup-noun> | <set-noun> <up-adverb> | <configuration-noun> ] <code-noun> }
 
     # Code line
     rule code-line { <wl-expr> }
