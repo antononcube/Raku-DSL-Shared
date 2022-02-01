@@ -20,7 +20,7 @@ sub parse-func(Str $c) {
 
 use Test;
 
-plan 21;
+plan 22;
 
 ## 1
 ok parse-func('element 21 st'),
@@ -103,6 +103,10 @@ ok parse-func('take top 20 elements'),
         'take top 20 elements';
 
 ## 21
+ok parse-func('take the first seven'),
+        'take the first seven';
+
+## 22
 ok parse-func('last seven'),
         'last seven';
 
