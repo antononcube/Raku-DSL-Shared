@@ -25,6 +25,8 @@ class DSL::Shared::Actions::WL::PredicateSpecification
       make 'StringMatchQ[ #[' ~ $objCol ~ '], ' ~ $<rhs>.made ~ ' ~~ ___ ]';
     } elsif $<predicate-relation>.made eq 'like-end' {
       make 'StringMatchQ[ #[' ~ $objCol ~ '], ___ ~~ ' ~ $<rhs>.made ~ ']';
+    } elsif $<predicate-relation>.made eq 'like-contains' {
+      make 'StringMatchQ[ #[' ~ $objCol ~ '], ___ ~~ ' ~ $<rhs>.made ~ ' ~~ ___]';
     } elsif $<predicate-relation>.made eq 'match' {
       make 'MatchQ[ #[' ~ $objCol ~ '], ' ~ $<rhs>.made ~ ']';
     } else {
@@ -50,6 +52,7 @@ class DSL::Shared::Actions::WL::PredicateSpecification
   method like-relation($/) { make 'like'; }
   method like-start-relation($/) { make 'like-start'; }
   method like-end-relation($/) { make 'like-end'; }
+  method like-contains-relation($/) { make 'like-contains'; }
   method match-relation($/) { make 'match'; }
 
 }

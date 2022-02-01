@@ -26,6 +26,8 @@ class DSL::Shared::Actions::Raku::PredicateSpecification
       make $objCol ~ ' ~~ rx/ ^ ' ~ $<rhs>.made ~ ' . * /';
     } elsif $<predicate-relation>.made eq 'like-end' {
       make $objCol ~ ' ~~ rx/ . * ' ~ $<rhs>.made ~ ' $ /';
+    } elsif $<predicate-relation>.made eq 'like-contains' {
+      make $objCol ~ ' ~~ rx/ .* ' ~ $<rhs>.made ~ ' .* /';
     } elsif $<predicate-relation>.made eq 'match' {
       make $objCol ~ ' ~~ ' ~ $<rhs>.made;
     } else {
@@ -51,6 +53,7 @@ class DSL::Shared::Actions::Raku::PredicateSpecification
   method like-relation($/) { make '~~'; }
   method like-start-relation($/) { make 'like-start'; }
   method like-end-relation($/) { make 'like-end'; }
+  method like-contains-relation($/) { make 'like-contains'; }
   method match-relation($/) { make 'match'; }
 
 }

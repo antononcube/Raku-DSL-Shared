@@ -29,7 +29,7 @@ role DSL::Shared::Roles::PredicateSpecification {
         <greater-relation> | <greater-equal-relation> |
         <same-relation> | <not-same-relation> |
         <in-relation> | <not-in-relation> |
-        <like-relation> | <like-start-relation> | <like-end-relation> |
+        <like-relation> | <like-start-relation> | <like-end-relation> | <like-contains-relation> |
         <match-relation> }
 
     token equal-relation { '=' | '==' | 'eq' | 'equals' | 'is'? \h* 'equal' \h+ 'to'? | 'is' }
@@ -45,5 +45,6 @@ role DSL::Shared::Roles::PredicateSpecification {
     token like-relation { 'is'? \h* [ 'like' | 'similar' \h+ 'to' ] }
     token like-start-relation { [ 'starts' | 'start' ] \h+ 'with' }
     token like-end-relation { [ 'ends' | 'end' ] \h+ 'with' }
+    token like-contains-relation { 'contains' | 'has' }
     token match-relation { 'match' | 'matches' | 'is'? \h+ 'matching' }
 }

@@ -30,6 +30,8 @@ class DSL::Shared::Actions::R::PredicateSpecification
       make 'grepl( pattern = ' ~ $<rhs>.made.subst( /^\"/, '"^' ) ~ ', x = ' ~ $<lhs>.made ~ ')';
     } elsif $<predicate-relation>.made eq 'like-end' {
       make 'grepl( pattern = ' ~ $<rhs>.made.subst( /\"$/, '$"' ) ~ ', x = ' ~ $<lhs>.made ~ ')';
+    } elsif $<predicate-relation>.made eq 'like-contains' {
+      make 'grepl( pattern = ' ~ $<rhs>.made ~ ', x = ' ~ $<lhs>.made ~ ')';
     } else {
       make $<lhs>.made ~ ' ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
     }
@@ -53,6 +55,7 @@ class DSL::Shared::Actions::R::PredicateSpecification
   method like-relation($/) { make 'like'; }
   method like-start-relation($/) { make 'like-start'; }
   method like-end-relation($/) { make 'like-end'; }
+  method like-contains-relation($/) { make 'like-contains'; }
   method match-relation($/) { make 'match'; }
 
 }

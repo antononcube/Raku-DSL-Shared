@@ -23,7 +23,13 @@ class DSL::Shared::Actions::Python::PredicateSpecification
     } elsif $<predicate-relation>.made eq '%!in%' {
       make '! ' ~ $<lhs>.made ~ '.isin( ' ~ $<rhs>.made ~ ' )';
     } elsif $<predicate-relation>.made eq 'like' {
-      make 'grepl( pattern = ' ~ $<rhs>.made ~ ', x = ' ~ $<lhs>.made ~ ')';
+      make 're.match( "' ~ $<rhs>.made ~ '", ' ~ $<lhs>.made ~ ' )';
+    } elsif $<predicate-relation>.made eq 'like-start' {
+      make $<lhs>.made ~ '.startswith( ' ~ $<rhs>.made ~ ' )';
+    } elsif $<predicate-relation>.made eq 'like-end' {
+      make $<lhs>.made ~ '.endswith( ' ~ $<rhs>.made ~ ' )';
+    } elsif $<predicate-relation>.made eq 'like-contains' {
+      make $<rhs>.made ~ ' in ' ~ $<lhs>.made;
     } else {
       make $<lhs>.made ~ ' ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
     }
@@ -45,6 +51,10 @@ class DSL::Shared::Actions::Python::PredicateSpecification
   method in-relation($/) { make '%in%'; }
   method not-in-relation($/) { make '%!in%'; }
   method like-relation($/) { make 'like'; }
+  method like-start-relation($/) { make 'like-start'; }
+  method like-end-relation($/) { make 'like-end'; }
+  method like-contains-relation($/) { make 'like-contains'; }
+  method match-relation($/) { make 'match'; }
 
 }
 
