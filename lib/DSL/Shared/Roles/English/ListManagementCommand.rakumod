@@ -24,7 +24,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     rule list-management-show-a-take { <.display-directive> [ <list-management-position-query> | <list-management-range> | <list-management-position-spec> ] }
 
     # <range-spec>, <r-range-spec>, and <wl-range-spec> are from DSL::Shared::Roles::CommonStructures
-    rule list-management-range { [<.the-determiner>? <.elements-phrase>]? [ <list-management-top-range> | <list-management-bottom-range> | <range-spec> ] }
+    rule list-management-range { <.the-determiner>? <.elements-phrase>? [ <list-management-top-range> | <list-management-bottom-range> | <range-spec> ] }
     rule list-management-top-range    { [ <.top-noun>    | <.first-adjective> ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
     rule list-management-bottom-range { [ <.bottom-noun> | <.last-adjective>  ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
 
