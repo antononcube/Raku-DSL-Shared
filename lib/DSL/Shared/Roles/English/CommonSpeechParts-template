@@ -56,7 +56,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token compute-directive { 'compute' | 'find' | 'calculate' }
     token config-noun { 'config' }
     token configuration-noun { 'configuration' }
-    token connect-verb { 'link' }
+    token connect-verb { 'connect' }
     token consider-verb { 'consider' }
     token context-noun { 'context' }
     token contingency-noun { 'contingency' }
@@ -92,6 +92,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token drop-verb { 'drop' }
     token during-preposition { 'during' }
     token each-determiner { 'each' }
+    token echo-verb { 'echo' }
     token element-noun { 'element' }
     token elements-noun { 'elements' }
     token element { <element-noun> }
@@ -187,6 +188,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token set-noun { 'set' }
     token setup-noun { 'setup' }
     token shape-noun { 'shape' }
+    token show-verb { 'show' }
     token simple { 'simple' | 'direct' }
     token simply-adverb { 'simply' }
     token simulate { 'simulate' }

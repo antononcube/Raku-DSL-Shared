@@ -56,7 +56,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token compute-directive { 'compute' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'compute') }> | 'find' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'find', 1) }> | 'calculate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calculate') }> }
     token config-noun { 'config' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'config') }> }
     token configuration-noun { 'configuration' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'configuration') }> }
-    token connect-verb { 'link' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'link', 1) }> }
+    token connect-verb { 'connect' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'connect') }> }
     token consider-verb { 'consider' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consider') }> }
     token context-noun { 'context' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'context') }> }
     token contingency-noun { 'contingency' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'contingency') }> }
@@ -82,7 +82,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token dimension-noun { 'dimension' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dimension') }> }
     token dimensions-noun { 'dimensions' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'dimensions') }> }
     token directly-adverb { 'directly' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'directly') }> }
-    token display-directive { <display-verb> | 'show' | 'echo' }
+    token display-directive { <display-verb> | <show-verb> | <echo-verb> }
     token display-verb { 'display' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'display') }> }
     token distance-noun { 'distance' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'distance') }> }
     token do-verb { 'do' }
@@ -92,6 +92,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token drop-verb { 'drop' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'drop', 1) }> }
     token during-preposition { 'during' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'during') }> }
     token each-determiner { 'each' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'each', 1) }> }
+    token echo-verb { 'echo' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'echo', 1) }> }
     token element { <element-noun> }
     token elements { <elements-noun> }
     token element-noun { 'element' | ([\w]+) <?{ $0.Str ne 'elements' and is-fuzzy-match( $0.Str, 'element') }> }
@@ -167,7 +168,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token out-adverb { 'out' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'out', 1) }> }
     token outlier-noun { 'outlier' | ([\w]+) <?{ $0.Str ne 'outliers' and is-fuzzy-match( $0.Str, 'outlier') }> }
     token outliers-noun { 'outliers' | ([\w]+) <?{ $0.Str ne 'outlier' and is-fuzzy-match( $0.Str, 'outliers') }> }
-    token over-preposition { 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over') }> }
+    token over-preposition { 'over' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'over', 1) }> }
     token parameter-noun { 'parameter' | ([\w]+) <?{ $0.Str ne 'parameters' and is-fuzzy-match( $0.Str, 'parameter') }> }
     token parameters-noun { 'parameters' | ([\w]+) <?{ $0.Str ne 'parameter' and is-fuzzy-match( $0.Str, 'parameters') }> }
     token pattern-noun { 'pattern' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'pattern') }> }
@@ -191,6 +192,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token set-noun { 'set' }
     token setup-noun { 'setup' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'setup') }> }
     token shape-noun { 'shape' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'shape') }> }
+    token show-verb { 'show' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'show', 1) }> }
     token simple { 'simple' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'simple') }> | 'direct' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'direct') }> }
     token simply-adverb { 'simply' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'simply') }> }
     token simulate { 'simulate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'simulate') }> }
