@@ -16,7 +16,7 @@ grammar ParseObj
 };
 
 
-plan 13;
+plan 16;
 
 #-----------------------------------------------------------
 # Global commands parsing
@@ -73,5 +73,17 @@ ok ParseObj.parse('show prioritized list'),
 ## 13
 ok ParseObj.parse('show pipeline value'),
         'show pipeline value';
+
+## 14
+ok ParseObj.parse('show current pipeline value'),
+        'show current pipeline value';
+
+## 15
+ok ParseObj.parse('recover state'),
+        'recover state';
+
+## 16
+ok ParseObj.parse('recover the last state'),
+        'recover the last state';
 
 done-testing;
