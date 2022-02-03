@@ -7,7 +7,8 @@ role DSL::Shared::Roles::English::GlobalCommand {
         <global-quit> |
         <global-cancel> |
         <global-show-all> |
-        <global-priority-list> }
+        <global-priority-list> |
+        <global-recover-state> }
     
     rule global-help {:i 'help' | <what-pronoun> <to-preposition> [ <do-verb> | 'enter' ] }
     rule global-quit-verb {:i 'quit' | 'exit' | 'halt' }
@@ -16,5 +17,6 @@ role DSL::Shared::Roles::English::GlobalCommand {
     rule global-show-all {:i <display-directive> [ <all-determiner> | 'full' ] [ <data> | <records-phrase> | <results> ]? }
     rule global-priority-list-phrase {:i 'priority' [ 'order' | <list-noun> ] | 'order' <by-preposition> 'priority' | 'prioritized' 'list'}
     rule global-priority-list {:i <display-directive>? <global-priority-list-phrase> }
+    rule global-recover-state {:i 'recover' <the-determiner>? <last-adjective>? 'state' }
 }
 
