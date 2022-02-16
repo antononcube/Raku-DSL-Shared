@@ -42,6 +42,8 @@
     "DSL::Shared::Entity::Actions::WL::System": "lib/DSL/Shared/Entity/Actions/WL/System.rakumod",
     "DSL::Shared::Entity::Grammar::EntityNames": "lib/DSL/Shared/Entity/Grammar/EntityNames.rakumod",
     "DSL::Shared::Entity::ResourceAccess": "lib/DSL/Shared/Entity/ResourceAccess.rakumod",
+    "DSL::Shared::Entity::ResourceAccessSingleton": "lib/DSL/Shared/Entity/ResourceAccessSingleton.rakumod",
+    "DSL::Shared::Entity::ResourceAccessish": "lib/DSL/Shared/Entity/ResourceAccessish.rakumod",
     "DSL::Shared::FiniteStateMachines::CoreFSM": "lib/DSL/Shared/FiniteStateMachines/CoreFSM.rakumod",
     "DSL::Shared::Roles::CommonStructures": "lib/DSL/Shared/Roles/CommonStructures.rakumod",
     "DSL::Shared::Roles::English::CommonParts": "lib/DSL/Shared/Roles/English/CommonParts.rakumod",
