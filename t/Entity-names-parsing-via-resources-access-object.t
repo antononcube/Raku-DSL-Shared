@@ -5,7 +5,9 @@ use DSL::Shared::Entity::Actions::WL::System;
 use DSL::Shared::Entity::Grammar::EntityNames;
 use DSL::Shared::Entity::ResourceAccess;
 
-my DSL::Shared::Entity::ResourceAccess $resourceObj.instance;
+my DSL::Shared::Entity::ResourceAccess $resourceObj .= new;
+
+$resourceObj.ingest-resource-files();
 
 grammar ParseObj
         does DSL::Shared::Entity::Grammar::EntityNames {
@@ -16,7 +18,7 @@ sub parse-func(Str $class, Str:D $spec) {
     ParseObj.parse(
             $spec.lc,
             rule => 'TOP',
-            actions => DSL::Shared::Entity::Actions::WL::System.new,
+            actions => DSL::Shared::Entity::Actions::WL::System.new(resources => $resourceObj),
             args => ($resourceObj, $class)
             ).made
 }
