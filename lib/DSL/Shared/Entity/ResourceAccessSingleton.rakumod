@@ -43,7 +43,7 @@ class DSL::Shared::Entity::ResourceAccessSingleton {
     ## BUILD
     ##========================================================
     # We create a lexical variable in the class block that holds our single instance.
-    my DSL::Shared::Entity::ResourceAccess $instance = Nil;
+    my DSL::Shared::Entity::ResourceAccessSingleton $instance = Nil;
 
     my Int $numberOfInstances = 0;
 
@@ -58,7 +58,7 @@ class DSL::Shared::Entity::ResourceAccessSingleton {
     #| Singleton instance.
     submethod instance {
 
-        $instance = DSL::Shared::Entity::ResourceAccess.bless unless $instance;
+        $instance = DSL::Shared::Entity::ResourceAccessSingleton.bless unless $instance;
 
         if $numberOfInstances == 0 {
             $instance.make()
