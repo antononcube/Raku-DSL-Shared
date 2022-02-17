@@ -40,7 +40,7 @@ my Str %targetToSeparator{Str} =
 my Str %targetToSeparator2{Str} = %targetToSeparator.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::').Str => $_.value.Str }).Hash;
 %targetToSeparator = |%targetToSeparator , |%targetToSeparator2;
 
-our sub get-default-target-to-separator-rules() is export {
+our sub target-separator-rules() is export {
   return %targetToSeparator;
 }
 
