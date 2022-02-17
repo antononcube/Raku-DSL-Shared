@@ -15,6 +15,36 @@ use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
 
 #-----------------------------------------------------------
+#| Default target to separator rules.
+my Str %targetToSeparator{Str} =
+        "Julia"            => "\n",
+        "Julia-DataFrames" => "\n",
+        "Python"           => "\n",
+        "Python-pandas"    => "\n",
+        "R"                => ";\n",
+        "R-base"           => ";\n",
+        "R-tidyverse"      => " %>%\n",
+        "Raku"             => ";\n",
+        "Raku-Ecosystem"   => ";\n",
+        "Raku-Reshapers"   => ";\n",
+        "Raku-System"      => ";\n",
+        "Mathematica"      => ";\n",
+        "WL"               => ";\n",
+        "WL-Ecosystem"     => ";\n",
+        "WL-System"        => ";\n",
+        "WL-Entity"        => ";\n",
+        "Bulgarian"        => "\n",
+        "Korean"           => "\n",
+        "Spanish"          => "\n";
+
+my Str %targetToSeparator2{Str} = %targetToSeparator.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::').Str => $_.value.Str }).Hash;
+%targetToSeparator = |%targetToSeparator , |%targetToSeparator2;
+
+our sub get-default-target-to-separator-rules() is export {
+  return %targetToSeparator;
+}
+
+#-----------------------------------------------------------
 #| Single line / basic parsing
 sub ToWorkflowCodeBasic(Str $command, Grammar :$grammar!, :$actions!) {
 
