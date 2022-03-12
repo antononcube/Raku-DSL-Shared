@@ -47,9 +47,9 @@ multi is-fuzzy-match(Str $candidate, @actuals, UInt $maxDist = 2) {
     } elsif 0 < $distPair.value and $distPair.value <= $maxDist {
         my %dists2 = grep({ $_.value eq $distPair.value }, %dists);
         if %dists2.elems == 1 {
-            note "Possible misspelling of '{$distPair.key}' as '$candidate'.";
+            note "Possible misspelling of '{ $distPair.key }' as '$candidate'.";
         } else {
-            note "Possible misspelling of one of { map( { '\'' ~ $_ ~ '\'' }, %dists2.keys ).join(', ') } as '$candidate'.";
+            note "Possible misspelling of one of { map({ '\'' ~ $_ ~ '\'' }, %dists2.keys).join(', ') } as '$candidate'.";
         }
         return True;
     }
@@ -81,10 +81,55 @@ multi is-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
 #}
 
 #============================================================
+# Determiner matching
+#============================================================
+proto is-determined-word(Str $lang, Str $word, Str $candidate, :$gender = Whatever, :$plurality = Whatever --> Bool) is export {*}
+
+multi is-determined-word('Bulgarian', Str $word, Str $candidate, :$gender is copy = Whatever, :$plurality is copy = Whatever --> Bool) {
+
+    #| Process input options
+    $gender = $gender.isa(Whatever) ?? 'any' !! $gender;
+    die 'The argument $gender is expected to be one of: Whatever, \'female\', \'male\', \'neutral\', or \'any\'.'
+    when not ($gender.isa(Str) and $gender.lc (elem) <male female neutral any>);
+
+    $plurality = $plurality.isa(Whatever) ?? 'any' !! $plurality;
+    die 'The argument $gender is expected to be one of: Whatever, \'single\', \'plural\', \'any\'.'
+    when not ($plurality.isa(Str) and $plurality.lc (elem) <single plural any>);
+
+    $gender = $gender.lc;
+    $plurality = $plurality.lc;
+
+    #| Make determiner-suffix rules
+    my %suffixes =
+            male => { single => <а я ът ят>, plural => ('те',) },
+            female => { single => ('та', ), plural => ('те',) },
+            neutral => { single => ('то', ), plural => ('те',) };
+
+    %suffixes<any> = %();
+
+    for <male female neutral> -> $g {
+        %suffixes{$g}<any> = unique((|%suffixes{$g}<single>, |%suffixes{$g}<plural>)).List;
+    }
+
+    for <single plural any> -> $p {
+        %suffixes<any>{$p} = unique((|%suffixes<male>{$p}, |%suffixes<female>{$p}, |%suffixes<neutral>{$p})).List;
+    }
+
+    my $suffixPattern = %suffixes{$gender}{$plurality}.join(' | ');
+
+
+    #| Determine is it determined
+    if so $candidate.match(/ ^^ <{$word}> <{$suffixPattern}> $$ /) {
+        return True;
+    }
+    return False;
+}
+
+
+#============================================================
 # Pick fuzzy match(es)
 #============================================================
 # TBD...
-
 
 sub known-string-candidates(Set $knownStrings, Str:D $candidate, UInt :$maxDist = 2) is export {
 
@@ -96,7 +141,7 @@ sub known-string-candidates(Set $knownStrings, Str:D $candidate, UInt :$maxDist 
         }
     }
 
-     @res.elems == 0 ?? Nil !! @res
+    @res.elems == 0 ?? Nil !! @res
 
 }
 
@@ -117,7 +162,7 @@ sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :
     $bool ?? False !! Nil
 }
 
-sub known-phrase( Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
+sub known-phrase(Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
 
     ## First test
     my Str $res = known-string($knownPhrases, $phrase, :!bool, :$warn, :$maxDist);
