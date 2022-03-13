@@ -16,7 +16,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token MODULE-noun { 'MODULE' }
     token TARGET-noun { 'TARGET' }
     token USER-noun { 'USER' }
-    token a-determiner { 'a' | 'an'}
+    token a-determiner { 'a' | 'an' }
     token add-verb { 'add' }
     token adhere-verb { 'adhere' }
     token adjacency-noun { 'adjacency' }
@@ -46,11 +46,14 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token cases-noun { 'cases' }
     token chart-noun { 'chart' }
     token classify-verb { 'classify' }
-    token cluster { 'clusters' }
+    token clear-verb { 'clear' }
+    token cluster { <cluster-noun> }
+    token cluster-noun { 'cluster' }
+    token clusters-noun { 'clusters' }
     token code-noun { 'code' }
     token codes-noun { 'codes' }
     token column-noun { 'column' }
-    token columns { 'columns' }
+    token columns { <columns-noun> }
     token columns-noun { 'columns' }
     token complete-adjective { 'complete' }
     token compute-directive { 'compute' | 'find' | 'calculate' }
@@ -69,15 +72,17 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token creation-noun { 'creation' }
     token current-adjective { 'current' }
     token data-noun { 'data' }
-    token datum-noun { 'datum' }
-    token dataset { 'dataset' }
+    token dataset { <dataset-noun> }
     token dataset-noun { 'dataset' }
     token datasets-noun { 'datasets' }
-    token default { 'default' }
+    token datum-noun { 'datum' }
+    token default { <default-noun> }
+    token default-noun { 'default' }
     token delete-directive { 'delete' | 'drop' | 'erase' | 'remove' }
     token detect-verb { 'detect' }
-    token diagram { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
+    token diagram { <diagram-phrase> }
     token diagram-noun { 'diagram' }
+    token diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     token difference { 'difference' }
     token dimension-noun { 'dimension' }
     token dimensions-noun { 'dimensions' }
@@ -93,14 +98,18 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token during-preposition { 'during' }
     token each-determiner { 'each' }
     token echo-verb { 'echo' }
-    token element-noun { 'element' }
-    token elements-noun { 'elements' }
     token element { <element-noun> }
+    token element-noun { 'element' }
     token elements { <elements-noun> }
+    token elements-noun { 'elements' }
+    token empty-noun { 'empty' }
+    token empty-verb { <empty-noun> }
     token every-determiner { 'every' }
     token extend-verb { 'extend' }
     token extract-directive { 'extract' }
-    token filter { 'filter' }
+    token filter { <filter-verb> }
+    token filter-noun { <filter-verb> }
+    token filter-verb { 'filter' }
     token first-adjective { 'first' }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' }
@@ -112,10 +121,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token generate-verb { 'generate' }
     token get-verb { 'obtain' | 'get' | <take-verb> }
     token graph-noun { 'graph' }
-    token histogram { 'histogram' }
-    token histograms { 'histograms' }
+    token head-adjective { <head-noun> }
+    token head-noun { 'head' }
     token high-adjective { 'high' }
     token higher-adjective { 'higher' }
+    token histogram { 'histogram' }
+    token histograms { 'histograms' }
     token how-adverb { 'how' }
     token id-noun { 'id' }
     token identifier-noun { 'identifier' }
@@ -167,19 +178,24 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token over-preposition { 'over' }
     token parameter-noun { 'parameter' }
     token parameters-noun { 'parameters' }
+    token part-noun { 'part' }
     token pattern-noun { 'pattern' }
     token per-preposition { 'per' }
     token pipeline-noun { 'pipeline' }
     token plot-noun { 'plot' }
     token plots-noun { 'plot' | 'plots' }
+    token position-noun { 'position' }
     token random-adjective { 'random' }
     token records { 'records' }
     token reduce-verb { 'reduce' }
     token remove-verb { 'remove' }
+    token replace-verb { 'replace' }
     token represent-directive { <represent> | 'render' | 'reflect' }
+    token rest-noun { 'rest' }
     token results { 'results' }
     token reverse-adjective { 'reverse' }
-    token rows { 'rows' }
+    token rows { <rows-noun> }
+    token rows-noun { 'rows' }
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
     token separate-verb { 'separate' }
@@ -204,16 +220,19 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token split-verb { 'split' }
     token spot-verb { 'spot' }
     token spread-verb { 'spread' }
-    token statistical { 'statistical' }
+    token statistical { <statistical-adjective> }
+    token statistical-adjective { 'statistical' }
     token statistics-noun { 'statistics' }
     token stats-noun { 'stats' }
     token step-noun { 'step' }
     token steps-noun { 'steps' }
     token string-noun { 'string' }
     token sub-prefix { 'sub' }
-    token summaries { 'summaries' }
+    token summaries { <summaries-noun> }
+    token summaries-noun { 'summaries' }
     token summarize-directive { 'summarize' }
-    token summary { 'summary' }
+    token summary { <summary-noun> }
+    token summary-noun { 'summary' }
     token system-noun { 'system' }
     token table-noun { 'table' }
     token tabular-adjective { 'tabular' }
@@ -225,8 +244,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
     token time-noun { 'time' }
-    token times-noun { 'times' }
     token timeline-noun { 'timeline' }
+    token times-noun { 'times' }
     token to-preposition { 'to' | 'into' }
     token top-noun { 'top' }
     token transform-verb { 'transform' }
@@ -242,8 +261,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token variables-noun { 'variables' }
     token versus-preposition { 'vs' | 'vs.' | 'versus' }
     token way-noun { 'way' }
-    token weight { 'weight' }
-    token weights { 'weights' }
+    token weight-noun { 'weight' }
+    token weight { <weight-noun> }
+    token weights-noun { 'weights' }
+    token weights { <weights-noun> }
     token what-pronoun { 'what' }
     token when-pronoun { 'when' }
     token which-determiner { 'which' }
