@@ -1,0 +1,309 @@
+# ============================================================
+# This role class is generated from the file
+#   CommonSpeechParts-template
+# using the function addFuzzyMatch from
+#   DSL::Shared::Utilities::AddFuzzyMatching
+# ============================================================
+
+use v6;
+
+use DSL::Shared::Utilities::FuzzyMatching;
+
+role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
+    # Single words
+    token ID-noun { 'ID' | 'ИД'}
+    token IDENTIFIER-noun { 'IDENTIFIER' | 'ИДЕНТИФИКАТОР' }
+    token MODULE-noun { 'MODULE' | 'МОДУЛ' }
+    token TARGET-noun { 'TARGET' | 'ЦЕЛ' }
+    token USER-noun { 'USER' | 'ПОТРЕБИТЕЛ' }
+    token a-determiner { '' }
+    token add-verb { 'събери' | 'добави' }
+    token adhere-verb { 'държи' | 'според' }
+    token adjacency-noun { 'аджудант' }
+    token adjacent-adjective { 'аджудант' | 'аджудантен' }
+    token algorithm-noun { 'алогоритъм' }
+    token algorithms-noun { 'алгоритми' }
+    token all-determiner { 'всяко' | 'всички' }
+    token and-conjunction { 'и' }
+    token annex-verb { 'присъедини' }
+    token append-verb { 'добави' }
+    token apply-verb { 'приложи' }
+    token are-verb { 'са' }
+    token as-preposition { 'като' }
+    token assign-verb { 'присвои' }
+    token at-preposition { 'то' }
+    token automatic { 'автоматичен' | 'автоматично' }
+    token away-adverb { 'away' }
+    token axes-noun { 'оси' }
+    token axis-noun { 'ос' }
+    token be-verb { 'be' }
+    token both-determiner { 'двете' | 'едновременно' | 'заедно' }
+    token bottom-noun { 'дъно' | 'най-ниско' }
+    token broaden-verb { 'разшири' }
+    token by-preposition { 'от' | 'със' | 'чрез' }
+    token calculation { 'изчисление' }
+    token case-noun { 'случай' }
+    token cases-noun { 'случаи' }
+    token chart-noun { 'диаграма' | 'карта' }
+    token classify-verb { 'класифицирай' }
+    token clear-verb { 'чисти' | 'зачисти' | 'изчисти' }
+    token cluster { <cluster-noun> }
+    token cluster-noun { 'клъстер' | 'група' }
+    token clusters-noun { 'клъстери' | 'групи' }
+    token code-noun { 'код' }
+    token codes-noun { 'кодове' }
+    token column-noun { 'колона' }
+    token columns { <columns-noun> }
+    token columns-noun { 'колони' }
+    token complete-adjective { 'пълно' | 'пълни' }
+    token compute-directive { 'изчисли' | 'намери' | 'калкулирай' | 'пресметни' }
+    token config-noun { 'конфигурирай' }
+    token configuration-noun { 'конфигурация' }
+    token connect-verb { 'вържи' | 'свържи' }
+    token consider-verb { 'разгледай' }
+    token context-noun { 'контекст' }
+    token contingency-noun { 'контингентен' | 'кръстосано' 'табулиране' }
+    token convert-verb { 'превърни' }
+    token count-verb { 'преброй' | 'брой' }
+    token counts-noun { 'броя' | 'броеве' }
+    token create { 'създай' | 'направи' }
+    token create-directive { <create-verb> | 'направи' }
+    token create-verb { 'създай' }
+    token creation-noun { 'създание' | 'дело' }
+    token current-adjective { 'текущ' }
+    token data-noun { 'данни' }
+    token dataset { 'дейтасет' | 'дейта' \h+ 'сет' | 'масив' \h+ 'от' \h+ 'данни' | 'даннов' \h+ 'масив' }
+    token dataset-noun { 'дейтасет' | 'масив' \h+ 'от' \h+ 'данни' | 'даннов' \h+ 'масив' }
+    token datasets-noun { 'дейтасети' | 'масиви' \h+ 'от' \h+ 'данни' | 'даннови' \h+ 'масиви' }
+    token default { <default-noun> }
+    token default-noun { 'по' 'подразбиране' | 'подразбиращ' \h+ 'се' }
+    token datum-noun { 'данна' }
+    token delete-directive { 'изтрии' | 'изхвърли' | 'премахни' }
+    token detect-verb { 'установи' | 'намери' | 'детектирай' }
+    token diagram { <diagram-synonyms> }
+    token diagram-noun { 'диаграма' }
+    token diagram-synonyms { <diagram-noun> | <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
+    token difference { 'разлика' }
+    token dimension-noun { 'размерност' }
+    token dimensions-noun { 'размерности' }
+    token directly-adverb { 'директно' }
+    token display-directive { <display-verb> | 'покажи' | 'ехо' }
+    token display-verb { 'покажи' }
+    token distance-noun { 'разстояние' }
+    token do-verb { 'прави' }
+    token document-noun { 'документ' }
+    token documents-noun { 'документи' }
+    token domain-noun { 'домейн' | 'област' }
+    token drop-verb { 'изхвърли' }
+    token during-preposition { 'докато' | 'през' }
+    token each-determiner { 'всеки' | 'всяко' | 'всяка' }
+    token echo-verb { 'ехо' }
+    token element { <element-noun> }
+    token element-noun { 'елемент' }
+    token elements { <elements-noun> }
+    token elements-noun { 'елементи'}
+    token empty-noun { 'празно' | 'празнота' }
+    token empty-verb { 'празни' | <empty-noun> }
+    token every-determiner { 'всеки' | 'всяко' | 'всяка' }
+    token extend-verb { 'разшири' }
+    token extract-directive { 'измъкни' | 'добий' }
+    token filter { <filter-verb> }
+    token filter-noun { <filter-verb> }
+    token filter-verb { 'филтър' | 'филтрирай' }
+    token first-adjective { 'първи' | 'първа' | 'първо' }
+    token for-preposition { 'за' | 'със' | 'на' }
+    token frame-noun { 'рамка' }
+    token frames-noun { 'рамки' }
+    token from-preposition { 'от' }
+    token function { 'функция' }
+    token functions { 'функции' }
+    token generate-directive { <generate-verb> | <create-verb> | 'направи' }
+    token generate-verb { 'генерирай' }
+    token get-verb { 'вземи' | 'добий' | <take-verb> }
+    token graph-noun { 'граф' }
+    token head-adjective { <head-noun> }
+    token head-noun { 'чело' | 'начело' }
+    token high-adjective { 'висок' }
+    token higher-adjective { 'по-висок' }
+    token histogram { 'хистограма' }
+    token histograms { 'хистограми' }
+    token how-adverb { 'как' }
+    token id-noun { 'ид' }
+    token identifier-noun { 'идентификатор' }
+    token in-preposition { 'в' }
+    token include-verb { 'включи' | 'включвай' }
+    token ingest-verb { 'прочети' }
+    token into-preposition { 'в' | 'във' }
+    token is-verb { 'е' }
+    token it-pronoun { 'това' | 'което' }
+    token iterations { 'итерации' }
+    token join-verb { 'съедини' }
+    token language-noun { 'език' }
+    token largest-adjective { 'най-голям' }
+    token last-adjective { 'последен' }
+    token link-noun { 'връзка' }
+    token list-noun { 'списък' }
+    token load-verb { 'зареди' }
+    token locate-verb { 'намери' | 'локализирай' }
+    token low-adjective { 'долен' | 'нисък' }
+    token lower-adjective { 'по-долен' | 'долен' }
+    token make-noun { 'направи' }
+    token making-noun { 'правене' }
+    token manner { 'начин' | 'маниер' }
+    token matrix-noun { 'матрица' }
+    token maximum { 'макс' | 'максимум' }
+    token message-noun { 'съобщение' }
+    token method-noun { 'метод' }
+    token minimum { 'мин' | 'минимум' }
+    token missing-adjective { 'либсващи' }
+    token model { 'модел' }
+    token module-noun { 'модул' }
+    token my-determiner { 'мой' | 'моя' | 'моят' }
+    token name-noun { 'име' }
+    token names-noun { 'имена' }
+    token nearest-adjective { 'най-близък' | 'най-близки' }
+    token neighbors-noun { 'съседи' | 'съседите' }
+    token no-determiner { 'без' }
+    token non-prefix { 'не' }
+    token number-noun { 'число' }
+    token object-noun { 'обект' }
+    token of-preposition { 'за' }
+    token off-adverb { 'без' }
+    token on-preposition { 'на' }
+    token one-pronoun { 'едно' | 'първо' | 'нещо' }
+    token ones-pronoun { 'първи' | 'нещя' }
+    token or-conjunction { 'или' }
+    token our-determiner { 'наш' | 'наши' | 'нашите' }
+    token out-adverb { 'извън' | 'отвън'  }
+    token over-preposition { 'върху' | 'чрез' }
+    token parameter-noun { 'параметър' }
+    token parameters-noun { 'параметри' }
+    token part-noun { 'част' }
+    token pattern-noun { 'шаблон' }
+    token per-preposition { 'за' }
+    token pipeline-noun { 'поточна' 'линия' }
+    token plot-noun { 'чертеж' | 'графика' }
+    token plots-noun { 'чертежи' | 'графики' }
+    token position-noun { 'позиция' }
+    token random-adjective { 'случаен' }
+    token records { 'записи' }
+    token reduce-verb { 'редуцирай' }
+    token remove-verb { 'премахни' | 'изтрий'  }
+    token replace-verb { 'замести' | 'замени' }
+    token represent-directive { <represent> | 'чертай' | 'отрази' }
+    token rest-noun { 'остатък' }
+    token result-noun { 'резултат' }
+    token results { <results-noun> }
+    token results-noun { 'резултати' }
+    token reverse-adjective { 'обратен' | 'обърни' }
+    token rows { <rows-noun> }
+    token rows-noun { 'редове' }
+    token run-verb { 'run' | 'runs' }
+    token running-verb { 'running' }
+    token separate-verb { 'раздели' }
+    token series-noun { 'серии' }
+    token set-directive { 'присвои' }
+    token set-noun { 'множество' }
+    token setup-noun { 'нагласа' | 'настройване' | 'потготовка' | 'потготвяне' }
+    token shape-noun { 'форма' }
+    token show-verb { 'покажи' | 'показвай' }
+    token simple { 'прост' | 'директен' }
+    token simply-adverb { 'просто' }
+    token simulate { 'симулирай' }
+    token simulate-directive { <simulate> }
+    token simulation { 'симулация' }
+    token single-adjective { 'единичен' | 'един' }
+    token site-noun { 'място' | 'позиция' }
+    token smallest { 'най-малък' | 'най-малки' }
+    token smallest-adjective { 'най-малък' | 'най-малки'  }
+    token some-determiner { 'някой' | 'някои' }
+    token sparse-adjective { 'разреден' }
+    token specific-adjective { 'специфичен' }
+    token split-verb { 'раздели' }
+    token spot-verb { 'намери' }
+    token spread-verb { 'разстели' }
+    token statistical { <statistical-adjective> }
+    token statistical-adjective { 'статистически' }
+    token statistics-noun { 'статистики' }
+    token stats-noun { 'статс' }
+    token step-noun { 'стъпка' }
+    token steps-noun { 'стъпки' }
+    token string-noun { 'низ' }
+    token sub-prefix { 'съб' | 'под' }
+    token summaries { <summaries-noun> }
+    token summaries-noun { 'рекапитулации' | 'обобщения' }
+    token summarize-directive { 'обобщи' }
+    token summary { <summary-noun> }
+    token summary-noun { 'рекапитулирай' | 'обобщи' }
+    token system-noun { 'система' }
+    token table-noun { 'таблица' }
+    token tabular-adjective { 'табличен' }
+    token take-verb { 'вземи' }
+    token target-noun { 'цел' }
+    token text-noun { 'текст' }
+    token that-pronoun { 'онези' | 'онова' }
+    token the-determiner { '' }
+    token them-pronoun { 'тях' }
+    token this-pronoun { 'този' | 'това' }
+    token time-noun { 'време' }
+    token timeline-noun { 'времева линия' }
+    token times-noun { 'времена' }
+    token to-preposition { 'за' | 'към' }
+    token top-noun { 'връх' }
+    token transform-verb { 'трансформирай' }
+    token translation-noun { 'транслация' }
+    token type-noun { 'тип' }
+    token up-adverb { 'горе' | 'нагоре' }
+    token use-verb { 'ползвай' | 'използвай' }
+    token used-verb { 'ползван' | 'използван' }
+    token using-preposition { 'чрез' | 'с' | 'със' }
+    token value-noun { 'стойност' }
+    token values-noun { 'стойности' }
+    token variable-noun { 'променлива' }
+    token variables-noun { 'променливи' }
+    token versus-preposition { 'срещу' | 'ср.' | 'против' }
+    token way-noun { 'път' | 'начин' }
+    token weight-noun { 'тегло'  }
+    token weight { <weight-noun> }
+    token weights-noun { 'тегла' }
+    token weights { <weights-noun> }
+    token what-pronoun { 'какво' | 'какви' }
+    token when-pronoun { 'кога' }
+    token which-determiner { 'кой' | 'кои' }
+    token with-preposition { 'чрез' | 'с' | 'със' }
+    token without-preposition { 'без' }
+    token words-noun { 'думи' }
+
+    # Directives and phrases
+    rule USER-ID-phrase { <USER-noun> [ <ID-noun> | <IDENTIFIER-noun> ] }
+    rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
+    rule annex-directive { <annex-verb> | <append-verb> }
+    rule assign-directive { <assign-verb> }
+    rule complete-cases-phrase { <complete-adjective> <cases-noun> }
+    rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
+    rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
+    rule data { <data-frame> | <data-noun> <set-noun> | <time-series-data> | <data-noun> | <dataset-noun> }
+    rule data-frame { <data-noun> <frame-noun> }
+    rule data-frames { <data-noun> <frames-noun> }
+    rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
+    rule distance-function-phrase { <distance-noun> <function> }
+    rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
+    rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
+    rule find-directive { <find-verb> | <locate-verb> | <spot-verb> | <detect-verb> }
+    rule join-directive { <join-verb> | <connect-verb> | <link-noun> }
+    rule load-data-directive { [ <load-verb> | <ingest-verb> ] <the-determiner>? <data> }
+    rule load-directive { <load-verb> | <get-verb> | <consider-verb> }
+    rule max-iterations-phrase { <maximum>? <number-of>? [ <iterations> | <steps-noun> ] }
+    rule missing-values-phrase { <missing-adjective> <values-noun>? }
+    rule nearest-neighbors-phrase { <nearest-adjective>? <neighbors-noun> | 'nns' }
+    rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
+    rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
+    rule records-phrase { <table-noun>? [ <rows> | <records> ] }
+    rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away-phrase> }
+    rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }
+    rule simulate-and-display { <simulate-directive> [ <and-conjunction> <display-directive> ]? }
+    rule take-away-phrase { <take-verb> <away-adverb> }
+    rule take-off-phrase { <take-verb> <off-adverb> }
+    rule time-series-data { <time-noun> <series-noun> <data-noun>? }
+    rule use-directive { [ <get-verb> <and-conjunction>? ]? <use-verb> }
+}
