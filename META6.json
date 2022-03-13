@@ -56,6 +56,7 @@
     "DSL::Shared::Roles::ErrorHandling": "lib/DSL/Shared/Roles/ErrorHandling.rakumod",
     "DSL::Shared::Roles::PredicateSpecification": "lib/DSL/Shared/Roles/PredicateSpecification.rakumod",
     "DSL::Shared::Utilities::CommandProcessing": "lib/DSL/Shared/Utilities/CommandProcessing.rakumod",
+    "DSL::Shared::Utilities::DeterminedWordsMatching": "lib/DSL/Shared/Utilities/DeterminedWordsMatching.rakumod",
     "DSL::Shared::Utilities::FuzzyMatching": "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod",
     "DSL::Shared::Utilities::MetaSpecsProcessing": "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod"
   },
