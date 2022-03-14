@@ -140,7 +140,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token join-verb { 'съедини' }
     token language-noun { 'език' }
     token largest-adjective { 'най-голям' }
-    token last-adjective { 'последен' }
+    token last-adjective { 'последен' | 'последни' }
     token link-noun { 'връзка' }
     token list-noun { 'списък' }
     token load-verb { 'зареди' }
