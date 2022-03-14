@@ -1,13 +1,15 @@
 use v6.d;
 
+use DSL::Shared::Utilities::FuzzyMatching;
+
 unit module DSL::Shared::Utilities::DeterminedWordsMatching;
 
 #============================================================
 # Determiner matching
 #============================================================
-proto is-determined-word(Str $lang, Str $word, Str $candidate, :$gender = Whatever, :$plurality = Whatever --> Bool) is export {*}
+proto is-determined-word(Str $lang, Str $candidate, Str $actual, :$gender = Whatever, :$plurality = Whatever --> Bool) is export {*}
 
-multi is-determined-word('Bulgarian', Str $word, Str $candidate, :$gender is copy = Whatever, :$plurality is copy = Whatever --> Bool) {
+multi is-determined-word('Bulgarian',  Str $candidate, Str $actual, :$gender is copy = Whatever, :$plurality is copy = Whatever --> Bool) {
 
     #| Process input options
     $gender = $gender.isa(Whatever) ?? 'any' !! $gender;
@@ -41,8 +43,17 @@ multi is-determined-word('Bulgarian', Str $word, Str $candidate, :$gender is cop
 
 
     #| Determine is it determined
-    if so $candidate.match(/ ^^ <{$word}> <{$suffixPattern}> $$ /) {
+    if so $candidate.match(/ ^^ <{$actual}> <{$suffixPattern}> $$ /) {
         return True;
     }
     return False;
+}
+
+#============================================================
+# Determiner matching
+#============================================================
+proto is-bg-fuzzy-match($c, $a, $maxDist = 2) is export {*};
+
+multi is-bg-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
+    return is-determined-word('Bulgarian', $candidate, $actual) || is-fuzzy-match($candidate, $actual, $maxDist);
 }
