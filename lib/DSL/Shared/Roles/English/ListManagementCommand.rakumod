@@ -25,17 +25,17 @@ role DSL::Shared::Roles::English::ListManagementCommand {
 
     # <range-spec>, <r-range-spec>, and <wl-range-spec> are from DSL::Shared::Roles::CommonStructures
     rule list-management-range { <.the-determiner>? <.elements-phrase>? [ <list-management-top-range> | <list-management-bottom-range> | <range-spec> ] }
-    rule list-management-top-range    { [ <.top-noun>    | <.first-adjective> ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
-    rule list-management-bottom-range { [ <.bottom-noun> | <.last-adjective>  ] [ <position-index> | <position-ordinal-enum> ] <.elements>? }
+    rule list-management-top-range    { [ <.top-noun>    | <.first-adjective> ] [ <position-index> | <position-ordinal-enum> ] <.elements-noun>? }
+    rule list-management-bottom-range { [ <.bottom-noun> | <.last-adjective>  ] [ <position-index> | <position-ordinal-enum> ] <.elements-noun>? }
 
     rule list-management-drop { <.delete-directive> [ <list-management-position-query> | <list-management-position-spec> ]}
 
     rule list-management-replace-part {
-        'replace' <.the-determiner>? ['position' | 'part']?
+        <.replace-verb> <.the-determiner>? [ <.position-noun> | <.part-noun>]?
         <pos1=.list-management-position-spec> <.by-preposition>
         [ <pos2=.list-management-position-spec> | [ <.the-determiner> ]? <value-spec> ]}
 
-    rule list-management-clear { [ 'clear' | 'empty' ] <list-noun>? | <delete-directive> 'all' [ <list-noun> ]? <elements>? [ <in-preposition> | <of-preposition> ]? <the-determiner>? <list-phrase>? }
+    rule list-management-clear { [ <.clear-verb> | <.empty-verb> ] <list-noun>? | <delete-directive> 'all' [ <list-noun> ]? <elements>? [ <in-preposition> | <of-preposition> ]? <the-determiner>? <list-phrase>? }
 
     rule variable-spec { <the-list-reference> || <.variable-noun>? <variable-name> }
     rule value-spec { <.value-noun>? [ <word-value> | <number-value> ] }
@@ -43,7 +43,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     rule list-phrase {<list-noun>}
 
     rule position-query-link {
-        <.element> <position-index> |
+        <.element-noun> <position-index> |
         <.the-determiner>? <position-ordinal>   <.element-phrase>? |
         <.the-determiner>? <position-reference> <.element-phrase>? }
 
@@ -52,7 +52,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
     rule list-management-position-spec { <.the-determiner>? <.element>? [ <position-index> | <position-word> ] <.element-phrase>? <.list-phrase>?}
     token position-index { <integer-value> }
     rule position-word { <position-ordinal> | <position-reference> }
-    rule position-reference { <first-adjective> | 'head' | 'rest' | <last-adjective> | <one-pronoun> 'before' <the-determiner>? <last-adjective> | 'former' | 'latter' }
+    rule position-reference { <first-adjective> | <head-adjective> | <rest-noun> | <last-adjective> | <one-pronoun> 'before' <the-determiner>? <last-adjective> | 'former' | 'latter' }
     rule position-ordinal { <position-ordinal-gen> || <position-ordinal-enum> }
     regex position-ordinal-gen { <position-index> \h* [ 'st' | 'nd' | 'rd' | 'th' ]? }
     rule position-ordinal-enum { <numeric-word-form> }
