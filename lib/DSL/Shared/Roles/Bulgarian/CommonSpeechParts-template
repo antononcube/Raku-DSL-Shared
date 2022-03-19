@@ -251,7 +251,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token time-noun { 'време' }
     token timeline-noun { 'времева линия' }
     token times-noun { 'времена' }
-    token to-preposition { 'за' | 'към' }
+    token to-preposition { 'за' | 'към' | 'до' }
     token top-noun { 'връх' }
     token transform-verb { 'трансформирай' }
     token translation-noun { 'транслация' }
