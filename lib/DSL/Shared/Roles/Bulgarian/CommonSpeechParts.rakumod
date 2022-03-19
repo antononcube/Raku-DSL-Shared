@@ -156,7 +156,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token message-noun:sym<Bulgarian> { :i 'съобщение' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'съобщение', 2) }> }
     token method-noun:sym<Bulgarian> { :i 'метод' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'метод', 2) }> }
     token minimum:sym<Bulgarian> { :i 'мин' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'мин', 1) }> | 'минимум' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'минимум', 2) }> }
-    token missing-adjective:sym<Bulgarian> { :i 'либсващи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'либсващи', 2) }> }
+    token missing-adjective:sym<Bulgarian> { :i 'липсващи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'липсващи', 2) }> }
     token model:sym<Bulgarian> { :i 'модел' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'модел', 2) }> }
     token module-noun:sym<Bulgarian> { :i 'модул' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'модул', 2) }> }
     token my-determiner:sym<Bulgarian> { :i 'мой' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'мой', 1) }> | 'моя' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'моя', 1) }> | 'моят' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'моят', 2) }> }

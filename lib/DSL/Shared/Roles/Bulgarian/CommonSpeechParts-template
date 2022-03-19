@@ -156,7 +156,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token message-noun { 'съобщение' }
     token method-noun { 'метод' }
     token minimum { 'мин' | 'минимум' }
-    token missing-adjective { 'либсващи' }
+    token missing-adjective { 'липсващи' }
     token model { 'модел' }
     token module-noun { 'модул' }
     token my-determiner { 'мой' | 'моя' | 'моят' }
