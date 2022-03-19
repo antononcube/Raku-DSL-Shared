@@ -19,8 +19,6 @@ role DSL::Shared::Roles::PredicateSpecification {
     rule predicate-value { <mixed-quoted-variable-name> | <number-value> | <wl-expr> | <regex-pattern-spec> }
     rule predicate-operator { <logical-connective> | <predicate-relation> }
     rule logical-connective { <and-operator> | <or-operator> }
-    token and-operator { 'and' | '&&' | '&' }
-    token or-operator { 'or' | '||' | '|' }
 
     # Predicate relations
     rule predicate-relation {
@@ -32,19 +30,55 @@ role DSL::Shared::Roles::PredicateSpecification {
         <like-relation> | <like-start-relation> | <like-end-relation> | <like-contains-relation> |
         <match-relation> }
 
-    token equal-relation { '=' | '==' | 'eq' | 'equals' | 'is'? \h* 'equal' \h+ 'to'? | 'is' }
-    token not-equal-relation { '!=' | '¬=' | 'neq' | 'is'? \h* 'not' \h+ 'equal' \h+ 'to'? | 'is' \h+ 'not' }
-    token less-relation { '<' | 'lt' | 'is'? \h* 'less' \h+ 'than'? }
-    token less-equal-relation { '<=' | '≤' | 'lte' | 'less' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]? }
-    token greater-relation { '>' | 'gt' | 'is'? \h* 'greater' \h* 'than'? }
-    token greater-equal-relation { '>=' | '≥' | 'gte' | 'is'? \h* 'greater' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]? }
-    token same-relation { '===' | 'same' \h+ 'as'? }
-    token not-same-relation { '=!=' | 'is'? \h* 'not' \h+ 'the'? \h* 'same' \h+ 'as'? }
-    token in-relation { 'in' | 'belongs' \h+ 'to' }
-    token not-in-relation { '!in' | '¬in' | 'is'? \h* 'not' \h+ 'in' | [ 'does' \h+ 'not' | 'doesn\'t' ] 'belong' \h+ 'to' }
-    token like-relation { 'is'? \h* [ 'like' | 'similar' \h+ 'to' ] }
-    token like-start-relation { [ 'starts' | 'start' ] \h+ 'with' }
-    token like-end-relation { [ 'ends' | 'end' ] \h+ 'with' }
-    token like-contains-relation { 'contains' | 'has' }
-    token match-relation { 'match' | 'matches' | 'is'? \h+ 'matching' }
+    # Tokens
+    proto token and-operator {*}
+    token and-operator:sym<English> { :i  'and' | '&&' | '&'  }
+
+    proto token or-operator {*}
+    token or-operator:sym<English> { :i  'or' | '||' | '|'  }
+
+    proto token equal-relation {*}
+    token equal-relation:sym<English> { :i  '=' | '==' | 'eq' | 'equals' | 'is'? \h* 'equal' \h+ 'to'? | 'is'  }
+
+    proto token not-equal-relation {*}
+    token not-equal-relation:sym<English> { :i  '!=' | '¬=' | 'neq' | 'is'? \h* 'not' \h+ 'equal' \h+ 'to'? | 'is' \h+ 'not'  }
+
+    proto token less-relation {*}
+    token less-relation:sym<English> { :i  '<' | 'lt' | 'is'? \h* 'less' \h+ 'than'?  }
+
+    proto token less-equal-relation {*}
+    token less-equal-relation:sym<English> { :i  '<=' | '≤' | 'lte' | 'less' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]?  }
+
+    proto token greater-relation {*}
+    token greater-relation:sym<English> { :i  '>' | 'gt' | 'is'? \h* 'greater' \h* 'than'?  }
+
+    proto token greater-equal-relation {*}
+    token greater-equal-relation:sym<English> { :i  '>=' | '≥' | 'gte' | 'is'? \h* 'greater' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]?  }
+
+    proto token same-relation {*}
+    token same-relation:sym<English> { :i  '===' | 'same' \h+ 'as'?  }
+
+    proto token not-same-relation {*}
+    token not-same-relation:sym<English> { :i  '=!=' | 'is'? \h* 'not' \h+ 'the'? \h* 'same' \h+ 'as'?  }
+
+    proto token in-relation {*}
+    token in-relation:sym<English> { :i  'in' | 'belongs' \h+ 'to'  }
+
+    proto token not-in-relation {*}
+    token not-in-relation:sym<English> { :i  '!in' | '¬in' | 'is'? \h* 'not' \h+ 'in' | [ 'does' \h+ 'not' | 'doesn\'t' ] 'belong' \h+ 'to'  }
+
+    proto token like-relation {*}
+    token like-relation:sym<English> { :i  'is'? \h* [ 'like' | 'similar' \h+ 'to' ]  }
+
+    proto token like-start-relation {*}
+    token like-start-relation:sym<English> { :i  [ 'starts' | 'start' ] \h+ 'with'  }
+
+    proto token like-end-relation {*}
+    token like-end-relation:sym<English> { :i  [ 'ends' | 'end' ] \h+ 'with'  }
+
+    proto token like-contains-relation {*}
+    token like-contains-relation:sym<English> { :i 'contains' | 'has' }
+
+    proto token match-relation {*}
+    token match-relation:sym<English> { :i  'match' | 'matches' | 'is'? \h+ 'matching'  }
 }
