@@ -29,6 +29,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token append-verb { 'append' }
     token apply-verb { 'apply' }
     token are-verb { 'are' }
+    token array-noun { 'array' }
     token as-preposition { 'as' }
     token assign-verb { 'assign' }
     token at-preposition { 'at' }
@@ -237,6 +238,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token summary-noun { 'summary' }
     token system-noun { 'system' }
     token table-noun { 'table' }
+    token tables-noun { 'tables' }
     token tabular-adjective { 'tabular' }
     token take-verb { 'take' }
     token target-noun { 'target' }
@@ -245,6 +247,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token the-determiner { 'the' }
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
+    token time-adjective { 'time' }
     token time-noun { 'time' }
     token timeline-noun { 'timeline' }
     token times-noun { 'times' }
