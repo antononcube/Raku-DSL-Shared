@@ -81,7 +81,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token default:sym<Bulgarian> { :i  <default-noun>  }
     token default-noun:sym<Bulgarian> { :i  'по' 'подразбиране' | 'подразбиращ' \h+ 'се'  }
     token datum-noun:sym<Bulgarian> { :i 'данна' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'данна', 2) }> }
-    token delete-directive:sym<Bulgarian> { :i 'изтрии' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изтрии', 2) }> | 'изхвърли' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изхвърли', 2) }> | 'премахни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'премахни', 2) }> }
+    token delete-directive:sym<Bulgarian> { :i 'изтрий' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изтрий', 2) }> | 'изхвърли' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изхвърли', 2) }> | 'премахни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'премахни', 2) }> }
     token detect-verb:sym<Bulgarian> { :i 'установи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'установи', 2) }> | 'намери' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'намери', 2) }> | 'детектирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'детектирай', 2) }> }
     token diagram:sym<Bulgarian> { :i  <diagram-synonyms>  }
     token diagram-noun:sym<Bulgarian> { :i 'диаграма' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'диаграма', 2) }> }

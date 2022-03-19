@@ -81,7 +81,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token default { <default-noun> }
     token default-noun { 'по' 'подразбиране' | 'подразбиращ' \h+ 'се' }
     token datum-noun { 'данна' }
-    token delete-directive { 'изтрии' | 'изхвърли' | 'премахни' }
+    token delete-directive { 'изтрий' | 'изхвърли' | 'премахни' }
     token detect-verb { 'установи' | 'намери' | 'детектирай' }
     token diagram { <diagram-synonyms> }
     token diagram-noun { 'диаграма' }
