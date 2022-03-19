@@ -133,7 +133,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token how-adverb:sym<Bulgarian> { :i 'как' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'как', 1) }> }
     token id-noun:sym<Bulgarian> { :i 'ид' }
     token identifier-noun:sym<Bulgarian> { :i 'идентификатор' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'идентификатор', 2) }> }
-    token in-preposition:sym<Bulgarian> { :i 'в' }
+    token in-preposition:sym<Bulgarian> { :i 'в' | 'във' }
     token include-verb:sym<Bulgarian> { :i 'включи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'включи', 2) }> | 'включвай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'включвай', 2) }> }
     token ingest-verb:sym<Bulgarian> { :i 'прочети' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'прочети', 2) }> }
     token into-preposition:sym<Bulgarian> { :i 'в' | 'във' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'във', 1) }> }
