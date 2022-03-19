@@ -831,7 +831,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule creation-phrase:sym<English> {  <creation-noun> | <making-noun> <of-preposition>?  }
 
     proto rule data {*}
-    rule data:sym<English> {  <data-frame> | <data-noun> <set-noun> | <time-series-data> | <data-noun> | <dataset-noun>  }
+    rule data:sym<English> {  <data-frame> | <data-noun> [ <set-noun> | <table-noun> ] | <time-series-data> | <dataset-noun> | <data-noun> }
 
     proto rule data-column-phrase {*}
     rule data-column-phrase:sym<English> {  <data-noun>? [ <column-noun> | <variable-noun> ]  }
