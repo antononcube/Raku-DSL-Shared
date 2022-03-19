@@ -72,7 +72,7 @@ role DSL::Shared::Roles::CommonStructures {
     token letter-word-value { \w [ \w | '-' ]* }
 
     # Lists of things
-    token list-separator-symbol { ',' | '&' | 'and' | ',' \h* 'and' }
+    token list-separator-symbol { ',' | '&' | <and-conjunction> | ',' \h* <and-conjunction> }
     token list-separator { <.ws>? <list-separator-symbol> <.ws>? }
     token list-of-commands-separator-symbol { ';' }
     token list-of-commands-separator { <.ws>? <list-of-commands-separator-symbol> <.ws>? }

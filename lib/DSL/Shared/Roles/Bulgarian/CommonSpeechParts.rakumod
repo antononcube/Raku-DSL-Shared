@@ -251,7 +251,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token time-noun:sym<Bulgarian> { :i 'време' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'време', 2) }> }
     token timeline-noun:sym<Bulgarian> { :i  'времева линия'  }
     token times-noun:sym<Bulgarian> { :i 'времена' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'времена', 2) }> }
-    token to-preposition:sym<Bulgarian> { :i 'за' | 'към' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'към', 1) | 'до' }> }
+    token to-preposition:sym<Bulgarian> { :i 'до' | 'на' | 'към' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'към', 1) }> }
     token top-noun:sym<Bulgarian> { :i 'връх' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'връх', 2) }> }
     token transform-verb:sym<Bulgarian> { :i 'трансформирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'трансформирай', 2) }> }
     token translation-noun:sym<Bulgarian> { :i 'транслация' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'транслация', 2) }> }
