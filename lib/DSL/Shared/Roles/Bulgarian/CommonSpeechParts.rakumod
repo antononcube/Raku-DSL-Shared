@@ -29,6 +29,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token append-verb:sym<Bulgarian> { :i 'добави' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'добави', 2) }> }
     token apply-verb:sym<Bulgarian> { :i 'приложи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'приложи', 2) }> }
     token are-verb:sym<Bulgarian> { :i 'са' }
+    token array-noun:sym<Bulgarian> { :i 'масив' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'масив', 2) }> }
     token as-preposition:sym<Bulgarian> { :i 'като' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'като', 2) }> }
     token assign-verb:sym<Bulgarian> { :i 'присвои' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'присвои', 2) }> }
     token at-preposition:sym<Bulgarian> { :i 'то' }
@@ -64,16 +65,16 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token context-noun:sym<Bulgarian> { :i 'контекст' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'контекст', 2) }> }
     token contingency-noun:sym<Bulgarian> { :i  'контингентен' | 'кръстосано' 'табулиране'  }
     token convert-verb:sym<Bulgarian> { :i 'превърни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'превърни', 2) }> }
-    token count-verb:sym<Bulgarian> { :i 'преброй' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'преброй', 2) }> | 'брой' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'брой', 2) }> }
-    token counts-noun:sym<Bulgarian> { :i 'броя' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'броя', 2) }> | 'броеве' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'броеве', 2) }> }
+    token count-verb:sym<Bulgarian> { :i 'преброй' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'преброй', 2) }> | 'брой' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'брой', 2) }> | 'бройка' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'бройка', 2) }> | 'размер' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'размер', 2) }> }
+    token counts-noun:sym<Bulgarian> { :i 'броя' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'броя', 2) }> | 'броеве' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'броеве', 2) }> | 'бройки' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'бройки', 2) }> | 'размери' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'размери', 2) }> }
     token create:sym<Bulgarian> { :i 'създай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'създай', 2) }> | 'направи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'направи', 2) }> }
     token create-directive:sym<Bulgarian> { :i  <create-verb> | 'направи'  }
     token create-verb:sym<Bulgarian> { :i 'създай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'създай', 2) }> }
     token creation-noun:sym<Bulgarian> { :i 'създание' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'създание', 2) }> | 'дело' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'дело', 2) }> }
     token current-adjective:sym<Bulgarian> { :i 'текущ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'текущ', 2) }> }
-    token data-noun:sym<Bulgarian> { :i 'данни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'данни', 2) }> }
-    token dataset:sym<Bulgarian> { :i  'дейтасет' | 'дейта' \h+ 'сет' | 'масив' \h+ 'от' \h+ 'данни' | 'даннов' \h+ 'масив'  }
-    token dataset-noun:sym<Bulgarian> { :i  'дейтасет' | 'масив' \h+ 'от' \h+ 'данни' | 'даннов' \h+ 'масив'  }
+    token data-noun:sym<Bulgarian> { :i 'данни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'данни', 2) }> | 'даннов' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'даннов', 2) }> | 'даннова' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'даннова', 2) }> }
+    token dataset:sym<Bulgarian> { :i  <dataset-noun>  }
+    token dataset-noun:sym<Bulgarian> { :i  'дейтасет' | 'дейта' \h+ 'сет' | 'таблица'  }
     token datasets-noun:sym<Bulgarian> { :i  'дейтасети' | 'масиви' \h+ 'от' \h+ 'данни' | 'даннови' \h+ 'масиви'  }
     token default:sym<Bulgarian> { :i  <default-noun>  }
     token default-noun:sym<Bulgarian> { :i  'по' 'подразбиране' | 'подразбиращ' \h+ 'се'  }
@@ -94,7 +95,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token document-noun:sym<Bulgarian> { :i 'документ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'документ', 2) }> }
     token documents-noun:sym<Bulgarian> { :i 'документи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'документи', 2) }> }
     token domain-noun:sym<Bulgarian> { :i 'домейн' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'домейн', 2) }> | 'област' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'област', 2) }> }
-    token drop-verb:sym<Bulgarian> { :i 'изхвърли' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изхвърли', 2) }> }
+    token drop-verb:sym<Bulgarian> { :i 'изхвърли' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изхвърли', 2) }> | 'забрави' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'забрави', 2) }> | 'захвърли' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'захвърли', 2) }> }
     token during-preposition:sym<Bulgarian> { :i 'докато' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'докато', 2) }> | 'през' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'през', 2) }> }
     token each-determiner:sym<Bulgarian> { :i 'всеки' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'всеки', 2) }> | 'всяко' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'всяко', 2) }> | 'всяка' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'всяка', 2) }> }
     token echo-verb:sym<Bulgarian> { :i 'ехо' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ехо', 1) }> }
@@ -201,7 +202,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token run-verb:sym<Bulgarian> { :i 'run' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'run', 1) }> | 'runs' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'runs', 2) }> }
     token running-verb:sym<Bulgarian> { :i 'running' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'running', 2) }> }
     token separate-verb:sym<Bulgarian> { :i 'раздели' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'раздели', 2) }> }
-    token series-noun:sym<Bulgarian> { :i 'серии' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'серии', 2) }> }
+    token series-noun:sym<Bulgarian> { :i 'серия' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'серия', 2) }> | 'ред' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ред', 1) }> | 'редица' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'редица', 2) }> }
     token set-directive:sym<Bulgarian> { :i 'присвои' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'присвои', 2) }> }
     token set-noun:sym<Bulgarian> { :i 'множество' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'множество', 2) }> }
     token setup-noun:sym<Bulgarian> { :i 'нагласа' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'нагласа', 2) }> | 'настройване' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'настройване', 2) }> | 'потготовка' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'потготовка', 2) }> | 'потготвяне' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'потготвяне', 2) }> }
@@ -237,6 +238,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token summary-noun:sym<Bulgarian> { :i 'рекапитулирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'рекапитулирай', 2) }> | 'обобщи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обобщи', 2) }> }
     token system-noun:sym<Bulgarian> { :i 'система' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'система', 2) }> }
     token table-noun:sym<Bulgarian> { :i 'таблица' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'таблица', 2) }> }
+    token tables-noun:sym<Bulgarian> { :i 'таблици' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'таблици', 2) }> }
     token tabular-adjective:sym<Bulgarian> { :i 'табличен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'табличен', 2) }> }
     token take-verb:sym<Bulgarian> { :i 'вземи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'вземи', 2) }> }
     token target-noun:sym<Bulgarian> { :i 'цел' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'цел', 1) }> }
@@ -245,6 +247,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token the-determiner:sym<Bulgarian> { :i  ''  }
     token them-pronoun:sym<Bulgarian> { :i 'тях' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'тях', 1) }> }
     token this-pronoun:sym<Bulgarian> { :i 'този' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'този', 2) }> | 'това' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'това', 2) }> }
+    token time-adjective:sym<Bulgarian> { :i 'времеви' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'времеви', 2) }> | 'времева' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'времева', 2) }> }
     token time-noun:sym<Bulgarian> { :i 'време' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'време', 2) }> }
     token timeline-noun:sym<Bulgarian> { :i  'времева линия'  }
     token times-noun:sym<Bulgarian> { :i 'времена' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'времена', 2) }> }
@@ -274,4 +277,9 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token without-preposition:sym<Bulgarian> { :i 'без' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'без', 1) }> }
     token words-noun:sym<Bulgarian> { :i 'думи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'думи', 2) }> }
 
+    # Directives and phrases
+    rule data:sym<Bulgarian> {  <data-frame> | <data-noun> <set-noun> | <time-series-data> | <data-noun> | <dataset-noun>  }
+    rule data-frame:sym<Bulgarian> {  <data-noun> <table-noun>  }
+    rule data-frames:sym<Bulgarian> {  <data-noun> <tables-noun>  }
+    rule time-series-data:sym<Bulgarian> {  <time-adjective> <series-noun> <data-noun>?  }
 }

@@ -29,6 +29,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token append-verb { 'добави' }
     token apply-verb { 'приложи' }
     token are-verb { 'са' }
+    token array-noun { 'масив' }
     token as-preposition { 'като' }
     token assign-verb { 'присвои' }
     token at-preposition { 'то' }
@@ -64,16 +65,16 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token context-noun { 'контекст' }
     token contingency-noun { 'контингентен' | 'кръстосано' 'табулиране' }
     token convert-verb { 'превърни' }
-    token count-verb { 'преброй' | 'брой' }
-    token counts-noun { 'броя' | 'броеве' }
+    token count-verb { 'преброй' | 'брой' | 'бройка' | 'размер' }
+    token counts-noun { 'броя' | 'броеве' | 'бройки' | 'размери' }
     token create { 'създай' | 'направи' }
     token create-directive { <create-verb> | 'направи' }
     token create-verb { 'създай' }
     token creation-noun { 'създание' | 'дело' }
     token current-adjective { 'текущ' }
-    token data-noun { 'данни' }
-    token dataset { 'дейтасет' | 'дейта' \h+ 'сет' | 'масив' \h+ 'от' \h+ 'данни' | 'даннов' \h+ 'масив' }
-    token dataset-noun { 'дейтасет' | 'масив' \h+ 'от' \h+ 'данни' | 'даннов' \h+ 'масив' }
+    token data-noun { 'данни' | 'даннов' | 'даннова' }
+    token dataset { <dataset-noun> }
+    token dataset-noun { 'дейтасет' | 'дейта' \h+ 'сет' | 'таблица' }
     token datasets-noun { 'дейтасети' | 'масиви' \h+ 'от' \h+ 'данни' | 'даннови' \h+ 'масиви' }
     token default { <default-noun> }
     token default-noun { 'по' 'подразбиране' | 'подразбиращ' \h+ 'се' }
@@ -94,7 +95,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token document-noun { 'документ' }
     token documents-noun { 'документи' }
     token domain-noun { 'домейн' | 'област' }
-    token drop-verb { 'изхвърли' }
+    token drop-verb { 'изхвърли' | 'забрави' | 'захвърли' }
     token during-preposition { 'докато' | 'през' }
     token each-determiner { 'всеки' | 'всяко' | 'всяка' }
     token echo-verb { 'ехо' }
@@ -201,7 +202,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
     token separate-verb { 'раздели' }
-    token series-noun { 'серии' }
+    token series-noun { 'серия' | 'ред' | 'редица' }
     token set-directive { 'присвои' }
     token set-noun { 'множество' }
     token setup-noun { 'нагласа' | 'настройване' | 'потготовка' | 'потготвяне' }
@@ -237,6 +238,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token summary-noun { 'рекапитулирай' | 'обобщи' }
     token system-noun { 'система' }
     token table-noun { 'таблица' }
+    token tables-noun { 'таблици' }
     token tabular-adjective { 'табличен' }
     token take-verb { 'вземи' }
     token target-noun { 'цел' }
@@ -245,6 +247,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token the-determiner { '' }
     token them-pronoun { 'тях' }
     token this-pronoun { 'този' | 'това' }
+    token time-adjective { 'времеви' | 'времева' }
     token time-noun { 'време' }
     token timeline-noun { 'времева линия' }
     token times-noun { 'времена' }
