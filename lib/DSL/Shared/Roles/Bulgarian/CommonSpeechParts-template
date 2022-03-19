@@ -172,7 +172,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token object-noun { 'обект' }
     token of-preposition { 'за' }
     token off-adverb { 'без' }
-    token on-preposition { 'на' }
+    token on-preposition { 'на' | 'по' }
     token one-pronoun { 'едно' | 'първо' | 'нещо' }
     token ones-pronoun { 'първи' | 'нещя' }
     token or-conjunction { 'или' }

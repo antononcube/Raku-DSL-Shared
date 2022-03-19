@@ -172,7 +172,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token object-noun:sym<Bulgarian> { :i 'обект' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обект', 2) }> }
     token of-preposition:sym<Bulgarian> { :i 'за' }
     token off-adverb:sym<Bulgarian> { :i 'без' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'без', 1) }> }
-    token on-preposition:sym<Bulgarian> { :i 'на' }
+    token on-preposition:sym<Bulgarian> { :i 'на' | 'по' }
     token one-pronoun:sym<Bulgarian> { :i 'едно' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'едно', 2) }> | 'първо' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'първо', 2) }> | 'нещо' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'нещо', 2) }> }
     token ones-pronoun:sym<Bulgarian> { :i 'първи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'първи', 2) }> | 'нещя' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'нещя', 2) }> }
     token or-conjunction:sym<Bulgarian> { :i 'или' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'или', 1) }> }
