@@ -278,6 +278,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token words-noun { 'думи' }
 
     # Directives and phrases
+    # Directives and phrases
     rule USER-ID-phrase { <USER-noun> [ <ID-noun> | <IDENTIFIER-noun> ] }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
     rule annex-directive { <annex-verb> | <append-verb> }
@@ -285,14 +286,16 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     rule complete-cases-phrase { <complete-adjective> <cases-noun> }
     rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
     rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
-    rule data { <data-frame> | <data-noun> <set-noun> | <time-series-data> | <data-noun> | <dataset-noun> }
+    rule data { <data-frame> | <data-noun> [ <set-noun> | <table-noun> ]? | <time-series-data> | <dataset-noun> }
+    rule data-column-phrase { <data-noun>? [ <column-noun> | <variable-noun> ] }
+    rule data-columns-phrase { <data-noun>? [ <columns> | <variables-noun> ] }
     rule data-frame { <data-noun> <frame-noun> }
     rule data-frames { <data-noun> <frames-noun> }
     rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
     rule distance-function-phrase { <distance-noun> <function> }
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
-    rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
     rule find-directive { <find-verb> | <locate-verb> | <spot-verb> | <detect-verb> }
+    rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
     rule join-directive { <join-verb> | <connect-verb> | <link-noun> }
     rule load-data-directive { [ <load-verb> | <ingest-verb> ] <the-determiner>? <data> }
     rule load-directive { <load-verb> | <get-verb> | <consider-verb> }
@@ -307,6 +310,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     rule simulate-and-display { <simulate-directive> [ <and-conjunction> <display-directive> ]? }
     rule take-away-phrase { <take-verb> <away-adverb> }
     rule take-off-phrase { <take-verb> <off-adverb> }
-    rule time-series-data { <time-noun> <series-noun> <data-noun>? }
+    rule time-series-phrase { <time-noun> <series-noun> }
+    rule time-series-data { <time-series-phrase> <data-noun>? }
     rule use-directive { [ <get-verb> <and-conjunction>? ]? <use-verb> }
 }
