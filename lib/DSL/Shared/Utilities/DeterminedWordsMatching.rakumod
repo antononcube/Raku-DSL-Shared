@@ -25,7 +25,7 @@ multi is-determined-word('Bulgarian',  Str $candidate, Str $actual, :$gender is 
 
     #| Make determiner-suffix rules
     my %suffixes =
-            male => { single => <а я ът ят>, plural => ('те',) },
+            male => { single => <а я ът ят ия ият>, plural => ('те',) },
             female => { single => ('та', ), plural => ('те',) },
             neutral => { single => ('то', ), plural => ('те',) };
 
