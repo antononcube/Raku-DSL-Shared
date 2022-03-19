@@ -1,8 +1,5 @@
 use Test;
 
-use lib './lib';
-use lib '.';
-
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::RudimentaryUserOnboarding;
 use DSL::Shared::Roles::English::PipelineCommand;

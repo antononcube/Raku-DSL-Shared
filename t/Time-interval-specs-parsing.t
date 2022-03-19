@@ -1,8 +1,5 @@
 use Test;
 
-use lib './lib';
-use lib '.';
-
 use DSL::Shared::Roles::ErrorHandling;
 use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 use DSL::Shared::Roles::English::TimeIntervalSpec;

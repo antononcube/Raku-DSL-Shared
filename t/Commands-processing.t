@@ -1,7 +1,4 @@
 
-use lib './lib';
-use lib '.';
-
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Actions::English::WL::PipelineCommand;
 
