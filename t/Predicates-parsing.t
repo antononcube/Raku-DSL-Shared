@@ -7,6 +7,7 @@ use DSL::Shared::Roles::PredicateSpecification;
 
 grammar ParseObj
         does DSL::Shared::Roles::CommonStructures
+        does DSL::Shared::Roles::English::CommonSpeechParts
         does DSL::Shared::Roles::PredicateSpecification {
     regex TOP { <predicates-list> }
 };
