@@ -69,6 +69,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token array-noun {*}
     token array-noun:sym<English> { :i 'array' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'array', 2) }> }
 
+    proto token arrays-noun {*}
+    token arrays-noun:sym<English> { :i 'arrays' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'arrays', 2) }> }
+
     proto token as-preposition {*}
     token as-preposition:sym<English> { :i 'as' }
 
@@ -194,6 +197,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token current-adjective {*}
     token current-adjective:sym<English> { :i 'current' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'current', 2) }> }
+
+    proto token data-adjective {*}
+    token data-adjective:sym<English> { :i 'data' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'data', 2) }> }
 
     proto token data-noun {*}
     token data-noun:sym<English> { :i 'data' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'data', 2) }> }
@@ -831,7 +837,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule creation-phrase:sym<English> {  <creation-noun> | <making-noun> <of-preposition>?  }
 
     proto rule data {*}
-    rule data:sym<English> {  <data-frame> | <data-noun> [ <set-noun> | <table-noun> ] | <time-series-data> | <dataset-noun> | <data-noun> }
+    rule data:sym<English> {  <data-frame> | <data-noun> [ <set-noun> | <table-noun> ]? | <time-series-data> | <dataset-noun>  }
 
     proto rule data-column-phrase {*}
     rule data-column-phrase:sym<English> {  <data-noun>? [ <column-noun> | <variable-noun> ]  }

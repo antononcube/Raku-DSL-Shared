@@ -30,6 +30,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token apply-verb { 'apply' }
     token are-verb { 'are' }
     token array-noun { 'array' }
+    token arrays-noun { 'arrays' }
     token as-preposition { 'as' }
     token assign-verb { 'assign' }
     token at-preposition { 'at' }
@@ -72,6 +73,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token create-verb { 'create' }
     token creation-noun { 'creation' }
     token current-adjective { 'current' }
+    token data-adjective { 'data' }
     token data-noun { 'data' }
     token dataset { <dataset-noun> }
     token dataset-noun { 'dataset' }

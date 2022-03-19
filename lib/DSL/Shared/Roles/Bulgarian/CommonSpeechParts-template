@@ -30,6 +30,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token apply-verb { 'приложи' }
     token are-verb { 'са' }
     token array-noun { 'масив' }
+    token arrays-noun { 'масиви' }
     token as-preposition { 'като' }
     token assign-verb { 'присвои' }
     token at-preposition { 'то' }
@@ -72,10 +73,11 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token create-verb { 'създай' }
     token creation-noun { 'създание' | 'дело' }
     token current-adjective { 'текущ' }
+    token data-adjective { 'даннов' | 'даннова' | 'даннови' }
     token data-noun { 'данни' | 'даннов' | 'даннова' }
     token dataset { <dataset-noun> }
-    token dataset-noun { 'дейтасет' | 'дейта' \h+ 'сет' | 'таблица' }
-    token datasets-noun { 'дейтасети' | 'масиви' \h+ 'от' \h+ 'данни' | 'даннови' \h+ 'масиви' }
+    token dataset-noun { 'дейтасет' | 'дейта' \h+ 'сет' | <array-noun> 'от' <data-noun> | <data-adjective> \h+ <array-noun>}
+    token datasets-noun { 'дейтасети' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
     token default { <default-noun> }
     token default-noun { 'по' 'подразбиране' | 'подразбиращ' \h+ 'се' }
     token datum-noun { 'данна' }
@@ -277,7 +279,6 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token without-preposition { 'без' }
     token words-noun { 'думи' }
 
-    # Directives and phrases
     # Directives and phrases
     rule USER-ID-phrase { <USER-noun> [ <ID-noun> | <IDENTIFIER-noun> ] }
     rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
