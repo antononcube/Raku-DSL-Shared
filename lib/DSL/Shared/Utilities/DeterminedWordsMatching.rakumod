@@ -43,7 +43,7 @@ multi is-determined-word('Bulgarian',  Str $candidate, Str $actual, :$gender is 
 
 
     #| Determine is it determined
-    if so $candidate.match(/ ^^ <{$actual}> <{$suffixPattern}> $$ /) {
+    if so $candidate.match(/ ^^ <{"'" ~ $actual ~ "'" }> <{$suffixPattern}> $$ /) {
         return True;
     }
     return False;
