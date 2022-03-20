@@ -12,6 +12,7 @@ use DSL::Shared::Utilities::DeterminedWordsMatching;
 role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     # Single words
     token ID-noun { 'ID' | 'ИД'}
+    token IDENTIFIER-adjective { 'IDENTIFIER' | 'ИДЕНТИФИКАТОРЕН' | 'ИДЕНТИФИКАТОРНА' | 'ИДЕНТИФИКАТОРНИ' }
     token IDENTIFIER-noun { 'IDENTIFIER' | 'ИДЕНТИФИКАТОР' }
     token MODULE-noun { 'MODULE' | 'МОДУЛ' }
     token TARGET-noun { 'TARGET' | 'ЦЕЛ' }
@@ -280,38 +281,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token words-noun { 'думи' }
 
     # Directives and phrases
-    rule USER-ID-phrase { <USER-noun> [ <ID-noun> | <IDENTIFIER-noun> ] }
-    rule adjacency-matrix-phrase { [ <adjacency-noun> | <adjacent-adjective> ] <matrix-noun> }
-    rule annex-directive { <annex-verb> | <append-verb> }
-    rule assign-directive { <assign-verb> }
-    rule complete-cases-phrase { <complete-adjective> <cases-noun> }
-    rule compute-and-display { <compute-directive> [ <and-conjunction> <display-directive> ]? }
-    rule creation-phrase { <creation-noun> | <making-noun> <of-preposition>? }
-    rule data { <data-frame> | <data-noun> [ <set-noun> | <table-noun> ]? | <time-series-data> | <dataset-noun> }
-    rule data-column-phrase { <data-noun>? [ <column-noun> | <variable-noun> ] }
-    rule data-columns-phrase { <data-noun>? [ <columns> | <variables-noun> ] }
-    rule data-frame { <data-noun> <frame-noun> }
-    rule data-frames { <data-noun> <frames-noun> }
-    rule diagram-phrase { <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
-    rule distance-function-phrase { <distance-noun> <function> }
-    rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
-    rule find-directive { <find-verb> | <locate-verb> | <spot-verb> | <detect-verb> }
-    rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
-    rule join-directive { <join-verb> | <connect-verb> | <link-noun> }
-    rule load-data-directive { [ <load-verb> | <ingest-verb> ] <the-determiner>? <data> }
-    rule load-directive { <load-verb> | <get-verb> | <consider-verb> }
-    rule max-iterations-phrase { <maximum>? <number-of>? [ <iterations> | <steps-noun> ] }
-    rule missing-values-phrase { <missing-adjective> <values-noun>? }
-    rule nearest-neighbors-phrase { <nearest-adjective>? <neighbors-noun> | 'nns' }
-    rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
-    rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
-    rule records-phrase { <table-noun>? [ <rows> | <records> ] }
-    rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away-phrase> }
-    rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }
-    rule simulate-and-display { <simulate-directive> [ <and-conjunction> <display-directive> ]? }
-    rule take-away-phrase { <take-verb> <away-adverb> }
-    rule take-off-phrase { <take-verb> <off-adverb> }
-    rule time-series-phrase { <time-noun> <series-noun> }
-    rule time-series-data { <time-series-phrase> <data-noun>? }
-    rule use-directive { [ <get-verb> <and-conjunction>? ]? <use-verb> }
+    rule data-frame { <data-noun>? <table-noun> }
+    rule data-frames { <data-noun>? <tables-noun> }
+    rule time-series-data { <time-adjective> <series-noun> <data-noun>? }
 }

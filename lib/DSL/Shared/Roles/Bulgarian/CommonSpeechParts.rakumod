@@ -12,6 +12,7 @@ use DSL::Shared::Utilities::DeterminedWordsMatching;
 role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     # Single words
     token ID-noun:sym<Bulgarian> { :i 'ID' | 'ИД' }
+    token IDENTIFIER-adjective:sym<Bulgarian> { :i 'IDENTIFIER' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'IDENTIFIER', 2) }> | 'ИДЕНТИФИКАТОРЕН' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ИДЕНТИФИКАТОРЕН', 2) }> | 'ИДЕНТИФИКАТОРНА' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ИДЕНТИФИКАТОРНА', 2) }> | 'ИДЕНТИФИКАТОРНИ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ИДЕНТИФИКАТОРНИ', 2) }> }
     token IDENTIFIER-noun:sym<Bulgarian> { :i 'IDENTIFIER' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'IDENTIFIER', 2) }> | 'ИДЕНТИФИКАТОР' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ИДЕНТИФИКАТОР', 2) }> }
     token MODULE-noun:sym<Bulgarian> { :i 'MODULE' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'MODULE', 2) }> | 'МОДУЛ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'МОДУЛ', 2) }> }
     token TARGET-noun:sym<Bulgarian> { :i 'TARGET' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'TARGET', 2) }> | 'ЦЕЛ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ЦЕЛ', 1) }> }
@@ -136,7 +137,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token in-preposition:sym<Bulgarian> { :i 'в' | 'във' }
     token include-verb:sym<Bulgarian> { :i 'включи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'включи', 2) }> | 'включвай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'включвай', 2) }> }
     token ingest-verb:sym<Bulgarian> { :i 'прочети' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'прочети', 2) }> }
-    token into-preposition:sym<Bulgarian> { :i 'в' | 'във' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'във', 1) }> }
+    token into-preposition:sym<Bulgarian> { :i 'в' | 'във' }
     token is-verb:sym<Bulgarian> { :i 'е' }
     token it-pronoun:sym<Bulgarian> { :i 'това' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'това', 2) }> | 'което' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'което', 2) }> }
     token iterations:sym<Bulgarian> { :i 'итерации' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'итерации', 2) }> }
