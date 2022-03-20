@@ -378,6 +378,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token id-noun {*}
     token id-noun:sym<English> { :i 'id' }
 
+    proto token identifier-adjective {*}
+    token identifier-adjective:sym<English> { :i  <identifier-noun>  }
+
     proto token identifier-noun {*}
     token identifier-noun:sym<English> { :i 'identifier' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'identifier', 2) }> }
 

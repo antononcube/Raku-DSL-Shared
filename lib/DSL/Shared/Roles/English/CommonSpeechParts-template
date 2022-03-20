@@ -133,6 +133,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token histograms { 'histograms' }
     token how-adverb { 'how' }
     token id-noun { 'id' }
+    token identifier-adjective { <identifier-noun> }
     token identifier-noun { 'identifier' }
     token in-preposition { 'in' }
     token include-verb { 'include' }

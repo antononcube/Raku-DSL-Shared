@@ -133,7 +133,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token histograms { 'хистограми' }
     token how-adverb { 'как' }
     token id-noun { 'ид' }
-    token identifier-noun { 'идентификатор' }
+    token identifier-adjective { <IDENTIFIER-adjective> }
+    token identifier-noun { <IDENTIFIER-noun> }
     token in-preposition { 'в' | 'във' }
     token include-verb { 'включи' | 'включвай' }
     token ingest-verb { 'прочети' }
