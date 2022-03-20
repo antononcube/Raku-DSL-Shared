@@ -69,7 +69,8 @@ multi ToWorkflowCode( Str $command,
                       Str :$target!,
                       :$userID = Whatever,
                       Str :$format = 'code',
-                      :$splitter = Whatever) {
+                      :$splitter = Whatever,
+                      *%args) {
 
     # Get target (e.g. 'R::tidyverse') using
     #   DSL::Shared::Utilities::MetaSpecsProcessing::get-dsl-spec
