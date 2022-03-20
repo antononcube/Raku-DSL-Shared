@@ -12,6 +12,7 @@ use DSL::Shared::Utilities::FuzzyMatching;
 role DSL::Shared::Roles::English::CommonSpeechParts {
     # Single words
     token ID-noun { 'ID' }
+    token IDENTIFIER-adjective { <IDENTIFIER-noun> }
     token IDENTIFIER-noun { 'IDENTIFIER' }
     token MODULE-noun { 'MODULE' }
     token TARGET-noun { 'TARGET' }

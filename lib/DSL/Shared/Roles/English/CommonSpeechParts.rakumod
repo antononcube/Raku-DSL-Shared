@@ -15,6 +15,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token ID-noun {*}
     token ID-noun:sym<English> { :i 'ID' }
 
+    proto token IDENTIFIER-adjective {*}
+    token IDENTIFIER-adjective:sym<English> { :i  <IDENTIFIER-noun>  }
+
     proto token IDENTIFIER-noun {*}
     token IDENTIFIER-noun:sym<English> { :i 'IDENTIFIER' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'IDENTIFIER', 2) }> }
 
