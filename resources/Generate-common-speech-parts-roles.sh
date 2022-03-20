@@ -1,7 +1,7 @@
 #! /bin/zsh
 
 # The code below assumes that the Raku package Grammar::TokenProcessing is installed.
-# It is assumed that this script is executed in the top directory DSL::Shared .
+# It is assumed that this script is executed in the top directory of DSL::Shared .
 
 # Process English template
 echo 'Process English template'
