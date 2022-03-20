@@ -4,12 +4,17 @@ use DSL::Shared::Utilities::FuzzyMatching;
 
 unit module DSL::Shared::Utilities::DeterminedWordsMatching;
 
+# See the definition at bottom of the file.
+my %determinerSuffixes;
+
 #============================================================
 # Determiner matching
 #============================================================
 proto is-determined-word(Str $lang, Str $candidate, Str $actual, :$gender = Whatever, :$plurality = Whatever --> Bool) is export {*}
 
-multi is-determined-word('Bulgarian',  Str $candidate, Str $actual, :$gender is copy = Whatever, :$plurality is copy = Whatever --> Bool) {
+multi is-determined-word('Bulgarian', Str $candidate, Str $actual is copy,
+                         :$gender is copy = Whatever,
+                         :$plurality is copy = Whatever --> Bool) {
 
     #| Process input options
     $gender = $gender.isa(Whatever) ?? 'any' !! $gender;
@@ -23,27 +28,11 @@ multi is-determined-word('Bulgarian',  Str $candidate, Str $actual, :$gender is 
     $gender = $gender.lc;
     $plurality = $plurality.lc;
 
-    #| Make determiner-suffix rules
-    my %suffixes =
-            male =>    { single => <а я ът ят ия ият>, plural => ('те',) },
-            female =>  { single => ('та', ),           plural => ('те',) },
-            neutral => { single => ('то', ),           plural => ('те',) };
-
-    %suffixes<any> = %();
-
-    for <male female neutral> -> $g {
-        %suffixes{$g}<any> = unique((|%suffixes{$g}<single>, |%suffixes{$g}<plural>)).List;
-    }
-
-    for <single plural any> -> $p {
-        %suffixes<any>{$p} = unique((|%suffixes<male>{$p}, |%suffixes<female>{$p}, |%suffixes<neutral>{$p})).List;
-    }
-
-    my $suffixPattern = %suffixes{$gender}{$plurality}.join(' | ');
-
+    my $suffixPattern = %determinerSuffixes{$gender}{$plurality}.join(' | ');
 
     #| Determine is it determined
-    if so $candidate.match(/ ^^ <{"'" ~ $actual ~ "'" }> <{$suffixPattern}> $$ /) {
+    $actual =  "'" ~ $actual ~ "'";
+    if so $candidate.match(/ ^^ <{ $actual }> <{ $suffixPattern }> $$ /) {
         return True;
     }
     return False;
@@ -56,4 +45,28 @@ proto is-bg-fuzzy-match($c, $a, $maxDist = 2) is export {*};
 
 multi is-bg-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
     return is-determined-word('Bulgarian', $candidate, $actual) || is-fuzzy-match($candidate, $actual, $maxDist);
+}
+
+#============================================================
+# Determiner suffixes
+#============================================================
+%determinerSuffixes = BEGIN {
+
+    #| Make determiner-suffix rules
+    my %suffixes =
+            male => { single => <а я ът ят ия ият>, plural => ('те',) },
+            female => { single => ('та',), plural => ('те',) },
+            neutral => { single => ('то',), plural => ('те',) };
+
+    %suffixes<any> = %();
+
+    for <male female neutral> -> $g {
+        %suffixes{$g}<any> = unique((|%suffixes{$g}<single>, |%suffixes{$g}<plural>)).List;
+    }
+
+    for <single plural any> -> $p {
+        %suffixes<any>{$p} = unique((|%suffixes<male>{$p}, |%suffixes<female>{$p}, |%suffixes<neutral>{$p})).List;
+    }
+
+    %suffixes
 }
