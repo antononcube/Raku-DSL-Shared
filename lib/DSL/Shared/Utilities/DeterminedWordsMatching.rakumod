@@ -28,11 +28,12 @@ multi is-determined-word('Bulgarian', Str $candidate, Str $actual is copy,
     $gender = $gender.lc;
     $plurality = $plurality.lc;
 
-    my $suffixPattern = %determinerSuffixes{$gender}{$plurality}.join(' | ');
+    # my $suffixPattern = %determinerSuffixes{$gender}{$plurality}.join(' | ');
+    my @suffixes = |%determinerSuffixes{$gender}{$plurality};
+    my @actuals = @suffixes.map({ $actual ~ $_});
 
     #| Determine is it determined
-    $actual =  "'" ~ $actual ~ "'";
-    if so $candidate.match(/ ^^ <{ $actual }> <{ $suffixPattern }> $$ /) {
+    if $candidate (elem) @actuals {
         return True;
     }
     return False;
