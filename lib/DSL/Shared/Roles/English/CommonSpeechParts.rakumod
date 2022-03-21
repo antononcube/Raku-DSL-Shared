@@ -337,10 +337,16 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token from-preposition:sym<English> { :i 'from' }
 
     proto token function {*}
-    token function:sym<English> { :i 'function' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'function', 2) }> }
+    token function:sym<English> { :i  <function-noun>  }
 
     proto token functions {*}
-    token functions:sym<English> { :i 'functions' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'functions', 2) }> }
+    token functions:sym<English> { :i  <functions-noun>  }
+
+    proto token function-noun {*}
+    token function-noun:sym<English> { :i 'function' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'function', 2) }> }
+
+    proto token functions-noun {*}
+    token functions-noun:sym<English> { :i 'functions' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'functions', 2) }> }
 
     proto token generate-directive {*}
     token generate-directive:sym<English> { :i  <generate-verb> | <create-verb> | 'make'  }
@@ -446,6 +452,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token matrix-noun {*}
     token matrix-noun:sym<English> { :i 'matrix' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'matrix', 2) }> }
+
+    proto token matrices-noun {*}
+    token matrices-noun:sym<English> { :i 'matrices' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'matrices', 2) }> }
+
+    proto token matrixes-noun {*}
+    token matrixes-noun:sym<English> { :i 'matrixes' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'matrixes', 2) }> }
 
     proto token maximum {*}
     token maximum:sym<English> { :i 'max' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'max', 1) }> | 'maximum' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'maximum', 2) }> }
@@ -759,6 +771,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token type-noun {*}
     token type-noun:sym<English> { :i 'type' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'type', 2) }> }
 
+    proto token types-noun {*}
+    token types-noun:sym<English> { :i 'types' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'types', 2) }> }
+
     proto token up-adverb {*}
     token up-adverb:sym<English> { :i 'up' }
 
@@ -815,6 +830,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token without-preposition {*}
     token without-preposition:sym<English> { :i 'without' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'without', 2) }> }
+
+    proto token word-noun {*}
+    token word-noun:sym<English> { :i 'word' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'word', 2) }> }
 
     proto token words-noun {*}
     token words-noun:sym<English> { :i 'words' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'words', 2) }> }
@@ -903,7 +921,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule remove-directive:sym<English> {  <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away-phrase>  }
 
     proto rule simple-way-phrase {*}
-    rule simple-way-phrase:sym<English> {  <simple> [ <way-noun> | <manner> ]  }
+    rule simple-way-phrase:sym<English> {  <simple> [ <way-noun> | <manner> ] | <in-preposition> <a-determiner> <simple> <way-noun> | <directly-adverb> | <simply-adverb>   }
 
     proto rule simulate-and-display {*}
     rule simulate-and-display:sym<English> {  <simulate-directive> [ <and-conjunction> <display-directive> ]?  }

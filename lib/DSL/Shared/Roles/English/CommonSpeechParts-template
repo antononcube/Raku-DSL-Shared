@@ -119,8 +119,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token frame-noun { 'frame' }
     token frames-noun { 'frames' }
     token from-preposition { 'from' }
-    token function { 'function' }
-    token functions { 'functions' }
+    token function { <function-noun> }
+    token functions { <functions-noun> }
+    token function-noun { 'function' }
+    token functions-noun { 'functions' }
     token generate-directive { <generate-verb> | <create-verb> | 'make' }
     token generate-verb { 'generate' }
     token get-verb { 'obtain' | 'get' | <take-verb> }
@@ -156,6 +158,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token making-noun { 'making' }
     token manner { 'manner' }
     token matrix-noun { 'matrix' }
+    token matrices-noun { 'matrices' }
+    token matrixes-noun { 'matrixes' }
     token maximum { 'max' | 'maximum' }
     token message-noun { 'message' }
     token method-noun { 'method' }
@@ -260,6 +264,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token transform-verb { 'transform' }
     token translation-noun { 'translation' }
     token type-noun { 'type' }
+    token types-noun { 'types' }
     token up-adverb { 'up' }
     token use-verb { 'use' | 'utilize' }
     token used-verb { 'used' | 'utilized' }
@@ -279,6 +284,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token which-determiner { 'which' }
     token with-preposition { 'using' | 'with' | 'by' }
     token without-preposition { 'without' }
+    token word-noun { 'word' }
     token words-noun { 'words' }
 
     # Directives and phrases
@@ -309,7 +315,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
     rule records-phrase { <table-noun>? [ <rows> | <records> ] }
     rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away-phrase> }
-    rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] }
+    rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] | <in-preposition> <a-determiner> <simple> <way-noun> | <directly-adverb> | <simply-adverb>  }
     rule simulate-and-display { <simulate-directive> [ <and-conjunction> <display-directive> ]? }
     rule take-away-phrase { <take-verb> <away-adverb> }
     rule take-off-phrase { <take-verb> <off-adverb> }

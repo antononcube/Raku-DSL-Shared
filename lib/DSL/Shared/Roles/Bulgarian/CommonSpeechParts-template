@@ -119,8 +119,10 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token frame-noun { 'рамка' }
     token frames-noun { 'рамки' }
     token from-preposition { 'от' }
-    token function { 'функция' }
-    token functions { 'функции' }
+    token function { <function-noun> }
+    token functions { <functions-noun> }
+    token function-noun { 'функция' }
+    token functions-noun { 'функции' }
     token generate-directive { <generate-verb> | <create-verb> | 'направи' }
     token generate-verb { 'генерирай' }
     token get-verb { 'вземи' | 'добий' | <take-verb> }
@@ -155,7 +157,9 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token make-noun { 'направи' }
     token making-noun { 'правене' }
     token manner { 'начин' | 'маниер' }
+    token matrices-noun { 'матрици' }
     token matrix-noun { 'матрица' }
+    token matrixes-noun { 'матрици' }
     token maximum { 'макс' | 'максимум' }
     token message-noun { 'съобщение' }
     token method-noun { 'метод' }
@@ -260,6 +264,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token transform-verb { 'трансформирай' }
     token translation-noun { 'транслация' }
     token type-noun { 'тип' }
+    token types-noun { 'типове' }
     token up-adverb { 'горе' | 'нагоре' }
     token use-verb { 'ползвай' | 'използвай' }
     token used-verb { 'ползван' | 'използван' }
@@ -279,6 +284,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token which-determiner { 'кой' | 'кои' }
     token with-preposition { 'чрез' | 'с' | 'със' }
     token without-preposition { 'без' }
+    token word-noun { 'дума' }
     token words-noun { 'думи' }
 
     # Directives and phrases
