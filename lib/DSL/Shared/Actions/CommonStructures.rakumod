@@ -63,6 +63,7 @@ class DSL::Shared::Actions::CommonStructures {
 	method is-single-quoted( Str:D $m ) { $m ~~ / ^ '\'' .* '\'' $ / }
 	method is-double-quoted( Str:D $m ) { $m ~~ / ^ '"' .* '"' $ / }
     method double-quote-if-not-already( Str:D $m ) { self.is-double-quoted($m) ?? $m !! '"' ~ $m ~ '"' }
+    method unquote( Str:D $m ) { ( self.is-double-quoted($m) || self.is-single-quoted($m) ) ?? $m.substr(1, *-1) !! $m }
 
 	# Common programming languages tokens
 	method dataset-name($/) { make $/.Str; }
