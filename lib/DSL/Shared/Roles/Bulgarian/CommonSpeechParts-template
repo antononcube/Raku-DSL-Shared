@@ -73,7 +73,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token create-directive { <create-verb> | 'направи' }
     token create-verb { 'създай' }
     token creation-noun { 'създание' | 'дело' }
-    token current-adjective { 'текущ' }
+    token current-adjective { 'текущ' | 'текуща' | 'текущо' }
     token data-adjective { 'даннов' | 'даннова' | 'даннови' }
     token data-noun { 'данни' | 'даннов' | 'даннова' }
     token dataset { <dataset-noun> }
@@ -190,7 +190,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token part-noun { 'част' }
     token pattern-noun { 'шаблон' }
     token per-preposition { 'за' }
-    token pipeline-noun { 'поточна' 'линия' }
+    token pipeline-adjective { 'лентов' | 'лентова' | 'лентово' }
+    token pipeline-noun { 'лента' | 'поточна' 'линия' }
     token plot-noun { 'чертеж' | 'графика' }
     token plots-noun { 'чертежи' | 'графики' }
     token position-noun { 'позиция' }

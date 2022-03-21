@@ -26,7 +26,8 @@ role DSL::Shared::Roles::English::PipelineCommand
         <setup-code-command> |
         <code-line> }
 
-    rule pipeline-filler-phrase { <.the-determiner>? <current-adjective>? <pipeline-noun> }
+    proto rule pipeline-filler-phrase {*}
+    rule pipeline-filler-phrase:sym<English> { <.the-determiner>? <current-adjective>? <pipeline-noun> }
 
     rule pipeline-function-spec { <wl-expr> | <variable-name> }
 

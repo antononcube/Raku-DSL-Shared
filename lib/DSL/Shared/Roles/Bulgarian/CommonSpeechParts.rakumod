@@ -73,7 +73,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token create-directive:sym<Bulgarian> { :i  <create-verb> | 'направи'  }
     token create-verb:sym<Bulgarian> { :i 'създай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'създай', 2) }> }
     token creation-noun:sym<Bulgarian> { :i 'създание' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'създание', 2) }> | 'дело' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'дело', 2) }> }
-    token current-adjective:sym<Bulgarian> { :i 'текущ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'текущ', 2) }> }
+    token current-adjective:sym<Bulgarian> { :i 'текущ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'текущ', 2) }> | 'текуща' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'текуща', 2) }> | 'текущо' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'текущо', 2) }> }
     token data-adjective:sym<Bulgarian> { :i 'даннов' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'даннов', 2) }> | 'даннова' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'даннова', 2) }> | 'даннови' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'даннови', 2) }> }
     token data-noun:sym<Bulgarian> { :i 'данни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'данни', 2) }> | 'даннов' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'даннов', 2) }> | 'даннова' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'даннова', 2) }> }
     token dataset:sym<Bulgarian> { :i  <dataset-noun>  }
@@ -190,7 +190,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token part-noun:sym<Bulgarian> { :i 'част' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'част', 2) }> }
     token pattern-noun:sym<Bulgarian> { :i 'шаблон' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'шаблон', 2) }> }
     token per-preposition:sym<Bulgarian> { :i 'за' }
-    token pipeline-noun:sym<Bulgarian> { :i  'поточна' 'линия'  }
+    token pipeline-adjective:sym<Bulgarian> { :i 'лентов' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'лентов', 2) }> | 'лентова' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'лентова', 2) }> | 'лентово' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'лентово', 2) }> }
+    token pipeline-noun:sym<Bulgarian> { :i  'лента' | 'поточна' 'линия'  }
     token plot-noun:sym<Bulgarian> { :i 'чертеж' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'чертеж', 2) }> | 'графика' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'графика', 2) }> }
     token plots-noun:sym<Bulgarian> { :i 'чертежи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'чертежи', 2) }> | 'графики' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'графики', 2) }> }
     token position-noun:sym<Bulgarian> { :i 'позиция' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'позиция', 2) }> }

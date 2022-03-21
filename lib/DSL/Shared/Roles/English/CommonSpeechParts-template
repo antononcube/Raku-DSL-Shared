@@ -190,6 +190,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token part-noun { 'part' }
     token pattern-noun { 'pattern' }
     token per-preposition { 'per' }
+    token pipeline-adjective { 'pipeline' }
     token pipeline-noun { 'pipeline' }
     token plot-noun { 'plot' }
     token plots-noun { 'plot' | 'plots' }

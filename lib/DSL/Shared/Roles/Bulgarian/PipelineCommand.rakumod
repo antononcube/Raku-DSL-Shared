@@ -12,4 +12,7 @@ role DSL::Shared::Roles::Bulgarian::PipelineCommand
         does DSL::Shared::Roles::CommonStructures
         does DSL::Shared::Roles::Bulgarian::CommonSpeechParts
         does Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec {
+
+    rule pipeline-filler-phrase:sym<Bulgarian> { <.the-determiner>? <current-adjective>? <pipeline-adjective> }
+
 }

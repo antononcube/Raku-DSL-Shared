@@ -549,6 +549,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token per-preposition {*}
     token per-preposition:sym<English> { :i 'per' }
 
+    proto token pipeline-adjective {*}
+    token pipeline-adjective:sym<English> { :i 'pipeline' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'pipeline', 2) }> }
+
     proto token pipeline-noun {*}
     token pipeline-noun:sym<English> { :i 'pipeline' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'pipeline', 2) }> }
 
