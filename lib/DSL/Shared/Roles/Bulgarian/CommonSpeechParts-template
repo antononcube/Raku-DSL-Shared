@@ -110,7 +110,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token empty-verb { 'празни' | <empty-noun> }
     token every-determiner { 'всеки' | 'всяко' | 'всяка' }
     token extend-verb { 'разшири' }
-    token extract-directive { 'измъкни' | 'добий' }
+    token extract-directive { 'измъкни' | 'извади' | 'добий' }
     token filter { <filter-verb> }
     token filter-noun { <filter-verb> }
     token filter-verb { 'филтър' | 'филтрирай' }
