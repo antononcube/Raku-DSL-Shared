@@ -35,7 +35,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token as-preposition { 'като' }
     token assign-verb { 'присвои' }
     token at-preposition { 'то' }
-    token automatic { 'автоматичен' | 'автоматично' }
+    token automatic { 'автоматичен' | 'автоматична' | 'автоматично' | 'автоматични'  }
     token away-adverb { 'away' }
     token axes-noun { 'оси' }
     token axis-noun { 'ос' }
@@ -160,10 +160,10 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token matrices-noun { 'матрици' }
     token matrix-noun { 'матрица' }
     token matrixes-noun { 'матрици' }
-    token maximum { 'макс' | 'максимум' }
+    token maximum { 'макс' | 'максимум' | 'максимален' }
     token message-noun { 'съобщение' }
     token method-noun { 'метод' }
-    token minimum { 'мин' | 'минимум' }
+    token minimum { 'мин' | 'минимум' | 'минимален' }
     token missing-adjective { 'липсващи' }
     token model { 'модел' }
     token module-noun { 'модул' }
@@ -293,4 +293,6 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     rule data-frame { <data-noun>? <table-noun> }
     rule data-frames { <data-noun>? <tables-noun> }
     rule time-series-data { <time-adjective> <series-noun> <data-noun>? }
+    rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition>? }
+
 }
