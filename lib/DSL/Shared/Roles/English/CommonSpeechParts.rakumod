@@ -580,7 +580,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token replace-verb:sym<English> { :i 'replace' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'replace', 2) }> }
 
     proto token represent-directive {*}
-    token represent-directive:sym<English> { :i  <represent> | 'render' | 'reflect'  }
+    token represent-directive:sym<English> { :i  <represent-verb> | 'render' | 'reflect'  }
+
+    proto token represent-verb {*}
+    token represent-verb:sym<English> { :i 'represent' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'represent', 2) }> }
 
     proto token rest-noun {*}
     token rest-noun:sym<English> { :i 'rest' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'rest', 2) }> }

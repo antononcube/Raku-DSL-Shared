@@ -200,7 +200,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token reduce-verb { 'reduce' }
     token remove-verb { 'remove' }
     token replace-verb { 'replace' }
-    token represent-directive { <represent> | 'render' | 'reflect' }
+    token represent-directive { <represent-verb> | 'render' | 'reflect' }
+    token represent-verb { 'represent' }
     token rest-noun { 'rest' }
     token result-noun { 'result' }
     token results { <results-noun> }

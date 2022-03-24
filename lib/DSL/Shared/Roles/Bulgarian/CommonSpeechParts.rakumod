@@ -200,7 +200,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token reduce-verb:sym<Bulgarian> { :i 'редуцирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'редуцирай', 2) }> }
     token remove-verb:sym<Bulgarian> { :i 'премахни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'премахни', 2) }> | 'изтрий' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изтрий', 2) }> }
     token replace-verb:sym<Bulgarian> { :i 'замести' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'замести', 2) }> | 'замени' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'замени', 2) }> }
-    token represent-directive:sym<Bulgarian> { :i  <represent> | 'чертай' | 'отрази'  }
+    token represent-directive:sym<Bulgarian> { :i  <represent-verb> | 'чертай' | 'отрази'  }
+    token represent-verb:sym<Bulgarian> { :i 'представи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'представи', 2) }> }
     token rest-noun:sym<Bulgarian> { :i 'остатък' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'остатък', 2) }> }
     token result-noun:sym<Bulgarian> { :i 'резултат' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'резултат', 2) }> }
     token results:sym<Bulgarian> { :i  <results-noun>  }

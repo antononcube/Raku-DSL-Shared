@@ -200,7 +200,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token reduce-verb { 'редуцирай' }
     token remove-verb { 'премахни' | 'изтрий'  }
     token replace-verb { 'замести' | 'замени' }
-    token represent-directive { <represent> | 'чертай' | 'отрази' }
+    token represent-directive { <represent-verb> | 'чертай' | 'отрази' }
+    token represent-verb { 'представи' }
     token rest-noun { 'остатък' }
     token result-noun { 'резултат' }
     token results { <results-noun> }
