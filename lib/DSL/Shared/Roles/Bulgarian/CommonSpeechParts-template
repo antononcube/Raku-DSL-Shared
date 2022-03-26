@@ -118,6 +118,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token filter { <filter-verb> }
     token filter-noun { <filter-verb> }
     token filter-verb { 'филтър' | 'филтрирай' }
+    token find-verb { 'търси' | 'намери' }
     token first-adjective { 'първи' | 'първа' | 'първо' }
     token for-preposition { 'за' | 'със' | 'на' }
     token frame-noun { 'рамка' }

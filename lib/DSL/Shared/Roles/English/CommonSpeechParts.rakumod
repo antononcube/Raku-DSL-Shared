@@ -333,6 +333,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token filter-verb {*}
     token filter-verb:sym<English> { :i 'filter' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'filter', 2) }> }
 
+    proto token find-verb {*}
+    token find-verb:sym<English> { :i 'find' | ([\w]+) <?{ $0.Str !(elem) <and id in link min> and is-fuzzy-match($0.Str, 'find', 2) }> }
+
     proto token first-adjective {*}
     token first-adjective:sym<English> { :i 'first' | ([\w]+) <?{ $0.Str ne 'list' and is-fuzzy-match($0.Str, 'first', 2) }> }
 

@@ -118,6 +118,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token filter { <filter-verb> }
     token filter-noun { <filter-verb> }
     token filter-verb { 'filter' }
+    token find-verb { 'find' }
     token first-adjective { 'first' }
     token for-preposition { 'for' | 'with' }
     token frame-noun { 'frame' }
