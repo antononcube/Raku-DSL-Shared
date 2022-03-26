@@ -40,14 +40,15 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token axes-noun:sym<Bulgarian> { :i 'оси' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'оси', 1) }> }
     token axis-noun:sym<Bulgarian> { :i 'ос' }
     token be-verb:sym<Bulgarian> { :i 'be' }
-    token both-determiner:sym<Bulgarian> { :i 'двете' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'двете', 2) }> | 'едновременно' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'едновременно', 2) }> | 'заедно' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'заедно', 2) }> }
+    token both-determiner:sym<Bulgarian> { :i  'и'? 'двете' | 'едновременно' | 'заедно'  }
     token bottom-noun:sym<Bulgarian> { :i  'дъно' | 'най-ниско'  }
     token broaden-verb:sym<Bulgarian> { :i 'разшири' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'разшири', 2) }> }
     token by-preposition:sym<Bulgarian> { :i 'от' | 'със' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'със', 1) }> | 'чрез' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'чрез', 2) }> }
     token calculation:sym<Bulgarian> { :i 'изчисление' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изчисление', 2) }> }
     token case-noun:sym<Bulgarian> { :i 'случай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'случай', 2) }> }
     token cases-noun:sym<Bulgarian> { :i 'случаи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'случаи', 2) }> }
-    token chart-noun:sym<Bulgarian> { :i 'диаграма' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'диаграма', 2) }> | 'карта' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'карта', 2) }> }
+    token chart-verb:sym<Bulgarian> { :i 'чертай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'чертай', 2) }> | 'начертай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'начертай', 2) }> }
+    token chart-noun:sym<Bulgarian> { :i 'чертеж' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'чертеж', 2) }> | 'диаграма' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'диаграма', 2) }> | 'карта' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'карта', 2) }> }
     token classify-verb:sym<Bulgarian> { :i 'класифицирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'класифицирай', 2) }> }
     token clear-verb:sym<Bulgarian> { :i 'чисти' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'чисти', 2) }> | 'зачисти' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'зачисти', 2) }> | 'изчисти' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изчисти', 2) }> }
     token cluster:sym<Bulgarian> { :i  <cluster-noun>  }
@@ -178,7 +179,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token non-prefix:sym<Bulgarian> { :i 'не' }
     token number-noun:sym<Bulgarian> { :i 'число' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'число', 2) }> }
     token object-noun:sym<Bulgarian> { :i 'обект' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обект', 2) }> }
-    token of-preposition:sym<Bulgarian> { :i 'за' }
+    token of-preposition:sym<Bulgarian> { :i 'за' | 'на' }
     token off-adverb:sym<Bulgarian> { :i 'без' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'без', 1) }> }
     token on-preposition:sym<Bulgarian> { :i 'на' | 'по' }
     token one-pronoun:sym<Bulgarian> { :i 'едно' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'едно', 2) }> | 'първо' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'първо', 2) }> | 'нещо' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'нещо', 2) }> }

@@ -120,6 +120,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token cases-noun {*}
     token cases-noun:sym<English> { :i 'cases' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'cases', 2) }> }
 
+    proto token chart-verb {*}
+    token chart-verb:sym<English> { :i  <chart-noun>  }
+
     proto token chart-noun {*}
     token chart-noun:sym<English> { :i 'chart' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'chart', 2) }> }
 

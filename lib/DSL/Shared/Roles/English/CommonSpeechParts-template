@@ -47,6 +47,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token calculation { 'calculation' }
     token case-noun { 'case' }
     token cases-noun { 'cases' }
+    token chart-verb { <chart-noun> }
     token chart-noun { 'chart' }
     token classify-verb { 'classify' }
     token clear-verb { 'clear' }

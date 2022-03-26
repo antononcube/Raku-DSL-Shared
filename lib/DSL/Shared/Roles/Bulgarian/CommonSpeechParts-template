@@ -40,14 +40,15 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token axes-noun { 'оси' }
     token axis-noun { 'ос' }
     token be-verb { 'be' }
-    token both-determiner { 'двете' | 'едновременно' | 'заедно' }
+    token both-determiner { 'и'? 'двете' | 'едновременно' | 'заедно' }
     token bottom-noun { 'дъно' | 'най-ниско' }
     token broaden-verb { 'разшири' }
     token by-preposition { 'от' | 'със' | 'чрез' }
     token calculation { 'изчисление' }
     token case-noun { 'случай' }
     token cases-noun { 'случаи' }
-    token chart-noun { 'диаграма' | 'карта' }
+    token chart-verb { 'чертай' | 'начертай' }
+    token chart-noun { 'чертеж' | 'диаграма' | 'карта' }
     token classify-verb { 'класифицирай' }
     token clear-verb { 'чисти' | 'зачисти' | 'изчисти' }
     token cluster { <cluster-noun> }
@@ -178,7 +179,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token non-prefix { 'не' }
     token number-noun { 'число' }
     token object-noun { 'обект' }
-    token of-preposition { 'за' }
+    token of-preposition { 'за' | 'на' }
     token off-adverb { 'без' }
     token on-preposition { 'на' | 'по' }
     token one-pronoun { 'едно' | 'първо' | 'нещо' }
