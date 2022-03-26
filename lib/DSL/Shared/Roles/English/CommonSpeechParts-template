@@ -75,8 +75,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token create-verb { 'create' }
     token creation-noun { 'creation' }
     token current-adjective { 'current' }
-    token data-adjective { 'data' }
+    token data-adjective { <data-noun> }
     token data-noun { 'data' }
+    token date-adjective { <date-noun> }
     token date-noun { 'date' }
     token dates-noun { 'dates' }
     token dataset { <dataset-noun> }

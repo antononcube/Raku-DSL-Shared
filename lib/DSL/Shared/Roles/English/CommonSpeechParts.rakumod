@@ -205,10 +205,13 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token current-adjective:sym<English> { :i 'current' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'current', 2) }> }
 
     proto token data-adjective {*}
-    token data-adjective:sym<English> { :i 'data' | ([\w]+) <?{ $0.Str !(elem) <at date dates datum> and is-fuzzy-match($0.Str, 'data', 2) }> }
+    token data-adjective:sym<English> { :i  <data-noun>  }
 
     proto token data-noun {*}
     token data-noun:sym<English> { :i 'data' | ([\w]+) <?{ $0.Str !(elem) <at date dates datum> and is-fuzzy-match($0.Str, 'data', 2) }> }
+
+    proto token date-adjective {*}
+    token date-adjective:sym<English> { :i  <date-noun>  }
 
     proto token date-noun {*}
     token date-noun:sym<English> { :i 'date' | ([\w]+) <?{ $0.Str !(elem) <are at case data dates datum make name site take> and is-fuzzy-match($0.Str, 'date', 2) }> }

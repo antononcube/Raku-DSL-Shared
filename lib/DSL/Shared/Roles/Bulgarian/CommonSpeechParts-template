@@ -77,6 +77,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token current-adjective { 'текущ' | 'текуща' | 'текущо' }
     token data-adjective { 'даннов' | 'даннова' | 'данново' | 'даннови' }
     token data-noun { 'данни' | 'даннов' | 'даннова' }
+    token date-adjective { 'датов' | 'датова' | 'датово' | 'датови' }
     token date-noun { 'дата' }
     token dates-noun { 'дати' }
     token dataset { <dataset-noun> }
