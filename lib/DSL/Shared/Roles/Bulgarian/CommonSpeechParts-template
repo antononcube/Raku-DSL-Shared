@@ -148,6 +148,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token language-noun { 'език' }
     token largest-adjective { 'най-голям' }
     token last-adjective { 'последен' | 'последни' }
+    token left-adjective { 'ляв' | 'лява'  | 'ляво' | 'леви' }
+    token left-noun { 'наляво' }
     token link-noun { 'връзка' }
     token list-noun { 'списък' }
     token load-verb { 'зареди' }
@@ -207,6 +209,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token results { <results-noun> }
     token results-noun { 'резултати' }
     token reverse-adjective { 'обратен' | 'обърни' }
+    token right-adjective { 'десен' | 'дясна' | 'дясно' | 'десни' }
+    token right-noun { 'надясно' }
     token rows { <rows-noun> }
     token rows-noun { 'редове' }
     token run-verb { 'run' | 'runs' }

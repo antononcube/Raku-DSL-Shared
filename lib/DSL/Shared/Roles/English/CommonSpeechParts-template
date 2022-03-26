@@ -148,6 +148,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token language-noun { 'language' }
     token largest-adjective { 'largest' }
     token last-adjective { 'last' }
+    token left-adjective { <left-noun> }
+    token left-noun { 'left' }
     token link-noun { 'link' }
     token list-noun { 'list' }
     token load-verb { 'load' }
@@ -207,6 +209,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token results { <results-noun> }
     token results-noun { 'results' }
     token reverse-adjective { 'reverse' }
+    token right-adjective { <right-noun> }
+    token right-noun { 'right' }
     token rows { <rows-noun> }
     token rows-noun { 'rows' }
     token run-verb { 'run' | 'runs' }

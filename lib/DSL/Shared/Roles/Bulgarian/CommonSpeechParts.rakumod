@@ -148,6 +148,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token language-noun:sym<Bulgarian> { :i 'език' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'език', 2) }> }
     token largest-adjective:sym<Bulgarian> { :i  'най-голям'  }
     token last-adjective:sym<Bulgarian> { :i 'последен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'последен', 2) }> | 'последни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'последни', 2) }> }
+    token left-adjective:sym<Bulgarian> { :i 'ляв' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ляв', 1) }> | 'лява' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'лява', 2) }> | 'ляво' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ляво', 2) }> | 'леви' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'леви', 2) }> }
+    token left-noun:sym<Bulgarian> { :i 'наляво' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'наляво', 2) }> }
     token link-noun:sym<Bulgarian> { :i 'връзка' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'връзка', 2) }> }
     token list-noun:sym<Bulgarian> { :i 'списък' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'списък', 2) }> }
     token load-verb:sym<Bulgarian> { :i 'зареди' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'зареди', 2) }> }
@@ -207,6 +209,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token results:sym<Bulgarian> { :i  <results-noun>  }
     token results-noun:sym<Bulgarian> { :i 'резултати' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'резултати', 2) }> }
     token reverse-adjective:sym<Bulgarian> { :i 'обратен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обратен', 2) }> | 'обърни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обърни', 2) }> }
+    token right-adjective:sym<Bulgarian> { :i 'десен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'десен', 2) }> | 'дясна' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'дясна', 2) }> | 'дясно' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'дясно', 2) }> | 'десни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'десни', 2) }> }
+    token right-noun:sym<Bulgarian> { :i 'надясно' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'надясно', 2) }> }
     token rows:sym<Bulgarian> { :i  <rows-noun>  }
     token rows-noun:sym<Bulgarian> { :i 'редове' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'редове', 2) }> }
     token run-verb:sym<Bulgarian> { :i 'run' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'run', 1) }> | 'runs' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'runs', 2) }> }

@@ -423,6 +423,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token last-adjective {*}
     token last-adjective:sym<English> { :i 'last' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'last', 2) }> }
 
+    proto token left-adjective {*}
+    token left-adjective:sym<English> { :i  <left-noun>  }
+
+    proto token left-noun {*}
+    token left-noun:sym<English> { :i 'left' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'left', 2) }> }
+
     proto token link-noun {*}
     token link-noun:sym<English> { :i 'link' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'link', 2) }> }
 
@@ -599,6 +605,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token reverse-adjective {*}
     token reverse-adjective:sym<English> { :i 'reverse' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'reverse', 2) }> }
+
+    proto token right-adjective {*}
+    token right-adjective:sym<English> { :i  <right-noun>  }
+
+    proto token right-noun {*}
+    token right-noun:sym<English> { :i 'right' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'right', 2) }> }
 
     proto token rows {*}
     token rows:sym<English> { :i  <rows-noun>  }
