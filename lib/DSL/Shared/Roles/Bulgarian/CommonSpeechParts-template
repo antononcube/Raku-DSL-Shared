@@ -169,7 +169,9 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token matrixes-noun { 'матрици' }
     token maximum { 'макс' | 'максимум' | 'максимален' }
     token message-noun { 'съобщение' }
+    token method-adjective { 'методен' | 'методна' | 'методно' | 'методни' }
     token method-noun { 'метод' }
+    token methods-noun { 'методи' }
     token minimum { 'мин' | 'минимум' | 'минимален' }
     token missing-adjective { 'липсващи' }
     token model { 'модел' }
@@ -191,6 +193,9 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token or-conjunction { 'или' }
     token our-determiner { 'наш' | 'наши' | 'нашите' }
     token out-adverb { 'извън' | 'отвън'  }
+    token outlier-adjective { 'извънреден' | 'извънредна' | 'извънредно' | 'извънредни' }
+    token outlier-noun { 'извънредност' | 'извънредна' 'стойност' }
+    token outliers-noun { 'извънредности' | 'извънредна' 'стойности' }
     token over-preposition { 'върху' | 'чрез' }
     token parameter-noun { 'параметър' }
     token parameters-noun { 'параметри' }

@@ -486,8 +486,14 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token message-noun {*}
     token message-noun:sym<English> { :i 'message' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'message', 2) }> }
 
+    proto token method-adjective {*}
+    token method-adjective:sym<English> { :i  <method-noun>  }
+
     proto token method-noun {*}
-    token method-noun:sym<English> { :i 'method' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'method', 2) }> }
+    token method-noun:sym<English> { :i 'method' | ([\w]+) <?{ $0.Str ne 'methods' and is-fuzzy-match($0.Str, 'method', 2) }> }
+
+    proto token methods-noun {*}
+    token methods-noun:sym<English> { :i 'methods' | ([\w]+) <?{ $0.Str ne 'method' and is-fuzzy-match($0.Str, 'methods', 2) }> }
 
     proto token minimum {*}
     token minimum:sym<English> { :i 'min' | ([\w]+) <?{ $0.Str !(elem) <an find id in is it join link max my non on run> and is-fuzzy-match($0.Str, 'min', 1) }> | 'minimum' | ([\w]+) <?{ $0.Str ne 'maximum' and is-fuzzy-match($0.Str, 'minimum', 2) }> }
@@ -551,6 +557,15 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token out-adverb {*}
     token out-adverb:sym<English> { :i 'out' | ([\w]+) <?{ $0.Str !(elem) <at count it of off on one or our run set sub up> and is-fuzzy-match($0.Str, 'out', 1) }> }
+
+    proto token outlier-adjective {*}
+    token outlier-adjective:sym<English> { :i  <outlier-noun>  }
+
+    proto token outlier-noun {*}
+    token outlier-noun:sym<English> { :i 'outlier' | ([\w]+) <?{ $0.Str ne 'outliers' and is-fuzzy-match($0.Str, 'outlier', 2) }> }
+
+    proto token outliers-noun {*}
+    token outliers-noun:sym<English> { :i 'outliers' | ([\w]+) <?{ $0.Str ne 'outlier' and is-fuzzy-match($0.Str, 'outliers', 2) }> }
 
     proto token over-preposition {*}
     token over-preposition:sym<English> { :i 'over' | ([\w]+) <?{ $0.Str !(elem) <every lower one ones or our per> and is-fuzzy-match($0.Str, 'over', 2) }> }

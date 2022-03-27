@@ -169,7 +169,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token matrixes-noun { 'matrixes' }
     token maximum { 'max' | 'maximum' }
     token message-noun { 'message' }
+    token method-adjective { <method-noun> }
     token method-noun { 'method' }
+    token methods-noun { 'methods' }
     token minimum { 'min' | 'minimum' }
     token missing-adjective { 'missing' }
     token model { 'model' }
@@ -191,6 +193,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token or-conjunction { 'or' }
     token our-determiner { 'our' }
     token out-adverb { 'out' }
+    token outlier-adjective { <outlier-noun> }
+    token outlier-noun { 'outlier' }
+    token outliers-noun { 'outliers' }
     token over-preposition { 'over' }
     token parameter-noun { 'parameter' }
     token parameters-noun { 'parameters' }
