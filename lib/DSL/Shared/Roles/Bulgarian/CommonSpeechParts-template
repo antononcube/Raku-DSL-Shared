@@ -277,6 +277,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token timeline-noun { 'времева линия' }
     token times-noun { 'времена' }
     token to-preposition { 'до' | 'на' | 'към'  }
+    token top-adjective { 'най-горен' | 'най-горна' | 'най-горно' | 'най-горни' | 'върхов' | 'върхова' | 'върхово' | 'върхови' }
     token top-noun { 'връх' }
     token transform-verb { 'трансформирай' }
     token translation-noun { 'транслация' }

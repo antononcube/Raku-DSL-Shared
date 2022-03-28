@@ -277,6 +277,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token timeline-noun { 'timeline' }
     token times-noun { 'times' }
     token to-preposition { 'to' | 'into' }
+    token top-adjective { <top-noun> }
     token top-noun { 'top' }
     token transform-verb { 'transform' }
     token translation-noun { 'translation' }

@@ -810,6 +810,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token to-preposition {*}
     token to-preposition:sym<English> { :i 'to' | 'into' | ([\w]+) <?{ $0.Str !(elem) <in it no to> and is-fuzzy-match($0.Str, 'into', 2) }> }
 
+    proto token top-adjective {*}
+    token top-adjective:sym<English> { :i  <top-noun>  }
+
     proto token top-noun {*}
     token top-noun:sym<English> { :i 'top' | ([\w]+) <?{ $0.Str !(elem) <drop do for how low no non of on or step the to type up> and is-fuzzy-match($0.Str, 'top', 1) }> }
 
