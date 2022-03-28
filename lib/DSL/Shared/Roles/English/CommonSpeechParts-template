@@ -130,7 +130,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token functions-noun { 'functions' }
     token generate-directive { <generate-verb> | <create-verb> | 'make' }
     token generate-verb { 'generate' }
-    token get-verb { 'obtain' | 'get' | <take-verb> }
+    token get-verb { 'get' }
     token graph-noun { 'graph' }
     token head-adjective { <head-noun> }
     token head-noun { 'head' }
@@ -185,6 +185,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token non-prefix { 'non' }
     token number-noun { 'number' }
     token object-noun { 'object' }
+    token obtain-verb { 'obtain' }
     token of-preposition { 'of' }
     token off-adverb { 'off' }
     token on-preposition { 'on' }
@@ -321,9 +322,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule extend-directive { <extend-verb> | <broaden-verb> | <spread-verb> <out-adverb> }
     rule find-directive { <find-verb> | <locate-verb> | <spot-verb> | <detect-verb> }
     rule for-which-phrase { <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition> }
+    rule get-directive { <get-verb> | <take-verb> | <obtain-verb> }
     rule join-directive { <join-verb> | <connect-verb> | <link-noun> }
     rule load-data-directive { [ <load-verb> | <ingest-verb> ] <the-determiner>? <data> }
-    rule load-directive { <load-verb> | <get-verb> | <consider-verb> }
+    rule load-directive { <load-verb> | <get-directive> | <consider-verb> }
     rule max-iterations-phrase { <maximum>? <number-of>? [ <iterations> | <steps-noun> ] }
     rule missing-values-phrase { <missing-adjective> <values-noun>? }
     rule nearest-neighbors-phrase { <nearest-adjective>? <neighbors-noun> | 'nns' }
@@ -337,5 +339,5 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule take-off-phrase { <take-verb> <off-adverb> }
     rule time-series-phrase { <time-noun> <series-noun> }
     rule time-series-data { <time-series-phrase> <data-noun>? }
-    rule use-directive { [ <get-verb> <and-conjunction>? ]? <use-verb> }
+    rule use-directive { [ <get-directive> <and-conjunction>? ]? <use-verb> }
 }

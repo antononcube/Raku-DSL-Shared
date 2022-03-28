@@ -130,7 +130,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token functions-noun:sym<Bulgarian> { :i 'функции' | ([\w]+) <?{ $0.Str ne 'функция' and is-bg-fuzzy-match($0.Str, 'функции', 2) }> }
     token generate-directive:sym<Bulgarian> { :i  <generate-verb> | <create-verb> | 'направи'  }
     token generate-verb:sym<Bulgarian> { :i 'генерирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'генерирай', 2) }> }
-    token get-verb:sym<Bulgarian> { :i  'вземи' | 'добий' | <take-verb>  }
+    token get-verb:sym<Bulgarian> { :i 'вземи' | ([\w]+) <?{ $0.Str !(elem) <всеки време> and is-bg-fuzzy-match($0.Str, 'вземи', 2) }> }
     token graph-noun:sym<Bulgarian> { :i 'граф' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'граф', 2) }> }
     token head-adjective:sym<Bulgarian> { :i  <head-noun>  }
     token head-noun:sym<Bulgarian> { :i 'чело' | ([\w]+) <?{ $0.Str !(elem) <дело ехо начело число нещо цел тегло> and is-bg-fuzzy-match($0.Str, 'чело', 2) }> | 'начело' | ([\w]+) <?{ $0.Str ne 'чело' and is-bg-fuzzy-match($0.Str, 'начело', 2) }> }
@@ -185,6 +185,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token non-prefix:sym<Bulgarian> { :i 'не' }
     token number-noun:sym<Bulgarian> { :i 'число' | ([\w]+) <?{ $0.Str !(elem) <чисти чело> and is-bg-fuzzy-match($0.Str, 'число', 2) }> }
     token object-noun:sym<Bulgarian> { :i 'обект' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обект', 2) }> }
+    token obtain-verb:sym<Bulgarian> { :i 'придобий' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'придобий', 2) }> | 'добий' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'добий', 2) }> }
     token of-preposition:sym<Bulgarian> { :i 'за' | 'на' }
     token off-adverb:sym<Bulgarian> { :i 'без' | ([\w]+) <?{ $0.Str !(elem) <чрез през е не ред низ цел> and is-bg-fuzzy-match($0.Str, 'без', 1) }> }
     token on-preposition:sym<Bulgarian> { :i 'на' | 'по' }

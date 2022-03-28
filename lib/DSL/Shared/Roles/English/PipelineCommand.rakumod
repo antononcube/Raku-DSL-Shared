@@ -48,11 +48,11 @@ role DSL::Shared::Roles::English::PipelineCommand
         <.display-directive> <.over-preposition>? <.pipeline-value> <.with-preposition>? <.the-determiner>? <.function> <pipeline-function-spec> }
     rule set-pipeline-value { <.set-directive> <.pipeline-value> [ <.to-preposition> <.be-verb>? | <.as-preposition> ] <set-pipeline-value-rhs> }
     rule set-pipeline-value-rhs { <mixed-quoted-variable-name> | <wl-expr> }
-    rule take-pipeline-value { <get-verb> <pipeline-value> }
+    rule take-pipeline-value { <get-directive> <pipeline-value> }
 
     # Context
     rule pipeline-context { <.pipeline-filler-phrase>? <context-noun> }
-    rule take-pipeline-context { <get-verb> <pipeline-context> }
+    rule take-pipeline-context { <get-directive> <pipeline-context> }
     rule echo-pipeline-context { <display-directive> <pipeline-context> }
     rule echo-pipeline-function-context {
         <.display-directive> <.the-determiner>? <.function> <pipeline-function-spec> <.over-preposition> <.pipeline-context> |

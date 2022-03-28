@@ -370,7 +370,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token generate-verb:sym<English> { :i 'generate' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'generate', 2) }> }
 
     proto token get-verb {*}
-    token get-verb:sym<English> { :i  'obtain' | 'get' | <take-verb>  }
+    token get-verb:sym<English> { :i 'get' }
 
     proto token graph-noun {*}
     token graph-noun:sym<English> { :i 'graph' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'graph', 2) }> }
@@ -442,7 +442,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token left-adjective:sym<English> { :i  <left-noun>  }
 
     proto token left-noun {*}
-    token left-noun:sym<English> { :i 'left' | ([\w]+) <?{ $0.Str !(elem) <last list rest set text> and is-fuzzy-match($0.Str, 'left', 2) }> }
+    token left-noun:sym<English> { :i 'left' | ([\w]+) <?{ $0.Str !(elem) <get last list rest set text> and is-fuzzy-match($0.Str, 'left', 2) }> }
 
     proto token link-noun {*}
     token link-noun:sym<English> { :i 'link' | ([\w]+) <?{ $0.Str !(elem) <find in list min> and is-fuzzy-match($0.Str, 'link', 2) }> }
@@ -534,6 +534,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token object-noun {*}
     token object-noun:sym<English> { :i 'object' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'object', 2) }> }
 
+    proto token obtain-verb {*}
+    token obtain-verb:sym<English> { :i 'obtain' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'obtain', 2) }> }
+
     proto token of-preposition {*}
     token of-preposition:sym<English> { :i 'of' }
 
@@ -556,7 +559,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token our-determiner:sym<English> { :i 'our' | ([\w]+) <?{ $0.Str !(elem) <for of off on one or out over per run sub up> and is-fuzzy-match($0.Str, 'our', 1) }> }
 
     proto token out-adverb {*}
-    token out-adverb:sym<English> { :i 'out' | ([\w]+) <?{ $0.Str !(elem) <at count it of off on one or our run set sub up> and is-fuzzy-match($0.Str, 'out', 1) }> }
+    token out-adverb:sym<English> { :i 'out' | ([\w]+) <?{ $0.Str !(elem) <at count get it of off on one or our run set sub up> and is-fuzzy-match($0.Str, 'out', 1) }> }
 
     proto token outlier-adjective {*}
     token outlier-adjective:sym<English> { :i  <outlier-noun>  }
@@ -622,7 +625,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token represent-verb:sym<English> { :i 'represent' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'represent', 2) }> }
 
     proto token rest-noun {*}
-    token rest-noun:sym<English> { :i 'rest' | ([\w]+) <?{ $0.Str !(elem) <last left list result set text> and is-fuzzy-match($0.Str, 'rest', 2) }> }
+    token rest-noun:sym<English> { :i 'rest' | ([\w]+) <?{ $0.Str !(elem) <get last left list result set text> and is-fuzzy-match($0.Str, 'rest', 2) }> }
 
     proto token result-noun {*}
     token result-noun:sym<English> { :i 'result' | ([\w]+) <?{ $0.Str !(elem) <rest results> and is-fuzzy-match($0.Str, 'result', 2) }> }
@@ -778,7 +781,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token target-noun:sym<English> { :i 'target' | ([\w]+) <?{ $0.Str ne 'largest' and is-fuzzy-match($0.Str, 'target', 2) }> }
 
     proto token text-noun {*}
-    token text-noun:sym<English> { :i 'text' | ([\w]+) <?{ $0.Str !(elem) <left rest set that> and is-fuzzy-match($0.Str, 'text', 2) }> }
+    token text-noun:sym<English> { :i 'text' | ([\w]+) <?{ $0.Str !(elem) <get left rest set that> and is-fuzzy-match($0.Str, 'text', 2) }> }
 
     proto token that-pronoun {*}
     token that-pronoun:sym<English> { :i 'that' }
@@ -938,6 +941,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto rule for-which-phrase {*}
     rule for-which-phrase:sym<English> {  <for-preposition> <which-determiner> | <that-pronoun> <adhere-verb> <to-preposition>  }
 
+    proto rule get-directive {*}
+    rule get-directive:sym<English> {  <get-verb> | <take-verb> | <obtain-verb>  }
+
     proto rule join-directive {*}
     rule join-directive:sym<English> {  <join-verb> | <connect-verb> | <link-noun>  }
 
@@ -945,7 +951,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule load-data-directive:sym<English> {  [ <load-verb> | <ingest-verb> ] <the-determiner>? <data>  }
 
     proto rule load-directive {*}
-    rule load-directive:sym<English> {  <load-verb> | <get-verb> | <consider-verb>  }
+    rule load-directive:sym<English> {  <load-verb> | <get-directive> | <consider-verb>  }
 
     proto rule max-iterations-phrase {*}
     rule max-iterations-phrase:sym<English> {  <maximum>? <number-of>? [ <iterations> | <steps-noun> ]  }
@@ -987,5 +993,5 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule time-series-data:sym<English> {  <time-series-phrase> <data-noun>?  }
 
     proto rule use-directive {*}
-    rule use-directive:sym<English> {  [ <get-verb> <and-conjunction>? ]? <use-verb>  }
+    rule use-directive:sym<English> {  [ <get-directive> <and-conjunction>? ]? <use-verb>  }
 }

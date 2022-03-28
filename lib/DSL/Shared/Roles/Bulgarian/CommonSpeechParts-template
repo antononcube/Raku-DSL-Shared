@@ -130,7 +130,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token functions-noun { 'функции' }
     token generate-directive { <generate-verb> | <create-verb> | 'направи' }
     token generate-verb { 'генерирай' }
-    token get-verb { 'вземи' | 'добий' | <take-verb> }
+    token get-verb { 'вземи' }
     token graph-noun { 'граф' }
     token head-adjective { <head-noun> }
     token head-noun { 'чело' | 'начело' }
@@ -185,6 +185,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token non-prefix { 'не' }
     token number-noun { 'число' }
     token object-noun { 'обект' }
+    token obtain-verb { 'придобий' | 'добий' }
     token of-preposition { 'за' | 'на' }
     token off-adverb { 'без' }
     token on-preposition { 'на' | 'по' }
