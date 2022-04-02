@@ -6,7 +6,7 @@ role DSL::Shared::Actions::Russian::Standard::ListManagementCommand {
 
     method list-management-command($/) { make $/.values[0].made; }
 
-    method list-management-assignment($/) { $<variable-spec>.made ~ ' = ' ~ $<value-spec>.made; }
+    method list-management-assignment($/) { 'присвоить объекту ' ~ $<variable-spec>.made ~ ' значение ' ~ $<value-spec>.made; }
 
     method list-management-take-expr($/) {
         if $<list-management-range> {
@@ -40,7 +40,7 @@ role DSL::Shared::Actions::Russian::Standard::ListManagementCommand {
         if $<range-spec-step> {
             make 'взять элементы с ' ~ $<range-spec-from>.made ~ ' по ' ~ $<range-spec-to>.made ~ ' с шагом ' ~ $<range-spec-step>.made;
         } else {
-            make 'вземи элементы с ' ~ $<range-spec-from>.made ~ ' по ' ~ $<range-spec-to>.made;
+            make 'взять элементы с ' ~ $<range-spec-from>.made ~ ' по ' ~ $<range-spec-to>.made;
         }
     }
 

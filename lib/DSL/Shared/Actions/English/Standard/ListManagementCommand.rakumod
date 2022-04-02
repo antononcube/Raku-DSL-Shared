@@ -5,7 +5,7 @@ role DSL::Shared::Actions::English::Standard::ListManagementCommand {
 
     method list-management-command($/) { make $/.values[0].made; }
 
-    method list-management-assignment($/) { $<variable-spec>.made ~ ' = ' ~ $<value-spec>.made; }
+    method list-management-assignment($/) { 'assign to the object ' ~ $<variable-spec>.made ~ ' the value ' ~ $<value-spec>.made; }
 
     method list-management-take-expr($/) {
         if $<list-management-range> {

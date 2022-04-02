@@ -6,7 +6,7 @@ role DSL::Shared::Actions::Bulgarian::Standard::ListManagementCommand {
 
     method list-management-command($/) { make $/.values[0].made; }
 
-    method list-management-assignment($/) { $<variable-spec>.made ~ ' = ' ~ $<value-spec>.made; }
+    method list-management-assignment($/) { 'присвой на обекта ' ~ $<variable-spec>.made ~ ' стойността ' ~ $<value-spec>.made; }
 
     method list-management-take-expr($/) {
         if $<list-management-range> {
