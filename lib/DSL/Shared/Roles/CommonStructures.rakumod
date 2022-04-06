@@ -104,15 +104,20 @@ role DSL::Shared::Roles::CommonStructures {
 
     # Span spec
     # Note that Raku's Range is WL's Span.
-    rule span-spec       { <from=.range-spec-from> <to=.range-spec-to> }
-    token r-span-spec    { <from=.number-value> \h* ':'  \h* <to=.number-value> }
-    token raku-span-spec { <from=.number-value> \h* '..' \h* <to=.number-value> }
-    token wl-span-spec   { <from=.number-value> \h* ';;' \h* <to=.number-value> }
+    rule span-spec         { <from=.range-spec-from> <to=.range-spec-to> }
+    token r-span-spec      { <from=.number-value> \h* ':'  \h* <to=.number-value> }
+    token python-span-spec { <from=.number-value> \h* ':'  \h* <to=.number-value> }
+    token raku-span-spec   { <from=.number-value> \h* '..' \h* <to=.number-value> }
+    token wl-span-spec     { <from=.number-value> \h* ';;' \h* <to=.number-value> }
+
+    # I am not sure are these needed
+    token colon-mark       { ':' }
+    token semicolon-mark   { ';' }
 
     # Operators
-    token key-to-symbol { '->' }
-    token equal-symbol { '=' }
-    token equal2-symbol { '==' }
+    token key-to-symbol    { '->' }
+    token equal-symbol     { '=' }
+    token equal2-symbol    { '==' }
     token assign-to-symbol { '=' | ':=' | '<-' }
 
     # Expressions
