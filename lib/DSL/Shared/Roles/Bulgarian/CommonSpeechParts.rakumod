@@ -272,8 +272,9 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token tabular-adjective:sym<Bulgarian> { :i 'табличен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'табличен', 2) }> }
     token take-verb:sym<Bulgarian> { :i 'вземи' | ([\w]+) <?{ $0.Str !(elem) <всеки време> and is-bg-fuzzy-match($0.Str, 'вземи', 2) }> }
     token target-noun:sym<Bulgarian> { :i 'цел' | ([\w]+) <?{ $0.Str !(elem) <дело чело е без не ред> and is-bg-fuzzy-match($0.Str, 'цел', 1) }> }
-    token text-adjective:sym<Bulgarian> { :i 'текстов' | ([\w]+) <?{ $0.Str !(elem) <текстова текстово текстови текст> and is-bg-fuzzy-match($0.Str, 'текстов', 2) }> | 'текстова' | ([\w]+) <?{ $0.Str !(elem) <текстов текстово текстови> and is-bg-fuzzy-match($0.Str, 'текстова', 2) }> | 'текстово' | ([\w]+) <?{ $0.Str !(elem) <текстов текстова текстови> and is-bg-fuzzy-match($0.Str, 'текстово', 2) }> | 'текстови' | ([\w]+) <?{ $0.Str !(elem) <текстов текстова текстово> and is-bg-fuzzy-match($0.Str, 'текстови', 2) }> }
+    token text-adjective:sym<Bulgarian> { :i <textual-adjective> }
     token text-noun:sym<Bulgarian> { :i 'текст' | ([\w]+) <?{ $0.Str !(elem) <текущ текстов> and is-bg-fuzzy-match($0.Str, 'текст', 2) }> }
+    token textual-adjective:sym<Bulgarian> { :i 'текстов' | ([\w]+) <?{ $0.Str !(elem) <текстова текстово текстови текст> and is-bg-fuzzy-match($0.Str, 'текстов', 2) }> | 'текстова' | ([\w]+) <?{ $0.Str !(elem) <текстов текстово текстови> and is-bg-fuzzy-match($0.Str, 'текстова', 2) }> | 'текстово' | ([\w]+) <?{ $0.Str !(elem) <текстов текстова текстови> and is-bg-fuzzy-match($0.Str, 'текстово', 2) }> | 'текстови' | ([\w]+) <?{ $0.Str !(elem) <текстов текстова текстово> and is-bg-fuzzy-match($0.Str, 'текстови', 2) }> }
     token that-pronoun:sym<Bulgarian> { :i 'онези' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'онези', 2) }> | 'онова' | ([\w]+) <?{ $0.Str ne 'това' and is-bg-fuzzy-match($0.Str, 'онова', 2) }> }
     token the-determiner:sym<Bulgarian> { '' }
     token them-pronoun:sym<Bulgarian> { :i 'тях' | ([\w]+) <?{ $0.Str !(elem) <то ляв тип> and is-bg-fuzzy-match($0.Str, 'тях', 1) }> }

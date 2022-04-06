@@ -269,6 +269,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token target-noun { 'target' }
     token text-adjective { <text-noun> }
     token text-noun { 'text' }
+    token textual-adjective { <text-adjective> }
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
     token them-pronoun { 'them' }

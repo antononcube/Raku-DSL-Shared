@@ -791,6 +791,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token text-noun {*}
     token text-noun:sym<English> { :i 'text' | ([\w]+) <?{ $0.Str !(elem) <get left rest set that> and is-fuzzy-match($0.Str, 'text', 2) }> }
 
+    proto token textual-adjective {*}
+    token textual-adjective:sym<English> { :i <text-noun> }
+
     proto token that-pronoun {*}
     token that-pronoun:sym<English> { :i 'that' }
 
