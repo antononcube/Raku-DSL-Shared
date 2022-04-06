@@ -47,8 +47,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token calculation { 'изчисление' }
     token case-noun { 'случай' }
     token cases-noun { 'случаи' }
-    token chart-verb { 'чертай' | 'начертай' }
     token chart-noun { 'чертеж' | 'диаграма' | 'карта' }
+    token chart-verb { 'чертай' | 'начертай' }
     token classify-verb { 'класифицирай' }
     token clear-verb { 'чисти' | 'зачисти' | 'изчисти' }
     token cluster { <cluster-noun> }
@@ -77,20 +77,21 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token current-adjective { 'текущ' | 'текуща' | 'текущо' }
     token data-adjective { 'даннов' | 'даннова' | 'данново' | 'даннови' }
     token data-noun { 'данни' | 'даннов' | 'даннова' }
-    token date-adjective { 'датов' | 'датова' | 'датово' | 'датови' }
-    token date-noun { 'дата' }
-    token dates-noun { 'дати' }
     token dataset { <dataset-noun> }
     token dataset-noun { 'дейтасет' | 'дейта' \h+ 'сет' | <array-noun> 'от' <data-noun> | <data-adjective> \h+ <array-noun>}
     token datasets-noun { 'дейтасети' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
+    token date-adjective { 'датов' | 'датова' | 'датово' | 'датови' }
+    token date-noun { 'дата' }
+    token dates-noun { 'дати' }
+    token datum-noun { 'данна' }
     token default { <default-noun> }
     token default-noun { 'по' 'подразбиране' | 'подразбиращ' \h+ 'се' }
-    token datum-noun { 'данна' }
     token delete-directive { 'изтрий' | 'изхвърли' | 'премахни' }
     token detect-verb { 'установи' | 'намери' | 'детектирай' }
     token diagram { <diagram-synonyms> }
     token diagram-noun { 'диаграма' }
     token diagram-synonyms { <diagram-noun> | <plot-noun> | <plots-noun> | <graph-noun> | <chart-noun> }
+    token dictionary-noun { 'речник' }
     token difference { 'разлика' }
     token dimension-noun { 'размерност' }
     token dimensions-noun { 'размерности' }
@@ -125,8 +126,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token frames-noun { 'рамки' }
     token from-preposition { 'от' }
     token function { <function-noun> }
-    token functions { <functions-noun> }
     token function-noun { 'функция' }
+    token functions { <functions-noun> }
     token functions-noun { 'функции' }
     token generate-directive { <generate-verb> | <create-verb> | 'направи' }
     token generate-verb { 'генерирай' }
@@ -145,6 +146,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token in-preposition { 'в' | 'във' }
     token include-verb { 'включи' | 'включвай' }
     token ingest-verb { 'прочети' }
+    token interpreter-noun { 'интерпретатор' | 'тълковник' }
+    token interpreting-adjective { 'тълковен' | 'интерпретиращ' }
     token into-preposition { 'в' | 'във' }
     token is-verb { 'е' }
     token it-pronoun { 'това' | 'което' }
@@ -296,10 +299,10 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token variables-noun { 'променливи' }
     token versus-preposition { 'срещу' | 'ср.' | 'против' }
     token way-noun { 'път' | 'начин' }
-    token weight-noun { 'тегло'  }
     token weight { <weight-noun> }
-    token weights-noun { 'тегла' }
+    token weight-noun { 'тегло'  }
     token weights { <weights-noun> }
+    token weights-noun { 'тегла' }
     token what-pronoun { 'какво' | 'какви' }
     token when-pronoun { 'кога' }
     token which-determiner { 'кой' | 'кои' }

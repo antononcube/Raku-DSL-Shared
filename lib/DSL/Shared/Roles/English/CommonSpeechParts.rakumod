@@ -120,11 +120,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token cases-noun {*}
     token cases-noun:sym<English> { :i 'cases' | ([\w]+) <?{ $0.Str !(elem) <axes case codes dates names> and is-fuzzy-match($0.Str, 'cases', 2) }> }
 
-    proto token chart-verb {*}
-    token chart-verb:sym<English> { :i <chart-noun> }
-
     proto token chart-noun {*}
     token chart-noun:sym<English> { :i 'chart' | ([\w]+) <?{ $0.Str !(elem) <part that what> and is-fuzzy-match($0.Str, 'chart', 2) }> }
+
+    proto token chart-verb {*}
+    token chart-verb:sym<English> { :i <chart-noun> }
 
     proto token classify-verb {*}
     token classify-verb:sym<English> { :i 'classify' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'classify', 2) }> }
@@ -210,15 +210,6 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token data-noun {*}
     token data-noun:sym<English> { :i 'data' | ([\w]+) <?{ $0.Str !(elem) <at date dates datum> and is-fuzzy-match($0.Str, 'data', 2) }> }
 
-    proto token date-adjective {*}
-    token date-adjective:sym<English> { :i <date-noun> }
-
-    proto token date-noun {*}
-    token date-noun:sym<English> { :i 'date' | ([\w]+) <?{ $0.Str !(elem) <are at case data dates datum make name site take> and is-fuzzy-match($0.Str, 'date', 2) }> }
-
-    proto token dates-noun {*}
-    token dates-noun:sym<English> { :i 'dates' | ([\w]+) <?{ $0.Str !(elem) <axes cases data date datum names> and is-fuzzy-match($0.Str, 'dates', 2) }> }
-
     proto token dataset {*}
     token dataset:sym<English> { :i <dataset-noun> }
 
@@ -227,6 +218,15 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token datasets-noun {*}
     token datasets-noun:sym<English> { :i 'datasets' | ([\w]+) <?{ $0.Str ne 'dataset' and is-fuzzy-match($0.Str, 'datasets', 2) }> }
+
+    proto token date-adjective {*}
+    token date-adjective:sym<English> { :i <date-noun> }
+
+    proto token date-noun {*}
+    token date-noun:sym<English> { :i 'date' | ([\w]+) <?{ $0.Str !(elem) <are at case data dates datum make name site take> and is-fuzzy-match($0.Str, 'date', 2) }> }
+
+    proto token dates-noun {*}
+    token dates-noun:sym<English> { :i 'dates' | ([\w]+) <?{ $0.Str !(elem) <axes cases data date datum names> and is-fuzzy-match($0.Str, 'dates', 2) }> }
 
     proto token datum-noun {*}
     token datum-noun:sym<English> { :i 'datum' | ([\w]+) <?{ $0.Str !(elem) <data date dates> and is-fuzzy-match($0.Str, 'datum', 2) }> }
@@ -256,6 +256,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
         <plots-noun> |
         <graph-noun> |
         <chart-noun> }
+
+    proto token dictionary-noun {*}
+    token dictionary-noun:sym<English> { :i 'dictionary' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'dictionary', 2) }> }
 
     proto token difference {*}
     token difference:sym<English> { :i 'difference' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'difference', 2) }> }
@@ -359,11 +362,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token function {*}
     token function:sym<English> { :i <function-noun> }
 
-    proto token functions {*}
-    token functions:sym<English> { :i <functions-noun> }
-
     proto token function-noun {*}
     token function-noun:sym<English> { :i 'function' | ([\w]+) <?{ $0.Str ne 'functions' and is-fuzzy-match($0.Str, 'function', 2) }> }
+
+    proto token functions {*}
+    token functions:sym<English> { :i <functions-noun> }
 
     proto token functions-noun {*}
     token functions-noun:sym<English> { :i 'functions' | ([\w]+) <?{ $0.Str ne 'function' and is-fuzzy-match($0.Str, 'functions', 2) }> }
@@ -418,6 +421,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token ingest-verb {*}
     token ingest-verb:sym<English> { :i 'ingest' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ingest', 2) }> }
+
+    proto token interpreter-noun {*}
+    token interpreter-noun:sym<English> { :i 'interpreter' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'interpreter', 2) }> }
+
+    proto token interpreting-adjective {*}
+    token interpreting-adjective:sym<English> { :i 'interpreting' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'interpreting', 2) }> }
 
     proto token into-preposition {*}
     token into-preposition:sym<English> { :i 'into' | ([\w]+) <?{ $0.Str !(elem) <in it no to> and is-fuzzy-match($0.Str, 'into', 2) }> }
@@ -476,14 +485,14 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token manner {*}
     token manner:sym<English> { :i 'manner' | ([\w]+) <?{ $0.Str ne 'annex' and is-fuzzy-match($0.Str, 'manner', 2) }> }
 
-    proto token matrix-noun {*}
-    token matrix-noun:sym<English> { :i 'matrix' | ([\w]+) <?{ $0.Str ne 'matrixes' and is-fuzzy-match($0.Str, 'matrix', 2) }> }
-
     proto token matrices-noun {*}
     token matrices-noun:sym<English> { :i 'matrices' | ([\w]+) <?{ $0.Str ne 'matrixes' and is-fuzzy-match($0.Str, 'matrices', 2) }> }
 
+    proto token matrix-noun {*}
+    token matrix-noun:sym<English> { :i 'matrix' | ([\w]+) <?{ $0.Str ne 'matrixes' and is-fuzzy-match($0.Str, 'matrix', 2) }> }
+
     proto token matrixes-noun {*}
-    token matrixes-noun:sym<English> { :i 'matrixes' | ([\w]+) <?{ $0.Str !(elem) <matrix matrices> and is-fuzzy-match($0.Str, 'matrixes', 2) }> }
+    token matrixes-noun:sym<English> { :i 'matrixes' | ([\w]+) <?{ $0.Str !(elem) <matrices matrix> and is-fuzzy-match($0.Str, 'matrixes', 2) }> }
 
     proto token maximum {*}
     token maximum:sym<English> { :i 'max' | ([\w]+) <?{ $0.Str !(elem) <a an as at make min my way> and is-fuzzy-match($0.Str, 'max', 1) }> | 'maximum' | ([\w]+) <?{ $0.Str ne 'minimum' and is-fuzzy-match($0.Str, 'maximum', 2) }> }
@@ -870,17 +879,17 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token way-noun {*}
     token way-noun:sym<English> { :i 'way' | ([\w]+) <?{ $0.Str !(elem) <a an as at away by max my what> and is-fuzzy-match($0.Str, 'way', 1) }> }
 
-    proto token weight-noun {*}
-    token weight-noun:sym<English> { :i 'weight' | ([\w]+) <?{ $0.Str !(elem) <right weights> and is-fuzzy-match($0.Str, 'weight', 2) }> }
-
     proto token weight {*}
     token weight:sym<English> { :i <weight-noun> }
 
-    proto token weights-noun {*}
-    token weights-noun:sym<English> { :i 'weights' | ([\w]+) <?{ $0.Str ne 'weight' and is-fuzzy-match($0.Str, 'weights', 2) }> }
+    proto token weight-noun {*}
+    token weight-noun:sym<English> { :i 'weight' | ([\w]+) <?{ $0.Str !(elem) <right weights> and is-fuzzy-match($0.Str, 'weight', 2) }> }
 
     proto token weights {*}
     token weights:sym<English> { :i <weights-noun> }
+
+    proto token weights-noun {*}
+    token weights-noun:sym<English> { :i 'weights' | ([\w]+) <?{ $0.Str ne 'weight' and is-fuzzy-match($0.Str, 'weights', 2) }> }
 
     proto token what-pronoun {*}
     token what-pronoun:sym<English> { :i 'what' | ([\w]+) <?{ $0.Str !(elem) <at chart that way when> and is-fuzzy-match($0.Str, 'what', 2) }> }
