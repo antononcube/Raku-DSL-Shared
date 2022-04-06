@@ -272,7 +272,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token tabular-adjective:sym<Bulgarian> { :i 'табличен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'табличен', 2) }> }
     token take-verb:sym<Bulgarian> { :i 'вземи' | ([\w]+) <?{ $0.Str !(elem) <всеки време> and is-bg-fuzzy-match($0.Str, 'вземи', 2) }> }
     token target-noun:sym<Bulgarian> { :i 'цел' | ([\w]+) <?{ $0.Str !(elem) <дело чело е без не ред> and is-bg-fuzzy-match($0.Str, 'цел', 1) }> }
-    token text-adjective:sym<Bulgarian> { :i <textual-adjective> }
+    token text-adjective:sym<Bulgarian> { :i <text-noun> | <textual-adjective> }
     token text-noun:sym<Bulgarian> { :i 'текст' | ([\w]+) <?{ $0.Str !(elem) <текущ текстов> and is-bg-fuzzy-match($0.Str, 'текст', 2) }> }
     token texts-noun:sym<Bulgarian> { :i 'текстове' | ([\w]+) <?{ $0.Str !(elem) <текстов текстова текстово текстови> and is-bg-fuzzy-match($0.Str, 'текстове', 2) }> }
     token textual-adjective:sym<Bulgarian> { :i 'текстов' | ([\w]+) <?{ $0.Str !(elem) <текст текстове текстова текстово текстови> and is-bg-fuzzy-match($0.Str, 'текстов', 2) }> | 'текстова' | ([\w]+) <?{ $0.Str !(elem) <текстове текстов текстово текстови> and is-bg-fuzzy-match($0.Str, 'текстова', 2) }> | 'текстово' | ([\w]+) <?{ $0.Str !(elem) <текстове текстов текстова текстови> and is-bg-fuzzy-match($0.Str, 'текстово', 2) }> | 'текстови' | ([\w]+) <?{ $0.Str !(elem) <текстове текстов текстова текстово> and is-bg-fuzzy-match($0.Str, 'текстови', 2) }> }

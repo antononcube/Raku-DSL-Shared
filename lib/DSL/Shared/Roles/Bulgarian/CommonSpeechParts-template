@@ -267,7 +267,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token tabular-adjective { 'табличен' }
     token take-verb { 'вземи' }
     token target-noun { 'цел' }
-    token text-adjective { <textual-adjective> }
+    token text-adjective { <text-noun> | <textual-adjective> }
     token text-noun { 'текст' }
     token texts-noun { 'текстове' }
     token textual-adjective { 'текстов' | 'текстова' | 'текстово' | 'текстови' }

@@ -786,7 +786,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token target-noun:sym<English> { :i 'target' | ([\w]+) <?{ $0.Str ne 'largest' and is-fuzzy-match($0.Str, 'target', 2) }> }
 
     proto token text-adjective {*}
-    token text-adjective:sym<English> { :i <text-noun> }
+    token text-adjective:sym<English> { :i <text-noun> | <textual-adjective> }
 
     proto token text-noun {*}
     token text-noun:sym<English> { :i 'text' | ([\w]+) <?{ $0.Str !(elem) <get left rest set texts that> and is-fuzzy-match($0.Str, 'text', 2) }> }
@@ -795,7 +795,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token texts-noun:sym<English> { :i 'texts' | ([\w]+) <?{ $0.Str ne 'text' and is-fuzzy-match($0.Str, 'texts', 2) }> }
 
     proto token textual-adjective {*}
-    token textual-adjective:sym<English> { :i  'textual' | <text-adjective>  }
+    token textual-adjective:sym<English> { :i 'textual' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'textual', 2) }> }
 
     proto token that-pronoun {*}
     token that-pronoun:sym<English> { :i 'that' }
