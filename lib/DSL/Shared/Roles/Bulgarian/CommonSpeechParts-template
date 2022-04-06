@@ -269,6 +269,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token target-noun { 'цел' }
     token text-adjective { <textual-adjective> }
     token text-noun { 'текст' }
+    token texts-noun { 'текстове' }
     token textual-adjective { 'текстов' | 'текстова' | 'текстово' | 'текстови' }
     token that-pronoun { 'онези' | 'онова' }
     token the-determiner { '' }
@@ -276,7 +277,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token this-pronoun { 'този' | 'това' }
     token time-adjective { 'времеви' | 'времева' }
     token time-noun { 'време' }
-    token timeline-noun { 'времева линия' }
+    token timeline-noun { <time-adjective> 'линия' }
     token times-noun { 'времена' }
     token to-preposition { 'до' | 'на' | 'към'  }
     token top-adjective { 'най-горен' | 'най-горна' | 'най-горно' | 'най-горни' | 'върхов' | 'върхова' | 'върхово' | 'върхови' }
