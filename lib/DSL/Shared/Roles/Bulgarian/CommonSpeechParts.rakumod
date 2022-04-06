@@ -275,7 +275,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token text-adjective:sym<Bulgarian> { :i 'текстов' | ([\w]+) <?{ $0.Str !(elem) <текстова текстово текстови текст> and is-bg-fuzzy-match($0.Str, 'текстов', 2) }> | 'текстова' | ([\w]+) <?{ $0.Str !(elem) <текстов текстово текстови> and is-bg-fuzzy-match($0.Str, 'текстова', 2) }> | 'текстово' | ([\w]+) <?{ $0.Str !(elem) <текстов текстова текстови> and is-bg-fuzzy-match($0.Str, 'текстово', 2) }> | 'текстови' | ([\w]+) <?{ $0.Str !(elem) <текстов текстова текстово> and is-bg-fuzzy-match($0.Str, 'текстови', 2) }> }
     token text-noun:sym<Bulgarian> { :i 'текст' | ([\w]+) <?{ $0.Str !(elem) <текущ текстов> and is-bg-fuzzy-match($0.Str, 'текст', 2) }> }
     token that-pronoun:sym<Bulgarian> { :i 'онези' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'онези', 2) }> | 'онова' | ([\w]+) <?{ $0.Str ne 'това' and is-bg-fuzzy-match($0.Str, 'онова', 2) }> }
-    token the-determiner { '' }
+    token the-determiner:sym<Bulgarian> { '' }
     token them-pronoun:sym<Bulgarian> { :i 'тях' | ([\w]+) <?{ $0.Str !(elem) <то ляв тип> and is-bg-fuzzy-match($0.Str, 'тях', 1) }> }
     token this-pronoun:sym<Bulgarian> { :i 'този' | ([\w]+) <?{ $0.Str !(elem) <то оси това кои> and is-bg-fuzzy-match($0.Str, 'този', 2) }> | 'това' | ([\w]+) <?{ $0.Str !(elem) <то датова лява онова този кога> and is-bg-fuzzy-match($0.Str, 'това', 2) }> }
     token time-adjective:sym<Bulgarian> { :i 'времеви' | ([\w]+) <?{ $0.Str !(elem) <времева време времена> and is-bg-fuzzy-match($0.Str, 'времеви', 2) }> | 'времева' | ([\w]+) <?{ $0.Str !(elem) <времеви време времена> and is-bg-fuzzy-match($0.Str, 'времева', 2) }> }
