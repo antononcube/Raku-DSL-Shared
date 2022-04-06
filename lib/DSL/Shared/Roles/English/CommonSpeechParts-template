@@ -267,6 +267,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token tabular-adjective { 'tabular' }
     token take-verb { 'take' }
     token target-noun { 'target' }
+    token text-adjective { <text-noun> }
     token text-noun { 'text' }
     token that-pronoun { 'that' }
     token the-determiner { 'the' }
