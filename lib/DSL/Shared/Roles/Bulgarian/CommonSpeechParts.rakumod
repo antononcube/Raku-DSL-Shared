@@ -17,7 +17,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token MODULE-noun:sym<Bulgarian> { :i 'MODULE' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'MODULE', 2) }> | 'МОДУЛ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'МОДУЛ', 2) }> }
     token TARGET-noun:sym<Bulgarian> { :i 'TARGET' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'TARGET', 2) }> | 'ЦЕЛ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ЦЕЛ', 1) }> }
     token USER-noun:sym<Bulgarian> { :i 'USER' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'USER', 2) }> | 'ПОТРЕБИТЕЛ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'ПОТРЕБИТЕЛ', 2) }> }
-    token a-determiner { '' }
+    token a-determiner:sym<Bulgarian> { '' }
     token add-verb:sym<Bulgarian> { :i 'събери' | ([\w]+) <?{ $0.Str ne 'съседи' and is-bg-fuzzy-match($0.Str, 'събери', 2) }> | 'добави' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'добави', 2) }> }
     token adhere-verb:sym<Bulgarian> { :i 'държи' | ([\w]+) <?{ $0.Str !(elem) <вържи свържи търси първи> and is-bg-fuzzy-match($0.Str, 'държи', 2) }> | 'според' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'според', 2) }> }
     token adjacency-noun:sym<Bulgarian> { :i 'аджудант' | ([\w]+) <?{ $0.Str ne 'аджудантен' and is-bg-fuzzy-match($0.Str, 'аджудант', 2) }> }
@@ -81,10 +81,10 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token date-noun:sym<Bulgarian> { :i 'дата' | ([\w]+) <?{ $0.Str !(elem) <като карта датов датова дати данна дума> and is-bg-fuzzy-match($0.Str, 'дата', 2) }> }
     token dates-noun:sym<Bulgarian> { :i 'дати' | ([\w]+) <?{ $0.Str !(elem) <като данни датов датови дата наши думи> and is-bg-fuzzy-match($0.Str, 'дати', 2) }> }
     token dataset:sym<Bulgarian> { :i <dataset-noun> }
-    token dataset-noun { 'дейтасет' | 'дейта' \h+ 'сет' | <array-noun> 'от' <data-noun> | <data-adjective> \h+ <array-noun>}
-    token datasets-noun { 'дейтасети' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
+    token dataset-noun:sym<Bulgarian> { 'дейтасет' | 'дейта' \h+ 'сет' | <array-noun> 'от' <data-noun> | <data-adjective> \h+ <array-noun>}
+    token datasets-noun:sym<Bulgarian> { 'дейтасети' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
     token default:sym<Bulgarian> { :i <default-noun> }
-    token default-noun { 'по' 'подразбиране' | 'подразбиращ' \h+ 'се' }
+    token default-noun:sym<Bulgarian> { 'по' 'подразбиране' | 'подразбиращ' \h+ 'се' }
     token datum-noun:sym<Bulgarian> { :i 'данна' | ([\w]+) <?{ $0.Str !(elem) <даннов даннова данни дата дясна> and is-bg-fuzzy-match($0.Str, 'данна', 2) }> }
     token delete-directive:sym<Bulgarian> { :i 'изтрий' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изтрий', 2) }> | 'изхвърли' | ([\w]+) <?{ $0.Str ne 'захвърли' and is-bg-fuzzy-match($0.Str, 'изхвърли', 2) }> | 'премахни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'премахни', 2) }> }
     token detect-verb:sym<Bulgarian> { :i 'установи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'установи', 2) }> | 'намери' | ([\w]+) <?{ $0.Str !(elem) <размери замени> and is-bg-fuzzy-match($0.Str, 'намери', 2) }> | 'детектирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'детектирай', 2) }> }
@@ -280,7 +280,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token this-pronoun:sym<Bulgarian> { :i 'този' | ([\w]+) <?{ $0.Str !(elem) <то оси това кои> and is-bg-fuzzy-match($0.Str, 'този', 2) }> | 'това' | ([\w]+) <?{ $0.Str !(elem) <то датова лява онова този кога> and is-bg-fuzzy-match($0.Str, 'това', 2) }> }
     token time-adjective:sym<Bulgarian> { :i 'времеви' | ([\w]+) <?{ $0.Str !(elem) <времева време времена> and is-bg-fuzzy-match($0.Str, 'времеви', 2) }> | 'времева' | ([\w]+) <?{ $0.Str !(elem) <времеви време времена> and is-bg-fuzzy-match($0.Str, 'времева', 2) }> }
     token time-noun:sym<Bulgarian> { :i 'време' | ([\w]+) <?{ $0.Str !(elem) <вземи времеви времева времена> and is-bg-fuzzy-match($0.Str, 'време', 2) }> }
-    token timeline-noun { 'времева линия' }
+    token timeline-noun:sym<Bulgarian> { :i 'времева линия' }
     token times-noun:sym<Bulgarian> { :i 'времена' | ([\w]+) <?{ $0.Str !(elem) <времеви времева време> and is-bg-fuzzy-match($0.Str, 'времена', 2) }> }
     token to-preposition:sym<Bulgarian> { :i 'до' | 'на' | 'към' | ([\w]+) <?{ $0.Str !(elem) <със код как във съб път кой кои> and is-bg-fuzzy-match($0.Str, 'към', 1) }> }
     token top-adjective:sym<Bulgarian> { :i 'най-горен' | ([\w]+) <?{ $0.Str !(elem) <най-горна най-горно най-горни> and is-bg-fuzzy-match($0.Str, 'най-горен', 2) }> | 'най-горна' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горно най-горни> and is-bg-fuzzy-match($0.Str, 'най-горна', 2) }> | 'най-горно' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горна най-горни> and is-bg-fuzzy-match($0.Str, 'най-горно', 2) }> | 'най-горни' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горна най-горно> and is-bg-fuzzy-match($0.Str, 'най-горни', 2) }> | 'върхов' | ([\w]+) <?{ $0.Str !(elem) <върху върхова върхово върхови> and is-bg-fuzzy-match($0.Str, 'върхов', 2) }> | 'върхова' | ([\w]+) <?{ $0.Str !(elem) <върхов върхово върхови> and is-bg-fuzzy-match($0.Str, 'върхова', 2) }> | 'върхово' | ([\w]+) <?{ $0.Str !(elem) <върхов върхова върхови> and is-bg-fuzzy-match($0.Str, 'върхово', 2) }> | 'върхови' | ([\w]+) <?{ $0.Str !(elem) <върхов върхова върхово> and is-bg-fuzzy-match($0.Str, 'върхови', 2) }> }
@@ -297,7 +297,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token values-noun:sym<Bulgarian> { :i 'стойности' | ([\w]+) <?{ $0.Str ne 'стойност' and is-bg-fuzzy-match($0.Str, 'стойности', 2) }> }
     token variable-noun:sym<Bulgarian> { :i 'променлива' | ([\w]+) <?{ $0.Str ne 'променливи' and is-bg-fuzzy-match($0.Str, 'променлива', 2) }> }
     token variables-noun:sym<Bulgarian> { :i 'променливи' | ([\w]+) <?{ $0.Str ne 'променлива' and is-bg-fuzzy-match($0.Str, 'променливи', 2) }> }
-    token versus-preposition { 'срещу' | 'ср.' | 'против' }
+    token versus-preposition:sym<Bulgarian> { 'срещу' | 'ср.' | 'против' }
     token way-noun:sym<Bulgarian> { :i 'път' | ([\w]+) <?{ $0.Str !(elem) <от със във по съб под към> and is-bg-fuzzy-match($0.Str, 'път', 1) }> | 'начин' | ([\w]+) <?{ $0.Str ne 'наши' and is-bg-fuzzy-match($0.Str, 'начин', 2) }> }
     token weight-noun:sym<Bulgarian> { :i 'тегло' | ([\w]+) <?{ $0.Str !(elem) <дело чело тегла> and is-bg-fuzzy-match($0.Str, 'тегло', 2) }> }
     token weight:sym<Bulgarian> { :i <weight-noun> }
