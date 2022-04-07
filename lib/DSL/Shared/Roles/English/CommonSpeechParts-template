@@ -156,7 +156,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token is-verb { 'is' }
     token it-pronoun { 'it' }
     token iterations { 'iterations' }
-    token join-verb { 'join' }
+    token join-verb { <join-noun> }
+    token join-noun { 'join' }
     token language-noun { 'language' }
     token largest-adjective { 'largest' }
     token last-adjective { 'last' }

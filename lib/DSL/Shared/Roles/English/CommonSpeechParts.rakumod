@@ -453,7 +453,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token iterations:sym<English> { :i 'iterations' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'iterations', 2) }> }
 
     proto token join-verb {*}
-    token join-verb:sym<English> { :i 'join' | ([\w]+) <?{ $0.Str !(elem) <in min non on> and is-fuzzy-match($0.Str, 'join', 2) }> }
+    token join-verb:sym<English> { :i <join-noun> }
+
+    proto token join-noun {*}
+    token join-noun:sym<English> { :i 'join' | ([\w]+) <?{ $0.Str !(elem) <in min non on> and is-fuzzy-match($0.Str, 'join', 2) }> }
 
     proto token language-noun {*}
     token language-noun:sym<English> { :i 'language' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'language', 2) }> }
