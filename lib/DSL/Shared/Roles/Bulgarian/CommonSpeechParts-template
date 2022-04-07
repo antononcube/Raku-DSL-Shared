@@ -47,6 +47,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token calculation { 'изчисление' }
     token case-noun { 'случай' }
     token cases-noun { 'случаи' }
+    token channel-adjective { 'канален' | 'канална' | 'канално' | 'канални' }
+    token channel-noun { 'канал' }
     token chart-noun { 'чертеж' | 'диаграма' | 'карта' }
     token chart-verb { 'чертай' | 'начертай' }
     token classify-verb { 'класифицирай' }
@@ -68,6 +70,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token context-noun { 'контекст' }
     token contingency-noun { 'контингентен' | 'кръстосано' 'табулиране' }
     token convert-verb { 'превърни' }
+    token conveyor-adjective { 'конвейерен' | 'конвейерна' | 'конвейерно' | 'конвейерни' }
+    token conveyor-noun { 'конвейер' }
     token count-verb { 'преброй' | 'брой' | 'бройка' | 'размер' }
     token counts-noun { 'броя' | 'броеве' | 'бройки' | 'размери' }
     token create { 'създай' | 'направи' }
@@ -206,8 +210,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token part-noun { 'част' }
     token pattern-noun { 'шаблон' }
     token per-preposition { 'за' }
-    token pipeline-adjective { 'лентов' | 'лентова' | 'лентово' }
-    token pipeline-noun { 'лента' | 'поточна' 'линия' }
+    token pipeline-adjective { <tape-adjective> | <conveyor-adjective> | <channel-adjective> }
+    token pipeline-noun { <tape-noun> | <conveyor-noun> | <channel-noun> | 'поточна' \h+ 'линия' }
     token plot-noun { 'чертеж' | 'графика' }
     token plots-noun { 'чертежи' | 'графики' }
     token position-noun { 'позиция' }
@@ -261,14 +265,16 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token sub-prefix { 'съб' | 'под' }
     token summaries { <summaries-noun> }
     token summaries-noun { 'рекапитулации' | 'обобщения' }
-    token summarize-directive { 'обобщи' }
+    token summarize-directive { 'рекапитулирай' | 'обобщи' }
     token summary { <summary-noun> }
-    token summary-noun { 'рекапитулирай' | 'обобщи' }
+    token summary-noun { 'рекапитулация' | 'обобщение' }
     token system-noun { 'система' }
     token table-noun { 'таблица' }
     token tables-noun { 'таблици' }
     token tabular-adjective { 'табличен' }
     token take-verb { 'вземи' }
+    token tape-adjective { 'лентов' | 'лентова' | 'лентово' | 'лентови'  }
+    token tape-noun { 'лента' }
     token target-noun { 'цел' }
     token text-adjective { <text-noun> | <textual-adjective> }
     token text-noun { 'текст' }

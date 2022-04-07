@@ -67,7 +67,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token apply-verb:sym<English> { :i 'apply' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'apply', 2) }> }
 
     proto token are-verb {*}
-    token are-verb:sym<English> { :i 'are' | ([\w]+) <?{ $0.Str !(elem) <a an add all and as at axes be case date make name one or part per take the use> and is-fuzzy-match($0.Str, 'are', 1) }> }
+    token are-verb:sym<English> { :i 'are' | ([\w]+) <?{ $0.Str !(elem) <a an add all and as at axes be case date make name one or part per take tape the use> and is-fuzzy-match($0.Str, 'are', 1) }> }
 
     proto token array-noun {*}
     token array-noun:sym<English> { :i 'array' | ([\w]+) <?{ $0.Str !(elem) <arrays away> and is-fuzzy-match($0.Str, 'array', 2) }> }
@@ -115,10 +115,16 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token calculation:sym<English> { :i 'calculation' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'calculation', 2) }> }
 
     proto token case-noun {*}
-    token case-noun:sym<English> { :i 'case' | ([\w]+) <?{ $0.Str !(elem) <are as cases code date erase last make name take use> and is-fuzzy-match($0.Str, 'case', 2) }> }
+    token case-noun:sym<English> { :i 'case' | ([\w]+) <?{ $0.Str !(elem) <are as cases code date erase last make name take tape use> and is-fuzzy-match($0.Str, 'case', 2) }> }
 
     proto token cases-noun {*}
     token cases-noun:sym<English> { :i 'cases' | ([\w]+) <?{ $0.Str !(elem) <axes case codes dates names> and is-fuzzy-match($0.Str, 'cases', 2) }> }
+
+    proto token channel-adjective {*}
+    token channel-adjective:sym<English> { :i <channel-noun> }
+
+    proto token channel-noun {*}
+    token channel-noun:sym<English> { :i 'channel' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'channel', 2) }> }
 
     proto token chart-noun {*}
     token chart-noun:sym<English> { :i 'chart' | ([\w]+) <?{ $0.Str !(elem) <part that what> and is-fuzzy-match($0.Str, 'chart', 2) }> }
@@ -183,6 +189,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token convert-verb {*}
     token convert-verb:sym<English> { :i 'convert' | ([\w]+) <?{ $0.Str !(elem) <connect context> and is-fuzzy-match($0.Str, 'convert', 2) }> }
 
+    proto token conveyor-adjective {*}
+    token conveyor-adjective:sym<English> { :i <conveyor-noun> }
+
+    proto token conveyor-noun {*}
+    token conveyor-noun:sym<English> { :i 'conveyor' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'conveyor', 2) }> }
+
     proto token count-verb {*}
     token count-verb:sym<English> { :i 'count' | ([\w]+) <?{ $0.Str !(elem) <counts out> and is-fuzzy-match($0.Str, 'count', 2) }> }
 
@@ -223,7 +235,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token date-adjective:sym<English> { :i <date-noun> }
 
     proto token date-noun {*}
-    token date-noun:sym<English> { :i 'date' | ([\w]+) <?{ $0.Str !(elem) <are at case data dates datum make name site take> and is-fuzzy-match($0.Str, 'date', 2) }> }
+    token date-noun:sym<English> { :i 'date' | ([\w]+) <?{ $0.Str !(elem) <are at case data dates datum make name site take tape> and is-fuzzy-match($0.Str, 'date', 2) }> }
 
     proto token dates-noun {*}
     token dates-noun:sym<English> { :i 'dates' | ([\w]+) <?{ $0.Str !(elem) <axes cases data date datum names> and is-fuzzy-match($0.Str, 'dates', 2) }> }
@@ -477,7 +489,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token lower-adjective:sym<English> { :i 'lower' | ([\w]+) <?{ $0.Str !(elem) <low over> and is-fuzzy-match($0.Str, 'lower', 2) }> }
 
     proto token make-noun {*}
-    token make-noun:sym<English> { :i 'make' | ([\w]+) <?{ $0.Str !(elem) <are case date max name take> and is-fuzzy-match($0.Str, 'make', 2) }> }
+    token make-noun:sym<English> { :i 'make' | ([\w]+) <?{ $0.Str !(elem) <are case date max name take tape> and is-fuzzy-match($0.Str, 'make', 2) }> }
 
     proto token making-noun {*}
     token making-noun:sym<English> { :i 'making' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'making', 2) }> }
@@ -525,7 +537,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token my-determiner:sym<English> { :i 'my' }
 
     proto token name-noun {*}
-    token name-noun:sym<English> { :i 'name' | ([\w]+) <?{ $0.Str !(elem) <are case date frame make names some take time> and is-fuzzy-match($0.Str, 'name', 2) }> }
+    token name-noun:sym<English> { :i 'name' | ([\w]+) <?{ $0.Str !(elem) <are case date frame make names some take tape time> and is-fuzzy-match($0.Str, 'name', 2) }> }
 
     proto token names-noun {*}
     token names-noun:sym<English> { :i 'names' | ([\w]+) <?{ $0.Str !(elem) <axes cases dates frames name times> and is-fuzzy-match($0.Str, 'names', 2) }> }
@@ -603,7 +615,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token per-preposition:sym<English> { :i 'per' }
 
     proto token pipeline-adjective {*}
-    token pipeline-adjective:sym<English> { :i 'pipeline' | ([\w]+) <?{ $0.Str ne 'timeline' and is-fuzzy-match($0.Str, 'pipeline', 2) }> }
+    token pipeline-adjective:sym<English> { :i <pipeline-noun> }
 
     proto token pipeline-noun {*}
     token pipeline-noun:sym<English> { :i 'pipeline' | ([\w]+) <?{ $0.Str ne 'timeline' and is-fuzzy-match($0.Str, 'pipeline', 2) }> }
@@ -687,7 +699,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token setup-noun:sym<English> { :i 'setup' | ([\w]+) <?{ $0.Str !(elem) <set step> and is-fuzzy-match($0.Str, 'setup', 2) }> }
 
     proto token shape-noun {*}
-    token shape-noun:sym<English> { :i 'shape' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'shape', 2) }> }
+    token shape-noun:sym<English> { :i 'shape' | ([\w]+) <?{ $0.Str ne 'tape' and is-fuzzy-match($0.Str, 'shape', 2) }> }
 
     proto token show-verb {*}
     token show-verb:sym<English> { :i 'show' | ([\w]+) <?{ $0.Str !(elem) <how low spot> and is-fuzzy-match($0.Str, 'show', 2) }> }
@@ -780,7 +792,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token system-noun:sym<English> { :i 'system' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'system', 2) }> }
 
     proto token table-noun {*}
-    token table-noun:sym<English> { :i 'table' | ([\w]+) <?{ $0.Str !(elem) <tables take> and is-fuzzy-match($0.Str, 'table', 2) }> }
+    token table-noun:sym<English> { :i 'table' | ([\w]+) <?{ $0.Str !(elem) <tables take tape> and is-fuzzy-match($0.Str, 'table', 2) }> }
 
     proto token tables-noun {*}
     token tables-noun:sym<English> { :i 'tables' | ([\w]+) <?{ $0.Str ne 'table' and is-fuzzy-match($0.Str, 'tables', 2) }> }
@@ -789,7 +801,13 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token tabular-adjective:sym<English> { :i 'tabular' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'tabular', 2) }> }
 
     proto token take-verb {*}
-    token take-verb:sym<English> { :i 'take' | ([\w]+) <?{ $0.Str !(elem) <are case date make name table the time type> and is-fuzzy-match($0.Str, 'take', 2) }> }
+    token take-verb:sym<English> { :i 'take' | ([\w]+) <?{ $0.Str !(elem) <are case date make name table tape the time type> and is-fuzzy-match($0.Str, 'take', 2) }> }
+
+    proto token tape-adjective {*}
+    token tape-adjective:sym<English> { :i <tape-noun> }
+
+    proto token tape-noun {*}
+    token tape-noun:sym<English> { :i 'tape' | ([\w]+) <?{ $0.Str !(elem) <are case date make name shape table take the time top type types> and is-fuzzy-match($0.Str, 'tape', 2) }> }
 
     proto token target-noun {*}
     token target-noun:sym<English> { :i 'target' | ([\w]+) <?{ $0.Str ne 'largest' and is-fuzzy-match($0.Str, 'target', 2) }> }
@@ -819,10 +837,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token this-pronoun:sym<English> { :i 'this' | ([\w]+) <?{ $0.Str !(elem) <axis is that the them> and is-fuzzy-match($0.Str, 'this', 2) }> }
 
     proto token time-adjective {*}
-    token time-adjective:sym<English> { :i 'time' | ([\w]+) <?{ $0.Str !(elem) <name site some take the them times type> and is-fuzzy-match($0.Str, 'time', 2) }> }
+    token time-adjective:sym<English> { :i 'time' | ([\w]+) <?{ $0.Str !(elem) <name site some take tape the them times type> and is-fuzzy-match($0.Str, 'time', 2) }> }
 
     proto token time-noun {*}
-    token time-noun:sym<English> { :i 'time' | ([\w]+) <?{ $0.Str !(elem) <name site some take the them times type> and is-fuzzy-match($0.Str, 'time', 2) }> }
+    token time-noun:sym<English> { :i 'time' | ([\w]+) <?{ $0.Str !(elem) <name site some take tape the them times type> and is-fuzzy-match($0.Str, 'time', 2) }> }
 
     proto token timeline-noun {*}
     token timeline-noun:sym<English> { :i 'timeline' | ([\w]+) <?{ $0.Str ne 'pipeline' and is-fuzzy-match($0.Str, 'timeline', 2) }> }
@@ -837,7 +855,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token top-adjective:sym<English> { :i <top-noun> }
 
     proto token top-noun {*}
-    token top-noun:sym<English> { :i 'top' | ([\w]+) <?{ $0.Str !(elem) <drop do for how low no non of on or step the to type up> and is-fuzzy-match($0.Str, 'top', 1) }> }
+    token top-noun:sym<English> { :i 'top' | ([\w]+) <?{ $0.Str !(elem) <drop do for how low no non of on or step tape the to type up> and is-fuzzy-match($0.Str, 'top', 1) }> }
 
     proto token transform-verb {*}
     token transform-verb:sym<English> { :i 'transform' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'transform', 2) }> }
@@ -846,10 +864,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token translation-noun:sym<English> { :i 'translation' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'translation', 2) }> }
 
     proto token type-noun {*}
-    token type-noun:sym<English> { :i 'type' | ([\w]+) <?{ $0.Str !(elem) <take the time top types> and is-fuzzy-match($0.Str, 'type', 2) }> }
+    token type-noun:sym<English> { :i 'type' | ([\w]+) <?{ $0.Str !(elem) <take tape the time top types> and is-fuzzy-match($0.Str, 'type', 2) }> }
 
     proto token types-noun {*}
-    token types-noun:sym<English> { :i 'types' | ([\w]+) <?{ $0.Str !(elem) <times type> and is-fuzzy-match($0.Str, 'types', 2) }> }
+    token types-noun:sym<English> { :i 'types' | ([\w]+) <?{ $0.Str !(elem) <tape times type> and is-fuzzy-match($0.Str, 'types', 2) }> }
 
     proto token up-adverb {*}
     token up-adverb:sym<English> { :i 'up' }

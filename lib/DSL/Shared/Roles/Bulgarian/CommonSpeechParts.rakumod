@@ -47,6 +47,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token calculation:sym<Bulgarian> { :i 'изчисление' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изчисление', 2) }> }
     token case-noun:sym<Bulgarian> { :i 'случай' | ([\w]+) <?{ $0.Str !(elem) <случаи случаен> and is-bg-fuzzy-match($0.Str, 'случай', 2) }> }
     token cases-noun:sym<Bulgarian> { :i 'случаи' | ([\w]+) <?{ $0.Str !(elem) <случай случаен> and is-bg-fuzzy-match($0.Str, 'случаи', 2) }> }
+    token channel-adjective:sym<Bulgarian> { :i 'канален' | ([\w]+) <?{ $0.Str !(elem) <канална канално канални канал> and is-bg-fuzzy-match($0.Str, 'канален', 2) }> | 'канална' | ([\w]+) <?{ $0.Str !(elem) <канален канално канални канал> and is-bg-fuzzy-match($0.Str, 'канална', 2) }> | 'канално' | ([\w]+) <?{ $0.Str !(elem) <канален канална канални канал> and is-bg-fuzzy-match($0.Str, 'канално', 2) }> | 'канални' | ([\w]+) <?{ $0.Str !(elem) <канален канална канално канал> and is-bg-fuzzy-match($0.Str, 'канални', 2) }> }
+    token channel-noun:sym<Bulgarian> { :i 'канал' | ([\w]+) <?{ $0.Str !(elem) <канален канална канално канални> and is-bg-fuzzy-match($0.Str, 'канал', 2) }> }
     token chart-noun:sym<Bulgarian> { :i 'чертеж' | ([\w]+) <?{ $0.Str !(elem) <чертай чертежи> and is-bg-fuzzy-match($0.Str, 'чертеж', 2) }> | 'диаграма' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'диаграма', 2) }> | 'карта' | ([\w]+) <?{ $0.Str !(elem) <като дата> and is-bg-fuzzy-match($0.Str, 'карта', 2) }> }
     token chart-verb:sym<Bulgarian> { :i 'чертай' | ([\w]+) <?{ $0.Str !(elem) <чертеж начертай> and is-bg-fuzzy-match($0.Str, 'чертай', 2) }> | 'начертай' | ([\w]+) <?{ $0.Str ne 'чертай' and is-bg-fuzzy-match($0.Str, 'начертай', 2) }> }
     token classify-verb:sym<Bulgarian> { :i 'класифицирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'класифицирай', 2) }> }
@@ -68,6 +70,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token context-noun:sym<Bulgarian> { :i 'контекст' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'контекст', 2) }> }
     token contingency-noun:sym<Bulgarian> { :i  'контингентен' | 'кръстосано' 'табулиране'  }
     token convert-verb:sym<Bulgarian> { :i 'превърни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'превърни', 2) }> }
+    token conveyor-adjective:sym<Bulgarian> { :i 'конвейерен' | ([\w]+) <?{ $0.Str !(elem) <конвейерна конвейерно конвейерни конвейер> and is-bg-fuzzy-match($0.Str, 'конвейерен', 2) }> | 'конвейерна' | ([\w]+) <?{ $0.Str !(elem) <конвейерен конвейерно конвейерни конвейер> and is-bg-fuzzy-match($0.Str, 'конвейерна', 2) }> | 'конвейерно' | ([\w]+) <?{ $0.Str !(elem) <конвейерен конвейерна конвейерни конвейер> and is-bg-fuzzy-match($0.Str, 'конвейерно', 2) }> | 'конвейерни' | ([\w]+) <?{ $0.Str !(elem) <конвейерен конвейерна конвейерно конвейер> and is-bg-fuzzy-match($0.Str, 'конвейерни', 2) }> }
+    token conveyor-noun:sym<Bulgarian> { :i 'конвейер' | ([\w]+) <?{ $0.Str !(elem) <конвейерен конвейерна конвейерно конвейерни> and is-bg-fuzzy-match($0.Str, 'конвейер', 2) }> }
     token count-verb:sym<Bulgarian> { :i 'преброй' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'преброй', 2) }> | 'брой' | ([\w]+) <?{ $0.Str !(elem) <бройка броя бройки мой кой> and is-bg-fuzzy-match($0.Str, 'брой', 2) }> | 'бройка' | ([\w]+) <?{ $0.Str !(elem) <брой бройки> and is-bg-fuzzy-match($0.Str, 'бройка', 2) }> | 'размер' | ([\w]+) <?{ $0.Str ne 'размери' and is-bg-fuzzy-match($0.Str, 'размер', 2) }> }
     token counts-noun:sym<Bulgarian> { :i 'броя' | ([\w]+) <?{ $0.Str !(elem) <брой моя> and is-bg-fuzzy-match($0.Str, 'броя', 2) }> | 'броеве' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'броеве', 2) }> | 'бройки' | ([\w]+) <?{ $0.Str !(elem) <брой бройка> and is-bg-fuzzy-match($0.Str, 'бройки', 2) }> | 'размери' | ([\w]+) <?{ $0.Str !(elem) <разшири намери размер раздели> and is-bg-fuzzy-match($0.Str, 'размери', 2) }> }
     token create:sym<Bulgarian> { :i 'създай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'създай', 2) }> | 'направи' | ([\w]+) <?{ $0.Str !(elem) <прави забрави> and is-bg-fuzzy-match($0.Str, 'направи', 2) }> }
@@ -176,7 +180,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token matrix-noun:sym<Bulgarian> { :i 'матрица' | ([\w]+) <?{ $0.Str ne 'матрици' and is-bg-fuzzy-match($0.Str, 'матрица', 2) }> }
     token matrixes-noun:sym<Bulgarian> { :i 'матрици' | ([\w]+) <?{ $0.Str ne 'матрица' and is-bg-fuzzy-match($0.Str, 'матрици', 2) }> }
     token maximum:sym<Bulgarian> { :i 'макс' | ([\w]+) <?{ $0.Str ne 'как' and is-bg-fuzzy-match($0.Str, 'макс', 2) }> | 'максимум' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'максимум', 2) }> | 'максимален' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'максимален', 2) }> }
-    token message-noun:sym<Bulgarian> { :i 'съобщение' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'съобщение', 2) }> }
+    token message-noun:sym<Bulgarian> { :i 'съобщение' | ([\w]+) <?{ $0.Str ne 'обобщение' and is-bg-fuzzy-match($0.Str, 'съобщение', 2) }> }
     token method-adjective:sym<Bulgarian> { :i 'методен' | ([\w]+) <?{ $0.Str !(elem) <методна методно методни метод методи> and is-bg-fuzzy-match($0.Str, 'методен', 2) }> | 'методна' | ([\w]+) <?{ $0.Str !(elem) <методен методно методни метод методи> and is-bg-fuzzy-match($0.Str, 'методна', 2) }> | 'методно' | ([\w]+) <?{ $0.Str !(elem) <методен методна методни метод методи> and is-bg-fuzzy-match($0.Str, 'методно', 2) }> | 'методни' | ([\w]+) <?{ $0.Str !(elem) <методен методна методно метод методи> and is-bg-fuzzy-match($0.Str, 'методни', 2) }> }
     token method-noun:sym<Bulgarian> { :i 'метод' | ([\w]+) <?{ $0.Str !(elem) <методен методна методно методни методи> and is-bg-fuzzy-match($0.Str, 'метод', 2) }> }
     token methods-noun:sym<Bulgarian> { :i 'методи' | ([\w]+) <?{ $0.Str !(elem) <методен методна методно методни метод> and is-bg-fuzzy-match($0.Str, 'методи', 2) }> }
@@ -211,8 +215,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token part-noun:sym<Bulgarian> { :i 'част' | ([\w]+) <?{ $0.Str ne 'чисти' and is-bg-fuzzy-match($0.Str, 'част', 2) }> }
     token pattern-noun:sym<Bulgarian> { :i 'шаблон' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'шаблон', 2) }> }
     token per-preposition:sym<Bulgarian> { :i 'за' }
-    token pipeline-adjective:sym<Bulgarian> { :i 'лентов' | ([\w]+) <?{ $0.Str !(elem) <лентова лентово> and is-bg-fuzzy-match($0.Str, 'лентов', 2) }> | 'лентова' | ([\w]+) <?{ $0.Str !(elem) <лентов лентово> and is-bg-fuzzy-match($0.Str, 'лентова', 2) }> | 'лентово' | ([\w]+) <?{ $0.Str !(elem) <лентов лентова> and is-bg-fuzzy-match($0.Str, 'лентово', 2) }> }
-    token pipeline-noun:sym<Bulgarian> { :i  'лента' | 'поточна' 'линия'  }
+    token pipeline-adjective:sym<Bulgarian> { :i <tape-adjective> | <conveyor-adjective> | <channel-adjective> }
+    token pipeline-noun:sym<Bulgarian> { :i  <tape-noun> | <conveyor-noun> | <channel-noun> | 'поточна' \h+ 'линия'  }
     token plot-noun:sym<Bulgarian> { :i 'чертеж' | ([\w]+) <?{ $0.Str !(elem) <чертай чертежи> and is-bg-fuzzy-match($0.Str, 'чертеж', 2) }> | 'графика' | ([\w]+) <?{ $0.Str ne 'графики' and is-bg-fuzzy-match($0.Str, 'графика', 2) }> }
     token plots-noun:sym<Bulgarian> { :i 'чертежи' | ([\w]+) <?{ $0.Str ne 'чертеж' and is-bg-fuzzy-match($0.Str, 'чертежи', 2) }> | 'графики' | ([\w]+) <?{ $0.Str ne 'графика' and is-bg-fuzzy-match($0.Str, 'графики', 2) }> }
     token position-noun:sym<Bulgarian> { :i 'позиция' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'позиция', 2) }> }
@@ -265,15 +269,17 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token string-noun:sym<Bulgarian> { :i 'низ' | ([\w]+) <?{ $0.Str !(elem) <и на ид мин без не наш тип> and is-bg-fuzzy-match($0.Str, 'низ', 1) }> }
     token sub-prefix:sym<Bulgarian> { :i 'съб' | ([\w]+) <?{ $0.Str !(elem) <са със във към с път> and is-bg-fuzzy-match($0.Str, 'съб', 1) }> | 'под' | ([\w]+) <?{ $0.Str !(elem) <то ос от код ид мой моя по ред до път кой кои> and is-bg-fuzzy-match($0.Str, 'под', 1) }> }
     token summaries:sym<Bulgarian> { :i <summaries-noun> }
-    token summaries-noun:sym<Bulgarian> { :i 'рекапитулации' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'рекапитулации', 2) }> | 'обобщения' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обобщения', 2) }> }
-    token summarize-directive:sym<Bulgarian> { :i 'обобщи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обобщи', 2) }> }
+    token summaries-noun:sym<Bulgarian> { :i 'рекапитулации' | ([\w]+) <?{ $0.Str ne 'рекапитулация' and is-bg-fuzzy-match($0.Str, 'рекапитулации', 2) }> | 'обобщения' | ([\w]+) <?{ $0.Str ne 'обобщение' and is-bg-fuzzy-match($0.Str, 'обобщения', 2) }> }
+    token summarize-directive:sym<Bulgarian> { :i 'рекапитулирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'рекапитулирай', 2) }> | 'обобщи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обобщи', 2) }> }
     token summary:sym<Bulgarian> { :i <summary-noun> }
-    token summary-noun:sym<Bulgarian> { :i 'рекапитулирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'рекапитулирай', 2) }> | 'обобщи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обобщи', 2) }> }
+    token summary-noun:sym<Bulgarian> { :i 'рекапитулация' | ([\w]+) <?{ $0.Str ne 'рекапитулации' and is-bg-fuzzy-match($0.Str, 'рекапитулация', 2) }> | 'обобщение' | ([\w]+) <?{ $0.Str !(elem) <съобщение обобщения> and is-bg-fuzzy-match($0.Str, 'обобщение', 2) }> }
     token system-noun:sym<Bulgarian> { :i 'система' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'система', 2) }> }
     token table-noun:sym<Bulgarian> { :i 'таблица' | ([\w]+) <?{ $0.Str ne 'таблици' and is-bg-fuzzy-match($0.Str, 'таблица', 2) }> }
     token tables-noun:sym<Bulgarian> { :i 'таблици' | ([\w]+) <?{ $0.Str ne 'таблица' and is-bg-fuzzy-match($0.Str, 'таблици', 2) }> }
     token tabular-adjective:sym<Bulgarian> { :i 'табличен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'табличен', 2) }> }
     token take-verb:sym<Bulgarian> { :i 'вземи' | ([\w]+) <?{ $0.Str !(elem) <всеки време> and is-bg-fuzzy-match($0.Str, 'вземи', 2) }> }
+    token tape-adjective:sym<Bulgarian> { :i 'лентов' | ([\w]+) <?{ $0.Str !(elem) <лентова лентово лентови лента> and is-bg-fuzzy-match($0.Str, 'лентов', 2) }> | 'лентова' | ([\w]+) <?{ $0.Str !(elem) <лентов лентово лентови лента> and is-bg-fuzzy-match($0.Str, 'лентова', 2) }> | 'лентово' | ([\w]+) <?{ $0.Str !(elem) <лентов лентова лентови> and is-bg-fuzzy-match($0.Str, 'лентово', 2) }> | 'лентови' | ([\w]+) <?{ $0.Str !(elem) <лентов лентова лентово> and is-bg-fuzzy-match($0.Str, 'лентови', 2) }> }
+    token tape-noun:sym<Bulgarian> { :i 'лента' | ([\w]+) <?{ $0.Str !(elem) <лентов лентова> and is-bg-fuzzy-match($0.Str, 'лента', 2) }> }
     token target-noun:sym<Bulgarian> { :i 'цел' | ([\w]+) <?{ $0.Str !(elem) <дело чело е без не ред> and is-bg-fuzzy-match($0.Str, 'цел', 1) }> }
     token text-adjective:sym<Bulgarian> { :i <text-noun> | <textual-adjective> }
     token text-noun:sym<Bulgarian> { :i 'текст' | ([\w]+) <?{ $0.Str !(elem) <текущ текстов> and is-bg-fuzzy-match($0.Str, 'текст', 2) }> }

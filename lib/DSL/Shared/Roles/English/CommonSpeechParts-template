@@ -47,6 +47,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token calculation { 'calculation' }
     token case-noun { 'case' }
     token cases-noun { 'cases' }
+    token channel-adjective { <channel-noun> }
+    token channel-noun { 'channel' }
     token chart-noun { 'chart' }
     token chart-verb { <chart-noun> }
     token classify-verb { 'classify' }
@@ -68,6 +70,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token context-noun { 'context' }
     token contingency-noun { 'contingency' }
     token convert-verb { 'convert' }
+    token conveyor-adjective { <conveyor-noun> }
+    token conveyor-noun { 'conveyor' }
     token count-verb { 'count' }
     token counts-noun { 'counts' }
     token create { 'create' }
@@ -206,7 +210,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token part-noun { 'part' }
     token pattern-noun { 'pattern' }
     token per-preposition { 'per' }
-    token pipeline-adjective { 'pipeline' }
+    token pipeline-adjective { <pipeline-noun> }
     token pipeline-noun { 'pipeline' }
     token plot-noun { 'plot' }
     token plots-noun { 'plot' | 'plots' }
@@ -269,6 +273,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token tables-noun { 'tables' }
     token tabular-adjective { 'tabular' }
     token take-verb { 'take' }
+    token tape-adjective { <tape-noun> }
+    token tape-noun { 'tape' }
     token target-noun { 'target' }
     token text-adjective { <text-noun> | <textual-adjective> }
     token text-noun { 'text' }
