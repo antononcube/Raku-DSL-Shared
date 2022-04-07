@@ -157,7 +157,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token it-pronoun { 'това' | 'което' }
     token iterations { 'итерации' }
     token join-verb { 'съедини' }
-    token join-noun { 'съединение' }
+    token join-noun { 'връзка' | 'съединение' }
     token language-noun { 'език' }
     token largest-adjective { 'най-голям' }
     token last-adjective { 'последен' | 'последни' }

@@ -162,7 +162,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token it-pronoun:sym<Bulgarian> { :i 'това' | ([\w]+) <?{ $0.Str !(elem) <то датова лява онова този кога> and is-bg-fuzzy-match($0.Str, 'това', 2) }> | 'което' | ([\w]+) <?{ $0.Str ne 'като' and is-bg-fuzzy-match($0.Str, 'което', 2) }> }
     token iterations:sym<Bulgarian> { :i 'итерации' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'итерации', 2) }> }
     token join-verb:sym<Bulgarian> { :i 'съедини' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'съедини', 2) }> }
-    token join-noun:sym<Bulgarian> { :i 'съединение' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'съединение', 2) }> }
+    token join-noun:sym<Bulgarian> { :i 'връзка' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'връзка', 2) }> | 'съединение' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'съединение', 2) }> }
     token language-noun:sym<Bulgarian> { :i 'език' | ([\w]+) <?{ $0.Str ne 'един' and is-bg-fuzzy-match($0.Str, 'език', 2) }> }
     token largest-adjective:sym<Bulgarian> { :i 'най-голям' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'най-голям', 2) }> }
     token last-adjective:sym<Bulgarian> { :i 'последен' | ([\w]+) <?{ $0.Str ne 'последни' and is-bg-fuzzy-match($0.Str, 'последен', 2) }> | 'последни' | ([\w]+) <?{ $0.Str ne 'последен' and is-bg-fuzzy-match($0.Str, 'последни', 2) }> }
