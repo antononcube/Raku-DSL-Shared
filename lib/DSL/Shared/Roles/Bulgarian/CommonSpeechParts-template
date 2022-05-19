@@ -205,7 +205,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token outlier-adjective { 'извънреден' | 'извънредна' | 'извънредно' | 'извънредни' }
     token outlier-noun { 'извънредност' | 'извънредна' 'стойност' }
     token outliers-noun { 'извънредности' | 'извънредна' 'стойности' }
-    token over-preposition { 'върху' | 'чрез' }
+    token over-preposition { 'върху' | 'чрез' | 'по' }
     token parameter-noun { 'параметър' }
     token parameters-noun { 'параметри' }
     token part-noun { 'част' }

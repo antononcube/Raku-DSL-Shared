@@ -210,7 +210,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token outlier-adjective:sym<Bulgarian> { :i 'извънреден' | ([\w]+) <?{ $0.Str !(elem) <извънредна извънредно извънредни> and is-bg-fuzzy-match($0.Str, 'извънреден', 2) }> | 'извънредна' | ([\w]+) <?{ $0.Str !(elem) <извънреден извънредно извънредни> and is-bg-fuzzy-match($0.Str, 'извънредна', 2) }> | 'извънредно' | ([\w]+) <?{ $0.Str !(elem) <извънреден извънредна извънредни> and is-bg-fuzzy-match($0.Str, 'извънредно', 2) }> | 'извънредни' | ([\w]+) <?{ $0.Str !(elem) <извънреден извънредна извънредно> and is-bg-fuzzy-match($0.Str, 'извънредни', 2) }> }
     token outlier-noun:sym<Bulgarian> { :i  'извънредност' | 'извънредна' 'стойност'  }
     token outliers-noun:sym<Bulgarian> { :i  'извънредности' | 'извънредна' 'стойности'  }
-    token over-preposition:sym<Bulgarian> { :i 'върху' | ([\w]+) <?{ $0.Str !(elem) <вържи върхов връх> and is-bg-fuzzy-match($0.Str, 'върху', 2) }> | 'чрез' | ([\w]+) <?{ $0.Str !(elem) <през без ред> and is-bg-fuzzy-match($0.Str, 'чрез', 2) }> }
+    token over-preposition:sym<Bulgarian> { :i 'върху' | ([\w]+) <?{ $0.Str !(elem) <вържи върхов връх> and is-bg-fuzzy-match($0.Str, 'върху', 2) }> | 'чрез' | ([\w]+) <?{ $0.Str !(elem) <през без ред> and is-bg-fuzzy-match($0.Str, 'чрез', 2) | 'по' }> }
     token parameter-noun:sym<Bulgarian> { :i 'параметър' | ([\w]+) <?{ $0.Str ne 'параметри' and is-bg-fuzzy-match($0.Str, 'параметър', 2) }> }
     token parameters-noun:sym<Bulgarian> { :i 'параметри' | ([\w]+) <?{ $0.Str ne 'параметър' and is-bg-fuzzy-match($0.Str, 'параметри', 2) }> }
     token part-noun:sym<Bulgarian> { :i 'част' | ([\w]+) <?{ $0.Str ne 'чисти' and is-bg-fuzzy-match($0.Str, 'част', 2) }> }
