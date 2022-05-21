@@ -6,8 +6,11 @@ use v6;
 # This role class has common command parts.
 role DSL::Shared::Roles::PredicateSpecification {
 
+    token predicate-list-separator-symbol { ',' | ';' }
+    token predicate-list-separator { <.ws>? <predicate-list-separator-symbol> <.ws>? }
+
     # Predicate expression
-    rule predicates-list { <predicate>+ % <list-separator> }
+    rule predicates-list { <predicate>+ % <predicate-list-separator> }
     rule predicate { <predicate-sum> }
     rule predicate-sum { <predicate-product>+ % <or-operator> }
     rule predicate-product { <predicate-term>+ % <and-operator> }
