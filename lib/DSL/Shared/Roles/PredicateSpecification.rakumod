@@ -31,54 +31,21 @@ role DSL::Shared::Roles::PredicateSpecification {
         <match-relation> }
 
     # Tokens
-    proto token and-operator {*}
-    token and-operator:sym<English> { :i  'and' | '&&' | '&'  }
-
-    proto token or-operator {*}
-    token or-operator:sym<English> { :i  'or' | '||' | '|'  }
-
-    proto token equal-relation {*}
-    token equal-relation:sym<English> { :i  '=' | '==' | 'eq' | 'equals' | 'is'? \h* 'equal' \h+ 'to'? | 'is'  }
-
-    proto token not-equal-relation {*}
-    token not-equal-relation:sym<English> { :i  '!=' | '¬=' | 'neq' | 'is'? \h* 'not' \h+ 'equal' \h+ 'to'? | 'is' \h+ 'not'  }
-
-    proto token less-relation {*}
-    token less-relation:sym<English> { :i  '<' | 'lt' | 'is'? \h* 'less' \h+ 'than'?  }
-
-    proto token less-equal-relation {*}
-    token less-equal-relation:sym<English> { :i  '<=' | '≤' | 'lte' | 'less' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]?  }
-
-    proto token greater-relation {*}
-    token greater-relation:sym<English> { :i  '>' | 'gt' | 'is'? \h* 'greater' \h* 'than'?  }
-
-    proto token greater-equal-relation {*}
-    token greater-equal-relation:sym<English> { :i  '>=' | '≥' | 'gte' | 'is'? \h* 'greater' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]?  }
-
-    proto token same-relation {*}
-    token same-relation:sym<English> { :i  '===' | 'same' \h+ 'as'?  }
-
-    proto token not-same-relation {*}
-    token not-same-relation:sym<English> { :i  '=!=' | 'is'? \h* 'not' \h+ 'the'? \h* 'same' \h+ 'as'?  }
-
-    proto token in-relation {*}
-    token in-relation:sym<English> { :i  'in' | 'belongs' \h+ 'to'  }
-
-    proto token not-in-relation {*}
-    token not-in-relation:sym<English> { :i  '!in' | '¬in' | 'is'? \h* 'not' \h+ 'in' | [ 'does' \h+ 'not' | 'doesn\'t' ] 'belong' \h+ 'to'  }
-
-    proto token like-relation {*}
-    token like-relation:sym<English> { :i  'is'? \h* [ 'like' | 'similar' \h+ 'to' ]  }
-
-    proto token like-start-relation {*}
-    token like-start-relation:sym<English> { :i  [ 'starts' | 'start' ] \h+ 'with'  }
-
-    proto token like-end-relation {*}
-    token like-end-relation:sym<English> { :i  [ 'ends' | 'end' ] \h+ 'with'  }
-
-    proto token like-contains-relation {*}
-    token like-contains-relation:sym<English> { :i 'contains' | 'has' }
-
-    proto token match-relation {*}
-    token match-relation:sym<English> { :i  'match' | 'matches' | 'is'? \h+ 'matching'  }
+    token and-operator { <and-operator-phrase> }
+    token or-operator { <or-operator-phrase> }
+    token equal-relation{ <equal-relation-phrase> }
+    token not-equal-relation { <not-equal-relation-phrase> }
+    token less-relation  { <less-relation-phrase> }
+    token less-equal-relation  { <less-equal-relation-phrase> }
+    token greater-relation  { <greater-relation-phrase> }
+    token greater-equal-relation  { <greater-equal-relation-phrase> }
+    token same-relation  { <same-relation-phrase> }
+    token not-same-relation  { <not-same-relation-phrase> }
+    token in-relation  { <in-relation-phrase> }
+    token not-in-relation  { <not-in-relation-phrase> }
+    token like-relation  { <like-relation-phrase> }
+    token like-start-relation  { <like-start-relation-phrase> }
+    token like-end-relation  { <like-end-relation-phrase> }
+    token like-contains-relation  { <like-contains-relation-phrase> }
+    token match-relation  { <match-relation-phrase> }
 }
