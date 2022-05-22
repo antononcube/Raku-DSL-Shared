@@ -45,6 +45,8 @@
     "DSL::Shared::Actions::Raku::PredicateSpecification": "lib/DSL/Shared/Actions/Raku/PredicateSpecification.rakumod",
     "DSL::Shared::Actions::Russian::Standard::ListManagementCommand": "lib/DSL/Shared/Actions/Russian/Standard/ListManagementCommand.rakumod",
     "DSL::Shared::Actions::Russian::Standard::PipelineCommand": "lib/DSL/Shared/Actions/Russian/Standard/PipelineCommand.rakumod",
+    "DSL::Shared::Actions::Spanish::Standard::ListManagementCommand": "lib/DSL/Shared/Actions/Spanish/Standard/ListManagementCommand.rakumod",
+    "DSL::Shared::Actions::Spanish::Standard::PipelineCommand": "lib/DSL/Shared/Actions/Spanish/Standard/PipelineCommand.rakumod",
     "DSL::Shared::Actions::WL::CommonStructures": "lib/DSL/Shared/Actions/WL/CommonStructures.rakumod",
     "DSL::Shared::Actions::WL::PredicateSpecification": "lib/DSL/Shared/Actions/WL/PredicateSpecification.rakumod",
     "DSL::Shared::Entity::Actions::Raku::System": "lib/DSL/Shared/Entity/Actions/Raku/System.rakumod",
