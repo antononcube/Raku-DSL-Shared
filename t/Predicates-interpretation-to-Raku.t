@@ -5,13 +5,14 @@ use lib '.';
 
 use DSL::Shared::Actions::Raku::PredicateSpecification;
 use DSL::Shared::Roles::CommonStructures;
+use DSL::Shared::Roles::English::CommonParts;
 use DSL::Shared::Roles::English::CommonSpeechParts;
 use DSL::Shared::Roles::English::PredicateSpecification;
 use DSL::Shared::Roles::PredicateSpecification;
 
 grammar ParseObj
         does DSL::Shared::Roles::CommonStructures
-        does DSL::Shared::Roles::English::CommonSpeechParts
+        does DSL::Shared::Roles::English::CommonParts
         does DSL::Shared::Roles::English::PredicateSpecification
         does DSL::Shared::Roles::PredicateSpecification {
     regex TOP { <predicates-list> }
