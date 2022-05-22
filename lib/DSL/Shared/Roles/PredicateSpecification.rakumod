@@ -1,4 +1,4 @@
-use v6;
+use v6.d;
 
 # Note that this roles uses the role DSL::Shared::Roles::CommonStructures
 # but does explicitly do it. (With 'does'.)
