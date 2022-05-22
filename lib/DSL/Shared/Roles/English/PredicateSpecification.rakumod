@@ -4,7 +4,7 @@ role DSL::Shared::Roles::English::PredicateSpecification {
     
     # Tokens
     proto token and-operator-phrase {*}
-    token and-operator-phrase-phrase:sym<English> { :i  'and' | '&&' | '&'  }
+    token and-operator-phrase:sym<English> { :i  'and' | '&&' | '&'  }
 
     proto token or-operator-phrase {*}
     token or-operator-phrase:sym<English> { :i  'or' | '||' | '|'  }
