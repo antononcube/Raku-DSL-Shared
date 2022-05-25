@@ -19,4 +19,7 @@ role DSL::Shared::Actions::Bulgarian::Standard::PipelineCommand {
 
     ## Echo messages
     method echo-command($/) { make 'покажи съобщението: ' ~ $<echo-message-spec>.made; }
+
+    # Setup code commend
+    method setup-code-command($/) { make 'вмъкни инициализиращ код'; }
 }

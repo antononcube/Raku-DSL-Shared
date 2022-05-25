@@ -18,4 +18,7 @@ role DSL::Shared::Actions::Russian::Standard::PipelineCommand {
 
     ## Echo messages
     method echo-command($/) { make 'показать: ' ~ $<echo-message-spec>.made; }
+
+    # Setup code commend
+    method setup-code-command($/) { make 'включить код инициализации';}
 }

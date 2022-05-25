@@ -18,4 +18,7 @@ role DSL::Shared::Actions::Spanish::Standard::PipelineCommand {
 
     ## Echo messages
     method echo-command($/) { make 'mostrar: ' ~ $<echo-message-spec>.made; }
+
+    # Setup code commend
+    method setup-code-command($/) { make 'incluir el código de configuración'; }
 }

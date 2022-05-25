@@ -19,4 +19,7 @@ role DSL::Shared::Actions::English::Standard::PipelineCommand {
 
     ## Echo messages
     method echo-command($/) { make 'show the message: ' ~ $<echo-message-spec>.made; }
+
+    # Setup code commend
+    method setup-code-command($/) { make 'include setup code'; }
 }
