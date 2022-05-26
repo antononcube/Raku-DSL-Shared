@@ -64,6 +64,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token complete-adjective { 'пълно' | 'пълни' }
     token compute-directive { 'изчисли' | 'намери' | 'калкулирай' | 'пресметни' }
     token config-noun { 'конфигурирай' }
+    token configuration-adjective { 'конфигуриращ' | 'конфигурираща' | 'конфигуриращо' | 'конфигуриращи' }
     token configuration-noun { 'конфигурация' }
     token connect-verb { 'вържи' | 'свържи' }
     token consider-verb { 'разгледай' }
@@ -238,7 +239,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token series-noun { 'серия' | 'ред' | 'редица' }
     token set-directive { 'присвои' }
     token set-noun { 'множество' }
-    token setup-noun { 'нагласа' | 'настройване' | 'потготовка' | 'потготвяне' }
+    token setup-adjective { 'настройващ' | 'настройваща' | 'настройващо' | 'настройващи' | 'инициализиращ' | 'инициализираща' | 'инициализиращо' | 'инициализиращи' }
+    token setup-noun { 'нагласа' | 'настройване' | 'инициализация' | 'потготовка' | 'потготвяне' }
     token shape-noun { 'форма' }
     token show-verb { 'покажи' | 'показвай' }
     token simple { 'прост' | 'директен' }

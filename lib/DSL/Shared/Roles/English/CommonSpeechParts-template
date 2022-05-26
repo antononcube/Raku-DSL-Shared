@@ -64,6 +64,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token complete-adjective { 'complete' }
     token compute-directive { 'compute' | 'find' | 'calculate' }
     token config-noun { 'config' }
+    token configuration-adjective { <configuration-noun> }
     token configuration-noun { 'configuration' }
     token connect-verb { 'connect' }
     token consider-verb { 'consider' }
@@ -238,6 +239,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token series-noun { 'series' }
     token set-directive { 'set' }
     token set-noun { 'set' }
+    token setup-adjective { <setup-noun> }
     token setup-noun { 'setup' }
     token shape-noun { 'shape' }
     token show-verb { 'show' }

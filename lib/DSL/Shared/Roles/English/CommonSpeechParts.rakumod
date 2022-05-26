@@ -171,6 +171,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token config-noun {*}
     token config-noun:sym<English> { :i 'config' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'config', 2) }> }
 
+    proto token configuration-adjective {*}
+    token configuration-adjective:sym<English> { :i <configuration-noun> }
+
     proto token configuration-noun {*}
     token configuration-noun:sym<English> { :i 'configuration' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'configuration', 2) }> }
 
@@ -697,6 +700,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token set-noun {*}
     token set-noun:sym<English> { :i 'set' }
+
+    proto token setup-adjective {*}
+    token setup-adjective:sym<English> { :i <setup-noun> }
 
     proto token setup-noun {*}
     token setup-noun:sym<English> { :i 'setup' | ([\w]+) <?{ $0.Str !(elem) <set step> and is-fuzzy-match($0.Str, 'setup', 2) }> }

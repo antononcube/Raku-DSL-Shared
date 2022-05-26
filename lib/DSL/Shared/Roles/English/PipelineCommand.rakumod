@@ -82,7 +82,7 @@ role DSL::Shared::Roles::English::PipelineCommand
 
     # Setup code commend
     rule setup-code-command { <setup-code-simple> }
-    rule setup-code-simple { [<include-verb> | <add-verb>]? <the-determiner>? [ <setup-noun> | <set-noun> <up-adverb> | <configuration-noun> ] <code-noun> }
+    rule setup-code-simple { [<include-verb> | <add-verb>]? <the-determiner>? [ <setup-adjective> | <set-noun> <up-adverb> | <configuration-adjective> ] <code-noun> }
 
     # Code line
     rule code-line { <wl-expr> }
