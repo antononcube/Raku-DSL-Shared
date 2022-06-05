@@ -30,9 +30,7 @@
 
 # The methods here are most likely going to be over-written with concrete pipeline code conventions.
 
-use v6;
-
-unit module DSL::Shared::Actions::English::PipelineCommand;
+use v6.d;
 
 use DSL::Shared::Actions::CommonStructures;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;

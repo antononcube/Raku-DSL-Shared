@@ -31,10 +31,8 @@
 # The "General" section should be the same across all programming languages.
 # (And natural languages too.)
 
-use v6;
+use v6.d;
 use DSL::Shared::Roles::CommonStructures;
-
-unit module DSL::Shared::Actions::CommonStructures;
 
 class DSL::Shared::Actions::CommonStructures {
 

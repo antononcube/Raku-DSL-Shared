@@ -1,6 +1,4 @@
-use v6;
-
-unit module DSL::Shared::Actions::English::Raku::PipelineCommand;
+use v6.d;
 
 use DSL::Shared::Actions::English::PipelineCommand;
 use DSL::Shared::Actions::Raku::CommonStructures;
