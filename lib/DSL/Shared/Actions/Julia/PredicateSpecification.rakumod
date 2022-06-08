@@ -1,10 +1,8 @@
 
-use v6;
+use v6.d;
 
 use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Actions::Julia::CommonStructures;
-
-unit module DSL::Shared::Actions::Julia::PredicateSpecification;
 
 class DSL::Shared::Actions::Julia::PredicateSpecification
         is  DSL::Shared::Actions::Julia::CommonStructures {

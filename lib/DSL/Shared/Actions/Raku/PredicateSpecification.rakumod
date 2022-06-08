@@ -1,10 +1,8 @@
 
-use v6;
+use v6.d;
 
 use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Actions::Raku::CommonStructures;
-
-unit module DSL::Shared::Actions::Raku::PredicateSpecification;
 
 class DSL::Shared::Actions::Raku::PredicateSpecification
         is DSL::Shared::Actions::Raku::CommonStructures {

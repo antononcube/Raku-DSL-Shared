@@ -28,11 +28,10 @@
 #==============================================================================
 =end comment
 
-use v6;
+use v6.d;
+
 use DSL::Shared::Roles::CommonStructures;
 use DSL::Shared::Actions::CommonStructures;
-
-unit module DSL::Shared::Actions::Raku::CommonStructures;
 
 class DSL::Shared::Actions::Raku::CommonStructures
         is DSL::Shared::Actions::CommonStructures {

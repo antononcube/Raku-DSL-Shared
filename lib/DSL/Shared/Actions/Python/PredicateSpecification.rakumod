@@ -1,10 +1,8 @@
 
-use v6;
+use v6.d;
 
 use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Actions::Python::CommonStructures;
-
-unit module DSL::Shared::Actions::Python::PredicateSpecification;
 
 class DSL::Shared::Actions::Python::PredicateSpecification
         is DSL::Shared::Actions::Python::CommonStructures {
