@@ -19,7 +19,9 @@ role DSL::Shared::Entity::ResourceAccessish {
     ## Ingestion
     ##========================================================
     #| Make the entity name dictionaries.
-    method ingest-resource-files() {
+    method ingest-resource-files($sep is copy = Whatever) {
+
+        if $sep.isa(Whatever) { $sep = ','; }
 
         #| The function get-resource-files is provided by the classes that do this role.
         my %resourceFileNames = self.get-resource-files();
@@ -28,7 +30,7 @@ role DSL::Shared::Entity::ResourceAccessish {
         for %resourceFileNames.kv -> $fileNameKey, $slurpable {
             my Str @nameIDPairs = $slurpable.lines;
 
-            my %nameRules = @nameIDPairs.map({ $_.split(',') }).flat;
+            my %nameRules = @nameIDPairs.map({ $_.split($sep) }).flat;
             %nameRules = %nameRules.keys.map(*.lc) Z=> %nameRules.values;
 
             self.ingest-entity-dictionary($fileNameKey, %nameRules)
