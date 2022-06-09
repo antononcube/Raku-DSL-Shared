@@ -1,4 +1,4 @@
-use v6;
+use v6.d;
 
 use DSL::Shared::Roles::CommonStructures;
 use DSL::Shared::Roles::English::CommonSpeechParts;
