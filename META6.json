@@ -10,7 +10,8 @@
   "depends": [
     "silently",
     "Text::Levenshtein::Damerau",
-    "Lingua::NumericWordForms"
+    "Lingua::NumericWordForms",
+    "Hash::Merge"
   ],
   "build-depends": [],
   "test-depends": [],
