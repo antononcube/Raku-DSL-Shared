@@ -287,6 +287,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token the-determiner { '' }
     token them-pronoun { 'тях' }
     token this-pronoun { 'този' | 'това' }
+    token threshold-adjective { 'прагов' | 'прагова' | 'прагово' | 'прагови' }
+    token threshold-noun { 'праг' }
     token time-adjective { 'времеви' | 'времева' }
     token time-noun { 'време' }
     token timeline-noun { <time-adjective> 'линия' }

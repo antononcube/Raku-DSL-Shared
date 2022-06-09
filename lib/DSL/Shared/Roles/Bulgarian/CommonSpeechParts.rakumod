@@ -292,6 +292,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token the-determiner:sym<Bulgarian> { :i '' }
     token them-pronoun:sym<Bulgarian> { :i 'тях' | ([\w]+) <?{ $0.Str !(elem) <то ляв тип> and is-bg-fuzzy-match($0.Str, 'тях', 1) }> }
     token this-pronoun:sym<Bulgarian> { :i 'този' | ([\w]+) <?{ $0.Str !(elem) <то оси това кои> and is-bg-fuzzy-match($0.Str, 'този', 2) }> | 'това' | ([\w]+) <?{ $0.Str !(elem) <то датова лява онова този кога> and is-bg-fuzzy-match($0.Str, 'това', 2) }> }
+    token threshold-adjective:sym<Bulgarian> { :i 'прагов' | 'прагова' }
+    token threshold-noun:sym<Bulgarian> { :i 'праг' | ([\w]+) <?{ $0.Str ne 'през' and is-bg-fuzzy-match($0.Str, 'праг', 2) }> }
     token time-adjective:sym<Bulgarian> { :i 'времеви' | ([\w]+) <?{ $0.Str !(elem) <времева време времена> and is-bg-fuzzy-match($0.Str, 'времеви', 2) }> | 'времева' | ([\w]+) <?{ $0.Str !(elem) <времеви време времена> and is-bg-fuzzy-match($0.Str, 'времева', 2) }> }
     token time-noun:sym<Bulgarian> { :i 'време' | ([\w]+) <?{ $0.Str !(elem) <вземи времеви времева времена> and is-bg-fuzzy-match($0.Str, 'време', 2) }> }
     token timeline-noun:sym<Bulgarian> { :i  <time-adjective> 'линия'  }

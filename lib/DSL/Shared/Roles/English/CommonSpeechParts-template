@@ -287,6 +287,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token the-determiner { 'the' }
     token them-pronoun { 'them' }
     token this-pronoun { 'this' }
+    token threshold-adjective { <threshold-noun> }
+    token threshold-noun { 'threshold' }
     token time-adjective { 'time' }
     token time-noun { 'time' }
     token timeline-noun { 'timeline' }

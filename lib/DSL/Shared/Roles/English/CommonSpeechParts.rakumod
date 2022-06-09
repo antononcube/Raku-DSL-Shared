@@ -845,6 +845,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token this-pronoun {*}
     token this-pronoun:sym<English> { :i 'this' | ([\w]+) <?{ $0.Str !(elem) <axis is that the them> and is-fuzzy-match($0.Str, 'this', 2) }> }
 
+    proto token threshold-adjective {*}
+    token threshold-adjective:sym<English> { <threshold-noun> }
+
+    proto token threshold-noun {*}
+    token threshold-noun:sym<English> { :i 'threshold' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'threshold', 2) }> }
+
     proto token time-adjective {*}
     token time-adjective:sym<English> { :i 'time' | ([\w]+) <?{ $0.Str !(elem) <name site some take tape the them times type> and is-fuzzy-match($0.Str, 'time', 2) }> }
 
