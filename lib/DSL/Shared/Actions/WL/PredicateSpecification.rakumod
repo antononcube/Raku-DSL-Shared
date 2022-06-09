@@ -1,10 +1,8 @@
 
-use v6;
+use v6.d;
 
 use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Actions::WL::CommonStructures;
-
-unit module DSL::Shared::Actions::WL::PredicateSpecification;
 
 class DSL::Shared::Actions::WL::PredicateSpecification
         is DSL::Shared::Actions::WL::CommonStructures {
