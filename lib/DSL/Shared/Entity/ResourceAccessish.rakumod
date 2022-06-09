@@ -1,6 +1,8 @@
 use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
 
+use Hash::Merge;
+
 role DSL::Shared::Entity::ResourceAccessish {
 
     ##========================================================
@@ -24,10 +26,13 @@ role DSL::Shared::Entity::ResourceAccessish {
         if $sep.isa(Whatever) { $sep = ','; }
 
         #| The function get-resource-files is provided by the classes that do this role.
-        my %resourceFileNames = self.get-resource-files();
+        my @resourceFileNames = self.get-resource-files();
 
         #-----------------------------------------------------------
-        for %resourceFileNames.kv -> $fileNameKey, $slurpable {
+        for @resourceFileNames -> $p {
+            my $fileNameKey = $p.key;
+            my $slurpable = $p.value;
+
             my Str @nameIDPairs = $slurpable.lines;
 
             my %nameRules = @nameIDPairs.map({ $_.split($sep) }).flat;
@@ -42,11 +47,20 @@ role DSL::Shared::Entity::ResourceAccessish {
 
     #| Make the entity name dictionaries.
     method ingest-entity-dictionary( Str $class, %nameToIDRules ) {
-        self.getNameToEntityID().push( $class => %nameToIDRules );
 
-        self.getKnownNames().push( $class => Set(%nameToIDRules) );
+        my @words = %nameToIDRules.keys.map({ $_.split(/h+/) }).flat;
 
-        self.getKnownNameWords().push( $class => Set(%nameToIDRules.keys.map({ $_.split(/h+/) }).flat) );
+        if self.getNameToEntityID(){$class}:exists {
+            # We cannot just use append because that would produce arrays that are not hashes,
+            # hence do not adhere to the type of %!nameToEntityID, etc.
+            self.getNameToEntityID(){$class} = merge-hash(self.getNameToEntityID(){$class}, %nameToIDRules);
+            self.getKnownNames(){$class} = merge-hash(self.getKnownNames(){$class}, %nameToIDRules).Set;
+            self.getKnownNameWords(){$class} = merge-hash(self.getKnownNameWords(){$class}, Set(@words)).Set;
+        } else {
+            self.getNameToEntityID().append( $class => %nameToIDRules );
+            self.getKnownNames().append( $class => Set(%nameToIDRules) );
+            self.getKnownNameWords().append( $class => Set(@words) );
+        }
     }
 
 

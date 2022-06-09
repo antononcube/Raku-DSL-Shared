@@ -71,11 +71,11 @@ class DSL::Shared::Entity::ResourceAccessSingleton {
 
     #| Get resource file names with keys,
     #| This function has to be overridden in the descendants of this class.
-    method get-resource-files( --> Hash) {
+    method get-resource-files( --> Positional) {
         my @fileNames = <DataFormatNameToEntityID_EN.csv MetadataTypeNameToEntityID_EN.csv>;
-        my %resources = @fileNames.map({ $_.subst( / '.csv' $$ /, '' ) }) Z=> @fileNames;
-        %resources = %resources.map({ $_.key => %?RESOURCES{$_.value} });
-        return %resources;
+        my @resources = @fileNames.map({ $_.subst( / '.csv' $$ /, '' ) }) Z=> @fileNames;
+        @resources = @resources.map({ $_.key => %?RESOURCES{$_.value} });
+        return @resources;
     }
 
     ##--------------------------------------------------------
