@@ -27,13 +27,13 @@ plan 2;
 
 ## 1
 is-deeply
-        parse-func('DataFormatNameToEntityID_EN', 'character 32'),
+        parse-func('DataFormat', 'character 32'),
         '"Character32"',
         'character 32';
 
 ## 2
 is-deeply
-        parse-func('DataFormatNameToEntityID_EN', 'Character32'),
+        parse-func('DataFormat', 'Character32'),
         '"Character32"',
         'Character32';
 
