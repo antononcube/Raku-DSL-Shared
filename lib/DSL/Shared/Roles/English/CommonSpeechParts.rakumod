@@ -534,7 +534,10 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token missing-adjective:sym<English> { :i 'missing' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'missing', 2) }> }
 
     proto token model {*}
-    token model:sym<English> { :i 'model' | ([\w]+) <?{ $0.Str !(elem) <code codes module> and is-fuzzy-match($0.Str, 'model', 2) }> }
+    token model:sym<English> { :i <model-noun> }
+
+    proto token model-noun {*}
+    token model-noun:sym<English> { :i 'model' | ([\w]+) <?{ $0.Str !(elem) <code codes module> and is-fuzzy-match($0.Str, 'model', 2) }> }
 
     proto token module-noun {*}
     token module-noun:sym<English> { :i 'module' | ([\w]+) <?{ $0.Str ne 'model' and is-fuzzy-match($0.Str, 'module', 2) }> }
@@ -846,7 +849,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token this-pronoun:sym<English> { :i 'this' | ([\w]+) <?{ $0.Str !(elem) <axis is that the them> and is-fuzzy-match($0.Str, 'this', 2) }> }
 
     proto token threshold-adjective {*}
-    token threshold-adjective:sym<English> { <threshold-noun> }
+    token threshold-adjective:sym<English> { :i <threshold-noun> }
 
     proto token threshold-noun {*}
     token threshold-noun:sym<English> { :i 'threshold' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'threshold', 2) }> }

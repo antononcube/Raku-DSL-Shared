@@ -183,7 +183,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token methods-noun { 'methods' }
     token minimum { 'min' | 'minimum' }
     token missing-adjective { 'missing' }
-    token model { 'model' }
+    token model { <model-noun> }
+    token model-noun { 'model' }
     token module-noun { 'module' }
     token my-determiner { 'my' }
     token name-noun { 'name' }

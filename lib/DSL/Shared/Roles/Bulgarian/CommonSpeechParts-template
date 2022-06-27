@@ -183,7 +183,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token methods-noun { 'методи' }
     token minimum { 'мин' | 'минимум' | 'минимален' }
     token missing-adjective { 'липсващи' }
-    token model { 'модел' }
+    token model-noun { 'модел' }
     token module-noun { 'модул' }
     token my-determiner { 'мой' | 'моя' | 'моят' }
     token name-noun { 'име' }
