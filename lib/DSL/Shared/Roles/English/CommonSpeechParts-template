@@ -232,6 +232,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token reverse-adjective { 'reverse' }
     token right-adjective { <right-noun> }
     token right-noun { 'right' }
+    token row-noun { 'row' }
     token rows { <rows-noun> }
     token rows-noun { 'rows' }
     token run-verb { 'run' | 'runs' }

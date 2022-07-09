@@ -231,6 +231,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token reverse-adjective { 'обратен' | 'обърни' }
     token right-adjective { 'десен' | 'дясна' | 'дясно' | 'десни' }
     token right-noun { 'надясно' }
+    token row-noun { 'ред' }
     token rows { <rows-noun> }
     token rows-noun { 'редове' }
     token run-verb { 'run' | 'runs' }

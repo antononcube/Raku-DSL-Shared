@@ -236,6 +236,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token reverse-adjective:sym<Bulgarian> { :i 'обратен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обратен', 2) }> | 'обърни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обърни', 2) }> }
     token right-adjective:sym<Bulgarian> { :i 'десен' | ([\w]+) <?{ $0.Str !(elem) <долен десни> and is-bg-fuzzy-match($0.Str, 'десен', 2) }> | 'дясна' | ([\w]+) <?{ $0.Str !(elem) <данна дясно десни> and is-bg-fuzzy-match($0.Str, 'дясна', 2) }> | 'дясно' | ([\w]+) <?{ $0.Str !(elem) <дъно дясна десни надясно място> and is-bg-fuzzy-match($0.Str, 'дясно', 2) }> | 'десни' | ([\w]+) <?{ $0.Str !(elem) <данни десен дясна дясно> and is-bg-fuzzy-match($0.Str, 'десни', 2) }> }
     token right-noun:sym<Bulgarian> { :i 'надясно' | ([\w]+) <?{ $0.Str ne 'дясно' and is-bg-fuzzy-match($0.Str, 'надясно', 2) }> }
+    token row-noun:sym<Bulgarian> { :i 'ред' | ([\w]+) <?{ $0.Str !(elem) <чрез код през ид е без не под цел> and is-bg-fuzzy-match($0.Str, 'ред', 1) }> }
     token rows:sym<Bulgarian> { :i <rows-noun> }
     token rows-noun:sym<Bulgarian> { :i 'редове' | ([\w]+) <?{ $0.Str ne 'кодове' and is-bg-fuzzy-match($0.Str, 'редове', 2) }> }
     token run-verb:sym<Bulgarian> { :i 'run' | ([\w]+) <?{ $0.Str ne 'runs' and is-bg-fuzzy-match($0.Str, 'run', 1) }> | 'runs' | ([\w]+) <?{ $0.Str ne 'run' and is-bg-fuzzy-match($0.Str, 'runs', 2) }> }

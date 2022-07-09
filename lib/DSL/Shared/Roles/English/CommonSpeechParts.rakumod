@@ -253,7 +253,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token default-noun:sym<English> { :i 'default' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'default', 2) }> }
 
     proto token delete-directive {*}
-    token delete-directive:sym<English> { :i 'delete' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'delete', 2) }> | 'drop' | ([\w]+) <?{ $0.Str !(elem) <do from top> and is-fuzzy-match($0.Str, 'drop', 2) }> | 'erase' | ([\w]+) <?{ $0.Str !(elem) <case frame> and is-fuzzy-match($0.Str, 'erase', 2) }> | 'remove' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'remove', 2) }> }
+    token delete-directive:sym<English> { :i 'delete' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'delete', 2) }> | 'drop' | ([\w]+) <?{ $0.Str !(elem) <do from row top> and is-fuzzy-match($0.Str, 'drop', 2) }> | 'erase' | ([\w]+) <?{ $0.Str !(elem) <case frame> and is-fuzzy-match($0.Str, 'erase', 2) }> | 'remove' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'remove', 2) }> }
 
     proto token detect-verb {*}
     token detect-verb:sym<English> { :i 'detect' | ([\w]+) <?{ $0.Str ne 'direct' and is-fuzzy-match($0.Str, 'detect', 2) }> }
@@ -309,7 +309,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token domain-noun:sym<English> { :i 'domain' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'domain', 2) }> }
 
     proto token drop-verb {*}
-    token drop-verb:sym<English> { :i 'drop' | ([\w]+) <?{ $0.Str !(elem) <do from top> and is-fuzzy-match($0.Str, 'drop', 2) }> }
+    token drop-verb:sym<English> { :i 'drop' | ([\w]+) <?{ $0.Str !(elem) <do from row top> and is-fuzzy-match($0.Str, 'drop', 2) }> }
 
     proto token during-preposition {*}
     token during-preposition:sym<English> { :i 'during' | ([\w]+) <?{ $0.Str !(elem) <using string> and is-fuzzy-match($0.Str, 'during', 2) }> }
@@ -417,7 +417,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token histograms:sym<English> { :i 'histograms' | ([\w]+) <?{ $0.Str ne 'histogram' and is-fuzzy-match($0.Str, 'histograms', 2) }> }
 
     proto token how-adverb {*}
-    token how-adverb:sym<English> { :i 'how' | ([\w]+) <?{ $0.Str !(elem) <do for low no non of on or rows show to top> and is-fuzzy-match($0.Str, 'how', 1) }> }
+    token how-adverb:sym<English> { :i 'how' | ([\w]+) <?{ $0.Str !(elem) <do for low no non of on or row rows show to top> and is-fuzzy-match($0.Str, 'how', 1) }> }
 
     proto token id-noun {*}
     token id-noun:sym<English> { :i 'id' }
@@ -489,7 +489,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token locate-verb:sym<English> { :i 'locate' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'locate', 2) }> }
 
     proto token low-adjective {*}
-    token low-adjective:sym<English> { :i 'low' | ([\w]+) <?{ $0.Str !(elem) <do for how load lower no non of on or plot rows show to top> and is-fuzzy-match($0.Str, 'low', 1) }> }
+    token low-adjective:sym<English> { :i 'low' | ([\w]+) <?{ $0.Str !(elem) <do for how load lower no non of on or plot row rows show to top> and is-fuzzy-match($0.Str, 'low', 1) }> }
 
     proto token lower-adjective {*}
     token lower-adjective:sym<English> { :i 'lower' | ([\w]+) <?{ $0.Str !(elem) <low over> and is-fuzzy-match($0.Str, 'lower', 2) }> }
@@ -561,7 +561,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token no-determiner:sym<English> { :i 'no' }
 
     proto token non-prefix {*}
-    token non-prefix:sym<English> { :i 'non' | ([\w]+) <?{ $0.Str !(elem) <an do for how in join low min no of on one or run to top> and is-fuzzy-match($0.Str, 'non', 1) }> }
+    token non-prefix:sym<English> { :i 'non' | ([\w]+) <?{ $0.Str !(elem) <an do for how in join low min no of on one or row run to top> and is-fuzzy-match($0.Str, 'non', 1) }> }
 
     proto token number-noun {*}
     token number-noun:sym<English> { :i 'number' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'number', 2) }> }
@@ -680,14 +680,17 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token right-noun {*}
     token right-noun:sym<English> { :i 'right' | ([\w]+) <?{ $0.Str !(elem) <high weight> and is-fuzzy-match($0.Str, 'right', 2) }> }
 
+    proto token row-noun {*}
+    token row-noun:sym<English> { :i 'row' | ([\w]+) <?{ $0.Str !(elem) <drop do for from how low no non of on or rows run show to top> and is-fuzzy-match($0.Str, 'row', 1) }> }
+
     proto token rows {*}
     token rows:sym<English> { :i <rows-noun> }
 
     proto token rows-noun {*}
-    token rows-noun:sym<English> { :i 'rows' | ([\w]+) <?{ $0.Str !(elem) <how low runs> and is-fuzzy-match($0.Str, 'rows', 2) }> }
+    token rows-noun:sym<English> { :i 'rows' | ([\w]+) <?{ $0.Str !(elem) <how low row runs> and is-fuzzy-match($0.Str, 'rows', 2) }> }
 
     proto token run-verb {*}
-    token run-verb:sym<English> { :i 'run' | ([\w]+) <?{ $0.Str !(elem) <an in min non on our out runs sub up> and is-fuzzy-match($0.Str, 'run', 1) }> | 'runs' | ([\w]+) <?{ $0.Str !(elem) <rows run> and is-fuzzy-match($0.Str, 'runs', 2) }> }
+    token run-verb:sym<English> { :i 'run' | ([\w]+) <?{ $0.Str !(elem) <an in min non on our out row runs sub up> and is-fuzzy-match($0.Str, 'run', 1) }> | 'runs' | ([\w]+) <?{ $0.Str !(elem) <rows run> and is-fuzzy-match($0.Str, 'runs', 2) }> }
 
     proto token running-verb {*}
     token running-verb:sym<English> { :i 'running' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'running', 2) }> }
@@ -714,7 +717,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token shape-noun:sym<English> { :i 'shape' | ([\w]+) <?{ $0.Str ne 'tape' and is-fuzzy-match($0.Str, 'shape', 2) }> }
 
     proto token show-verb {*}
-    token show-verb:sym<English> { :i 'show' | ([\w]+) <?{ $0.Str !(elem) <how low spot> and is-fuzzy-match($0.Str, 'show', 2) }> }
+    token show-verb:sym<English> { :i 'show' | ([\w]+) <?{ $0.Str !(elem) <how low row spot> and is-fuzzy-match($0.Str, 'show', 2) }> }
 
     proto token simple {*}
     token simple:sym<English> { :i 'simple' | ([\w]+) <?{ $0.Str !(elem) <simply single> and is-fuzzy-match($0.Str, 'simple', 2) }> | 'direct' | ([\w]+) <?{ $0.Str !(elem) <detect directly> and is-fuzzy-match($0.Str, 'direct', 2) }> }
@@ -873,7 +876,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token top-adjective:sym<English> { :i <top-noun> }
 
     proto token top-noun {*}
-    token top-noun:sym<English> { :i 'top' | ([\w]+) <?{ $0.Str !(elem) <drop do for how low no non of on or step tape the to type up> and is-fuzzy-match($0.Str, 'top', 1) }> }
+    token top-noun:sym<English> { :i 'top' | ([\w]+) <?{ $0.Str !(elem) <drop do for how low no non of on or row step tape the to type up> and is-fuzzy-match($0.Str, 'top', 1) }> }
 
     proto token transform-verb {*}
     token transform-verb:sym<English> { :i 'transform' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'transform', 2) }> }
