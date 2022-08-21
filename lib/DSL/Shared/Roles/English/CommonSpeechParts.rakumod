@@ -52,7 +52,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token algorithms-noun:sym<English> { :i 'algorithms' | ([\w]+) <?{ $0.Str ne 'algorithm' and is-fuzzy-match($0.Str, 'algorithms', 2) }> }
 
     proto token all-determiner {*}
-    token all-determiner:sym<English> { :i 'all' | ([\w]+) <?{ $0.Str !(elem) <a an add and are as at> and is-fuzzy-match($0.Str, 'all', 1) }> }
+    token all-determiner:sym<English> { :i 'all' | ([\w]+) <?{ $0.Str !(elem) <a an add and are as at pull> and is-fuzzy-match($0.Str, 'all', 1) }> }
 
     proto token and-conjunction {*}
     token and-conjunction:sym<English> { :i 'and' }
@@ -638,6 +638,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token position-noun {*}
     token position-noun:sym<English> { :i 'position' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'position', 2) }> }
 
+    proto token pull-noun {*}
+    token pull-noun:sym<English> { :i <pull-verb> }
+
+    proto token pull-verb {*}
+    token pull-verb:sym<English> { :i 'pull' | ([\w]+) <?{ $0.Str ne 'all' and is-fuzzy-match($0.Str, 'pull', 2) }> }
+
     proto token random-adjective {*}
     token random-adjective:sym<English> { :i 'random' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'random', 2) }> }
 
@@ -913,9 +919,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token variables-noun {*}
     token variables-noun:sym<English> { :i 'variables' | ([\w]+) <?{ $0.Str ne 'variable' and is-fuzzy-match($0.Str, 'variables', 2) }> }
-
-    proto token versus-preposition {*}
-    token versus-preposition:sym<English> { :i 'vs' | 'vs.' | 'versus' }
+    token versus-preposition { 'vs' | 'vs.' | 'versus' }
 
     proto token way-noun {*}
     token way-noun:sym<English> { :i 'way' | ([\w]+) <?{ $0.Str !(elem) <a an as at away by max my what> and is-fuzzy-match($0.Str, 'way', 1) }> }
@@ -1040,6 +1044,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto rule plot-directive {*}
     rule plot-directive:sym<English> {  <plot-noun> | <chart-noun> | <display-directive> <diagram>  }
+
+    proto rule pull-directive {*}
+    rule pull-directive:sym<English> { <pull-verb> | <take-verb> }
 
     proto rule records-phrase {*}
     rule records-phrase:sym<English> {  <table-noun>? [ <rows> | <records> ]  }

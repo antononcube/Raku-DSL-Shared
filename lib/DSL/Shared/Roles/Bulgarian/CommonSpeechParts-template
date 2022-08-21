@@ -217,6 +217,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token plot-noun { 'чертеж' | 'графика' }
     token plots-noun { 'чертежи' | 'графики' }
     token position-noun { 'позиция' }
+    token pull-noun { 'изтегляне' | 'издърпване' }
+    token pull-verb { 'изтегли' | 'издърпай' }
     token random-adjective { 'случаен' }
     token records { 'записи' }
     token reduce-verb { 'редуцирай' }

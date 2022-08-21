@@ -222,6 +222,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token plot-noun:sym<Bulgarian> { :i 'чертеж' | ([\w]+) <?{ $0.Str !(elem) <чертай чертежи> and is-bg-fuzzy-match($0.Str, 'чертеж', 2) }> | 'графика' | ([\w]+) <?{ $0.Str ne 'графики' and is-bg-fuzzy-match($0.Str, 'графика', 2) }> }
     token plots-noun:sym<Bulgarian> { :i 'чертежи' | ([\w]+) <?{ $0.Str ne 'чертеж' and is-bg-fuzzy-match($0.Str, 'чертежи', 2) }> | 'графики' | ([\w]+) <?{ $0.Str ne 'графика' and is-bg-fuzzy-match($0.Str, 'графики', 2) }> }
     token position-noun:sym<Bulgarian> { :i 'позиция' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'позиция', 2) }> }
+    token pull-noun:sym<Bulgarian> { :i 'изтегляне' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изтегляне', 2) }> | 'издърпване' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'издърпване', 2) }> }
+    token pull-verb:sym<Bulgarian> { :i 'изтегли' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изтегли', 2) }> | 'издърпай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'издърпай', 2) }> }
     token random-adjective:sym<Bulgarian> { :i 'случаен' | ([\w]+) <?{ $0.Str !(elem) <случай случаи> and is-bg-fuzzy-match($0.Str, 'случаен', 2) }> }
     token records:sym<Bulgarian> { :i 'записи' | ([\w]+) <?{ $0.Str ne 'зачисти' and is-bg-fuzzy-match($0.Str, 'записи', 2) }> }
     token reduce-verb:sym<Bulgarian> { :i 'редуцирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'редуцирай', 2) }> }
@@ -314,7 +316,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token values-noun:sym<Bulgarian> { :i 'стойности' | ([\w]+) <?{ $0.Str ne 'стойност' and is-bg-fuzzy-match($0.Str, 'стойности', 2) }> }
     token variable-noun:sym<Bulgarian> { :i 'променлива' | ([\w]+) <?{ $0.Str ne 'променливи' and is-bg-fuzzy-match($0.Str, 'променлива', 2) }> }
     token variables-noun:sym<Bulgarian> { :i 'променливи' | ([\w]+) <?{ $0.Str ne 'променлива' and is-bg-fuzzy-match($0.Str, 'променливи', 2) }> }
-    token versus-preposition:sym<Bulgarian> { :i 'срещу' | 'ср.' | 'против' }
+    token versus-preposition { 'срещу' | 'ср.' | 'против' }
     token way-noun:sym<Bulgarian> { :i 'път' | ([\w]+) <?{ $0.Str !(elem) <от със във по съб под към> and is-bg-fuzzy-match($0.Str, 'път', 1) }> | 'начин' | ([\w]+) <?{ $0.Str ne 'наши' and is-bg-fuzzy-match($0.Str, 'начин', 2) }> }
     token weight:sym<Bulgarian> { :i <weight-noun> }
     token weight-noun:sym<Bulgarian> { :i 'тегло' | ([\w]+) <?{ $0.Str !(elem) <дело чело тегла> and is-bg-fuzzy-match($0.Str, 'тегло', 2) }> }

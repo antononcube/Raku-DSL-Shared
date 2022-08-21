@@ -218,6 +218,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token plot-noun { 'plot' }
     token plots-noun { 'plot' | 'plots' }
     token position-noun { 'position' }
+    token pull-noun { <pull-verb> }
+    token pull-verb { 'pull' }
     token random-adjective { 'random' }
     token records { 'records' }
     token reduce-verb { 'reduce' }
@@ -351,6 +353,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule nearest-neighbors-phrase { <nearest-adjective>? <neighbors-noun> | 'nns' }
     rule number-of { [ <number-noun> | <count-verb> | <counts-noun> ] <of-preposition> }
     rule plot-directive { <plot-noun> | <chart-noun> | <display-directive> <diagram> }
+    rule pull-directive { <pull-verb> | <take-verb> }
     rule records-phrase { <table-noun>? [ <rows> | <records> ] }
     rule remove-directive { <delete-directive> | <drop-verb> | <take-off-phrase> | <take-away-phrase> }
     rule simple-way-phrase { <simple> [ <way-noun> | <manner> ] | <in-preposition> <a-determiner> <simple> <way-noun> | <directly-adverb> | <simply-adverb>  }
