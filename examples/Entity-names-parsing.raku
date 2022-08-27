@@ -1,5 +1,5 @@
-use lib './lib';
-use lib '.';
+use v6.d;
+
 use DSL::Shared::Entity::Actions::WL::System;
 use DSL::Shared::Entity::Grammar::EntityNames;
 use DSL::Shared::Entity::ResourceAccess;

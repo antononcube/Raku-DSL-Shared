@@ -1,7 +1,4 @@
-use v6;
-
-use lib './lib';
-use lib '.';
+use v6.d;
 
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::RudimentaryUserOnboarding;
@@ -12,17 +9,19 @@ grammar ParseObj
         does DSL::Shared::Roles::English::RudimentaryUserOnboarding
         does DSL::Shared::Roles::English::PipelineCommand {
 
-    rule TOP { <pipeline-command> | <user-onboarding-command> }
+    rule TOP { <pipeline-command> || <user-onboarding-command> }
 };
 
 
 say "=" x 60;
 
 my @commands = (
+'i am one hundred and twenty five pounds',
+'i am twenty five years old',
+'my age is twenty five',
 'i am nina markova',
 'i am asiana',
 'my name is asiana',
-'i am 25 years old',
 'my race is african american',
 'my age is 40',
 'i am nina, i am 25 year old',
@@ -32,7 +31,9 @@ my @commands = (
 );
 
 for @commands -> $c {
-    say "-" x 40;
+    say "=" x 80;
+    say $c;
+    say "-" x 80;
     say ParseObj.parse( $c )
 };
 
