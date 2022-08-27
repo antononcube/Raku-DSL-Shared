@@ -22,7 +22,12 @@ class DSL::Shared::Actions::English::RakuObject::ListManagementCommand
         if $<list-management-range> {
             make $<list-management-range>.made
         } elsif $<list-management-position-query> {
-            make $<list-management-position-query>.made;
+            if  $<list-management-position-query><variable-spec> {
+                warn 'Variable element taking is not implemented.';
+                make $!object;
+            } else {
+                make $<list-management-position-query>.made;
+            }
         } else {
             my $p = $/.values[0].made;
             if $p - 1 < $!object.elems {
