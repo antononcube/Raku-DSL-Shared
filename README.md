@@ -57,6 +57,8 @@ Here is a list:
 
 - Time intervals specifications role
 
+- Entity names parsing role
+
 -------
 
 ## Utilities to share
@@ -68,6 +70,12 @@ The package provides several different types of utilities for making DSL transla
 - DSL meta-specifications processing functions
 
 - Universal command processing
+
+- Resource access class and role
+
+*Remark:* Initial versions of the Finite State Machine classes were part of this package.
+Those classes were moved to "DSL::FiniteStateMachines", [AAp9]. Those initial versions are 
+kept here since they are referenced in presentations.  
 
 -------
 
@@ -120,6 +128,11 @@ and how they can be utilized in different DSL commands.
 [AAp8] Anton Antonov,
 [DSL::English::RecommenderWorkflows, Raku package](https://github.com/antononcube/Raku-DSL-General-RecommenderWorkflows),
 (2018-2022),
+[GitHub/antononcube](https://github.com/antononcube).
+
+[AAp9] Anton Antonov,
+[DSL::FiniteStateMachines, Raku package](https://github.com/antononcube/Raku-DSL-FiniteStateMachines),
+(2021-2022),
 [GitHub/antononcube](https://github.com/antononcube).
 
 [NLp1] Nick Logan,
