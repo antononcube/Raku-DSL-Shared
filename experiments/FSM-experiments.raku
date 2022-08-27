@@ -53,6 +53,6 @@ $testFSM.add-transition("disconnect",           "switchoff");
 
 # say $testFSM.states.gist;
 
-#$testFSM.ECHOLOGGING = sub (|) {};
+$testFSM.ECHOLOGGING = sub (|) {};
 $testFSM.run("ready", [2,1,1,1]);
 #$testFSM.run("ready", [2,2,1,1,1]);
