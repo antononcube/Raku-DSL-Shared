@@ -131,7 +131,7 @@ role DSL::Shared::Roles::CommonStructures {
     rule mixed-quoted-variable-name-or-wl-expr { <mixed-quoted-variable-name> | <wl-expr> }
     rule mixed-quoted-variable-name-or-wl-expr-list { <mixed-quoted-variable-name-or-wl-expr>+ % <list-separator> }
 
-    # Assign-pairs and as-pairs
+    # Assign-pairs, as-pairs, and association-pairs
     rule assign-pair            { <assign-pair-lhs> [ <.assign-to-symbol> ]  <assign-pair-rhs> }
     rule as-pair                { <assign-pair-rhs> <.as-preposition>        <assign-pair-lhs> }
     rule association-pair       { <assign-pair-lhs> <.associate-with-symbol> <assign-pair-rhs> }
