@@ -115,10 +115,11 @@ role DSL::Shared::Roles::CommonStructures {
     token semicolon-mark   { ';' }
 
     # Operators
-    token key-to-symbol    { '->' }
-    token equal-symbol     { '=' }
-    token equal2-symbol    { '==' }
-    token assign-to-symbol { '=' | ':=' | '<-' }
+    token key-to-symbol         { '->' }
+    token equal-symbol          { '=' }
+    token equal2-symbol         { '==' }
+    token assign-to-symbol      { '=' | ':=' | '<-' }
+    token associate-with-symbol { ':' | '->' | '=' }
 
     # Expressions
     token wl-expr { '`' <-[`]>+ '`' }
@@ -131,12 +132,14 @@ role DSL::Shared::Roles::CommonStructures {
     rule mixed-quoted-variable-name-or-wl-expr-list { <mixed-quoted-variable-name-or-wl-expr>+ % <list-separator> }
 
     # Assign-pairs and as-pairs
-    rule assign-pair { <assign-pair-lhs> [ <.assign-to-symbol> ] <assign-pair-rhs> }
-    rule as-pair     { <assign-pair-rhs> <.as-preposition>   <assign-pair-lhs> }
-    rule assign-pairs-list { <assign-pair>+ % <.list-separator> }
-    rule as-pairs-list     { <as-pair>+     % <.list-separator> }
-    rule assign-pair-lhs { <mixed-quoted-variable-name> }
-    rule assign-pair-rhs { <mixed-quoted-variable-name> | <wl-expr> }
+    rule assign-pair            { <assign-pair-lhs> [ <.assign-to-symbol> ]  <assign-pair-rhs> }
+    rule as-pair                { <assign-pair-rhs> <.as-preposition>        <assign-pair-lhs> }
+    rule association-pair       { <assign-pair-rhs> <.associate-with-symbol> <assign-pair-lhs> }
+    rule assign-pairs-list      { <assign-pair>+      % <.list-separator> }
+    rule as-pairs-list          { <as-pair>+          % <.list-separator> }
+    rule association-pairs-list { <association-pair>+ % <.list-separator> }
+    rule assign-pair-lhs        { <mixed-quoted-variable-name> }
+    rule assign-pair-rhs        { <mixed-quoted-variable-name> | <wl-expr> }
 
     # Correspondence pairs
     rule key-pairs-list { <key-pair>+ % <.list-separator> }
