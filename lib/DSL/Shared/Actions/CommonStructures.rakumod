@@ -114,4 +114,26 @@ class DSL::Shared::Actions::CommonStructures {
     method variable-name-or-wl-expr-list($/) { make $<variable-name-or-wl-expr>>>.made; }
     method mixed-quoted-variable-name-or-wl-expr($/) { make $/.values[0].made; }
     method mixed-quoted-variable-name-or-wl-expr-list($/) { make $<mixed-quoted-variable-name-or-wl-expr>>>.made; }
+
+	# Assign-pairs, as-pairs, and association-pairs
+	method assign-pairs-list($/)      { make $<assign-pair>>>.made.join(', '); }
+	method as-pairs-list($/)          { make $<as-pair>>>.made.join(', '); }
+	method association-pairs-list($/) { make '{' ~ $<association-pair>>>.made.join(', ') ~ '}'; }
+	method assign-pair($/)            { make $<assign-pair-lhs>.made ~ ' = ' ~ $<assign-pair-rhs>.made; }
+	method as-pair($/)                { make $<assign-pair-lhs>.made ~ ' = ' ~ $<assign-pair-rhs>.made; }
+	method association-pair($/)       { make $<assign-pair-lhs>.made ~ ' : ' ~ $<assign-pair-rhs>.made; }
+	method assign-pair-lhs($/) { make $/.values[0].made; }
+	method assign-pair-rhs($/) {
+		if $<mixed-quoted-variable-name> {
+			make '"' ~ $/.values[0].made.subst(:g, '"', '') ~ '"';
+		} else {
+			make $/.values[0].made
+		}
+	}
+
+	# Correspondence pairs
+	method key-pairs-list($/) { make $<key-pair>>>.made.join(', '); }
+	method key-pair($/) { make $<key-pair-lhs>.made ~ ' = ' ~ $<key-pair-rhs>.made; }
+	method key-pair-lhs($/) { make '"' ~ $/.values[0].made.subst(:g, '"', '') ~ '"'; }
+	method key-pair-rhs($/) { make '"' ~ $/.values[0].made.subst(:g, '"', '') ~ '"'; }
 }
