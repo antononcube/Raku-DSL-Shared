@@ -134,7 +134,7 @@ role DSL::Shared::Roles::CommonStructures {
     # Assign-pairs and as-pairs
     rule assign-pair            { <assign-pair-lhs> [ <.assign-to-symbol> ]  <assign-pair-rhs> }
     rule as-pair                { <assign-pair-rhs> <.as-preposition>        <assign-pair-lhs> }
-    rule association-pair       { <assign-pair-rhs> <.associate-with-symbol> <assign-pair-lhs> }
+    rule association-pair       { <assign-pair-lhs> <.associate-with-symbol> <assign-pair-rhs> }
     rule assign-pairs-list      { <assign-pair>+      % <.list-separator> }
     rule as-pairs-list          { <as-pair>+          % <.list-separator> }
     rule association-pairs-list { <association-pair>+ % <.list-separator> }
