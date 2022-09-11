@@ -106,7 +106,10 @@ class DSL::Shared::Actions::CommonStructures {
 	method trivial-parameter-true($/) { make 'true'; }
 
 	# Expressions
-	method wl-expr($/) { make $/.Str.substr(1,*-1); }
+	method shell-backtick-expr($/) { make $/.Str.substr(1,*-1); }
+	method shell-curly-braces-expr($/) { make $/.Str.substr(2,*-1); }
+	method shell-expr($/) { make $/.values[0].made; }
+	method wl-expr($/) { make $/.values[0].made; }
 	method code-expr($/) { make $/.Str; }
 
 	# Expression combinations

@@ -122,8 +122,11 @@ role DSL::Shared::Roles::CommonStructures {
     token associate-with-symbol { ':' | '->' | '=' }
 
     # Expressions
-    token wl-expr { '`' <-[`]>+ '`' }
-    token code-expr { '`' \w+ \h+ <-[`]>+ '`' }
+    regex shell-backtick-expr { '`' <-[`]>+ '`' }
+    regex shell-curly-braces-expr { '${' (.+) '}' <!{ $0.contains('${') }> }
+    regex shell-expr { <shell-backtick-expr> || <shell-curly-braces-expr> }
+    regex wl-expr { <shell-backtick-expr> || <shell-curly-braces-expr> }
+    regex code-expr { '`' \w+ \h+ <-[`]>+ '`' ||  <shell-curly-braces-expr> }
 
     # Expression combinations
     rule variable-name-or-wl-expr { <variable-name> | <wl-expr> }
