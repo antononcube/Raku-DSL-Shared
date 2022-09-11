@@ -18,7 +18,7 @@ grammar ParseObj
     regex TOP { <predicates-list> }
 };
 
-plan 8;
+plan 10;
 
 #-----------------------------------------------------------
 # Predicates parsing
@@ -47,5 +47,11 @@ ok ParseObj.parse('Title starts with "air"'),
 
 ok ParseObj.parse('Title ends with "snow"'),
         'Title ends with "snow"';
+
+ok ParseObj.parse('X2 is `12+x`'),
+        'X2 is `12+x`';
+
+ok ParseObj.parse('X2 is ${12+x}'),
+        'X2 is ${12+x}';
 
 done-testing;
