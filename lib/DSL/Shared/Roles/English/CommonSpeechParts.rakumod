@@ -1078,4 +1078,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto rule use-directive {*}
     rule use-directive:sym<English> {  [ <get-directive> <and-conjunction>? ]? <use-verb>  }
+
+    proto rule using-dataset-column-phrase {*}
+    rule using-dataset-column-phrase:sym<English> { <with-preposition> <the-determiner>? <dataset-noun>? <column-noun> }
 }
