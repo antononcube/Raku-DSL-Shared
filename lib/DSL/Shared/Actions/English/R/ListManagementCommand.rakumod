@@ -35,10 +35,14 @@ class DSL::Shared::Actions::English::R::ListManagementCommand
 
     method list-management-range($/) { make $/.values[0].made; }
     method list-management-top-range($/) {
-        make 'obj <- obj[1:' ~ $/.values[0].made ~ ']';
+        # The function head works on both vectors and data frames.
+        #make 'obj <- obj[1:' ~ $/.values[0].made ~ ']';
+        make 'obj <- head(obj, ' ~ $/.values[0].made ~ ')';
     }
     method list-management-bottom-range($/) {
-        make 'obj <- obj[(length(obj)-' ~ $/.values[0].made ~ '):length(obj)]';
+        # The function tail works on both vectors and data frames.
+        #make 'obj <- obj[(length(obj)-' ~ $/.values[0].made ~ '):length(obj)]';
+        make 'obj <- tail(obj, ' ~ $/.values[0].made ~ ')';
     }
     method range-spec($/) {
         if $<range-spec-step> {
