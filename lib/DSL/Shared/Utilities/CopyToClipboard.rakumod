@@ -13,7 +13,7 @@ unit module DSL::Shared::Utilities::CopyToClipboard;
 #|   - 'xclip -selection clipboard' on Linux.
 multi sub copy-to-clipboard(Str $payload, :$clipboard-command is copy = Whatever) is export {
 
-    if $clipboard-command.isa(Whatever) || $clipboard-command ~~ Str && $clipboard-command eqv 'Whatever' {
+    if $clipboard-command.isa(Whatever) || $clipboard-command ~~ Str && $clipboard-command eq 'Whatever' {
         if %*ENV<CLIPBOARD_COPY_COMMAND>:exists {
             $clipboard-command = %*ENV<CLIPBOARD_COPY_COMMAND>;
         } else {
