@@ -363,5 +363,5 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     rule time-series-phrase { <time-noun> <series-noun> }
     rule time-series-data { <time-series-phrase> <data-noun>? }
     rule use-directive { [ <get-directive> <and-conjunction>? ]? <use-verb> }
-    rule using-dataset-column-phrase { <.with-preposition> <.the-determiner>? <.dataset-noun>? <.column-noun>? }
+    rule using-dataset-column-phrase { <.with-preposition> <.the-determiner>? <.dataset-noun>? <.column-noun> }
 }
