@@ -7,7 +7,7 @@
 echo 'Process English template'
 
 cd ./lib/DSL/Shared/Roles/English
-AddFuzzyMatching -o=./CommonSpeechParts.rakumod --add-protos --sym-name=English --add-exclusions ./CommonSpeechParts-template
+add-fuzzy-matching -o=./CommonSpeechParts.rakumod --add-protos --sym-name=English --add-exclusions ./CommonSpeechParts-template
 
 # Go back to the top directory
 cd ../../../../../
@@ -16,7 +16,7 @@ cd ../../../../../
 echo 'Process Bulgarian template'
 
 cd ./lib/DSL/Shared/Roles/Bulgarian
-AddFuzzyMatching -o=./CommonSpeechParts.rakumod --/add-protos --sym-name=Bulgarian --add-exclusions --func-name=is-bg-fuzzy-match ./CommonSpeechParts-template
+add-fuzzy-matching -o=./CommonSpeechParts.rakumod --/add-protos --sym-name=Bulgarian --add-exclusions --func-name=is-bg-fuzzy-match ./CommonSpeechParts-template
 
 # Go back to the top directory
 cd ../../../../../
