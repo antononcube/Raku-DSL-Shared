@@ -7,6 +7,7 @@ use DSL::Shared::Roles::English::CommonParts;
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::PredicateSpecification;
+use DSL::Shared::Roles::English::PredicateSpecification;
 use DSL::Shared::Actions::English::WL::PipelineCommand;
 use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
@@ -14,10 +15,11 @@ use DSL::Shared::Utilities::MetaSpecsProcessing;
 grammar ParseObj
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Shared::Roles::PredicateSpecification
+        does DSL::Shared::Roles::English::PredicateSpecification
         does DSL::Shared::Roles::English::PipelineCommand {
     #regex TOP { <variable-names-list> | <range-spec> | <pipeline-command> | <predicates-list> | <code-expr> }
     #regex TOP { <predicates-list> | <code-expr> }
-    rule TOP { <pipeline-command> | <regex-pattern-spec> | <user-id-spec-command>}
+    rule TOP { <pipeline-command> | <regex-pattern-spec> | <user-id-spec-command> | <predicates-list> }
 };
 
 
@@ -69,6 +71,7 @@ say "Array : ", is-fuzzy-match( 'kpr', @($actuals), 2 );
 
 #say ParseObj.parse( 'var1 is male and var2 is less than 12 or var3 is greater than 50' );
 
+my $cmd;
 #
 #say "=" x 60;
 #
@@ -82,9 +85,17 @@ say "Array : ", is-fuzzy-match( 'kpr', @($actuals), 2 );
 #
 #say ParseObj.parse( 'from 5 to 105 step 2' );
 #
-#say "=" x 60;
-#
-#say ParseObj.parse( 'var1 == "male" & var2 < 12 or var3 > 50' );
+say "=" x 60;
+$cmd = 'var1 == "male" & var2 < 12 or var3 > 50';
+say $cmd;
+say '-' x 60;
+say ParseObj.parse( $cmd );
+
+say "=" x 60;
+$cmd = 'var1 in ${"blue", "red"}';
+say '-' x 60;
+say $cmd;
+say ParseObj.parse( $cmd );
 #
 #say "=" x 60;
 #
