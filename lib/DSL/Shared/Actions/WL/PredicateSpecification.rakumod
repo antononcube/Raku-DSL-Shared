@@ -27,6 +27,8 @@ class DSL::Shared::Actions::WL::PredicateSpecification
       make 'StringMatchQ[ #[' ~ $objCol ~ '], ___ ~~ ' ~ $<rhs>.made ~ ' ~~ ___]';
     } elsif $<predicate-relation>.made eq 'match' {
       make 'MatchQ[ #[' ~ $objCol ~ '], ' ~ $<rhs>.made ~ ']';
+    } elsif $<predicate-relation>.made eq '\[Element]' {
+      make 'MemberQ[Flatten[{' ~ $<rhs>.made ~ '}], #[' ~ $objCol ~ ']]';
     } else {
       make '#[' ~ $objCol ~ '] ' ~ $<predicate-relation>.made ~ ' ' ~ $<rhs>.made;
     }
