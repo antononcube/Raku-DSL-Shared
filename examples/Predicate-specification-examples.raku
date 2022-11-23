@@ -23,7 +23,7 @@ grammar ParseObj
 };
 
 class ActionsObj
-        is DSL::Shared::Actions::Raku::PredicateSpecification {
+        is DSL::Shared::Actions::WL::PredicateSpecification {
 }
 
 my @matchingCommands = (
@@ -45,7 +45,8 @@ my @commands = (
 '"v 1" > 10 & "v 2" >= 12 | v3 == 20',
 'Title is like `air_`',
 'Title starts with "air"',
-'Title ends with "snow"'
+'Title ends with "snow"',
+'var1 in ${"blue", "red"}'
 );
 
 my $action-type = 'interpret';
