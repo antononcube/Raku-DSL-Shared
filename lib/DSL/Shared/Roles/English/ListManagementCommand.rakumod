@@ -14,7 +14,7 @@ role DSL::Shared::Roles::English::ListManagementCommand {
         <list-management-position-query> }
     
     rule list-management-assignment {
-        [ <.set-directive> <variable-spec> [ <.to-preposition> | <.as-conjunction> ] <value-spec>] |
+        [ <.set-directive> <variable-spec> [ <.to-preposition> | <.as-preposition> ] <value-spec>] |
         <.assign-verb> <value-spec> <.to-preposition> <variable-spec> }
 
     rule list-management-take { [ <.take-verb> | <.get-verb> ]? [ <list-management-position-query> | <list-management-range> | <list-management-position-spec> ] }
