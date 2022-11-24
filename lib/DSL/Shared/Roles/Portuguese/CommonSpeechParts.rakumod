@@ -195,7 +195,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token number-noun:sym<Portuguese> { :i 'número' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'número', 2) }> }
     token object-noun:sym<Portuguese> { :i 'sítio' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'sítio', 2) }> }
     token obtain-verb:sym<Portuguese> { :i  'recuperado de' | 'minha'  }
-    token of-preposition:sym<Portuguese> { :i  'para' | 'em'  }
+    token of-preposition:sym<Portuguese> { :i  'para' | 'em' | 'de'  }
     token off-adverb:sym<Portuguese> { :i 'sem' | ([\w]+) <?{ $0.Str !(elem) <um são ser de> and is-fuzzy-match($0.Str, 'sem', 1) }> }
     token on-preposition:sym<Portuguese> { :i  'em' | 'por'  }
     token one-pronoun:sym<Portuguese> { :i  'um' | 'primeiro' | 'coisa'  }

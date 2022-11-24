@@ -195,7 +195,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token number-noun { 'número' }
     token object-noun { 'sítio' }
     token obtain-verb { 'recuperado de' | 'minha' }
-    token of-preposition { 'para' | 'em' }
+    token of-preposition { 'para' | 'em' | 'de' }
     token off-adverb { 'sem' }
     token on-preposition { 'em' | 'por' }
     token one-pronoun { 'um' | 'primeiro' | 'coisa' }
