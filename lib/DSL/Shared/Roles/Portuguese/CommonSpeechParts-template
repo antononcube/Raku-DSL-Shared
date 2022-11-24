@@ -123,7 +123,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token extract-directive { 'recuperado de' | 'recuperado de' | 'minha' }
     token filter { <filter-verb> }
     token filter-noun { <filter-verb> }
-    token filter-verb { 'filtro' | 'filtro' }
+    token filter-verb { 'filtro' }
     token find-verb { 'pesquisa' | 'encontrar' }
     token first-adjective { 'primeiro' | 'primeiros' }
     token for-preposition { 'para' | 'com' | 'em' }

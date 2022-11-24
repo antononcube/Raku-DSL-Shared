@@ -123,7 +123,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token extract-directive:sym<Portuguese> { :i  'recuperado de' | 'recuperado de' | 'minha'  }
     token filter:sym<Portuguese> { :i <filter-verb> }
     token filter-noun:sym<Portuguese> { :i <filter-verb> }
-    token filter-verb:sym<Portuguese> { :i  'filtro' | 'filtro'  }
+    token filter-verb:sym<Portuguese> { :i 'filtro' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'filtro', 2) }> }
     token find-verb:sym<Portuguese> { :i  'pesquisa' | 'encontrar'  }
     token first-adjective:sym<Portuguese> { :i  'primeiro' | 'primeiros'  }
     token for-preposition:sym<Portuguese> { :i  'para' | 'com' | 'em'  }
