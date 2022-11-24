@@ -166,7 +166,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token left-noun { 'esquerda' }
     token link-noun { 'ligação' }
     token list-noun { 'lista' }
-    token load-verb { 'carga' }
+    token load-verb { 'carga' | 'carregar' }
     token locate-verb { 'encontrar' | 'localizar' }
     token low-adjective { 'fundo' | 'baixo' }
     token lower-adjective { 'по-долен' | 'fundo' }
@@ -278,7 +278,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token table-noun { 'quadro' }
     token tables-noun { 'quadros' }
     token tabular-adjective { 'tabular' }
-    token take-verb { 'obter' | 'tomar' }
+    token take-verb { 'obter' | 'tomar' | 'levar' | 'pegue' }
     token tape-adjective { 'cassetes' | 'cassete' | 'fitas' | 'fitas'  }
     token tape-noun { 'cassete' }
     token target-noun { 'finalidade' }
@@ -287,7 +287,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token texts-noun { 'textos' }
     token textual-adjective { 'textos' | 'texto' | 'texto' | 'texto' }
     token that-pronoun { 'esses' | 'que' }
-    token the-determiner { 'o' }
+    token the-determiner { 'o' | 'a' }
     token them-pronoun { 'eles' }
     token this-pronoun { 'este' | 'isto' }
     token threshold-adjective { 'limiar' | 'limiar' | 'limiar' | 'limiares' }
