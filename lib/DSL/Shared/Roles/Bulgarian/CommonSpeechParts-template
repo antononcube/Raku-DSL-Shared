@@ -173,6 +173,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token make-noun { 'направи' }
     token making-noun { 'правене' }
     token manner { 'начин' | 'маниер' }
+    token many-determiner { 'много' }
     token matrices-noun { 'матрици' }
     token matrix-noun { 'матрица' }
     token matrixes-noun { 'матрици' }

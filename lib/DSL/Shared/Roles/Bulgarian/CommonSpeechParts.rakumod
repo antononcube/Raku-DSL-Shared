@@ -178,6 +178,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token make-noun:sym<Bulgarian> { :i 'направи' | ([\w]+) <?{ $0.Str !(elem) <прави забрави> and is-bg-fuzzy-match($0.Str, 'направи', 2) }> }
     token making-noun:sym<Bulgarian> { :i 'правене' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'правене', 2) }> }
     token manner:sym<Bulgarian> { :i 'начин' | ([\w]+) <?{ $0.Str ne 'наши' and is-bg-fuzzy-match($0.Str, 'начин', 2) }> | 'маниер' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'маниер', 2) }> }
+    token many-determiner:sym<Bulgarian> { :i 'много' }
     token matrices-noun:sym<Bulgarian> { :i 'матрици' | ([\w]+) <?{ $0.Str ne 'матрица' and is-bg-fuzzy-match($0.Str, 'матрици', 2) }> }
     token matrix-noun:sym<Bulgarian> { :i 'матрица' | ([\w]+) <?{ $0.Str ne 'матрици' and is-bg-fuzzy-match($0.Str, 'матрица', 2) }> }
     token matrixes-noun:sym<Bulgarian> { :i 'матрици' | ([\w]+) <?{ $0.Str ne 'матрица' and is-bg-fuzzy-match($0.Str, 'матрици', 2) }> }
