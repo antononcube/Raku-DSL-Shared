@@ -919,7 +919,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token variables-noun {*}
     token variables-noun:sym<English> { :i 'variables' | ([\w]+) <?{ $0.Str ne 'variable' and is-fuzzy-match($0.Str, 'variables', 2) }> }
-    token versus-preposition { 'vs' | 'vs.' | 'versus' }
+
+    proto token versus-preposition {*}
+    token versus-preposition:sym<English> { 'vs' | 'vs.' | 'versus' }
 
     proto token way-noun {*}
     token way-noun:sym<English> { :i 'way' | ([\w]+) <?{ $0.Str !(elem) <a an as at away by max my what> and is-fuzzy-match($0.Str, 'way', 1) }> }
