@@ -173,6 +173,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token make-noun { 'make' }
     token making-noun { 'making' }
     token manner { 'manner' }
+    token many-determiner { 'many' }
     token matrices-noun { 'matrices' }
     token matrix-noun { 'matrix' }
     token matrixes-noun { 'matrixes' }

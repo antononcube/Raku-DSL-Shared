@@ -503,6 +503,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token manner {*}
     token manner:sym<English> { :i 'manner' | ([\w]+) <?{ $0.Str ne 'annex' and is-fuzzy-match($0.Str, 'manner', 2) }> }
 
+    proto token many-determiner {*}
+    token many-determiner:sym<English> { :i 'many' | ([\w]+) <?{ $0.Str !(elem) <make any> and is-fuzzy-match($0.Str, 'many', 2) }> }
+
     proto token matrices-noun {*}
     token matrices-noun:sym<English> { :i 'matrices' | ([\w]+) <?{ $0.Str ne 'matrixes' and is-fuzzy-match($0.Str, 'matrices', 2) }> }
 
