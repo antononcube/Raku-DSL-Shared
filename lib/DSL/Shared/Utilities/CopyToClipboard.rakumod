@@ -3,6 +3,7 @@ use v6.d;
 unit module DSL::Shared::Utilities::CopyToClipboard;
 
 #| Replaces the contents of the clipboard with the first argument
+#| If the first argument is not a string then it is converted to one with .raku.
 #| If $clipboard-command is the empty string then no copying to the clipboard is done.
 #| If $clipboard-command is Whatever or 'Whatever' then:
 #| 1. It is attempted to use the environment variable CLIPBOARD_COPY_COMMAND.
@@ -11,7 +12,13 @@ unit module DSL::Shared::Utilities::CopyToClipboard;
 #|   - 'pbcopy' is used on macOS
 #|   - 'clip.exe' on Windows
 #|   - 'xclip -selection clipboard' on Linux.
-multi sub copy-to-clipboard(Str $payload, :$clipboard-command is copy = Whatever) is export {
+proto copy-to-clipboard(|) is export {*}
+
+multi sub copy-to-clipboard($payload is copy, :$clipboard-command is copy = Whatever) {
+
+    if $payload !~~ Str {
+        $payload = $payload.raku;
+    }
 
     if $clipboard-command.isa(Whatever) || $clipboard-command ~~ Str && $clipboard-command eq 'Whatever' {
         if %*ENV<CLIPBOARD_COPY_COMMAND>:exists {
@@ -34,7 +41,7 @@ multi sub copy-to-clipboard(Str $payload, :$clipboard-command is copy = Whatever
     }
 }
 
-multi sub copy-to-clipboard(Bool :$usage-message = True -->Str) is export {
+multi sub copy-to-clipboard(Bool :$usage-message = True -->Str) {
     my $usage = Q:c:to/EOH/;
         If --clipboard-command is the empty string then no copying to the clipboard is done.
         If --clipboard-command is 'Whatever' then:
