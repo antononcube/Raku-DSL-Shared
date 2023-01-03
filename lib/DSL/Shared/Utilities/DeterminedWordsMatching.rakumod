@@ -12,7 +12,7 @@ my %determinerSuffixes;
 #============================================================
 proto is-determined-word(Str $lang, Str $candidate, Str $actual, :$gender = Whatever, :$plurality = Whatever --> Bool) is export {*}
 
-multi is-determined-word('Bulgarian', Str $candidate, Str $actual is copy,
+multi is-determined-word(Str $lang, Str $candidate, Str $actual is copy,
                          :$gender is copy = Whatever,
                          :$plurality is copy = Whatever --> Bool) {
 
@@ -29,7 +29,7 @@ multi is-determined-word('Bulgarian', Str $candidate, Str $actual is copy,
     $plurality = $plurality.lc;
 
     # my $suffixPattern = %determinerSuffixes{$gender}{$plurality}.join(' | ');
-    my @suffixes = |%determinerSuffixes{$gender}{$plurality};
+    my @suffixes = |%determinerSuffixes{$lang}{$gender}{$plurality};
     my @actuals = @suffixes.map({ $actual ~ $_});
 
     #| Determine is it determined
@@ -40,7 +40,7 @@ multi is-determined-word('Bulgarian', Str $candidate, Str $actual is copy,
 }
 
 #============================================================
-# Determiner matching
+# Bulgarian fuzzy matching
 #============================================================
 proto is-bg-fuzzy-match($c, $a, $maxDist = 2) is export {*};
 
@@ -49,25 +49,42 @@ multi is-bg-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
 }
 
 #============================================================
+# Russian fuzzy matching
+#============================================================
+proto is-ru-fuzzy-match($c, $a, $maxDist = 2) is export {*};
+
+multi is-ru-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
+    return is-determined-word('Russian', $candidate, $actual) || is-fuzzy-match($candidate, $actual, $maxDist);
+}
+
+#============================================================
 # Determiner suffixes
 #============================================================
 %determinerSuffixes = BEGIN {
 
+    # Bulgarian
     #| Make determiner-suffix rules
-    my %suffixes =
+    my %suffixesBG =
             male => { single => <а я ът ят ия ият>, plural => ('те',) },
             female => { single => ('та',), plural => ('те',) },
             neutral => { single => ('то',), plural => ('те',) };
 
-    %suffixes<any> = %();
+    %suffixesBG<any> = %();
 
     for <male female neutral> -> $g {
-        %suffixes{$g}<any> = unique((|%suffixes{$g}<single>, |%suffixes{$g}<plural>)).List;
+        %suffixesBG{$g}<any> = unique((|%suffixesBG{$g}<single>, |%suffixesBG{$g}<plural>)).List;
     }
 
     for <single plural any> -> $p {
-        %suffixes<any>{$p} = unique((|%suffixes<male>{$p}, |%suffixes<female>{$p}, |%suffixes<neutral>{$p})).List;
+        %suffixesBG<any>{$p} = unique((|%suffixesBG<male>{$p}, |%suffixesBG<female>{$p}, |%suffixesBG<neutral>{$p})).List;
     }
+
+    # Russian
+    # TBD ...
+    my %suffixesRU = %suffixesBG;
+
+    # All languages
+    my %suffixes = Bulgarian => %suffixesBG, Russian => %suffixesRU;
 
     %suffixes
 }
