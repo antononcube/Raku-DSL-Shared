@@ -69,7 +69,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token connect-verb { 'связать' | 'связать' }
     token consider-verb { 'проверять' }
     token context-noun { 'справочная информация' }
-    token contingency-noun { 'условный' | 'перекрестные ссылки' 'табуляция' }
+    token contingency-noun { 'условный' | 'перекрестные' \h+ 'ссылки' \h+ 'табуляция' }
     token convert-verb { 'конвертировать' }
     token conveyor-adjective { 'конвейер' | 'конвейер' | 'конвейер' | 'конвейер' }
     token conveyor-noun { 'конвейер' }
@@ -80,11 +80,11 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token create-verb { 'создать' }
     token creation-noun { 'существо' | 'дело' }
     token current-adjective { 'текущий' | 'текущий' | 'текущий' }
-    token data-adjective { 'данные' | 'dannova' | 'данново' | 'данные' }
+    token data-adjective { 'данные' | 'данновые' | 'данново' | 'данные' }
     token data-noun { 'данные' | 'данные' | 'данновые' }
     token dataset { <dataset-noun> }
-    token dataset-noun { 'набор' \h+ 'данных' | 'технический паспорт' \h+ 'установить' | <array-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
-    token datasets-noun { 'наборы' \h+ 'данных' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
+    token dataset-noun { 'набор' \h+ 'данных' | <array-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
+    token datasets-noun { 'набор' \h+ 'данных' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
     token date-adjective { 'даты' | 'дата' | 'дата' | 'дата' }
     token date-noun { 'дата' }
     token dates-noun { 'даты' }
@@ -129,7 +129,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token for-preposition { 'для' | 'с' | 'на' }
     token frame-noun { 'рама' }
     token frames-noun { 'рамы' }
-    token from-preposition { 'от' }
+    token from-preposition { 'от' | 'с' }
     token function { <function-noun> }
     token function-noun { 'функцию' }
     token functions { <functions-noun> }
@@ -166,7 +166,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token left-noun { 'слева' }
     token link-noun { 'ссылка' }
     token list-noun { 'список' }
-    token load-verb { 'нагрузка' }
+    token load-verb { 'загрузить' }
     token locate-verb { 'найти' | 'локализовать' }
     token low-adjective { 'ниже' | 'низкий' }
     token lower-adjective { 'по-долен' | 'ниже' }
@@ -224,7 +224,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token records { 'записи' }
     token reduce-verb { 'сократить' }
     token remove-verb { 'удалить' }
-    token replace-verb { 'заменить' }
+    token replace-verb { 'заменить' | 'заменить' }
     token represent-directive { <represent-verb> | 'нарисовать' | 'отражение' }
     token represent-verb { 'представлено' }
     token rest-noun { 'oстаток' }
@@ -266,7 +266,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token statistical-adjective { 'статистически' }
     token statistics-noun { 'статистика' }
     token stats-noun { 'статс' }
-    token step-noun { 'шаг' }
+    token step-noun { 'шаг' | 'шагом' }
     token steps-noun { 'шаги' }
     token string-noun { 'строка' }
     token sub-prefix { 'съб' | 'под' }
@@ -297,7 +297,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token time-noun { 'время' }
     token timeline-noun { <time-adjective> 'строка' }
     token times-noun { 'раз' }
-    token to-preposition { 'на' | 'на' | 'на'  }
+    token to-preposition { 'на' | 'до'  }
     token top-adjective { 'най-горен' | 'най-горна' | 'най-горно' | 'най-горни' | 'топ' | 'топ' | 'топ' | 'топ' }
     token top-noun { 'топ' }
     token transform-verb { 'преобразование' }
