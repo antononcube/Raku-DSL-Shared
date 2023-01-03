@@ -43,7 +43,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token both-determiner:sym<Russian> { :i  'оба' | 'одновременно' | 'вместе'  }
     token bottom-noun:sym<Russian> { :i  'дно' | 'най-ниско'  }
     token broaden-verb:sym<Russian> { :i 'расширить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'расширить', 2) }> }
-    token by-preposition:sym<Russian> { :i  'от' | 'с' | 'через'  }
+    token by-preposition:sym<Russian> { :i  'по' | 'от' | 'с' | 'через' }
     token calculation:sym<Russian> { :i 'расчет' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'расчет', 2) }> }
     token case-noun:sym<Russian> { :i 'случай' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'случай', 2) }> }
     token cases-noun:sym<Russian> { :i 'дела' | ([\w]+) <?{ $0.Str !(elem) <дата делай для цель веса> and is-ru-fuzzy-match($0.Str, 'дела', 2) }> }
@@ -73,8 +73,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token convert-verb:sym<Russian> { :i 'конвертировать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвертировать', 2) }> }
     token conveyor-adjective:sym<Russian> { :i  'конвейер' | 'конвейер' | 'конвейер' | 'конвейер'  }
     token conveyor-noun:sym<Russian> { :i 'конвейер' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвейер', 2) }> }
-    token count-verb:sym<Russian> { :i  'граф' | 'число' | 'штука' | 'размер'  }
-    token counts-noun:sym<Russian> { :i  'количество' | 'числа' | 'штуки' | 'размеры'  }
+    token count-verb:sym<Russian> { :i  'граф' | 'число' | 'штука' | 'размер' | 'подсчет'  }
+    token counts-noun:sym<Russian> { :i  'количество' | 'числа' | 'число' \h+ 'штук' | 'размеры' | 'подсчеты'  }
     token create:sym<Russian> { :i  'создать' | 'сделать'  }
     token create-directive:sym<Russian> { :i  <create-verb> | 'сделать'  }
     token create-verb:sym<Russian> { :i 'создать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'создать', 2) }> }
@@ -279,7 +279,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token table-noun:sym<Russian> { :i 'таблица' | ([\w]+) <?{ $0.Str ne 'таблицы' and is-ru-fuzzy-match($0.Str, 'таблица', 2) }> }
     token tables-noun:sym<Russian> { :i 'таблицы' | ([\w]+) <?{ $0.Str ne 'таблица' and is-ru-fuzzy-match($0.Str, 'таблицы', 2) }> }
     token tabular-adjective:sym<Russian> { :i 'табличный' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'табличный', 2) }> }
-    token take-verb:sym<Russian> { :i  'бери' | 'забери' | 'забрать' | 'получить'  }
+    token take-verb:sym<Russian> { :i  'бери' | 'забери' | 'забрать' | 'получить' | 'возьми'  }
     token tape-adjective:sym<Russian> { :i  'лентовый' | 'лентовая' | 'лентовое' | 'лентовые'   }
     token tape-noun:sym<Russian> { :i 'лента' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'лента', 2) }> }
     token target-noun:sym<Russian> { :i 'цель' | ([\w]+) <?{ $0.Str ne 'дела' and is-ru-fuzzy-match($0.Str, 'цель', 2) }> }
