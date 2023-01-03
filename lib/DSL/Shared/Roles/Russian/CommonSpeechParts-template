@@ -32,7 +32,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token are-verb { 'есть' }
     token array-noun { 'массив' }
     token arrays-noun { 'массивы' }
-    token as-preposition { 'например,' }
+    token as-preposition { 'как' }
     token assign-verb { 'назначить' }
     token at-preposition { 'затем' }
     token automatic { 'автоматический' | 'автоматическая' | 'автоматически' | 'автоматические'  }
@@ -40,19 +40,19 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token axes-noun { 'оси' }
     token axis-noun { 'ось' }
     token be-verb { 'be' }
-    token both-determiner { 'и'? 'оба' | 'одновременно' | 'вместе' }
+    token both-determiner { 'оба' | 'одновременно' | 'вместе' }
     token bottom-noun { 'дно' | 'най-ниско' }
     token broaden-verb { 'расширить' }
     token by-preposition { 'от' | 'с' | 'через' }
     token calculation { 'расчет' }
     token case-noun { 'случай' }
     token cases-noun { 'дела' }
-    token channel-adjective { 'канал' | 'канал' | 'канал' | 'канал' }
+    token channel-adjective { 'каналный' | 'каналная' | 'каналные' | 'каналное' }
     token channel-noun { 'канал' }
     token chart-noun { 'чертеж' | 'график' | 'карта' }
     token chart-verb { 'нарисовать' | 'нарисовать' }
     token classify-verb { 'классифицировать' }
-    token clear-verb { 'чистый' | 'ясно' | 'очистить' }
+    token clear-verb { 'чистый' | 'очистить' }
     token cluster { <cluster-noun> }
     token cluster-noun { 'кластер' | 'группа' }
     token clusters-noun { 'кластеры' | 'группы' }
@@ -81,16 +81,16 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token creation-noun { 'существо' | 'дело' }
     token current-adjective { 'текущий' | 'текущий' | 'текущий' }
     token data-adjective { 'данные' | 'dannova' | 'данново' | 'данные' }
-    token data-noun { 'данные' | 'данные' | 'dannova' }
+    token data-noun { 'данные' | 'данные' | 'данновые' }
     token dataset { <dataset-noun> }
-    token dataset-noun { 'набор данных' | 'технический паспорт' \h+ 'установить' | <array-noun> 'от' <data-noun> | <data-adjective> \h+ <array-noun>}
-    token datasets-noun { 'наборы данных' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
+    token dataset-noun { 'набор' \h+ 'данных' | 'технический паспорт' \h+ 'установить' | <array-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
+    token datasets-noun { 'наборы' \h+ 'данных' | <arrays-noun> \h+ 'от' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
     token date-adjective { 'даты' | 'дата' | 'дата' | 'дата' }
     token date-noun { 'дата' }
     token dates-noun { 'даты' }
     token datum-noun { 'данные' }
     token default { <default-noun> }
-    token default-noun { 'по' 'умолчанию' | 'умолчаный' \h+ 'естц' }
+    token default-noun { 'по' \h+ 'умолчанию' | 'умолчаный' | 'умолчаная' | 'умолчаные' | 'умолчаное' }
     token delete-directive { 'удалить' | 'выбросить' | 'удалить' }
     token detect-verb { 'создать' | 'найти' | 'обнаружить' }
     token diagram { <diagram-synonyms> }
@@ -109,7 +109,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token documents-noun { 'документы' }
     token domain-noun { 'домен' | 'область' }
     token drop-verb { 'выбросить' | 'забудьте' | 'выбросить' }
-    token during-preposition { 'в то время как' | 'через' }
+    token during-preposition { 'в' \h+ 'то' \h+ 'время' | 'во' \h+ 'время' | 'через' }
     token each-determiner { 'каждый' | 'каждый' | 'каждый' }
     token echo-verb { 'echo' }
     token element { <element-noun> }
@@ -118,14 +118,14 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token elements-noun { 'элементы'}
     token empty-noun { 'пустое' | 'пустота' }
     token empty-verb { 'пустые' | <empty-noun> }
-    token every-determiner { 'каждый' | 'каждый' | 'каждый' }
+    token every-determiner { 'каждый' | 'каждая' | 'каждые' | 'каждое' }
     token extend-verb { 'расширить' }
-    token extract-directive { 'извлечено из' | 'извлечено из' | 'шахта' }
+    token extract-directive { 'извлеч' }
     token filter { <filter-verb> }
     token filter-noun { <filter-verb> }
     token filter-verb { 'фильтр' | 'фильтровать' }
     token find-verb { 'поиск' | 'найти' }
-    token first-adjective { 'первый' | 'первая' | 'первое' }
+    token first-adjective { 'первый' | 'первые' | 'первая' | 'первое' }
     token for-preposition { 'для' | 'с' | 'на' }
     token frame-noun { 'рама' }
     token frames-noun { 'рамы' }
@@ -189,23 +189,23 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token my-determiner { 'мой' | 'моя' | 'мой' }
     token name-noun { 'имя' }
     token names-noun { 'имена' }
-    token nearest-adjective { 'най-близък' | 'най-близки' }
-    token neighbors-noun { 'соседи' | 'соседи' }
+    token nearest-adjective { 'ближайшие' | 'ближайших' }
+    token neighbors-noun { 'соседи' }
     token no-determiner { 'без' }
     token non-prefix { 'нет' }
     token number-noun { 'число' }
     token object-noun { 'объект' }
-    token obtain-verb { 'извлеч' | 'шахта' }
+    token obtain-verb { 'извлеч' }
     token of-preposition { 'для' | 'на' }
     token off-adverb { 'без' }
     token on-preposition { 'на' | 'по' }
     token one-pronoun { 'один' | 'первое' | 'вещь' }
-    token ones-pronoun { 'первый' | 'вещи' }
+    token ones-pronoun { 'единицы' | 'единиц' | 'вещи' }
     token or-conjunction { 'или' }
-    token our-determiner { 'наш' | 'наш' | 'наш' }
+    token our-determiner { 'наш'  }
     token out-adverb { 'снаружи' | 'снаружи'  }
-    token outlier-adjective { 'экстраординарный' | 'экстраординарный' | 'экстраординарный' | 'экстраординарный' }
-    token outlier-noun { 'чрезвычайная ситуация' | 'экстраординарный' 'значение' }
+    token outlier-adjective { 'экстраординарный' | 'экстраординарная' | 'экстраординарные' | 'экстраординарное' }
+    token outlier-noun { 'чрезвычайная' \h+ 'величина' | 'экстраординарный' 'значение' }
     token outliers-noun { 'необычный' | 'экстраординарный' 'значения' }
     token over-preposition { 'через' | 'через' | 'по' }
     token parameter-noun { 'параметр' }
@@ -216,15 +216,15 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token pipeline-adjective { <tape-adjective> | <conveyor-adjective> | <channel-adjective> }
     token pipeline-noun { <tape-noun> | <conveyor-noun> | <channel-noun> | 'потоковая' \h+ 'строка' }
     token plot-noun { 'чертеж' | 'графика' }
-    token plots-noun { 'чертежи' | 'графика' }
+    token plots-noun { 'чертежи' | 'графики' }
     token position-noun { 'позиция' }
     token pull-noun { 'извлечено из' | 'потяните' }
     token pull-verb { 'извлечено из' | 'подтягивание' }
     token random-adjective { 'случайный' }
     token records { 'записи' }
     token reduce-verb { 'сократить' }
-    token remove-verb { 'удалить' | 'удалить'  }
-    token replace-verb { 'заменить' | 'заменить' }
+    token remove-verb { 'удалить' }
+    token replace-verb { 'заменить' }
     token represent-directive { <represent-verb> | 'нарисовать' | 'отражение' }
     token represent-verb { 'представлено' }
     token rest-noun { 'oстаток' }
@@ -232,7 +232,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token results { <results-noun> }
     token results-noun { 'результаты' }
     token reverse-adjective { 'обратный' | 'повернуть' }
-    token right-adjective { 'правильно' | 'справа' | 'справа' | 'справа' }
+    token right-adjective { 'правильно' | 'справа' }
     token right-noun { 'правильно' }
     token row-noun { 'строка' }
     token rows { <rows-noun> }
@@ -243,8 +243,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token series-noun { 'серия' | 'строка' | 'ряд' }
     token set-directive { 'назначить' }
     token set-noun { 'множество' }
-    token setup-adjective { 'настроиться' | 'тюнинг' | 'настроиться' | 'тюнинг' | 'инициализация' | 'инициализация' | 'инициализация' | 'инициализация' }
-    token setup-noun { 'отношение' | 'настроиться' | 'инициализация' | 'подготовка' | 'подготовка' }
+    token setup-adjective { 'настроиться' | 'тюнинг' | 'настроиться' | 'тюнинг' | 'инициализация' }
+    token setup-noun { 'отношение' | 'настроиться' | 'инициализация' | 'подготовка' }
     token shape-noun { 'форма' }
     token show-verb { 'показать' | 'показать' }
     token simple { 'простой' | 'прямой' }
