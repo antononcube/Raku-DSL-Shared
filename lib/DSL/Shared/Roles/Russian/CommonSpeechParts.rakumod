@@ -58,9 +58,9 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token clusters-noun:sym<Russian> { :i  'кластеры' | 'группы'  }
     token code-noun:sym<Russian> { :i 'код' | ([\w]+) <?{ $0.Str !(elem) <как коды топ когда> and is-ru-fuzzy-match($0.Str, 'код', 1) }> }
     token codes-noun:sym<Russian> { :i 'коды' | ([\w]+) <?{ $0.Str !(elem) <код когда> and is-ru-fuzzy-match($0.Str, 'коды', 2) }> }
-    token column-noun:sym<Russian> { :i 'колонка' | ([\w]+) <?{ $0.Str ne 'колонки' and is-ru-fuzzy-match($0.Str, 'колонка', 2) }> }
+    token column-noun:sym<Russian> { :i  'колонка' | 'колонку' | 'столбцу' | 'столбец' | 'столбцa'  }
     token columns:sym<Russian> { :i <columns-noun> }
-    token columns-noun:sym<Russian> { :i 'колонки' | ([\w]+) <?{ $0.Str ne 'колонка' and is-ru-fuzzy-match($0.Str, 'колонки', 2) }> }
+    token columns-noun:sym<Russian> { :i  'колонки' | 'столбцы'  }
     token complete-adjective:sym<Russian> { :i  'полное' | 'полные'  }
     token compute-directive:sym<Russian> { :i  'рассчитать' | 'найти' | 'рассчитать' | 'рассчитать'  }
     token config-noun:sym<Russian> { :i 'настроить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'настроить', 2) }> }

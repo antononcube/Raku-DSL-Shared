@@ -58,9 +58,9 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token clusters-noun { 'кластеры' | 'группы' }
     token code-noun { 'код' }
     token codes-noun { 'коды' }
-    token column-noun { 'колонка' }
+    token column-noun { 'колонка' | 'колонку' | 'столбцу' | 'столбец' | 'столбцa' }
     token columns { <columns-noun> }
-    token columns-noun { 'колонки' }
+    token columns-noun { 'колонки' | 'столбцы' }
     token complete-adjective { 'полное' | 'полные' }
     token compute-directive { 'рассчитать' | 'найти' | 'рассчитать' | 'рассчитать' }
     token config-noun { 'настроить' }
