@@ -129,7 +129,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token for-preposition { 'для' | 'с' | 'на' }
     token frame-noun { 'рама' }
     token frames-noun { 'рамы' }
-    token from-preposition { 'от' | 'с' }
+    token from-preposition { 'от' | 'с' | 'из' }
     token function { <function-noun> }
     token function-noun { 'функцию' }
     token functions { <functions-noun> }
