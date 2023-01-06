@@ -316,6 +316,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token versus-preposition { 'vs' | 'vs.' | 'versus' }
     token way-noun { 'way' }
     token weight { <weight-noun> }
+    token weight-adjective { <weights-noun> }
     token weight-noun { 'weight' }
     token weights { <weights-noun> }
     token weights-noun { 'weights' }
