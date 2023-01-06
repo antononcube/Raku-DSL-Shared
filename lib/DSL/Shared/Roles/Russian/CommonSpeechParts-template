@@ -75,8 +75,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token conveyor-noun { 'конвейер' }
     token count-verb { 'граф' | 'число' | 'штука' | 'размер' | 'подсчет' }
     token counts-noun { 'количество' | 'числа' | 'число' \h+ 'штук' | 'размеры' | 'подсчеты' }
-    token create { 'создать' | 'сделать' }
-    token create-directive { <create-verb> | 'сделать' }
+    token create { 'создать' | 'сделать' | 'составить' }
+    token create-directive { <create-verb> }
     token create-verb { 'создать' }
     token creation-noun { 'существо' | 'дело' }
     token current-adjective { 'текущий' | 'текущий' | 'текущий' }
@@ -170,7 +170,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token locate-verb { 'найти' | 'локализовать' }
     token low-adjective { 'ниже' | 'низкий' }
     token lower-adjective { 'по-долен' | 'ниже' }
-    token make-noun { 'сделать' }
+    token make-noun { 'сделать' | 'составить' }
     token making-noun { 'создание' }
     token manner { 'способ' | 'способ' }
     token many-determiner { 'много' }

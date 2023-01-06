@@ -75,8 +75,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token conveyor-noun:sym<Russian> { :i 'конвейер' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвейер', 2) }> }
     token count-verb:sym<Russian> { :i  'граф' | 'число' | 'штука' | 'размер' | 'подсчет'  }
     token counts-noun:sym<Russian> { :i  'количество' | 'числа' | 'число' \h+ 'штук' | 'размеры' | 'подсчеты'  }
-    token create:sym<Russian> { :i  'создать' | 'сделать'  }
-    token create-directive:sym<Russian> { :i  <create-verb> | 'сделать'  }
+    token create:sym<Russian> { :i  'создать' | 'сделать' | 'составить'  }
+    token create-directive:sym<Russian> { :i <create-verb> }
     token create-verb:sym<Russian> { :i 'создать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'создать', 2) }> }
     token creation-noun:sym<Russian> { :i  'существо' | 'дело'  }
     token current-adjective:sym<Russian> { :i  'текущий' | 'текущий' | 'текущий'  }
@@ -129,7 +129,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token for-preposition:sym<Russian> { :i  'для' | 'с' | 'на'  }
     token frame-noun:sym<Russian> { :i 'рама' | ([\w]+) <?{ $0.Str !(elem) <дата рамы раз> and is-ru-fuzzy-match($0.Str, 'рама', 2) }> }
     token frames-noun:sym<Russian> { :i 'рамы' | ([\w]+) <?{ $0.Str !(elem) <даты рама раз> and is-ru-fuzzy-match($0.Str, 'рамы', 2) }> }
-    token from-preposition:sym<Russian> { :i  'от' | 'с' | 'из' }
+    token from-preposition:sym<Russian> { :i  'от' | 'с' | 'из'  }
     token function:sym<Russian> { :i <function-noun> }
     token function-noun:sym<Russian> { :i 'функцию' | ([\w]+) <?{ $0.Str ne 'функции' and is-ru-fuzzy-match($0.Str, 'функцию', 2) }> }
     token functions:sym<Russian> { :i <functions-noun> }
@@ -170,7 +170,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token locate-verb:sym<Russian> { :i  'найти' | 'локализовать'  }
     token low-adjective:sym<Russian> { :i  'ниже' | 'низкий'  }
     token lower-adjective:sym<Russian> { :i  'по-долен' | 'ниже'  }
-    token make-noun:sym<Russian> { :i 'сделать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'сделать', 2) }> }
+    token make-noun:sym<Russian> { :i  'сделать' | 'составить'  }
     token making-noun:sym<Russian> { :i 'создание' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'создание', 2) }> }
     token manner:sym<Russian> { :i  'способ' | 'способ'  }
     token many-determiner:sym<Russian> { :i 'много' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'много', 2) }> }
