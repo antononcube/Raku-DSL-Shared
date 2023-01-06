@@ -28,7 +28,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token and-conjunction { 'и' }
     token annex-verb { 'соединить' }
     token append-verb { 'добавить' }
-    token apply-verb { 'прикрепить' }
+    token apply-verb { 'применить' }
     token are-verb { 'есть' }
     token array-noun { 'массив' }
     token arrays-noun { 'массивы' }
@@ -315,6 +315,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token versus-preposition { 'против' | 'ср.' | 'против' }
     token way-noun { 'раз' | 'способ' }
     token weight { <weight-noun> }
+    token weight-adjective { 'весовой' | 'весовая' | 'весовое' | 'весовые' }
     token weight-noun { 'вес'  }
     token weights { <weights-noun> }
     token weights-noun { 'веса' }

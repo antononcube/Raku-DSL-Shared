@@ -315,6 +315,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token versus-preposition { 'срещу' | 'ср.' | 'против' }
     token way-noun { 'път' | 'начин' }
     token weight { <weight-noun> }
+    token weight-adjective { 'теглов' | 'теглова' | 'теглово' | 'теглови' | 'теглови' | 'тегловна' | 'тегловно' | 'тегловни' }
     token weight-noun { 'тегло'  }
     token weights { <weights-noun> }
     token weights-noun { 'тегла' }

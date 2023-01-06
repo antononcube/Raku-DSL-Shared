@@ -314,10 +314,11 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token versus-preposition { 'vs.' | 'ср.' | 'vs.' }
     token way-noun { 'estrada' | 'caminho' }
     token weight { <weight-noun> }
+    token weight-adjective { <weight-noun> }
     token weight-noun { 'peso'  }
     token weights { <weights-noun> }
     token weights-noun { 'pesos' }
-    token what-pronoun { 'o que' | 'que' }
+    token what-pronoun { 'o' \h* 'que' | 'que' }
     token when-pronoun { 'quando' }
     token which-determiner { 'quem' | 'que' }
     token with-preposition { 'via' | 'с' | 'com' | 'no' | 'por' }
