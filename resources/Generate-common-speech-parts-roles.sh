@@ -21,6 +21,14 @@ add-token-fuzzy-matching -o=./CommonSpeechParts.rakumod --/add-protos --sym-name
 # Go back to the top directory
 cd ../../../../../
 
+# Process Portuguese template
+echo 'Process Portuguese template'
+
+cd ./lib/DSL/Shared/Roles/Portuguese
+add-token-fuzzy-matching -o=./CommonSpeechParts.rakumod --/add-protos --sym-name=Portuguese --add-exclusions --func-name=is-fuzzy-match ./CommonSpeechParts-template
+
+# Go back to the top directory
+cd ../../../../../
 
 # Process Russian template
 echo 'Process Russian template'
