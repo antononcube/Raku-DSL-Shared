@@ -4,10 +4,14 @@
 # It is assumed that this script is executed in the top directory of DSL::Shared .
 
 # Process English template
-echo 'Process English template'
+echo 'Process English common speech parts template'
 
 cd ./lib/DSL/Shared/Roles/English
 add-token-fuzzy-matching -o=./CommonSpeechParts.rakumod --add-protos --sym-name=English --add-exclusions ./CommonSpeechParts-template
+
+echo 'Process English time interval speech parts template'
+
+add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --add-protos --sym-name=English --add-exclusions ./TimeIntervalSpeechParts-template
 
 # Go back to the top directory
 cd ../../../../../

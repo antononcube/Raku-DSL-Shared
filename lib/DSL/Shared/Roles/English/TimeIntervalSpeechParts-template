@@ -1,0 +1,93 @@
+# I am not sure should we have these time interval speech parts separated from the CommonSpeechParts.rakumod.
+# One advantage of combining the files is that the finding the nearest neighbors is very direct
+# and straightforward with the CLI add-token-fuzzy-matching.
+
+use v6.d;
+use DSL::Shared::Utilities::FuzzyMatching;
+
+role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
+  
+  token after-time-spec-word { 'after' };
+  token ago-time-spec-word { 'ago' };
+  token am-time-spec-word { 'am' };
+  token apr-time-spec-word { 'apr' };
+  token april-time-spec-word { 'april' };
+  token aug-time-spec-word { 'aug' };
+  token august-time-spec-word { 'august' };
+  token before-time-spec-word { 'before' };
+  token between-time-spec-word { 'between' };
+  token christmas-time-spec-word { 'christmas' };
+  token day-time-spec-word { 'day' };
+  token days-time-spec-word { 'days' };
+  token dec-time-spec-word { 'dec' };
+  token december-time-spec-word { 'december' };
+  token during-time-spec-word { 'during' };
+  token feb-time-spec-word { 'feb' };
+  token february-time-spec-word { 'february' };
+  token few-time-spec-word { 'few' };
+  token fri-time-spec-word { 'fri' };
+  token friday-time-spec-word { 'friday' };
+  token fridays-time-spec-word { 'fridays' };
+  token hour-time-spec-word { 'hour' };
+  token hours-time-spec-word { 'hours' };
+  token jan-time-spec-word { 'jan' };
+  token january-time-spec-word { 'january' };
+  token jul-time-spec-word { 'jul' };
+  token july-time-spec-word { 'july' };
+  token jun-time-spec-word { 'jun' };
+  token june-time-spec-word { 'june' };
+  token just-time-spec-word { 'just' };
+  token last-time-spec-word { 'last' };
+  token lifetime-time-spec-word { 'lifetime' };
+  token lifetimes-time-spec-word { 'lifetimes' };
+  token lincoln-time-spec-word { 'lincoln' };
+  token mar-time-spec-word { 'mar' };
+  token march-time-spec-word { 'march' };
+  token may-time-spec-word { 'may' };
+  token memorial-time-spec-word { 'memorial' };
+  token mon-time-spec-word { 'mon' };
+  token monday-time-spec-word { 'monday' };
+  token mondays-time-spec-word { 'mondays' };
+  token month-time-spec-word { 'month' };
+  token months-time-spec-word { 'months' };
+  token mother-time-spec-word { 'mother' };
+  token new-time-spec-word { 'new' };
+  token next-time-spec-word { 'next' };
+  token nov-time-spec-word { 'nov' };
+  token november-time-spec-word { 'november' };
+  token now-time-spec-word { 'now' };
+  token oct-time-spec-word { 'oct' };
+  token october-time-spec-word { 'october' };
+  token of-time-spec-word { 'of' };
+  token one-time-spec-word { 'one' };
+  token past-time-spec-word { 'past' };
+  token pm-time-spec-word { 'pm' };
+  token ramadan-time-spec-word { 'ramadan' };
+  token right-time-spec-word { 'right' };
+  token sat-time-spec-word { 'sat' };
+  token saturday-time-spec-word { 'saturday' };
+  token saturdays-time-spec-word { 'saturdays' };
+  token sep-time-spec-word { 'sep' };
+  token september-time-spec-word { 'september' };
+  token sun-time-spec-word { 'sun' };
+  token sunday-time-spec-word { 'sunday' };
+  token sundays-time-spec-word { 'sundays' };
+  token thanksgiving-time-spec-word { 'thanksgiving' };
+  token thu-time-spec-word { 'thu' };
+  token thursday-time-spec-word { 'thursday' };
+  token thursdays-time-spec-word { 'thursdays' };
+  token today-time-spec-word { 'today' };
+  token tomorrow-time-spec-word { 'tomorrow' };
+  token tue-time-spec-word { 'tue' };
+  token tuesday-time-spec-word { 'tuesday' };
+  token tuesdays-time-spec-word { 'tuesdays' };
+  token wed-time-spec-word { 'wed' };
+  token wednesday-time-spec-word { 'wednesday' };
+  token wednesdays-time-spec-word { 'wednesdays' };
+  token week-time-spec-word { 'week' };
+  token weeks-time-spec-word { 'weeks' };
+  token within-time-spec-word { 'within' };
+  token year-time-spec-word { 'year' };
+  token years-time-spec-word { 'years' };
+  token yesterday-time-spec-word { 'yesterday' };
+}

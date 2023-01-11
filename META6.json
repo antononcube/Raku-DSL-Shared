@@ -76,6 +76,7 @@
     "DSL::Shared::Roles::English::PredicateSpecification": "lib/DSL/Shared/Roles/English/PredicateSpecification.rakumod",
     "DSL::Shared::Roles::English::RudimentaryUserOnboarding": "lib/DSL/Shared/Roles/English/RudimentaryUserOnboarding.rakumod",
     "DSL::Shared::Roles::English::TimeIntervalSpec": "lib/DSL/Shared/Roles/English/TimeIntervalSpec.rakumod",
+    "DSL::Shared::Roles::English::TimeIntervalSpeechParts": "lib/DSL/Shared/Roles/English/TimeIntervalSpeechParts.rakumod",
     "DSL::Shared::Roles::ErrorHandling": "lib/DSL/Shared/Roles/ErrorHandling.rakumod",
     "DSL::Shared::Roles::Portuguese::CommonSpeechParts": "lib/DSL/Shared/Roles/Portuguese/CommonSpeechParts.rakumod",
     "DSL::Shared::Roles::Portuguese::ListManagementCommand": "lib/DSL/Shared/Roles/Portuguese/ListManagementCommand.rakumod",
