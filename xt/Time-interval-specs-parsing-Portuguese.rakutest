@@ -1,0 +1,80 @@
+use Test;
+
+use DSL::Shared::Roles::ErrorHandling;
+use Lingua::NumericWordForms::Roles::Portuguese::WordedNumberSpec;
+use DSL::Shared::Roles::Portuguese::TimeIntervalSpec;
+use DSL::Shared::Roles::Portuguese::PipelineCommand;
+
+grammar ParseObj
+        does DSL::Shared::Roles::ErrorHandling
+        does Lingua::NumericWordForms::Roles::Portuguese::WordedNumberSpec
+        does DSL::Shared::Roles::Portuguese::TimeIntervalSpec
+        does DSL::Shared::Roles::Portuguese::PipelineCommand {
+
+    rule TOP { <pipeline-command> | <time-interval-spec> }
+};
+
+
+plan 14;
+
+#-----------------------------------------------------------
+# Time interval specifications parsing
+#-----------------------------------------------------------
+
+## 1
+ok ParseObj.parse('entre o natal e o ramadan'),
+        'between christmas and ramadan';
+
+## 2
+ok ParseObj.parse('entre jan e março'),
+        'entre jan e março';
+
+## 3
+ok ParseObj.parse('entre janeiro de 2019 e março de 2021'),
+        'between jan 2019 and march 2021';
+
+## 4
+ok ParseObj.parse('2 samanas'),
+        '2 weeks';
+
+## 5
+ok ParseObj.parse('doze semanas'),
+        'twelve weeks';
+
+## 6
+ok ParseObj.parse('semana 23 em 2013'),
+        'week 23 of 2013';
+
+## 7
+ok ParseObj.parse('semana vinte e três em 2013'),
+        'week twenty three of 2013';
+
+## 7
+ok ParseObj.parse('semana vinte e três de dois mil e treze'),
+        'week twenty three of two thousand and thirteen';
+
+## 9
+ok ParseObj.parse('2 semanas atrás'),
+        '2 weeks ago';
+
+## 10
+ok ParseObj.parse('duas semanas atrás'),
+        'two weeks ago';
+
+## 11
+ok ParseObj.parse('ano passado'),
+        'last year';
+
+## 12
+ok ParseObj.parse('ano passado'),
+        'past year';
+
+## 13
+ok ParseObj.parse('cada ano'),
+        'each year';
+
+## 14
+ok ParseObj.parse('a cada dois meses'),
+        'every two months';
+
+done-testing;
