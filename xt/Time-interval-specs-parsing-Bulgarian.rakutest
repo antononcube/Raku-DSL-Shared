@@ -1,0 +1,80 @@
+use Test;
+
+use DSL::Shared::Roles::ErrorHandling;
+use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
+use DSL::Shared::Roles::Bulgarian::TimeIntervalSpec;
+use DSL::Shared::Roles::Bulgarian::PipelineCommand;
+
+grammar ParseObj
+        does DSL::Shared::Roles::ErrorHandling
+        does Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec
+        does DSL::Shared::Roles::Bulgarian::TimeIntervalSpec
+        does DSL::Shared::Roles::Bulgarian::PipelineCommand {
+
+    rule TOP { <pipeline-command> | <time-interval-spec> }
+};
+
+
+plan 14;
+
+#-----------------------------------------------------------
+# Time interval specifications parsing
+#-----------------------------------------------------------
+
+## 1
+ok ParseObj.parse('между коледа и рамадан'),
+        'между коледа и рамадан';
+
+## 2
+ok ParseObj.parse('между ян. и март'),
+        'между ян. и март';
+
+## 3
+ok ParseObj.parse('между ян. 2019 и март 2021'),
+        'между ян. 2019 и март 2021';
+
+## 4
+ok ParseObj.parse('2 седмици'),
+        '2 weeks';
+
+## 5
+ok ParseObj.parse('дванадесет седмици'),
+        'twelve weeks';
+
+## 6
+ok ParseObj.parse('седмица 23 от 2013'),
+        'седмица 23 от 2013';
+
+## 7
+ok ParseObj.parse('седмица двадесет и трета на 2013'),
+        'седмица двадесет и трета на 2013';
+
+## 7
+ok ParseObj.parse('седмица двадесет и три на две хиляди и тринайсет'),
+        'седмица двадесет и три на две хиляди и тринайсет';
+
+## 9
+ok ParseObj.parse('преди 2 седмици'),
+        'преди 2 седмици';
+
+## 10
+ok ParseObj.parse('преди две седмици'),
+        'преди две седмици';
+
+## 11
+ok ParseObj.parse('миналата година'),
+        'миналата година';
+
+## 12
+ok ParseObj.parse('изминалата година'),
+        'изминалата година';
+
+## 13
+ok ParseObj.parse('всяка година'),
+        'всяка година';
+
+## 14
+ok ParseObj.parse('всеки два месеца'),
+        'всеки два месеца';
+
+done-testing;
