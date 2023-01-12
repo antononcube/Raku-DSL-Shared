@@ -49,7 +49,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token monday-time-spec-word { 'понеделник' };
   token mondays-time-spec-word { 'понеделници' };
   token month-time-spec-word { 'месец' };
-  token months-time-spec-word { 'месеци' };
+  token months-time-spec-word { 'месеци' | 'месеца' };
   token mother-time-spec-word { 'майка' | 'майчин' };
   token new-time-spec-word { 'нов' | 'нова' | 'ново' | 'нови' };
   token next-time-spec-word { 'следващ' | 'следваща' | 'следващо' | 'следващите'};
@@ -60,7 +60,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token october-time-spec-word { 'октомври' };
   token of-time-spec-word { 'на' | 'от' };
   token one-time-spec-word { 'един' | 'една' | 'едно' | 'едни' };
-  token past-time-spec-word { 'миналия' | 'миналата' | 'миналато' | 'миналате' };
+  token past-time-spec-word { 'из'? [ 'миналия' | 'миналата' | 'миналато' | 'миналите' ] };
   token pm-time-spec-word { 'pm' | 'следобед' | 'следобяд' | 'след' \h+ 'обяд'};
   token ramadan-time-spec-word { 'рамадан' };
   token right-time-spec-word { 'вдясно' | 'дясен' | 'дясна' | 'дясно' | 'десни' };
