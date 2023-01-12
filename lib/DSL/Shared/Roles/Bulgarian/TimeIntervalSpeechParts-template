@@ -1,0 +1,93 @@
+# I am not sure should we have these time interval speech parts separated from the CommonSpeechParts.rakumod.
+# One advantage of combining the files is that the finding the nearest neighbors is very direct
+# and straightforward with the CLI add-token-fuzzy-matching.
+
+use v6.d;
+use DSL::Shared::Utilities::FuzzyMatching;
+
+role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
+
+  token after-time-spec-word { 'след' };
+  token ago-time-spec-word { 'преди' };
+  token am-time-spec-word { 'am' | 'сутрин' | 'сутринта' };
+  token apr-time-spec-word { 'април' };
+  token april-time-spec-word { 'април' };
+  token aug-time-spec-word { 'август' };
+  token august-time-spec-word { 'август' };
+  token before-time-spec-word { 'преди' };
+  token between-time-spec-word { 'между' };
+  token christmas-time-spec-word { 'коледа' };
+  token day-time-spec-word { 'ден' };
+  token days-time-spec-word { 'дни' };
+  token dec-time-spec-word { 'дек' };
+  token december-time-spec-word { 'декември' };
+  token during-time-spec-word { 'по' \h+ 'време' \h+ 'на' };
+  token feb-time-spec-word { 'фев' };
+  token february-time-spec-word { 'февруари' };
+  token few-time-spec-word { 'няколко' };
+  token fri-time-spec-word { 'петък' };
+  token friday-time-spec-word { 'петък' };
+  token fridays-time-spec-word { 'петъци' };
+  token hour-time-spec-word { 'час' };
+  token hours-time-spec-word { 'часове' };
+  token jan-time-spec-word { 'яну' };
+  token january-time-spec-word { 'януари' };
+  token jul-time-spec-word { 'юли' };
+  token july-time-spec-word { 'юли' };
+  token jun-time-spec-word { 'юни' };
+  token june-time-spec-word { 'юни' };
+  token just-time-spec-word { 'само' };
+  token last-time-spec-word { 'последен' | 'последна' | 'последно' | 'последните' };
+  token lifetime-time-spec-word { 'живот' };
+  token lifetimes-time-spec-word { 'животи' };
+  token lincoln-time-spec-word { 'линкълн' };
+  token mar-time-spec-word { 'мар' };
+  token march-time-spec-word { 'март' };
+  token may-time-spec-word { 'май' };
+  token memorial-time-spec-word { 'паметник' | 'паметен' | 'паметния' };
+  token mon-time-spec-word { 'пон' };
+  token monday-time-spec-word { 'понеделник' };
+  token mondays-time-spec-word { 'понеделници' };
+  token month-time-spec-word { 'месец' };
+  token months-time-spec-word { 'месеци' };
+  token mother-time-spec-word { 'майка' | 'майчин' };
+  token new-time-spec-word { 'нов' };
+  token next-time-spec-word { 'следващ' | 'следваща' | 'следващо' | 'следващите'};
+  token nov-time-spec-word { 'ное' };
+  token november-time-spec-word { 'ноември' };
+  token now-time-spec-word { 'сега' };
+  token oct-time-spec-word { 'окт' };
+  token october-time-spec-word { 'октомври' };
+  token of-time-spec-word { 'на' };
+  token one-time-spec-word { 'един' | 'една' | 'едно' | 'едни' };
+  token past-time-spec-word { 'минало' };
+  token pm-time-spec-word { 'pm' | 'следобед' | 'следобяд' | 'след' \h+ 'обяд'};
+  token ramadan-time-spec-word { 'рамадан' };
+  token right-time-spec-word { 'вдясно' | 'дясен' | 'дясна' | 'дясно' | 'десни' };
+  token sat-time-spec-word { 'съб' };
+  token saturday-time-spec-word { 'събота' };
+  token saturdays-time-spec-word { 'съботи' };
+  token sep-time-spec-word { 'сеп' };
+  token september-time-spec-word { 'септември' };
+  token sun-time-spec-word { 'слънце' | 'слънчев' | 'слънчева' | 'слънчево' | 'слънчеви'};
+  token sunday-time-spec-word { 'неделя' };
+  token sundays-time-spec-word { 'недели' };
+  token thanksgiving-time-spec-word { 'ден' \h+ 'на' \h+ 'благодарността' };
+  token thu-time-spec-word { 'чет' };
+  token thursday-time-spec-word { 'четвъртък' };
+  token thursdays-time-spec-word { 'четвъртъци' };
+  token today-time-spec-word { 'днес' };
+  token tomorrow-time-spec-word { 'утре' };
+  token tue-time-spec-word { 'вто' };
+  token tuesday-time-spec-word { 'вторник' };
+  token tuesdays-time-spec-word { 'вторници' };
+  token wed-time-spec-word { 'сря' };
+  token wednesday-time-spec-word { 'сряда' };
+  token wednesdays-time-spec-word { 'среди' };
+  token week-time-spec-word { 'седмица' };
+  token weeks-time-spec-word { 'седмици' };
+  token within-time-spec-word { 'през' | 'докато' | 'в' \h+ 'рамките' \h+ 'на' };
+  token year-time-spec-word { 'година' };
+  token years-time-spec-word { 'години' };
+  token yesterday-time-spec-word { 'вчера' };
+}
