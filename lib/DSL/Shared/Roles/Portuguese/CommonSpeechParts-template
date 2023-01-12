@@ -74,7 +74,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token conveyor-adjective { 'transportador' }
     token conveyor-noun { 'transportador' }
     token count-verb { 'conde' | 'edição' | 'peça' | 'tamanho' }
-    token counts-noun { 'número de' | 'edições' | 'peças' | 'tamanhos' }
+    token counts-noun { 'número' \h+ 'de' | 'edições' | 'peças' | 'tamanhos' }
     token create { 'criar' | 'do' }
     token create-directive { <create-verb> | 'do' }
     token create-verb { 'criar' }

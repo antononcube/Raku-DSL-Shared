@@ -74,7 +74,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token conveyor-adjective:sym<Portuguese> { :i 'transportador' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'transportador', 2) }> }
     token conveyor-noun:sym<Portuguese> { :i 'transportador' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'transportador', 2) }> }
     token count-verb:sym<Portuguese> { :i 'conde' | ([\w]+) <?{ $0.Str ne 'corre' and is-fuzzy-match($0.Str, 'conde', 2) }> | 'edição' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'edição', 2) }> | 'peça' | ([\w]+) <?{ $0.Str !(elem) <meta para peso> and is-fuzzy-match($0.Str, 'peça', 2) }> | 'tamanho' | ([\w]+) <?{ $0.Str ne 'caminho' and is-fuzzy-match($0.Str, 'tamanho', 2) }> }
-    token counts-noun { 'número de' | 'edições' | 'peças' | 'tamanhos' }
+    token counts-noun:sym<Portuguese> { :i  'número' \h+ 'de' | 'edições' | 'peças' | 'tamanhos'  }
     token create:sym<Portuguese> { :i 'criar' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'criar', 2) }> | 'do' }
     token create-directive:sym<Portuguese> { :i  <create-verb> | 'do'  }
     token create-verb:sym<Portuguese> { :i 'criar' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'criar', 2) }> }
