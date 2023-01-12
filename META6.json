@@ -67,6 +67,8 @@
     "DSL::Shared::Roles::Bulgarian::ListManagementCommand": "lib/DSL/Shared/Roles/Bulgarian/ListManagementCommand.rakumod",
     "DSL::Shared::Roles::Bulgarian::PipelineCommand": "lib/DSL/Shared/Roles/Bulgarian/PipelineCommand.rakumod",
     "DSL::Shared::Roles::Bulgarian::PredicateSpecification": "lib/DSL/Shared/Roles/Bulgarian/PredicateSpecification.rakumod",
+    "DSL::Shared::Roles::Bulgarian::TimeIntervalSpec": "lib/DSL/Shared/Roles/Bulgarian/TimeIntervalSpec.rakumod",
+    "DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts": "lib/DSL/Shared/Roles/Bulgarian/TimeIntervalSpeechParts.rakumod",
     "DSL::Shared::Roles::CommonStructures": "lib/DSL/Shared/Roles/CommonStructures.rakumod",
     "DSL::Shared::Roles::English::CommonParts": "lib/DSL/Shared/Roles/English/CommonParts.rakumod",
     "DSL::Shared::Roles::English::CommonSpeechParts": "lib/DSL/Shared/Roles/English/CommonSpeechParts.rakumod",
