@@ -5,7 +5,6 @@ use v6;
 #   https://github.com/antononcube/ConversationalAgents/blob/master/Packages/WL/EBNFGrammarToRakuPerl6.m
 
 use DSL::Shared::Roles::English::TimeIntervalSpeechParts;
-use DSL::Shared::Roles::English::TimeIntervalSpeechParts;
 
 role DSL::Shared::Roles::English::TimeIntervalSpec
         does DSL::Shared::Roles::English::TimeIntervalSpeechParts {
