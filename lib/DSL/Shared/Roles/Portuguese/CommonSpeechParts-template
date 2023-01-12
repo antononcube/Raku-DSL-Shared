@@ -11,22 +11,22 @@ use DSL::Shared::Utilities::FuzzyMatching;
 
 role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     # Single words
-    token ID-noun { 'id' | 'id'}
-    token IDENTIFIER-adjective { 'identificador' | 'id' | 'id' | 'id' }
-    token IDENTIFIER-noun { 'identificador' | 'identificador' }
+    token ID-noun { 'id' }
+    token IDENTIFIER-adjective { 'identificador' | 'id' }
+    token IDENTIFIER-noun { 'identificador'  }
     token MODULE-noun { 'módulo' | 'módulo' }
     token TARGET-noun { 'meta' | 'propósito' }
     token USER-noun { 'usuário' | 'usuário' }
     token a-determiner { 'um' }
-    token add-verb { 'recuperado de' | 'acrescentar' }
-    token adhere-verb { 'guarda' | 'de acordo com' }
+    token add-verb { 'adicione' }
+    token adhere-verb { 'aderir' | 'guarda' | 'de' \h* 'acordo' \h* 'com' }
     token adjacency-noun { 'ajudante' }
     token adjacent-adjective { 'ajudante' | 'ajudante' }
     token algorithm-noun { 'algoritmo' }
     token algorithms-noun { 'algoritmos' }
     token all-determiner { 'cada' | 'todos' }
-    token and-conjunction { 'и' }
-    token annex-verb { 'junte-se a' }
+    token and-conjunction { 'e' }
+    token annex-verb { 'junte-se' | 'junte' }
     token append-verb { 'acrescentar' }
     token apply-verb { 'anexar' }
     token are-verb { 'são' }
@@ -35,22 +35,22 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token as-preposition { 'como' }
     token assign-verb { 'atribuir' }
     token at-preposition { 'então' }
-    token automatic { 'automático' | 'automático' | 'automaticamente' | 'automático'  }
+    token automatic { 'automático' | 'automaticamente' }
     token away-adverb { 'fora' }
     token axes-noun { 'eixos' }
     token axis-noun { 'eixo' }
     token be-verb { 'ser' }
-    token both-determiner { 'и'? 'ambos' | 'simultaneamente' | 'juntos' }
-    token bottom-noun { 'fundo' | 'най-ниско' }
+    token both-determiner { 'e'? \h* 'ambos' | 'simultaneamente' | 'juntos' }
+    token bottom-noun { 'fundo' | 'inferior' }
     token broaden-verb { 'expandir' }
-    token by-preposition { 'a partir de' | 'com' | 'via' }
+    token by-preposition { 'com' | 'via' }
     token calculation { 'cálculo' }
     token case-noun { 'caso' }
     token cases-noun { 'casos' }
-    token channel-adjective { 'canal' | 'canal' | 'canal' | 'canal' }
+    token channel-adjective { 'canal' }
     token channel-noun { 'canal' }
     token chart-noun { 'desenho' | 'gráfico' | 'mapa' }
-    token chart-verb { 'sorteio' | 'sorteio' }
+    token chart-verb { 'sorteio' }
     token classify-verb { 'classificar' }
     token clear-verb { 'limpo' | 'claro' | 'limpar' }
     token cluster { <cluster-noun> }
@@ -62,16 +62,16 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token columns { <columns-noun> }
     token columns-noun { 'colunas' }
     token complete-adjective { 'completo' | 'completo' }
-    token compute-directive { 'calcular' | 'encontrar' | 'calcular' | 'calcular' }
+    token compute-directive { 'calcular' | 'encontrar' }
     token config-noun { 'configurar' }
-    token configuration-adjective { 'configuração' | 'configuração' | 'configuração' | 'configuração' }
+    token configuration-adjective { 'configuração' }
     token configuration-noun { 'configuração' }
     token connect-verb { 'bind' | 'contacto' }
-    token consider-verb { 'check out' }
+    token consider-verb { 'considere' }
     token context-noun { 'antecedentes' }
-    token contingency-noun { 'contingente' | 'referência cruzada' 'tabling' }
+    token contingency-noun { 'contingente' | 'referência' \h+ 'cruzada' }
     token convert-verb { 'converter' }
-    token conveyor-adjective { 'transportador' | 'transportador' | 'transportador' | 'transportador' }
+    token conveyor-adjective { 'transportador' }
     token conveyor-noun { 'transportador' }
     token count-verb { 'conde' | 'edição' | 'peça' | 'tamanho' }
     token counts-noun { 'número de' | 'edições' | 'peças' | 'tamanhos' }
@@ -79,13 +79,13 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token create-directive { <create-verb> | 'do' }
     token create-verb { 'criar' }
     token creation-noun { 'criatura' | 'caso' }
-    token current-adjective { 'actual' | 'actual' | 'actual' }
-    token data-adjective { 'dados' | 'dannova' | 'dannovo' | 'dados' }
-    token data-noun { 'dados' | 'dados' | 'dannova' }
+    token current-adjective { 'actual' }
+    token data-adjective { 'dados' | 'dannova' | 'dannovo' }
+    token data-noun { 'dados' | 'dannova' }
     token dataset { <dataset-noun> }
-    token dataset-noun { 'conjunto de dados' | 'ficha de dados' \h+ 'conjunto' | <array-noun> 'a partir de' <data-noun> | <data-adjective> \h+ <array-noun>}
-    token datasets-noun { 'conjuntos de dados' | <arrays-noun> \h+ 'a partir de' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
-    token date-adjective { 'datas' | 'data' | 'data' | 'data' }
+    token dataset-noun { 'conjunto' \h+ 'de' \h+ 'dados' | 'ficha de dados' \h+ 'conjunto' | <array-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
+    token datasets-noun { 'conjuntos' \h+ 'de' \h+ 'dados' | <arrays-noun> \h+ 'a partir de' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
+    token date-adjective { 'datas' | 'data' }
     token date-noun { 'data' }
     token dates-noun { 'datas' }
     token datum-noun { 'dados' }
@@ -110,17 +110,17 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token domain-noun { 'domínio' | 'área' }
     token drop-verb { 'descarte' | 'esqueça' | 'descarte' }
     token during-preposition { 'enquanto' | 'via' }
-    token each-determiner { 'cada' | 'cada' | 'cada' }
+    token each-determiner { 'cada' }
     token echo-verb { 'echo' }
     token element { <element-noun> }
     token element-noun { 'elemento' }
     token elements { <elements-noun> }
     token elements-noun { 'elementos'}
-    token empty-noun { 'em branco' | 'vacuidade' }
+    token empty-noun { 'branco' | 'vacuidade' }
     token empty-verb { 'vazio' | <empty-noun> }
-    token every-determiner { 'cada' | 'cada' | 'cada' }
+    token every-determiner { 'cada' }
     token extend-verb { 'expandir' }
-    token extract-directive { 'recuperado de' | 'recuperado de' | 'minha' }
+    token extract-directive { 'recuperado' | 'minha' }
     token filter { <filter-verb> }
     token filter-noun { <filter-verb> }
     token filter-verb { 'filtro' }
@@ -139,9 +139,9 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token get-verb { 'obter' }
     token graph-noun { 'contar' }
     token head-adjective { <head-noun> }
-    token head-noun { 'testa' | 'dirigido a' }
+    token head-noun { 'testa' | 'dirigido' }
     token high-adjective { 'alto' }
-    token higher-adjective { 'по-висок' }
+    token higher-adjective { 'mais' \h+ 'alta' }
     token histogram { 'histograma' }
     token histograms { 'histogramas' }
     token how-adverb { 'como' }
@@ -149,64 +149,64 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token identifier-adjective { <IDENTIFIER-adjective> }
     token identifier-noun { <IDENTIFIER-noun> }
     token in-preposition { 'em' | 'no' }
-    token include-verb { 'incluir' | 'incluir' }
-    token ingest-verb { 'leia mais' }
+    token include-verb { 'incluir' }
+    token ingest-verb { 'leia' \h+ 'mais' }
     token interpreter-noun { 'intérprete' | 'tradutora' }
     token interpreting-adjective { 'intérprete' | 'interpretando' }
-    token into-preposition { 'в' | 'em' }
-    token is-verb { 'е' }
+    token into-preposition { 'em' }
+    token is-verb { 'é' }
     token it-pronoun { 'isto' | 'que' }
     token iterations { 'iterações' }
     token join-verb { 'composto' }
     token join-noun { 'ligação' | 'composto' }
     token language-noun { 'língua' }
-    token largest-adjective { 'най-голям' }
-    token last-adjective { 'último' | 'últimos' | 'o mais recente' }
-    token left-adjective { 'esquerda' | 'esquerda'  | 'esquerda' | 'esquerda' }
+    token largest-adjective { 'maior' }
+    token last-adjective { 'último' | 'últimos' | 'mais' \h+ 'recente' }
+    token left-adjective { 'esquerda' }
     token left-noun { 'esquerda' }
     token link-noun { 'ligação' }
     token list-noun { 'lista' }
     token load-verb { 'carga' | 'carregar' }
     token locate-verb { 'encontrar' | 'localizar' }
     token low-adjective { 'fundo' | 'baixo' }
-    token lower-adjective { 'по-долен' | 'fundo' }
+    token lower-adjective { 'fundo' | 'mais' \h+ 'baixa' }
     token make-noun { 'do' }
     token making-noun { 'fazendo' }
-    token manner { 'caminho' | 'à maneira' }
+    token manner { 'caminho' | 'maneira' }
     token matrices-noun { 'matrizes' }
     token matrix-noun { 'matriz' }
     token matrixes-noun { 'matrizes' }
-    token maximum { 'max' | 'máximo' | 'máximo' }
+    token maximum { 'max' | 'máximo' }
     token message-noun { 'mensagem' }
-    token method-adjective { 'método' | 'método' | 'metodicamente' | 'metódico' }
+    token method-adjective { 'método' | 'metodicamente' | 'metódico' }
     token method-noun { 'método' }
     token methods-noun { 'métodos' }
-    token minimum { 'minha' | 'mínimo' | 'mínimo' }
+    token minimum { 'minha' | 'mínimo' }
     token missing-adjective { 'falta' }
     token model-noun { 'modelo' }
     token module-noun { 'módulo' }
-    token my-determiner { 'o meu' | 'o meu' | 'o meu' }
+    token my-determiner { 'meu' }
     token name-noun { 'nome' }
     token names-noun { 'nomes' }
-    token nearest-adjective { 'най-близък' | 'най-близки' }
-    token neighbors-noun { 'vizinhos' | 'vizinhos' }
+    token nearest-adjective { 'mais' \h+ 'próximo' }
+    token neighbors-noun { 'vizinhos' }
     token no-determiner { 'sem' }
     token non-prefix { 'não' }
     token number-noun { 'número' }
     token object-noun { 'sítio' }
-    token obtain-verb { 'recuperado de' | 'minha' }
+    token obtain-verb { 'recuperado' | 'minha' }
     token of-preposition { 'para' | 'em' | 'de' }
     token off-adverb { 'sem' }
     token on-preposition { 'em' | 'por' }
     token one-pronoun { 'um' | 'primeiro' | 'coisa' }
     token ones-pronoun { 'primeiro' | 'coisas' }
     token or-conjunction { 'ou' }
-    token our-determiner { 'o nosso' | 'o nosso' | 'o nosso' }
-    token out-adverb { 'fora' | 'fora'  }
-    token outlier-adjective { 'extraordinário' | 'extraordinário' | 'extraordinário' | 'extraordinário' }
+    token our-determiner { 'nosso' }
+    token out-adverb { 'fora'  }
+    token outlier-adjective { 'extraordinário' }
     token outlier-noun { 'emergência' | 'extraordinário' 'valor' }
-    token outliers-noun { 'extraordinário' | 'extraordinário' 'valores' }
-    token over-preposition { 'via' | 'via' | 'por' }
+    token outliers-noun { 'extraordinário' | 'extraordinário' \h+ 'valores' }
+    token over-preposition { 'via' | 'por' }
     token parameter-noun { 'parâmetro' }
     token parameters-noun { 'parâmetros' }
     token part-noun { 'parte' }
@@ -217,35 +217,35 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token plot-noun { 'desenho' | 'gráfico' }
     token plots-noun { 'desenhos' | 'gráficos' }
     token position-noun { 'posição' }
-    token pull-noun { 'recuperado de' | 'puxar' }
-    token pull-verb { 'recuperado de' | 'puxar para cima' }
+    token pull-noun { 'recuperado' | 'puxar' }
+    token pull-verb { 'recuperado' | 'puxar' }
     token random-adjective { 'casual' }
     token records { 'registos' }
     token reduce-verb { 'reduzir' }
     token remove-verb { 'remover' | 'eliminar'  }
-    token replace-verb { 'substituir' | 'substituir' }
+    token replace-verb { 'substituir' }
     token represent-directive { <represent-verb> | 'sorteio' | 'reflectir' }
-    token represent-verb { 'apresentado por' }
+    token represent-verb { 'apresentado' }
     token rest-noun { 'remanescente' }
     token result-noun { 'resultado' }
     token results { <results-noun> }
     token results-noun { 'resultados' }
     token reverse-adjective { 'reverso' | 'rodar' }
-    token right-adjective { 'direita' | 'certo' | 'certo' | 'certo' }
+    token right-adjective { 'direita' | 'certo' }
     token right-noun { 'direita' }
     token row-noun { 'linha' }
     token rows { <rows-noun> }
     token rows-noun { 'filas' }
     token run-verb { 'correr' | 'corre' }
-    token running-verb { 'em funcionamento' }
+    token running-verb { 'funcionamento' }
     token separate-verb { 'tabs' }
-    token series-noun { 'série' | 'linha' | 'uma série de' }
+    token series-noun { 'série' | 'linha' }
     token set-directive { 'atribuir' }
     token set-noun { 'muitos' }
-    token setup-adjective { 'sintonizar' | 'afinação' | 'sintonizar' | 'afinação' | 'inicialização' | 'inicialização' | 'inicialização' | 'inicialização' }
+    token setup-adjective { 'sintonizar' | 'afinação' | 'sintonizar' | 'inicialização'  }
     token setup-noun { 'atitude' | 'sintonizar' | 'inicialização' | 'preparação' | 'potpourri' }
     token shape-noun { 'formulário' }
-    token show-verb { 'mostrar' | 'mostrar' }
+    token show-verb { 'mostrar' }
     token simple { 'simples' | 'directo' }
     token simply-adverb { 'apenas' }
     token simulate { 'simular' }
@@ -253,9 +253,9 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token simulation { 'simulação' }
     token single-adjective { 'único' | 'um' }
     token site-noun { 'localização' | 'posição' }
-    token smallest { 'най-малък' | 'най-малки' }
-    token smallest-adjective { 'най-малък' | 'най-малки'  }
-    token some-determiner { 'alguém' | 'cerca de' }
+    token smallest { 'menor' }
+    token smallest-adjective { 'menor' }
+    token some-determiner { 'alguém' | 'cerca' }
     token sparse-adjective { 'diluído' }
     token specific-adjective { 'específico' }
     token split-verb { 'tabs' }
@@ -279,18 +279,18 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token tables-noun { 'quadros' }
     token tabular-adjective { 'tabular' }
     token take-verb { 'obter' | 'tomar' | 'levar' | 'pegue' }
-    token tape-adjective { 'cassetes' | 'cassete' | 'fitas' | 'fitas'  }
+    token tape-adjective { 'cassetes' | 'cassete' | 'fitas' }
     token tape-noun { 'cassete' }
     token target-noun { 'finalidade' }
     token text-adjective { <text-noun> | <textual-adjective> }
     token text-noun { 'texto' }
     token texts-noun { 'textos' }
-    token textual-adjective { 'textos' | 'texto' | 'texto' | 'texto' }
+    token textual-adjective { 'textos' | 'texto' }
     token that-pronoun { 'esses' | 'que' }
     token the-determiner { 'o' | 'a' }
     token them-pronoun { 'eles' }
     token this-pronoun { 'este' | 'isto' }
-    token threshold-adjective { 'limiar' | 'limiar' | 'limiar' | 'limiares' }
+    token threshold-adjective { 'limiar' | 'limiares' }
     token threshold-noun { 'limiar' }
     token time-adjective { 'hora' | 'hora' }
     token time-noun { 'hora' }
@@ -305,7 +305,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token types-noun { 'tipos' }
     token up-adverb { 'acima' | 'subir' }
     token use-verb { 'utilização' | 'utilização' }
-    token used-verb { 'recuperado de' | 'usado' }
+    token used-verb { 'recuperado' | 'usado' }
     token using-preposition { 'via' | 'с' | 'com' }
     token value-noun { 'valor' }
     token values-noun { 'valores' }
@@ -318,7 +318,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token weight-noun { 'peso'  }
     token weights { <weights-noun> }
     token weights-noun { 'pesos' }
-    token what-pronoun { 'o' \h* 'que' | 'que' }
+    token what-pronoun { 'o' \h+ 'que' | 'que' }
     token when-pronoun { 'quando' }
     token which-determiner { 'quem' | 'que' }
     token with-preposition { 'via' | 'с' | 'com' | 'no' | 'por' }
