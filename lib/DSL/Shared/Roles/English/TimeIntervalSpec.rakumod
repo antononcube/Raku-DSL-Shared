@@ -23,7 +23,8 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
 
   rule time-interval-relative {
     <.the-determiner>? [ <next-time-spec-word> | <last-time-spec-word> | <past-time-spec-word> ] <number-of-time-units> |
-    <number-of-time-units> <ago-time-spec-word>
+    <number-of-time-units> <ago-time-spec-word> |
+    <before-time-spec-word> <number-of-time-units>
   }
   rule time-interval-from-to-spec {
     <.between-time-spec-word> <from=.time-spec> <.and-conjunction> <to=.time-spec> |
@@ -46,7 +47,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   rule day-name-abbr { <mon-time-spec-word> | <tue-time-spec-word> | <wed-time-spec-word> | <thu-time-spec-word> | <fri-time-spec-word> | <sat-time-spec-word> | <sun-time-spec-word> }
   rule day-name { <day-name-long> | <day-name-abbr> | <day-name-long-plurals> }
   rule week-number { <.week-time-spec-word> <week-number-range> }
-  rule week-of-year { <.the-determiner>? [ <.week-time-spec-word> <week-number-range> | <week-number-range> <.week-time-spec-word> ] <.of-preposition> <year-spec> }
+  rule week-of-year { <.the-determiner>? [ <.week-time-spec-word> <week-number-range> | <week-number-range> <.week-time-spec-word> ] [ <.of-preposition> | <.from-preposition> ] <year-spec> }
   rule month-name-long { <january-time-spec-word> | <february-time-spec-word> | <march-time-spec-word> | <april-time-spec-word> | <may-time-spec-word> | <june-time-spec-word> | <july-time-spec-word> | <august-time-spec-word> | <september-time-spec-word> | <october-time-spec-word> | <november-time-spec-word> | <december-time-spec-word> }
   rule month-name-abbr { <jan-time-spec-word> | <feb-time-spec-word> | <mar-time-spec-word> | <apr-time-spec-word> | <may-time-spec-word> | <jun-time-spec-word> | <jul-time-spec-word> | <aug-time-spec-word> | <sep-time-spec-word> | <oct-time-spec-word> | <nov-time-spec-word> | <dec-time-spec-word> }
   rule month-name { <month-name-long> | <month-name-abbr> }
