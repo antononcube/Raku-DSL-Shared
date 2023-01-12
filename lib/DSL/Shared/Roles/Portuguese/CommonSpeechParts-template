@@ -61,7 +61,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token column-noun { 'coluna' }
     token columns { <columns-noun> }
     token columns-noun { 'colunas' }
-    token complete-adjective { 'completo' | 'completa' | 'completos' | 'completas' }
+    token complete-adjective { 'completo' | 'completos' | 'completa' | 'completas' }
     token compute-directive { 'calcular' | 'encontrar' | 'achar' }
     token config-noun { 'configurar' }
     token configuration-adjective { 'configuração' }
@@ -83,7 +83,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token data-adjective { 'dado' | 'dados' }
     token data-noun { 'dado' | 'dados' }
     token dataset { <dataset-noun> }
-    token dataset-noun { 'conjunto' \h+ 'de' \h+ 'dados' | 'ficha de dados' \h+ 'conjunto' | <array-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
+    token dataset-noun { 'conjunto' \h+ 'de' \h+ 'dados' | <array-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
     token datasets-noun { 'conjuntos' \h+ 'de' \h+ 'dados' | <arrays-noun> \h+ 'a partir de' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
     token date-adjective { 'data' | 'datas' }
     token date-noun { 'data' }
@@ -141,7 +141,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token head-adjective { <head-noun> }
     token head-noun { 'cabeça' }
     token high-adjective { 'alto' | 'alta' }
-    token higher-adjective { 'mais' \h+ 'alto' | 'mais' \h+ 'alta' }
+    token higher-adjective { 'mais' \h+ <high-adjective> }
     token histogram { 'histograma' }
     token histograms { 'histogramas' }
     token how-adverb { 'como' }
@@ -163,7 +163,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token largest-adjective { 'maior' }
     token last-adjective { 'último' | 'últimos' | 'última' | 'últimas' | 'mais' \h+ 'recente' }
     token left-adjective { 'esquerda' }
-    token left-noun { 'esquerda' }
+    token left-noun { 'esquerdo' | 'esquerda' }
     token link-noun { 'ligação' }
     token list-noun { 'lista' }
     token load-verb { 'carregar' }
@@ -206,7 +206,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token outlier-adjective { <outlier-noun> }
     token outlier-noun { 'extraordinário' }
     token outliers-noun { 'extraordinários' }
-    token over-preposition { 'além de' | 'acima de' | 'mais que' }
+    token over-preposition { 'além' \h+ 'de' | 'acima' \h+ 'de' | 'mais' \h+ 'que' }
     token parameter-noun { 'parâmetro' }
     token parameters-noun { 'parâmetros' }
     token part-noun { 'parte' }
@@ -231,8 +231,8 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token results { <results-noun> }
     token results-noun { 'resultados' }
     token reverse-adjective { 'reverso' | 'reversos' | 'reversa' | 'reversas' }
-    token right-adjective { 'direito' | 'direita' | 'certo' }
-    token right-noun { 'direita' }
+    token right-adjective { 'direita' }
+    token right-noun { 'direito' | 'direita' }
     token row-noun { 'linha' }
     token rows { <rows-noun> }
     token rows-noun { 'linhas' }
@@ -256,11 +256,11 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token smallest { <smallest-adjective> }
     token smallest-adjective { 'menor' }
     token some-determiner { 'algum' | 'alguns' | 'alguma' | 'algumas' }
-    token sparse-adjective { 'diluído' }
-    token specific-adjective { 'específico' }
+    token sparse-adjective { 'disperso' | 'dispersos' | 'dispersa' | 'dispersas' | 'espaçado' | 'espaçados' | 'espaçada' | 'espaçadas' | 'espalhado' | 'espalhados' | 'espalhada' | 'espalhadas' }
+    token specific-adjective { 'específico' | 'específicos' | 'específica' | 'específicas' }
     token split-verb { 'tabs' }
     token spot-verb { 'encontrar' }
-    token spread-verb { 'disperso' | 'espaçado' }
+    token spread-verb { 'espalhar' }
     token statistical { <statistical-adjective> }
     token statistical-adjective { 'estatisticamente' }
     token statistics-noun { <stats-noun> }
@@ -294,9 +294,9 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token threshold-noun { 'limite' | 'limiar' }
     token time-adjective { 'hora' }
     token time-noun { 'horário' | 'hora' | 'tempo' }
-    token timeline-noun { 'linha' \h+ 'do' \h 'tempo' | 'timeline' }
+    token timeline-noun { 'linha' \h+ 'do' \h+ 'tempo' | 'timeline' }
     token times-noun { 'vezes' }
-    token to-preposition { 'para' | 'em' | 'o' | 'a' }
+    token to-preposition { 'para' | 'em' | 'o' | 'os' | 'a' | 'as' }
     token top-adjective { 'topo' }
     token top-noun { 'topo' }
     token transform-verb { 'transformar' }
