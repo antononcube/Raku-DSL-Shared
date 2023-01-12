@@ -41,7 +41,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token axis-noun { 'eixo' }
     token be-verb { 'ser', 'estar' }
     token both-determiner { 'e'? \h* 'ambos' | 'simultaneamente' | 'juntos' | 'juntas' }
-    token bottom-noun { 'fundo' | 'funda' | 'inferior' }
+    token bottom-noun { 'fundo' | 'inferior' }
     token broaden-verb { 'expandir' }
     token by-preposition { 'com' | 'via' }
     token calculation { 'cálculo' }
@@ -74,13 +74,13 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token conveyor-adjective { 'transportador' }
     token conveyor-noun { 'transportador' }
     token count-verb { 'contar' }
-    token counts-noun { 'tamanho' | 'número' \h+ 'de' | 'quantidade' \d+ 'de' }
+    token counts-noun { 'tamanho' | 'número' \h+ 'de' | 'quantidade' \h+ 'de' }
     token create { 'criar' }
     token create-directive { <create-verb> | 'fazer' }
     token create-verb { 'criar' }
     token creation-noun { 'criação' }
     token current-adjective { 'atual' }
-    token data-adjective { 'dado' | 'dados' }
+    token data-adjective { <data-noun> }
     token data-noun { 'dado' | 'dados' }
     token dataset { <dataset-noun> }
     token dataset-noun { 'conjunto' \h+ 'de' \h+ 'dados' | <array-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
