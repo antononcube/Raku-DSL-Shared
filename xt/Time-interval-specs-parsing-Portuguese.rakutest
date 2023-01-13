@@ -34,7 +34,7 @@ ok ParseObj.parse('entre janeiro de 2019 e março de 2021'),
         'between jan 2019 and march 2021';
 
 ## 4
-ok ParseObj.parse('2 samanas'),
+ok ParseObj.parse('2 semanas'),
         '2 weeks';
 
 ## 5
