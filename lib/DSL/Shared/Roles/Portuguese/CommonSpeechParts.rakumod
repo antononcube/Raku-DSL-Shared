@@ -166,7 +166,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token join-noun:sym<Portuguese> { :i 'ligação' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ligação', 2) }> | 'composto' | ([\w]+) <?{ $0.Str ne 'completo' and is-fuzzy-match($0.Str, 'composto', 2) }> }
     token language-noun:sym<Portuguese> { :i 'língua' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'língua', 2) }> }
     token largest-adjective:sym<Portuguese> { :i 'maior' | ([\w]+) <?{ $0.Str !(elem) <valor menor> and is-fuzzy-match($0.Str, 'maior', 2) }> }
-    token last-adjective:sym<Portuguese> { :i  'último' | 'últimos' | 'mais' \h+ 'recente'  }
+    token last-adjective:sym<Portuguese> { :i  'último' | 'últimos' | 'mais' \h+ 'recente' | 'passado' | 'passada'  }
     token left-adjective:sym<Portuguese> { :i 'esquerda' | ([\w]+) <?{ $0.Str ne 'esqueça' and is-fuzzy-match($0.Str, 'esquerda', 2) }> }
     token left-noun:sym<Portuguese> { :i 'esquerda' | ([\w]+) <?{ $0.Str ne 'esqueça' and is-fuzzy-match($0.Str, 'esquerda', 2) }> }
     token link-noun:sym<Portuguese> { :i 'ligação' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ligação', 2) }> }
