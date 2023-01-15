@@ -25,7 +25,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token feb-time-spec-word { 'fev' };
   token february-time-spec-word { 'fevereiro' };
   token few-time-spec-word { 'poucos' };
-  token fri-time-spec-word { 'fr' };
+  token fri-time-spec-word { 'sexta' };
   token friday-time-spec-word { 'sexta-feira' | 'sexta' \h+ 'feira' };
   token fridays-time-spec-word { 'sextas-feiras' };
   token hour-time-spec-word { 'hora' };
@@ -38,14 +38,14 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token june-time-spec-word { 'junho' };
   token just-time-spec-word { 'apenas' };
   token last-time-spec-word { 'último' | 'passado' | 'passada' };
-  token lifetime-time-spec-word { 'vida' };
-  token lifetimes-time-spec-word { 'tempo de vida' };
+  token lifetime-time-spec-word { 'vida' | 'tempo' \h+ 'de' \h+ 'vida' };
+  token lifetimes-time-spec-word { 'vidas' | 'tempo' \h+ 'de' \h+ 'vidas' };
   token lincoln-time-spec-word { 'lincoln' };
   token mar-time-spec-word { 'mar' };
   token march-time-spec-word { 'março' };
   token may-time-spec-word { 'maio' };
   token memorial-time-spec-word { 'memorial' };
-  token mon-time-spec-word { 'seg' };
+  token mon-time-spec-word { 'segunda' };
   token monday-time-spec-word { 'segunda-feira' };
   token mondays-time-spec-word { 'segundas-feiras' };
   token month-time-spec-word { 'mês' };
