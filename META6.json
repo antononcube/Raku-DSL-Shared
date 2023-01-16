@@ -84,6 +84,8 @@
     "DSL::Shared::Roles::Portuguese::ListManagementCommand": "lib/DSL/Shared/Roles/Portuguese/ListManagementCommand.rakumod",
     "DSL::Shared::Roles::Portuguese::PipelineCommand": "lib/DSL/Shared/Roles/Portuguese/PipelineCommand.rakumod",
     "DSL::Shared::Roles::Portuguese::PredicateSpecification": "lib/DSL/Shared/Roles/Portuguese/PredicateSpecification.rakumod",
+    "DSL::Shared::Roles::Portuguese::TimeIntervalSpec": "lib/DSL/Shared/Roles/Portuguese/TimeIntervalSpec.rakumod",
+    "DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts": "lib/DSL/Shared/Roles/Portuguese/TimeIntervalSpeechParts.rakumod",
     "DSL::Shared::Roles::PredicateSpecification": "lib/DSL/Shared/Roles/PredicateSpecification.rakumod",
     "DSL::Shared::Roles::Russian::CommonSpeechParts": "lib/DSL/Shared/Roles/Russian/CommonSpeechParts.rakumod",
     "DSL::Shared::Roles::Russian::ListManagementCommand": "lib/DSL/Shared/Roles/Russian/ListManagementCommand.rakumod",

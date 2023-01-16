@@ -1,0 +1,93 @@
+# I am not sure should we have these time interval speech parts separated from the CommonSpeechParts.rakumod.
+# One advantage of combining the files is that the finding the nearest neighbors is very direct
+# and straightforward with the CLI add-token-fuzzy-matching.
+
+use v6.d;
+use DSL::Shared::Utilities::FuzzyMatching;
+
+role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
+
+  token after-time-spec-word { 'depois' \h* 'de'? };
+  token ago-time-spec-word { 'atrás' };
+  token am-time-spec-word { 'am' };
+  token apr-time-spec-word { 'apr' };
+  token april-time-spec-word { 'abril' };
+  token aug-time-spec-word { 'aug' };
+  token august-time-spec-word { 'agosto' };
+  token before-time-spec-word { 'antes' \h* 'de' };
+  token between-time-spec-word { 'entre' };
+  token christmas-time-spec-word { ['o' \h*]? 'natal' };
+  token day-time-spec-word { 'dia' };
+  token days-time-spec-word { 'dias' };
+  token dec-time-spec-word { 'dez' };
+  token december-time-spec-word { 'dezembro' };
+  token during-time-spec-word { 'durante' };
+  token feb-time-spec-word { 'fev' };
+  token february-time-spec-word { 'fevereiro' };
+  token few-time-spec-word { 'poucos' };
+  token fri-time-spec-word { 'sexta' };
+  token friday-time-spec-word { 'sexta-feira' | 'sexta' \h+ 'feira' };
+  token fridays-time-spec-word { 'sextas-feiras' };
+  token hour-time-spec-word { 'hora' };
+  token hours-time-spec-word { 'horas' };
+  token jan-time-spec-word { 'jan' };
+  token january-time-spec-word { 'janeiro' };
+  token jul-time-spec-word { 'jul' };
+  token july-time-spec-word { 'julho' };
+  token jun-time-spec-word { 'jun' };
+  token june-time-spec-word { 'junho' };
+  token just-time-spec-word { 'apenas' };
+  token last-time-spec-word { 'último' | 'passado' | 'passada' };
+  token lifetime-time-spec-word { 'vida' | 'tempo' \h+ 'de' \h+ 'vida' };
+  token lifetimes-time-spec-word { 'vidas' | 'tempo' \h+ 'de' \h+ 'vidas' };
+  token lincoln-time-spec-word { 'lincoln' };
+  token mar-time-spec-word { 'mar' };
+  token march-time-spec-word { 'março' };
+  token may-time-spec-word { 'maio' };
+  token memorial-time-spec-word { 'memorial' };
+  token mon-time-spec-word { 'segunda' };
+  token monday-time-spec-word { 'segunda-feira' };
+  token mondays-time-spec-word { 'segundas-feiras' };
+  token month-time-spec-word { 'mês' };
+  token months-time-spec-word { 'meses' };
+  token mother-time-spec-word { 'mãe' };
+  token new-time-spec-word { 'novo' };
+  token next-time-spec-word { 'próximo' };
+  token nov-time-spec-word { 'nov' };
+  token november-time-spec-word { 'novembro' };
+  token now-time-spec-word { 'agora' };
+  token oct-time-spec-word { 'oct' };
+  token october-time-spec-word { 'outubro' };
+  token of-time-spec-word { 'de' };
+  token one-time-spec-word { 'um' };
+  token past-time-spec-word { 'passado' | 'passada' };
+  token pm-time-spec-word { 'pm' };
+  token ramadan-time-spec-word { ['o' \h*]? 'ramadan' };
+  token right-time-spec-word { 'direita' };
+  token sat-time-spec-word { 'sat' };
+  token saturday-time-spec-word { 'sábado' };
+  token saturdays-time-spec-word { 'sábados' };
+  token sep-time-spec-word { 'sep' };
+  token september-time-spec-word { 'setembro' };
+  token sun-time-spec-word { 'sol' };
+  token sunday-time-spec-word { 'domingo' };
+  token sundays-time-spec-word { 'domingos' };
+  token thanksgiving-time-spec-word { [ 'ação' | 'acção' ] \h+ 'de' \h+ 'graças' };
+  token thu-time-spec-word { 'quinta' };
+  token thursday-time-spec-word { 'quinta-feira' };
+  token thursdays-time-spec-word { 'quintas-feiras' };
+  token today-time-spec-word { 'hoje' };
+  token tomorrow-time-spec-word { 'amanhã' };
+  token tue-time-spec-word { 'terça' };
+  token tuesday-time-spec-word { 'terça-feira' };
+  token tuesdays-time-spec-word { 'terças-feiras' };
+  token wed-time-spec-word { 'quarta' };
+  token wednesday-time-spec-word { 'quarta-feira' | 'quarta' \h+ 'feira' | 'quarta' };
+  token wednesdays-time-spec-word { 'quartas-feiras' };
+  token week-time-spec-word { 'semana' };
+  token weeks-time-spec-word { 'semanas' };
+  token within-time-spec-word { 'em' };
+  token year-time-spec-word { 'ano' };
+  token years-time-spec-word { 'anos' };
+  token yesterday-time-spec-word { 'ontem' };
+}

@@ -161,7 +161,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token join-noun { 'ligação' | 'combinação' }
     token language-noun { 'língua' }
     token largest-adjective { 'maior' }
-    token last-adjective { 'último' | 'últimos' | 'última' | 'últimas' | 'mais' \h+ 'recente' }
+    token last-adjective { 'último' | 'últimos' | 'mais' \h+ 'recente' | 'passado' | 'passada' }
     token left-adjective { 'esquerda' }
     token left-noun { 'esquerdo' | 'esquerda' }
     token link-noun { 'ligação' }

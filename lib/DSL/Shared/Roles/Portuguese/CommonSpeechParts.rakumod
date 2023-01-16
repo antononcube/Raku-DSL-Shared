@@ -123,7 +123,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token elements-noun:sym<Portuguese> { :i 'elementos' | ([\w]+) <?{ $0.Str ne 'elemento' and is-fuzzy-match($0.Str, 'elementos', 2) }> }
     token empty-noun:sym<Portuguese> { :i 'branco' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'branco', 2) }> | 'vacuidade' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'vacuidade', 2) }> }
     token empty-verb:sym<Portuguese> { :i  'vazio' | <empty-noun>  }
-    token every-determiner:sym<Portuguese> { :i 'cada' | ([\w]+) <?{ $0.Str !(elem) <caso canal mapa data para carga> and is-fuzzy-match($0.Str, 'cada', 2) }> }
+    token every-determiner:sym<Portuguese> { :i  'a' \h+ 'cada'  }
     token extend-verb:sym<Portuguese> { :i 'expandir' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'expandir', 2) }> }
     token extract-directive:sym<Portuguese> { :i 'recuperado' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'recuperado', 2) }> | 'minha' | ([\w]+) <?{ $0.Str ne 'linha' and is-fuzzy-match($0.Str, 'minha', 2) }> }
     token filter:sym<Portuguese> { :i <filter-verb> }
@@ -166,7 +166,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token join-noun:sym<Portuguese> { :i 'ligação' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ligação', 2) }> | 'composto' | ([\w]+) <?{ $0.Str ne 'completo' and is-fuzzy-match($0.Str, 'composto', 2) }> }
     token language-noun:sym<Portuguese> { :i 'língua' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'língua', 2) }> }
     token largest-adjective:sym<Portuguese> { :i 'maior' | ([\w]+) <?{ $0.Str !(elem) <valor menor> and is-fuzzy-match($0.Str, 'maior', 2) }> }
-    token last-adjective:sym<Portuguese> { :i  'último' | 'últimos' | 'mais' \h+ 'recente'  }
+    token last-adjective:sym<Portuguese> { :i  'último' | 'últimos' | 'mais' \h+ 'recente' | 'passado' | 'passada'  }
     token left-adjective:sym<Portuguese> { :i 'esquerda' | ([\w]+) <?{ $0.Str ne 'esqueça' and is-fuzzy-match($0.Str, 'esquerda', 2) }> }
     token left-noun:sym<Portuguese> { :i 'esquerda' | ([\w]+) <?{ $0.Str ne 'esqueça' and is-fuzzy-match($0.Str, 'esquerda', 2) }> }
     token link-noun:sym<Portuguese> { :i 'ligação' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ligação', 2) }> }
