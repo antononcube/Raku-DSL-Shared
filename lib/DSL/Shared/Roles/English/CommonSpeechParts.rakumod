@@ -956,6 +956,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token with-preposition {*}
     token with-preposition:sym<English> { :i 'using' | ([\w]+) <?{ $0.Str ne 'during' and is-fuzzy-match($0.Str, 'using', 2) }> | 'with' | 'by' }
 
+    proto token within-preposition {*}
+    token within-preposition:sym<English> { :i 'within' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'within', 2) }> }
+
     proto token without-preposition {*}
     token without-preposition:sym<English> { :i 'without' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'without', 2) }> }
 

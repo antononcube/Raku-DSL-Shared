@@ -324,6 +324,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token when-pronoun { 'when' }
     token which-determiner { 'which' }
     token with-preposition { 'using' | 'with' | 'by' }
+    token within-preposition { 'within' }
     token without-preposition { 'without' }
     token word-noun { 'word' }
     token words-noun { 'words' }
