@@ -3,7 +3,6 @@
 # and straightforward with the CLI add-token-fuzzy-matching.
 
 use v6.d;
-use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::DeterminedWordsMatching;
 
 role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
