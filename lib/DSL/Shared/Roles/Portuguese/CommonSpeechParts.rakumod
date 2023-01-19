@@ -25,7 +25,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token adjacent-adjective:sym<Portuguese> { :i 'adjacent' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'adjacent', 2) }> }
     token algorithm-noun:sym<Portuguese> { :i 'algoritmo' | ([\w]+) <?{ $0.Str ne 'algoritmos' and is-pt-fuzzy-match($0.Str, 'algoritmo', 2) }> }
     token algorithms-noun:sym<Portuguese> { :i 'algoritmos' | ([\w]+) <?{ $0.Str ne 'algoritmo' and is-pt-fuzzy-match($0.Str, 'algoritmos', 2) }> }
-    token all-determiner:sym<Portuguese> { :i 'cada' | ([\w]+) <?{ $0.Str !(elem) <caso canal dado data para da usada> and is-pt-fuzzy-match($0.Str, 'cada', 2) }> | 'todos' | ([\w]+) <?{ $0.Str !(elem) <todas dados métodos dos topo tipos> and is-pt-fuzzy-match($0.Str, 'todos', 2) }> | 'todas' | ([\w]+) <?{ $0.Str !(elem) <todos das rodar tomar> and is-pt-fuzzy-match($0.Str, 'todas', 2) }> }
+    token all-determiner:sym<Portuguese> { :i 'cada' | ([\w]+) <?{ $0.Str !(elem) <caso canal dado data para carga da usada> and is-pt-fuzzy-match($0.Str, 'cada', 2) }> | 'todos' | ([\w]+) <?{ $0.Str !(elem) <todas dados métodos dos topo tipos> and is-pt-fuzzy-match($0.Str, 'todos', 2) }> | 'todas' | ([\w]+) <?{ $0.Str !(elem) <todos das rodar tomar> and is-pt-fuzzy-match($0.Str, 'todas', 2) }> }
     token and-conjunction:sym<Portuguese> { :i 'e' }
     token annex-verb:sym<Portuguese> { :i 'juntar' | ([\w]+) <?{ $0.Str ne 'contar' and is-pt-fuzzy-match($0.Str, 'juntar', 2) }> | 'junte-se' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'junte-se', 2) }> }
     token append-verb:sym<Portuguese> { :i 'acrescentar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'acrescentar', 2) }> }
@@ -116,7 +116,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token domain-noun:sym<Portuguese> { :i 'domínio' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'domínio', 2) }> | 'área' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'área', 2) }> }
     token drop-verb:sym<Portuguese> { :i 'derrubar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'derrubar', 2) }> | 'descartar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'descartar', 2) }> | 'esquecer' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'esquecer', 2) }> }
     token during-preposition:sym<Portuguese> { :i 'enquanto' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'enquanto', 2) }> }
-    token each-determiner:sym<Portuguese> { :i 'cada' | ([\w]+) <?{ $0.Str !(elem) <caso canal dado data para da usada> and is-pt-fuzzy-match($0.Str, 'cada', 2) }> }
+    token each-determiner:sym<Portuguese> { :i 'cada' | ([\w]+) <?{ $0.Str !(elem) <caso canal dado data para carga da usada> and is-pt-fuzzy-match($0.Str, 'cada', 2) }> }
     token echo-verb:sym<Portuguese> { :i 'ecoar' | ([\w]+) <?{ $0.Str !(elem) <estar achar> and is-pt-fuzzy-match($0.Str, 'ecoar', 2) }> | 'repetir' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'repetir', 2) }> }
     token element:sym<Portuguese> { :i <element-noun> }
     token element-noun:sym<Portuguese> { :i 'elemento' | ([\w]+) <?{ $0.Str ne 'elementos' and is-pt-fuzzy-match($0.Str, 'elemento', 2) }> }
@@ -124,7 +124,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token elements-noun:sym<Portuguese> { :i 'elementos' | ([\w]+) <?{ $0.Str ne 'elemento' and is-pt-fuzzy-match($0.Str, 'elementos', 2) }> }
     token empty-noun:sym<Portuguese> { :i 'branco' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'branco', 2) }> | 'vazio' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'vazio', 2) }> }
     token empty-verb:sym<Portuguese> { :i 'esvaziar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'esvaziar', 2) }> | 'limpar' | ([\w]+) <?{ $0.Str !(elem) <ligar limiar> and is-pt-fuzzy-match($0.Str, 'limpar', 2) }> | 'apagar' | ([\w]+) <?{ $0.Str ne 'pegar' and is-pt-fuzzy-match($0.Str, 'apagar', 2) }> }
-    token every-determiner:sym<Portuguese> { :i 'cada' | ([\w]+) <?{ $0.Str !(elem) <caso canal dado data para da usada> and is-pt-fuzzy-match($0.Str, 'cada', 2) }> }
+    token every-determiner:sym<Portuguese> { :i 'cada' | ([\w]+) <?{ $0.Str !(elem) <caso canal dado data para carga da usada> and is-pt-fuzzy-match($0.Str, 'cada', 2) }> }
     token extend-verb:sym<Portuguese> { :i 'expandir' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'expandir', 2) }> }
     token extract-directive:sym<Portuguese> { :i 'extraia' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'extraia', 2) }> }
     token filter:sym<Portuguese> { :i <filter-verb> }
@@ -132,7 +132,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token filter-verb:sym<Portuguese> { :i 'filtrar' | ([\w]+) <?{ $0.Str ne 'filtro' and is-pt-fuzzy-match($0.Str, 'filtrar', 2) }> }
     token find-verb:sym<Portuguese> { :i 'pesquisar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'pesquisar', 2) }> | 'achar' | ([\w]+) <?{ $0.Str ne 'ecoar' and is-pt-fuzzy-match($0.Str, 'achar', 2) }> | 'encontrar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'encontrar', 2) }> }
     token first-adjective:sym<Portuguese> { :i 'primeiro' | ([\w]+) <?{ $0.Str !(elem) <primeiros primeira primeiras> and is-pt-fuzzy-match($0.Str, 'primeiro', 2) }> | 'primeiros' | ([\w]+) <?{ $0.Str !(elem) <primeiro primeira primeiras> and is-pt-fuzzy-match($0.Str, 'primeiros', 2) }> | 'primeira' | ([\w]+) <?{ $0.Str !(elem) <primeiro primeiros primeiras> and is-pt-fuzzy-match($0.Str, 'primeira', 2) }> | 'primeiras' | ([\w]+) <?{ $0.Str !(elem) <primeiro primeiros primeira> and is-pt-fuzzy-match($0.Str, 'primeiras', 2) }> }
-    token for-preposition:sym<Portuguese> { :i 'para' | ([\w]+) <?{ $0.Str !(elem) <cada fora data parte hora> and is-pt-fuzzy-match($0.Str, 'para', 2) }> | 'com' | ([\w]+) <?{ $0.Str !(elem) <um como em no nome sem do dos ou o os> and is-pt-fuzzy-match($0.Str, 'com', 1) }> | 'em' }
+    token for-preposition:sym<Portuguese> { :i 'para' | ([\w]+) <?{ $0.Str !(elem) <cada fora data carga parte hora> and is-pt-fuzzy-match($0.Str, 'para', 2) }> | 'com' | ([\w]+) <?{ $0.Str !(elem) <um como em no nome sem do dos ou o os> and is-pt-fuzzy-match($0.Str, 'com', 1) }> | 'em' }
     token frame-noun:sym<Portuguese> { :i 'moldura' | ([\w]+) <?{ $0.Str ne 'molduras' and is-pt-fuzzy-match($0.Str, 'moldura', 2) }> }
     token frames-noun:sym<Portuguese> { :i 'molduras' | ([\w]+) <?{ $0.Str ne 'moldura' and is-pt-fuzzy-match($0.Str, 'molduras', 2) }> }
     token from-preposition:sym<Portuguese> { :i  'de' | 'à' \h+ 'partir' \h+ 'de'  }
@@ -172,7 +172,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token left-noun:sym<Portuguese> { :i 'esquerdo' | ([\w]+) <?{ $0.Str ne 'esquerda' and is-pt-fuzzy-match($0.Str, 'esquerdo', 2) }> | 'esquerda' | ([\w]+) <?{ $0.Str ne 'esquerdo' and is-pt-fuzzy-match($0.Str, 'esquerda', 2) }> }
     token link-noun:sym<Portuguese> { :i 'ligação' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'ligação', 2) }> }
     token list-noun:sym<Portuguese> { :i 'lista' | ([\w]+) <?{ $0.Str !(elem) <isto linha esta> and is-pt-fuzzy-match($0.Str, 'lista', 2) }> }
-    token load-verb:sym<Portuguese> { :i 'carregar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'carregar', 2) }> }
+    token load-verb:sym<Portuguese> { :i 'carregar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'carregar', 2) }> | 'carga' | ([\w]+) <?{ $0.Str !(elem) <cada para> and is-pt-fuzzy-match($0.Str, 'carga', 2) }> }
     token locate-verb:sym<Portuguese> { :i 'encontrar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'encontrar', 2) }> | 'localizar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'localizar', 2) }> | 'achar' | ([\w]+) <?{ $0.Str ne 'ecoar' and is-pt-fuzzy-match($0.Str, 'achar', 2) }> }
     token low-adjective:sym<Portuguese> { :i 'baixo' | ([\w]+) <?{ $0.Str !(elem) <eixo baixa> and is-pt-fuzzy-match($0.Str, 'baixo', 2) }> | 'baixa' | ([\w]+) <?{ $0.Str ne 'baixo' and is-pt-fuzzy-match($0.Str, 'baixa', 2) }> }
     token lower-adjective:sym<Portuguese> { :i  'mais' \h+ <low-adjective>  }
@@ -217,7 +217,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token parameters-noun:sym<Portuguese> { :i 'parâmetros' | ([\w]+) <?{ $0.Str ne 'parâmetro' and is-pt-fuzzy-match($0.Str, 'parâmetros', 2) }> }
     token part-noun:sym<Portuguese> { :i 'parte' | ([\w]+) <?{ $0.Str ne 'para' and is-pt-fuzzy-match($0.Str, 'parte', 2) }> }
     token pattern-noun:sym<Portuguese> { :i 'padrão' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'padrão', 2) }> }
-    token per-preposition:sym<Portuguese> { :i 'para' | ([\w]+) <?{ $0.Str !(elem) <cada fora data parte hora> and is-pt-fuzzy-match($0.Str, 'para', 2) }> }
+    token per-preposition:sym<Portuguese> { :i 'para' | ([\w]+) <?{ $0.Str !(elem) <cada fora data carga parte hora> and is-pt-fuzzy-match($0.Str, 'para', 2) }> }
     token pipeline-adjective:sym<Portuguese> { :i <tape-adjective> | <conveyor-adjective> | <channel-adjective> }
     token pipeline-noun:sym<Portuguese> { :i  <tape-noun> | <conveyor-noun> | <channel-noun> | 'streaming'  }
     token plot-noun:sym<Portuguese> { :i 'gráfico' | ([\w]+) <?{ $0.Str ne 'gráficos' and is-pt-fuzzy-match($0.Str, 'gráfico', 2) }> }
@@ -302,7 +302,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token time-noun:sym<Portuguese> { :i 'horário' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'horário', 2) }> | 'hora' | ([\w]+) <?{ $0.Str !(elem) <fora para forma> and is-pt-fuzzy-match($0.Str, 'hora', 2) }> | 'tempo' | ([\w]+) <?{ $0.Str !(elem) <texto topo tipo> and is-pt-fuzzy-match($0.Str, 'tempo', 2) }> }
     token timeline-noun:sym<Portuguese> { :i  'linha' \h+ 'do' \h+ 'tempo' | 'timeline'  }
     token times-noun:sym<Portuguese> { :i 'vezes' | ([\w]+) <?{ $0.Str ne 'eles' and is-pt-fuzzy-match($0.Str, 'vezes', 2) }> }
-    token to-preposition:sym<Portuguese> { :i 'para' | ([\w]+) <?{ $0.Str !(elem) <cada fora data parte hora> and is-pt-fuzzy-match($0.Str, 'para', 2) }> | 'em' | 'o' | 'os' | 'a' | 'as' }
+    token to-preposition:sym<Portuguese> { :i 'para' | ([\w]+) <?{ $0.Str !(elem) <cada fora data carga parte hora> and is-pt-fuzzy-match($0.Str, 'para', 2) }> | 'em' | 'o' | 'os' | 'a' | 'as' }
     token top-adjective:sym<Portuguese> { :i 'topo' | ([\w]+) <?{ $0.Str !(elem) <todos como tempo tipo tipos> and is-pt-fuzzy-match($0.Str, 'topo', 2) }> }
     token top-noun:sym<Portuguese> { :i 'topo' | ([\w]+) <?{ $0.Str !(elem) <todos como tempo tipo tipos> and is-pt-fuzzy-match($0.Str, 'topo', 2) }> }
     token transform-verb:sym<Portuguese> { :i 'transformar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'transformar', 2) }> }

@@ -167,7 +167,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token left-noun { 'esquerdo' | 'esquerda' }
     token link-noun { 'ligação' }
     token list-noun { 'lista' }
-    token load-verb { 'carregar' }
+    token load-verb { 'carregar' | 'carga' }
     token locate-verb { 'encontrar' | 'localizar' | 'achar' }
     token low-adjective { 'baixo' | 'baixa' }
     token lower-adjective { 'mais' \h+ <low-adjective> }
