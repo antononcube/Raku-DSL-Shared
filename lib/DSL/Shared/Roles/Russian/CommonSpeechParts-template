@@ -68,7 +68,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token configuration-noun { 'конфигурация' }
     token connect-verb { 'связать' | 'связать' }
     token consider-verb { 'проверять' }
-    token context-noun { 'справочная информация' }
+    token context-noun { 'контекст' }
     token contingency-noun { 'условный' | 'перекрестные' \h+ 'ссылки' \h+ 'табуляция' }
     token convert-verb { 'конвертировать' }
     token conveyor-adjective { 'конвейер' | 'конвейер' | 'конвейер' | 'конвейер' }

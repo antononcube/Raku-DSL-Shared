@@ -68,7 +68,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token configuration-noun:sym<Russian> { :i 'конфигурация' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конфигурация', 2) }> }
     token connect-verb:sym<Russian> { :i 'связать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'связать', 2) }> | 'связать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'связать', 2) }> }
     token consider-verb:sym<Russian> { :i 'проверять' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'проверять', 2) }> }
-    token context-noun { 'справочная информация' }
+    token context-noun:sym<Russian> { :i 'контекст' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'контекст', 2) }> }
     token contingency-noun:sym<Russian> { :i  'условный' | 'перекрестные' \h+ 'ссылки' \h+ 'табуляция'  }
     token convert-verb:sym<Russian> { :i 'конвертировать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвертировать', 2) }> }
     token conveyor-adjective:sym<Russian> { :i 'конвейер' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвейер', 2) }> | 'конвейер' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвейер', 2) }> | 'конвейер' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвейер', 2) }> | 'конвейер' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'конвейер', 2) }> }
