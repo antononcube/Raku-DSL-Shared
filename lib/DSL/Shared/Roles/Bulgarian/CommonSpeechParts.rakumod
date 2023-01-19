@@ -328,6 +328,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token when-pronoun:sym<Bulgarian> { :i 'кога' | ([\w]+) <?{ $0.Str !(elem) <код това кой кои> and is-bg-fuzzy-match($0.Str, 'кога', 2) }> }
     token which-determiner:sym<Bulgarian> { :i 'кой' | ([\w]+) <?{ $0.Str !(elem) <то ос от код брой как мой моя по някой под до към кога кои> and is-bg-fuzzy-match($0.Str, 'кой', 1) }> | 'кои' | ([\w]+) <?{ $0.Str !(elem) <и то оси ос от код как мой моя по или някои под този до към кога кой> and is-bg-fuzzy-match($0.Str, 'кои', 1) }> }
     token with-preposition:sym<Bulgarian> { :i 'чрез' | ([\w]+) <?{ $0.Str !(elem) <през без ред> and is-bg-fuzzy-match($0.Str, 'чрез', 2) }> | 'с' | 'със' | ([\w]+) <?{ $0.Str !(elem) <са ос във съб към с ср. път> and is-bg-fuzzy-match($0.Str, 'със', 1) }> }
+    token within-preposition:sym<Bulgarian> { :i 'в' | 'във' | ([\w]+) <?{ $0.Str !(elem) <със в ляв съб към връх път> and is-bg-fuzzy-match($0.Str, 'във', 1) }> | 'вътре' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'вътре', 2) }> }
     token without-preposition:sym<Bulgarian> { :i 'без' | ([\w]+) <?{ $0.Str !(elem) <чрез през е не ред низ цел> and is-bg-fuzzy-match($0.Str, 'без', 1) }> }
     token word-noun:sym<Bulgarian> { :i 'дума' | ([\w]+) <?{ $0.Str !(elem) <дата думи> and is-bg-fuzzy-match($0.Str, 'дума', 2) }> }
     token words-noun:sym<Bulgarian> { :i 'думи' | ([\w]+) <?{ $0.Str !(elem) <дати дума> and is-bg-fuzzy-match($0.Str, 'думи', 2) }> }

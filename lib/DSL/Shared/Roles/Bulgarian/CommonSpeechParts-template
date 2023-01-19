@@ -323,6 +323,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token when-pronoun { 'кога' }
     token which-determiner { 'кой' | 'кои' }
     token with-preposition { 'чрез' | 'с' | 'със' }
+    token within-preposition { 'в' | 'във' | 'вътре' }
     token without-preposition { 'без' }
     token word-noun { 'дума' }
     token words-noun { 'думи' }

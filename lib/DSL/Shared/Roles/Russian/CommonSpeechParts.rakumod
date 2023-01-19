@@ -24,7 +24,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token adjacent-adjective:sym<Russian> { :i 'адъютантский' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'адъютантский', 2) }> | 'адъютантский' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'адъютантский', 2) }> }
     token algorithm-noun:sym<Russian> { :i 'алгоритм' | ([\w]+) <?{ $0.Str ne 'алгоритмы' and is-ru-fuzzy-match($0.Str, 'алгоритм', 2) }> }
     token algorithms-noun:sym<Russian> { :i 'алгоритмы' | ([\w]+) <?{ $0.Str ne 'алгоритм' and is-ru-fuzzy-match($0.Str, 'алгоритмы', 2) }> }
-    token all-determiner:sym<Russian> { :i 'каждый' | ([\w]+) <?{ $0.Str !(elem) <каждая каждые каждое> and is-ru-fuzzy-match($0.Str, 'каждый', 2) }> | 'все' | ([\w]+) <?{ $0.Str !(elem) <оси ось с е выше вес веса> and is-ru-fuzzy-match($0.Str, 'все', 1) }> }
+    token all-determiner:sym<Russian> { :i 'каждый' | ([\w]+) <?{ $0.Str !(elem) <каждая каждые каждое> and is-ru-fuzzy-match($0.Str, 'каждый', 2) }> | 'все' | ([\w]+) <?{ $0.Str !(elem) <оси ось с е выше вес веса в вo> and is-ru-fuzzy-match($0.Str, 'все', 1) }> }
     token and-conjunction:sym<Russian> { :i 'и' }
     token annex-verb:sym<Russian> { :i 'соединить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'соединить', 2) }> }
     token append-verb:sym<Russian> { :i 'добавить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'добавить', 2) }> }
@@ -321,13 +321,14 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token way-noun:sym<Russian> { :i 'раз' | ([\w]+) <?{ $0.Str !(elem) <как граф на рама рамы из без наш ряд шаг> and is-ru-fuzzy-match($0.Str, 'раз', 1) }> | 'способ' | ([\w]+) <?{ $0.Str ne 'список' and is-ru-fuzzy-match($0.Str, 'способ', 2) }> }
     token weight:sym<Russian> { :i <weight-noun> }
     token weight-adjective:sym<Russian> { :i 'весовой' | ([\w]+) <?{ $0.Str !(elem) <весовая весовое весовые> and is-ru-fuzzy-match($0.Str, 'весовой', 2) }> | 'весовая' | ([\w]+) <?{ $0.Str !(elem) <весовой весовое весовые> and is-ru-fuzzy-match($0.Str, 'весовая', 2) }> | 'весовое' | ([\w]+) <?{ $0.Str !(elem) <весовой весовая весовые> and is-ru-fuzzy-match($0.Str, 'весовое', 2) }> | 'весовые' | ([\w]+) <?{ $0.Str !(elem) <весовой весовая весовое> and is-ru-fuzzy-match($0.Str, 'весовые', 2) }> }
-    token weight-noun:sym<Russian> { :i 'вес' | ([\w]+) <?{ $0.Str !(elem) <все с е без нет вещь вещи веса> and is-ru-fuzzy-match($0.Str, 'вес', 1) }> }
+    token weight-noun:sym<Russian> { :i 'вес' | ([\w]+) <?{ $0.Str !(elem) <все с е без нет вещь вещи веса в вo> and is-ru-fuzzy-match($0.Str, 'вес', 1) }> }
     token weights:sym<Russian> { :i <weights-noun> }
     token weights-noun:sym<Russian> { :i 'веса' | ([\w]+) <?{ $0.Str !(elem) <все дела вещь вещи вес> and is-ru-fuzzy-match($0.Str, 'веса', 2) }> }
     token what-pronoun:sym<Russian> { :i 'что' | ([\w]+) <?{ $0.Str !(elem) <дно по от это итог эти до топ кто> and is-ru-fuzzy-match($0.Str, 'что', 1) }> | 'который' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'который', 2) }> }
     token when-pronoun:sym<Russian> { :i 'когда' | ([\w]+) <?{ $0.Str !(elem) <код коды> and is-ru-fuzzy-match($0.Str, 'когда', 2) }> }
     token which-determiner:sym<Russian> { :i 'кто' | ([\w]+) <?{ $0.Str !(elem) <как дно по от код это итог эти что до топ> and is-ru-fuzzy-match($0.Str, 'кто', 1) }> | 'какой' | ([\w]+) <?{ $0.Str ne 'как' and is-ru-fuzzy-match($0.Str, 'какой', 2) }> }
-    token with-preposition:sym<Russian> { :i 'через' | ([\w]+) <?{ $0.Str ne 'чертеж' and is-ru-fuzzy-match($0.Str, 'через', 2) }> | 'с' | 'с' }
+    token with-preposition:sym<Russian> { :i 'через' | ([\w]+) <?{ $0.Str ne 'чертеж' and is-ru-fuzzy-match($0.Str, 'через', 2) }> | 'с' }
+    token within-preposition:sym<Russian> { :i 'в' | 'вo' | 'внутри' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'внутри', 2) }> }
     token without-preposition:sym<Russian> { :i 'без' | ([\w]+) <?{ $0.Str !(elem) <из е нет бери раз вес> and is-ru-fuzzy-match($0.Str, 'без', 1) }> }
     token word-noun:sym<Russian> { :i 'слово' | ([\w]+) <?{ $0.Str !(elem) <слева слова> and is-ru-fuzzy-match($0.Str, 'слово', 2) }> }
     token words-noun:sym<Russian> { :i 'слова' | ([\w]+) <?{ $0.Str !(elem) <словарь слева слово> and is-ru-fuzzy-match($0.Str, 'слова', 2) }> }

@@ -322,6 +322,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token when-pronoun { 'quando' }
     token which-determiner { 'quem' | 'qual' | 'quais' }
     token with-preposition { 'с' | 'com' }
+    token within-preposition { 'entre' | 'dentro' }
     token without-preposition { 'sem' }
     token word-noun { 'palavra' }
     token words-noun { 'palavras' }

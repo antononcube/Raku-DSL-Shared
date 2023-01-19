@@ -322,7 +322,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token what-pronoun { 'что' | 'который' }
     token when-pronoun { 'когда' }
     token which-determiner { 'кто' | 'какой' }
-    token with-preposition { 'через' | 'с' | 'с' }
+    token with-preposition { 'через' | 'с' }
+    token within-preposition { 'в' | 'вo' | 'внутри' }
     token without-preposition { 'без' }
     token word-noun { 'слово' }
     token words-noun { 'слова' }

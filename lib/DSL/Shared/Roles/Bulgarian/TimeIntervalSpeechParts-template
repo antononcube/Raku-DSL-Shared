@@ -37,7 +37,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token jun-time-spec-word { 'юни' };
   token june-time-spec-word { 'юни' };
   token just-time-spec-word { 'само' };
-  token last-time-spec-word { 'последен' | 'последна' | 'последно' | 'последните' };
+  token last-time-spec-word { 'последен' | 'последна' | 'последно' | 'последни' };
   token lifetime-time-spec-word { 'живот' };
   token lifetimes-time-spec-word { 'животи' };
   token lincoln-time-spec-word { 'линкълн' };
@@ -63,7 +63,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token past-time-spec-word { 'из'? [ 'миналия' | 'миналата' | 'миналато' | 'миналите' ] };
   token pm-time-spec-word { 'pm' | 'следобед' | 'следобяд' | 'след' \h+ 'обяд'};
   token ramadan-time-spec-word { 'рамадан' };
-  token right-time-spec-word { 'вдясно' | 'дясен' | 'дясна' | 'дясно' | 'десни' };
+  token right-time-spec-word { 'вдясно' | 'десен' | 'дясна' | 'дясно' | 'десни' };
   token sat-time-spec-word { 'съб' };
   token saturday-time-spec-word { 'събота' };
   token saturdays-time-spec-word { 'съботи' };
