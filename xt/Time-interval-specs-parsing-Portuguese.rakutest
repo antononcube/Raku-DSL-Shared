@@ -74,7 +74,7 @@ ok ParseObj.parse('cada ano'),
         'each year';
 
 ## 14
-ok ParseObj.parse('a cada dois meses'),
+ok ParseObj.parse('cada dois meses'),
         'every two months';
 
 done-testing;
