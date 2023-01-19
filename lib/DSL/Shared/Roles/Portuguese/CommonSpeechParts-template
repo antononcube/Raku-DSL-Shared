@@ -8,6 +8,7 @@
 use v6.d;
 
 use DSL::Shared::Utilities::FuzzyMatching;
+use DSL::Shared::Utilities::DeterminedWordsMatching;
 
 role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     # Single words
@@ -17,7 +18,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token MODULE-noun { 'módulo' }
     token TARGET-noun { 'meta' | 'propósito' | 'alvo' }
     token USER-noun { 'usuário' | 'usuária' }
-    token a-determiner { 'um', 'uma' }
+    token a-determiner { 'um' | 'uma' }
     token add-verb { 'adicionar' }
     token adhere-verb { 'aderir' | 'de' \h+ 'acordo' \h+ 'com' }
     token adjacency-noun { 'adjacência' }
@@ -35,11 +36,11 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token as-preposition { 'como' }
     token assign-verb { 'atribuir' }
     token at-preposition { 'em' | 'no' | 'na' }
-    token automatic { 'automático' | automática' | 'automaticamente' }
+    token automatic { 'automático' | 'automática' | 'automaticamente' }
     token away-adverb { 'fora' }
     token axes-noun { 'eixos' }
     token axis-noun { 'eixo' }
-    token be-verb { 'ser', 'estar' }
+    token be-verb { 'ser' | 'estar' }
     token both-determiner { 'e'? \h* 'ambos' | 'simultaneamente' | 'juntos' | 'juntas' }
     token bottom-noun { 'fundo' | 'inferior' }
     token broaden-verb { 'expandir' }
@@ -84,7 +85,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token data-noun { 'dado' | 'dados' }
     token dataset { <dataset-noun> }
     token dataset-noun { 'conjunto' \h+ 'de' \h+ 'dados' | <array-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <array-noun>}
-    token datasets-noun { 'conjuntos' \h+ 'de' \h+ 'dados' | <arrays-noun> \h+ 'a partir de' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
+    token datasets-noun { 'conjuntos' \h+ 'de' \h+ 'dados' | <arrays-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun> }
     token date-adjective { 'data' | 'datas' }
     token date-noun { 'data' }
     token dates-noun { 'datas' }
@@ -111,7 +112,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token drop-verb { 'derrubar' | 'descartar' | 'esquecer' }
     token during-preposition { 'enquanto' }
     token each-determiner { 'cada' }
-    token echo-verb { 'ecoar', 'repetir' }
+    token echo-verb { 'ecoar' | 'repetir' }
     token element { <element-noun> }
     token element-noun { 'elemento' }
     token elements { <elements-noun> }
@@ -129,14 +130,14 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token for-preposition { 'para' | 'com' | 'em' }
     token frame-noun { 'moldura' }
     token frames-noun { 'molduras' }
-    token from-preposition { 'de' | 'à partir de' }
+    token from-preposition { 'de' | 'à' \h+ 'partir' \h+ 'de' }
     token function { <function-noun> }
     token function-noun { 'função' }
     token functions { <functions-noun> }
     token functions-noun { 'funções' }
     token generate-directive { <generate-verb> | <create-verb> }
     token generate-verb { 'generar' }
-    token get-verb { 'pegar', 'obter' }
+    token get-verb { 'pegar' | 'obter' }
     token graph-noun { 'gráfico' }
     token head-adjective { <head-noun> }
     token head-noun { 'cabeça' }
@@ -189,7 +190,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token name-noun { 'nome' }
     token names-noun { 'nomes' }
     token nearest-adjective { 'mais' \h+ 'próximo' | 'mais' \h+ 'próxima' }
-    token neighbors-noun { 'vizinhos' | vizinhas }
+    token neighbors-noun { 'vizinhos' | 'vizinhas' }
     token no-determiner { 'sem' }
     token non-prefix { 'não' }
     token number-noun { 'número' }
@@ -198,8 +199,8 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token of-preposition { 'em' | 'de' | 'do' | 'dos' | 'da' | 'das' }
     token off-adverb { 'sem' }
     token on-preposition { <at-preposition> | 'por' }
-    token one-pronoun { 'alguém' | 'uma pessoa' }
-    token ones-pronoun { 'algumas pessoas' }
+    token one-pronoun { 'alguém' | 'uma' \h+ 'pessoa' }
+    token ones-pronoun { 'algumas' \h+ 'pessoas' }
     token or-conjunction { 'ou' }
     token our-determiner { 'nosso' }
     token out-adverb { 'fora'  }
@@ -237,7 +238,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token rows { <rows-noun> }
     token rows-noun { 'linhas' }
     token run-verb { 'executar' | 'rodar' }
-    token running-verb { 'em execução' | 'rodando' }
+    token running-verb { 'em' \h+ 'execução' | 'rodando' }
     token separate-verb { 'separar' }
     token series-noun { 'série' }
     token set-directive { 'defina' | 'attribua' }

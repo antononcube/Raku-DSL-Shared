@@ -4,6 +4,7 @@
 
 use v6.d;
 use DSL::Shared::Utilities::FuzzyMatching;
+use DSL::Shared::Utilities::DeterminedWordsMatching;
 
 role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
 
@@ -76,7 +77,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token thu-time-spec-word:sym<Portuguese> { :i 'quinta' | ([\w]+) <?{ $0.Str ne 'quarta' and is-pt-fuzzy-match($0.Str, 'quinta', 2) }> }
   token thursday-time-spec-word:sym<Portuguese> { :i 'quinta-feira' | ([\w]+) <?{ $0.Str ne 'quintas-feiras' and is-pt-fuzzy-match($0.Str, 'quinta-feira', 2) }> }
   token thursdays-time-spec-word:sym<Portuguese> { :i 'quintas-feiras' | ([\w]+) <?{ $0.Str !(elem) <quinta-feira quartas-feiras> and is-pt-fuzzy-match($0.Str, 'quintas-feiras', 2) }> }
-  token today-time-spec-word:sym<Portuguese> { :i 'hoje' | ([\w]+) <?{ $0.Str ne 'hora' and is-pt-fuzzy-match($0.Str, 'hoje', 2) }> }
+  token today-time-spec-word:sym<Portuguese> { :i 'hoje' | ([\w]+) <?{ $0.Str !(elem) <hora doze> and is-pt-fuzzy-match($0.Str, 'hoje', 2) }> }
   token tomorrow-time-spec-word:sym<Portuguese> { :i 'amanhã' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'amanhã', 2) }> }
   token tue-time-spec-word:sym<Portuguese> { :i 'terça' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'terça', 2) }> }
   token tuesday-time-spec-word:sym<Portuguese> { :i 'terça-feira' | ([\w]+) <?{ $0.Str ne 'terças-feiras' and is-pt-fuzzy-match($0.Str, 'terça-feira', 2) }> }
