@@ -7,7 +7,6 @@
 
 use v6.d;
 
-use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::DeterminedWordsMatching;
 
 role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
