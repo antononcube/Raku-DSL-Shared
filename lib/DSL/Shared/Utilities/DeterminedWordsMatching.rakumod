@@ -49,6 +49,15 @@ multi is-bg-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
 }
 
 #============================================================
+# Portuguese fuzzy matching
+#============================================================
+proto is-pt-fuzzy-match($c, $a, $maxDist = 2) is export {*};
+
+multi is-pt-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
+    return is-fuzzy-match($candidate, $actual, $maxDist);
+}
+
+#============================================================
 # Russian fuzzy matching
 #============================================================
 proto is-ru-fuzzy-match($c, $a, $maxDist = 2) is export {*};
