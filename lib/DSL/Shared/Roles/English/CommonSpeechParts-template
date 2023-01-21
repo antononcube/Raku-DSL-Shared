@@ -187,6 +187,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token model { <model-noun> }
     token model-noun { 'model' }
     token module-noun { 'module' }
+    token much-pronoun { 'much' }
     token my-determiner { 'my' }
     token name-noun { 'name' }
     token names-noun { 'names' }

@@ -315,7 +315,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token during-preposition:sym<English> { :i 'during' | ([\w]+) <?{ $0.Str !(elem) <using string> and is-fuzzy-match($0.Str, 'during', 2) }> }
 
     proto token each-determiner {*}
-    token each-determiner:sym<English> { :i 'each' | ([\w]+) <?{ $0.Str ne 'echo' and is-fuzzy-match($0.Str, 'each', 2) }> }
+    token each-determiner:sym<English> { :i 'each' | ([\w]+) <?{ $0.Str !(elem) <echo much> and is-fuzzy-match($0.Str, 'each', 2) }> }
 
     proto token echo-verb {*}
     token echo-verb:sym<English> { :i 'echo' | ([\w]+) <?{ $0.Str ne 'each' and is-fuzzy-match($0.Str, 'echo', 2) }> }
@@ -544,6 +544,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token module-noun {*}
     token module-noun:sym<English> { :i 'module' | ([\w]+) <?{ $0.Str ne 'model' and is-fuzzy-match($0.Str, 'module', 2) }> }
+
+    proto token much-pronoun {*}
+    token much-pronoun:sym<English> { :i 'much' | ([\w]+) <?{ $0.Str ne 'each' and is-fuzzy-match($0.Str, 'much', 2) }> }
 
     proto token my-determiner {*}
     token my-determiner:sym<English> { :i 'my' }
@@ -957,7 +960,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token with-preposition:sym<English> { :i 'using' | ([\w]+) <?{ $0.Str ne 'during' and is-fuzzy-match($0.Str, 'using', 2) }> | 'with' | 'by' }
 
     proto token within-preposition {*}
-    token within-preposition:sym<English> { :i 'within' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'within', 2) }> }
+    token within-preposition:sym<English> { :i 'within' | ([\w]+) <?{ $0.Str ne 'with' and is-fuzzy-match($0.Str, 'within', 2) }> }
 
     proto token without-preposition {*}
     token without-preposition:sym<English> { :i 'without' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'without', 2) }> }
