@@ -100,7 +100,8 @@
   "resources": [
     "DataFormatNameToEntityID_EN.csv",
     "MetadataTypeNameToEntityID_EN.csv",
-    "Generate-common-speech-parts-roles.sh"
+    "Generate-common-speech-parts-roles.sh",
+    "Generate-time-interval-speech-parts-roles.sh"
   ],
   "license": "Artistic-2.0",
   "tags": [
