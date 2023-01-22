@@ -95,7 +95,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token just-time-spec-word:sym<English> { :i 'just' | ([\w]+) <?{ $0.Str !(elem) <jul july jun june last past> and is-fuzzy-match($0.Str, 'just', 2) }> }
 
   proto token last-time-spec-word {*}
-  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <just past sat> and is-fuzzy-match($0.Str, 'last', 2) }> }
+  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <at just past sat> and is-fuzzy-match($0.Str, 'last', 2) }> }
 
   proto token lifetime-time-spec-word {*}
   token lifetime-time-spec-word:sym<English> { :i 'lifetime' | ([\w]+) <?{ $0.Str ne 'lifetimes' and is-fuzzy-match($0.Str, 'lifetime', 2) }> }
@@ -164,7 +164,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token one-time-spec-word:sym<English> { :i 'one' | ([\w]+) <?{ $0.Str !(elem) <june mon new nov now oct of tue> and is-fuzzy-match($0.Str, 'one', 1) }> }
 
   proto token past-time-spec-word {*}
-  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <just last sat> and is-fuzzy-match($0.Str, 'past', 2) }> }
+  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <at just last sat> and is-fuzzy-match($0.Str, 'past', 2) }> }
 
   proto token pm-time-spec-word {*}
   token pm-time-spec-word:sym<English> { :i 'pm' }
@@ -245,7 +245,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token within-time-spec-word:sym<English> { :i 'within' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'within', 2) }> }
 
   proto token year-time-spec-word {*}
-  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <mar years> and is-fuzzy-match($0.Str, 'year', 2) }> }
+  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <per mar years> and is-fuzzy-match($0.Str, 'year', 2) }> }
 
   proto token years-time-spec-word {*}
   token years-time-spec-word:sym<English> { :i 'years' | ([\w]+) <?{ $0.Str ne 'year' and is-fuzzy-match($0.Str, 'years', 2) }> }
