@@ -9,10 +9,6 @@ echo 'Process English common speech parts template'
 cd ./lib/DSL/Shared/Roles/English
 add-token-fuzzy-matching -o=./CommonSpeechParts.rakumod --add-protos --sym-name=English --add-exclusions ./CommonSpeechParts-template
 
-echo 'Process English time interval speech parts template'
-
-add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --add-protos --sym-name=English --add-exclusions ./TimeIntervalSpeechParts-template
-
 # Go back to the top directory
 cd ../../../../../
 
@@ -22,8 +18,6 @@ echo 'Process Bulgarian template'
 cd ./lib/DSL/Shared/Roles/Bulgarian
 add-token-fuzzy-matching -o=./CommonSpeechParts.rakumod --/add-protos --sym-name=Bulgarian --add-exclusions --func-name=is-bg-fuzzy-match ./CommonSpeechParts-template
 
-add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --/add-protos --sym-name=Bulgarian --add-exclusions --func-name=is-fuzzy-match ./TimeIntervalSpeechParts-template
-
 # Go back to the top directory
 cd ../../../../../
 
@@ -31,9 +25,7 @@ cd ../../../../../
 echo 'Process Portuguese template'
 
 cd ./lib/DSL/Shared/Roles/Portuguese
-add-token-fuzzy-matching -o=./CommonSpeechParts.rakumod --/add-protos --sym-name=Portuguese --add-exclusions --func-name=is-fuzzy-match ./CommonSpeechParts-template
-
-add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --/add-protos --sym-name=Portuguese --add-exclusions --func-name=is-fuzzy-match ./TimeIntervalSpeechParts-template
+add-token-fuzzy-matching -o=./CommonSpeechParts.rakumod --/add-protos --sym-name=Portuguese --add-exclusions --func-name=is-pt-fuzzy-match ./CommonSpeechParts-template
 
 # Go back to the top directory
 cd ../../../../../
