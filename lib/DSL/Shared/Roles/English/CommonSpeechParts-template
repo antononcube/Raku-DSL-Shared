@@ -138,10 +138,13 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token generate-verb { 'generate' }
     token get-verb { 'get' }
     token graph-noun { 'graph' }
+    token had-verb { 'had' }
+    token have-verb { 'have' }
     token head-adjective { <head-noun> }
     token head-noun { 'head' }
     token high-adjective { 'high' }
     token higher-adjective { 'higher' }
+    token highest-adjective { 'highest' }
     token histogram { 'histogram' }
     token histograms { 'histograms' }
     token how-adverb { 'how' }
@@ -170,9 +173,11 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token locate-verb { 'locate' }
     token low-adjective { 'low' }
     token lower-adjective { 'lower' }
+    token lowest-adjective { 'lowest' }
     token make-noun { 'make' }
     token making-noun { 'making' }
-    token manner { 'manner' }
+    token manner { <manner-noun> }
+    token manner-noun { 'manner' }
     token many-determiner { 'many' }
     token matrices-noun { 'matrices' }
     token matrix-noun { 'matrix' }

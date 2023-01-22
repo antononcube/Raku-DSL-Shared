@@ -140,8 +140,11 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token graph-noun { 'gráfico' }
     token head-adjective { <head-noun> }
     token head-noun { 'cabeça' }
+    token had-verb { 'tive' }
+    token have-verb { 'tenho' | 'temos' | 'tem' }
     token high-adjective { 'alto' | 'alta' }
     token higher-adjective { 'mais' \h+ <high-adjective> }
+    token highest-adjective { 'maior' \h+ <high-adjective>  }
     token histogram { 'histograma' }
     token histograms { 'histogramas' }
     token how-adverb { 'como' }
@@ -170,9 +173,12 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token locate-verb { 'encontrar' | 'localizar' | 'achar' }
     token low-adjective { 'baixo' | 'baixa' }
     token lower-adjective { 'mais' \h+ <low-adjective> }
+    token lowest-adjective { 'maior' \h+ <low-adjective> }
     token make-noun { 'fazer' }
     token making-noun { 'fazendo' }
-    token manner { 'caminho' | 'maneira' }
+    # token manner { <manner-noun> }
+    token manner-noun { 'caminho' | 'maneira' }
+    token many-determiner { 'muitas' }
     token matrices-noun { 'matrizes' }
     token matrix-noun { 'matriz' }
     token matrixes-noun { 'matrizes' }
@@ -183,8 +189,10 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token methods-noun { 'métodos' }
     token minimum { 'min' | 'mínimo' | 'mínimos' | 'mínima' | 'mínimas' }
     token missing-adjective { 'faltando' }
+    # token model { <model-noun> }
     token model-noun { 'modelo' }
     token module-noun { 'módulo' }
+    token much-pronoun { 'grande' \h+ 'parte' }
     token my-determiner { 'meu' }
     token name-noun { 'nome' }
     token names-noun { 'nomes' }

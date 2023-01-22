@@ -138,10 +138,13 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token generate-verb { 'generai' }
     token get-verb { 'получить' }
     token graph-noun { 'считать' }
+    token had-verb { 'имел' | 'имела' | 'имело' | 'имели' | 'было' }
+    token have-verb { 'иметь' }
     token head-adjective { <head-noun> }
     token head-noun { 'лоб' | 'направляется' }
     token high-adjective { 'высокий' }
-    token higher-adjective { 'по-висок' }
+    token higher-adjective { 'выше' }
+    token highest-adjective { 'самый' \h+ 'высокий' | 'самые' \h+ 'высокие' }
     token histogram { 'гистограмма' }
     token histograms { 'гистограммы' }
     token how-adverb { 'в качестве' }
@@ -170,10 +173,12 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token locate-verb { 'найти' | 'локализовать' }
     token low-adjective { 'ниже' | 'низкий' }
     token lower-adjective { 'по-долен' | 'ниже' }
+    token lowest-adjective { 'самый' \h+ 'низкий'| 'самые' \h+ 'низкие'}
     token make-noun { 'сделать' | 'составить' }
     token making-noun { 'создание' }
-    token manner { 'способ' | 'способ' }
-    token many-determiner { 'много' }
+    # token manner { <manner-noun> }
+    token manner-noun { 'способ' | 'способ' }
+    token many-determiner { 'многие' }
     token matrices-noun { 'матрицы' }
     token matrix-noun { 'матрица' }
     token matrixes-noun { 'матрицы' }
@@ -184,8 +189,10 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token methods-noun { 'методы' }
     token minimum { 'мин' | 'минимум' | 'минимальный' }
     token missing-adjective { 'отсутствующие' }
+    # token model { <model-noun> }
     token model-noun { 'модель' }
     token module-noun { 'модуль' }
+    token much-pronoun { 'большая' \h+ 'часть' }
     token my-determiner { 'мой' | 'моя' | 'мой' }
     token name-noun { 'имя' }
     token names-noun { 'имена' }

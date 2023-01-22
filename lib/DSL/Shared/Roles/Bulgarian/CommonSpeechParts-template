@@ -140,8 +140,11 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token graph-noun { 'граф' }
     token head-adjective { <head-noun> }
     token head-noun { 'чело' | 'начело' }
+    token had-verb { 'имах' | 'имаше' | 'имал' | 'имала' | 'имали' }
+    token have-verb { 'имам' | 'имаш' | 'има' | 'имат' | 'съм' | 'си' | 'са' | 'е' }
     token high-adjective { 'висок' }
-    token higher-adjective { 'по-висок' }
+    token higher-adjective { 'по-висок' | 'по-висока' | 'по-високо' | 'по-високи'}
+    token highest-adjective { 'най-висок' | 'най-висока' | 'най-високо' | 'най-високи' }
     token histogram { 'хистограма' }
     token histograms { 'хистограми' }
     token how-adverb { 'как' }
@@ -169,10 +172,12 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token load-verb { 'зареди' }
     token locate-verb { 'намери' | 'локализирай' }
     token low-adjective { 'долен' | 'нисък' }
-    token lower-adjective { 'по-долен' | 'долен' }
+    token lower-adjective { 'по-долен' | 'долен' | 'по-нисък' | 'по-ниско' | 'по-ниски' }
+    token lowest-adjective { 'най-долен' | 'най-нисък' | 'най-ниско' | 'най-ниски' }
     token make-noun { 'направи' }
     token making-noun { 'правене' }
-    token manner { 'начин' | 'маниер' }
+    # token manner { <manner-noun> }
+    token manner-noun { 'начин' | 'маниер' }
     token many-determiner { 'много' }
     token matrices-noun { 'матрици' }
     token matrix-noun { 'матрица' }
@@ -184,8 +189,10 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token methods-noun { 'методи' }
     token minimum { 'мин' | 'минимум' | 'минимален' }
     token missing-adjective { 'липсващи' }
+    # token model { <model-noun> }
     token model-noun { 'модел' }
     token module-noun { 'модул' }
+    token much-pronoun { 'много' | 'многото' | 'доста' }
     token my-determiner { 'мой' | 'моя' | 'моят' }
     token name-noun { 'име' }
     token names-noun { 'имена' }
