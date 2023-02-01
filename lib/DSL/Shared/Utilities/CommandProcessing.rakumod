@@ -118,10 +118,10 @@ multi ToWorkflowCode( Str $command,
     my @cmdLines = map { ToWorkflowCodeBasic($_, :$grammar, :$actions) }, @commandLines;
 
     # Get the pairs results
-    my %cmdPairs = grep { $_.^name eq 'Pair' }, @cmdLines;
+    my %cmdPairs = grep { $_ ~~ Pair }, @cmdLines;
 
     # Remove parsing results that are pairs (like SETUPCODE or DSLTARGET)
-    @cmdLines = grep { $_.^name eq 'Str' }, @cmdLines;
+    @cmdLines = grep { $_ !~~ Pair }, @cmdLines;
 
     # Get the separator
     my Str $sep;
@@ -137,15 +137,21 @@ multi ToWorkflowCode( Str $command,
         die 'The argument :$separator is expected to be a string or Whatever.'
     }
 
-    # Join with separator
-    my Str $res = @cmdLines.join( $sep ).trim;
+    # Post-processing
+    my $res;
+    if @cmdLines.all ~~ Str {
+        # Join with separator
+        $res = @cmdLines.join($sep).trim;
 
-    # Remove empty lines with "monad semicolons" only
-    $res = $res.subst( / ^^ \h* <{ '\'' ~ $sep.trim ~ '\'' }> \h* /, ''):g;
+        # Remove empty lines with "monad semicolons" only
+        $res = $res.subst(/ ^^ \h* <{ '\'' ~ $sep.trim ~ '\'' }> \h* /, ''):g;
+    } else {
+        $res = @cmdLines
+    }
 
     # Result
     my %rakuRes = %cmdPairs , %(CODE => $res);
-    post-process-result(%rakuRes, $format )
+    return post-process-result(%rakuRes, $format);
 }
 
 #-----------------------------------------------------------
