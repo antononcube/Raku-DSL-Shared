@@ -10,7 +10,7 @@
   "depends": [
     "silently:ver<0.0.6+>",
     "Text::Levenshtein::Damerau:ver<0.3.0+>",
-    "Lingua::NumericWordForms:ver<0.5.0+>",
+    "Lingua::NumericWordForms:ver<0.5.2+>",
     "Hash::Merge:ver<2.0.0+>:api<2+>"
   ],
   "build-depends": [],
