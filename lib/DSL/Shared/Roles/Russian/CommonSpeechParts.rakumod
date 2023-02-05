@@ -152,16 +152,16 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token highest-adjective:sym<Russian> { :i  'самый' \h+ 'высокий' | 'самые' \h+ 'высокие'  }
     token histogram:sym<Russian> { :i 'гистограмма' | ([\w]+) <?{ $0.Str ne 'гистограммы' and is-ru-fuzzy-match($0.Str, 'гистограмма', 2) }> }
     token histograms:sym<Russian> { :i 'гистограммы' | ([\w]+) <?{ $0.Str ne 'гистограмма' and is-ru-fuzzy-match($0.Str, 'гистограммы', 2) }> }
-    token how-adverb { 'в качестве' }
+    token how-adverb:sym<Russian> {:i 'как' }
     token id-noun:sym<Russian> { :i 'заходите' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'заходите', 2) }> }
     token identifier-adjective:sym<Russian> { :i <IDENTIFIER-adjective> }
     token identifier-noun:sym<Russian> { :i <IDENTIFIER-noun> }
-    token in-preposition { 'в' | 'на сайте' }
+    token in-preposition:sym<Russian> { :i 'в' | 'во' }
     token include-verb:sym<Russian> { :i 'включить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'включить', 2) }> | 'включить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'включить', 2) }> }
     token ingest-verb:sym<Russian> { :i 'читать' | ([\w]+) <?{ $0.Str ne 'считать' and is-ru-fuzzy-match($0.Str, 'читать', 2) }> }
     token interpreter-noun:sym<Russian> { :i 'переводчик' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'переводчик', 2) }> | 'тезаурус' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'тезаурус', 2) }> }
     token interpreting-adjective:sym<Russian> { :i 'тезаурус' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'тезаурус', 2) }> | 'перевод' | ([\w]+) <?{ $0.Str ne 'первое' and is-ru-fuzzy-match($0.Str, 'перевод', 2) }> }
-    token into-preposition { 'в' | 'на сайте' }
+    token into-preposition:sym<Russian> { :i 'в' | 'во' }
     token is-verb:sym<Russian> { :i 'е' }
     token it-pronoun:sym<Russian> { :i 'это' | ([\w]+) <?{ $0.Str !(elem) <дно по от итог эти что до топ кто> and is-ru-fuzzy-match($0.Str, 'это', 1) }> | 'какой' | ([\w]+) <?{ $0.Str ne 'как' and is-ru-fuzzy-match($0.Str, 'какой', 2) }> }
     token iterations:sym<Russian> { :i 'итераций' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'итераций', 2) }> }

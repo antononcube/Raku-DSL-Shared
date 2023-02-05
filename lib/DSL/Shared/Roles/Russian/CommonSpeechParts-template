@@ -147,16 +147,16 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token highest-adjective { 'самый' \h+ 'высокий' | 'самые' \h+ 'высокие' }
     token histogram { 'гистограмма' }
     token histograms { 'гистограммы' }
-    token how-adverb { 'в качестве' }
+    token how-adverb { 'как' }
     token id-noun { 'заходите' }
     token identifier-adjective { <IDENTIFIER-adjective> }
     token identifier-noun { <IDENTIFIER-noun> }
-    token in-preposition { 'в' | 'на сайте' }
+    token in-preposition { 'в' | 'во' }
     token include-verb { 'включить' | 'включить' }
     token ingest-verb { 'читать' }
     token interpreter-noun { 'переводчик' | 'тезаурус' }
     token interpreting-adjective { 'тезаурус' | 'перевод' }
-    token into-preposition { 'в' | 'на сайте' }
+    token into-preposition { 'в' | 'во' }
     token is-verb { 'е' }
     token it-pronoun { 'это' | 'какой' }
     token iterations { 'итераций' }
