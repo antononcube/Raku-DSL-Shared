@@ -7,59 +7,63 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         is DSL::Shared::Actions::CommonStructures
         is Lingua::NumericWordForms::Actions::English::WordedNumberSpec {
 
-    has Str $!dir;
-    has Str $!refPoint;
-    has Str $!from;
-    has Str $!to;
-    has Int $!length;
-    has Str $!unit;
+    has Str $.dir is rw;
+    has Str $.refPoint is rw;
+    has Str $.from is rw;
+    has Str $.to is rw;
+    has Int $.length is rw;
+    has Str $.unit is rw;
 
     ##----------------------------------------------------------
-    method normalize-time-interval-spec( %tiSpec ) {
+    method normalize-time-interval-spec(%tiSpec) {
         with %tiSpec<From> && %tiSpec<To> {
-           %tiSpec
+            %tiSpec
         }
         orwith %tiSpec<RefPoint> && %tiSpec<Direction> {
-            given ( %tiSpec<RefPoint>, %tiSpec<Direction>, %tiSpec<Unit> ) {
+            given (%tiSpec<RefPoint>, %tiSpec<Direction>, %tiSpec<Unit>) {
                 when <now past year> {
-                    %tiSpec , { From => Date.today - %tiSpec<Length> * 365, To => Date.today }
+                    %tiSpec, { From => Date.today - %tiSpec<Length> * 365, To => Date.today }
                 }
                 when <now future year> {
-                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 365 }
+                    %tiSpec, { From => Date.today, To => Date.today + %tiSpec<Length> * 365 }
                 }
                 when <now past month> {
-                    %tiSpec , { From => Date.today - %tiSpec<Length> * 31, To => Date.today }
+                    %tiSpec, { From => Date.today - %tiSpec<Length> * 31, To => Date.today }
                 }
                 when <now future month> {
-                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 31 }
+                    %tiSpec, { From => Date.today, To => Date.today + %tiSpec<Length> * 31 }
                 }
                 when <now past week> {
-                    %tiSpec , { From => Date.today - %tiSpec<Length> * 7, To => Date.today }
+                    %tiSpec, { From => Date.today - %tiSpec<Length> * 7, To => Date.today }
                 }
                 when <now future week> {
-                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> * 7 }
+                    %tiSpec, { From => Date.today, To => Date.today + %tiSpec<Length> * 7 }
                 }
                 when <now past day> {
-                    %tiSpec , { From => Date.today - %tiSpec<Length>, To => Date.today }
+                    %tiSpec, { From => Date.today - %tiSpec<Length>, To => Date.today }
                 }
                 when <now future day> {
-                    %tiSpec , { From => Date.today, To => Date.today + %tiSpec<Length> }
+                    %tiSpec, { From => Date.today, To => Date.today + %tiSpec<Length> }
                 }
             }
         }
     }
 
     ##----------------------------------------------------------
-    method time-interval-spec($/)  {
+    method time-interval-spec($/) {
         my %res = $/.values[0].made;
-        %res = %res, %( Timestamp => DateTime.now, Command => $/.Str );
+        %res = %res, %( Timestamp => DateTime.now, Command => $/.Str);
         make %res
     }
 
     ##----------------------------------------------------------
-    method time-unit($/) { make $/.Str; }
+    method time-unit($/) {
+        make $/.Str;
+    }
 
-    method time-units($/) { make $/.Str.trim.substr(0,*-1); }
+    method time-units($/) {
+        make $/.Str.trim.substr(0, *- 1);
+    }
 
     ##----------------------------------------------------------
     method week-of-year($/) {
@@ -67,16 +71,16 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!length = 1;
         my %res = $<year-spec>.made;
         $!refPoint = %res<RefPoint> ~ '-' ~ $<week-number-range>.made<RefPoint>;
-        make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit )
+        make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit)
     }
 
     ##----------------------------------------------------------
     method month-of-year($/) {
         $!unit = 'year-month';
         $!length = 1;
-        my %res = $<year-spec> ?? $<year-spec>.made !! %( Unit => 'year', RefPoint => Date.today.year.Str );
+        my %res = $<year-spec> ?? $<year-spec>.made !! %( Unit => 'year', RefPoint => Date.today.year.Str);
         $!refPoint = %res<RefPoint> ~ '-' ~ $<month-name>.made;
-        make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit )
+        make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit)
     }
 
     ##----------------------------------------------------------
@@ -99,7 +103,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         my %num = $<time-spec-number>.made;
         my %res = $<number-of-time-units>.made;
 
-        %res = %res, %( From => %num<Length>, To => %res<Length>, Length => (%res<Length> + %num<Length>)/2 );
+        %res = %res, %( From => %num<Length>, To => %res<Length>, Length => (%res<Length> + %num<Length>) / 2);
         make %res
     }
 
@@ -118,34 +122,36 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
             $!dir = $<next-time-spec-word> ?? 'future' !! 'past';
         }
 
-        my %res = $<number-of-time-units>.made, %( RefPoint => $!refPoint, Direction => $!dir );
+        my %res = $<number-of-time-units>.made, %( RefPoint => $!refPoint, Direction => $!dir);
 
         if %res<Unit> eq 'year' and $<last-time-spec-word> {
-            %res = %res , %(  From => (Date.today.year - 1).Str ~ '-01-01', To => (Date.today.year - 1).Str ~ '-12-31' )
+            %res = %res, %(  From => (Date.today.year - 1).Str ~ '-01-01', To => (Date.today.year - 1).Str ~ '-12-31')
         }
 
         make %res
     }
 
     ##----------------------------------------------------------
-    method number-of-time-units($/) { make $/.values[0].made; }
+    method number-of-time-units($/) {
+        make $/.values[0].made;
+    }
 
     method few-time-units($/) {
         $!length = 3;
         $!unit = $<time-units>.made;
-        make %( Length => $!length, Unit => $!unit )
+        make %( Length => $!length, Unit => $!unit)
     }
 
     method multi-time-units($/) {
         $!length = $<time-spec-number>.made<Length>;
         $!unit = $<time-units>.made;
-        make %( Length => $!length, Unit => $!unit )
+        make %( Length => $!length, Unit => $!unit)
     }
 
     method one-time-unit($/) {
         $!length = 1;
         $!unit = $<time-unit>.made;
-        make %( Length => $!length, Unit => $!unit )
+        make %( Length => $!length, Unit => $!unit)
     }
 
     ##----------------------------------------------------------
@@ -153,7 +159,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!refPoint = ($/.values[0].made){'RefPoint'};
         $!unit = 'year';
         $!length = 1;
-        make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit )
+        make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit)
     }
 
     ##----------------------------------------------------------
@@ -168,15 +174,19 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make %( Length => $!length, RefPoint => $!refPoint, Unit => $!unit)
     }
 
-    method month-name($/) { make $/.values[0].made }
+    method month-name($/) {
+        make $/.values[0].made
+    }
 
     method month-name-long($/) {
-        my %m = %(january => 1, february => 2, march => 3, april => 4, may => 5, june => 6, july => 7, august => 8, september => 9, october => 10, november => 11, december => 12);
+        my %m = %(january => 1, february => 2, march => 3, april => 4, may => 5, june => 6, july => 7, august => 8,
+                  september => 9, october => 10, november => 11, december => 12);
         make %m{$/.Str.trim}
     }
 
     method month-name-abbr($/) {
-        my %m = %(jan => 1, feb => 2, mar => 3, apr => 4, may => 5, jun => 6, jul => 7, aug => 8, sep => 9, oct => 10, nov => 11, dec => 12);
+        my %m = %(jan => 1, feb => 2, mar => 3, apr => 4, may => 5, jun => 6, jul => 7, aug => 8, sep => 9, oct => 10,
+                  nov => 11, dec => 12);
         make %m{$/.Str.trim}
     }
 
@@ -196,7 +206,39 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
             $!dir = 'past';
         }
 
-        make %( RefPoint => $!refPoint, Direction => $!dir )
+        make %( RefPoint => $!refPoint, Direction => $!dir)
+    }
+
+    ##----------------------------------------------------------
+    method full-date-spec($/) {
+        make $/.values[0].made;
+    }
+
+    method full-date-spec:sym<Simple>($/) {
+        make $/.values[0].made;
+    }
+
+    method worded-date-spec($/) {
+        my $d = Date.new(
+                $<year> ?? $<year>.made<RefPoint>.Numeric !! Date.today.year,
+                $<month>.made.Numeric,
+                $<date>.made<RefPoint>.Numeric);
+        $!refPoint = $d.Str;
+        $!unit = 'day';
+        $!length = 1;
+        make %( Unit => $!unit, Length => $!length, RefPoint => $!refPoint)
+    }
+
+    method iso-date-spec($/) {
+        my $d = Date.new($<year>.made.Numeric, $<month>.made.Numeric, $<date>.made.Numeric);
+        $!refPoint = $d.Str;
+        $!unit = 'day';
+        $!length = 1;
+        make %( Unit => $!unit, Length => $!length, RefPoint => $!refPoint)
+    }
+
+    method full-date-hour-spec($/) {
+        make %(hour => $<hour>.made, minute => $<minute>.made);
     }
 
     ##----------------------------------------------------------
@@ -208,17 +250,23 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!refPoint = $<numeric-word-form> ?? $<numeric-word-form>.made.Str !! $/.Str;
         $!unit = 'week';
         $!length = 1;
-        make %( Unit => $!unit, Length => $!length, RefPoint => $!refPoint )
+        make %( Unit => $!unit, Length => $!length, RefPoint => $!refPoint)
+    }
+
+    method date-number-range($/) {
+        $!refPoint = $<numeric-word-form> ?? $<numeric-word-form>.made.Str !! $/.Str;
+        $!unit = 'day';
+        make %( Unit => $!unit, RefPoint => $!refPoint)
     }
 
     method year-number-range($/) {
-        $!refPoint = $<numeric-word-form> ?? $<numeric-word-form>.made !! $/.Str;
+        $!refPoint = $<numeric-word-form> ?? $<numeric-word-form>.made.Str !! $/.Str;
         $!unit = 'year';
-        make %( Unit => $!unit, RefPoint => $!refPoint )
+        make %( Unit => $!unit, RefPoint => $!refPoint)
     }
 
     method time-spec-number($/) {
         $!length = $/.values[0].made.Int;
-        make %( Length => $!length )
+        make %( Length => $!length)
     }
 }
