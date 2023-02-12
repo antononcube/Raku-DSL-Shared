@@ -68,8 +68,10 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
     <thanksgiving-time-spec-word> }
   regex holiday-offset { <number-of-time-units> \h+ [ <before-time-spec-word> | <after-time-spec-word> ] \h+ <holiday-name> }
   regex hour-spec { [ <integer-value> | <numeric-word-form> ] [\h+  [ <am-time-spec-word> | <pm-time-spec-word> ] ]? }
-  regex full-date-spec {
-    [ <worded-date-spec> | <iso-date-spec> ] [ \h+ <full-date-hour-spec> ]? }
+
+  proto regex full-date-spec {*};
+  regex full-date-spec:sym<Simple> { [ <worded-date-spec> | <iso-date-spec> ] [ \h+ <full-date-hour-spec> ]? }
+
   regex worded-date-spec { [ <date=.date-number-range> \h+ <month=.month-name> | <month=.month-name> \h+ <date=.date-number-range> ] [\h* ',']? \h+ <year=.year-number-range> }
   regex iso-date-spec { <year-number-range> <:Pd> <integer-value> <:Pd> <integer-value> }
   regex full-date-hour-spec { <time-spec-number> [ ':' <time-spec-number> ] [ <am-time-spec-word> | <pm-time-spec-word> ] }
