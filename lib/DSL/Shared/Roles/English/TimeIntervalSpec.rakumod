@@ -72,9 +72,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   proto regex full-date-spec {*};
   regex full-date-spec:sym<Simple> { [ <worded-date-spec> | <iso-date-spec> ] [ \h+ <full-date-hour-spec> ]? }
 
-  regex worded-date-spec { [ <date=.date-number-range> \h+ <month=.month-name> | <month=.month-name> \h+ <date=.date-number-range> ] [\h* ',']? \h+ <year=.year-number-range> }
-  regex iso-date-spec { <year-number-range> <:Pd> <integer-value> <:Pd> <integer-value> }
-  regex full-date-hour-spec { <time-spec-number> [ ':' <time-spec-number> ] [ <am-time-spec-word> | <pm-time-spec-word> ] }
+  regex worded-date-spec { [ <date=.date-number-range> \h+ <month=.month-name> | <month=.month-name> \h+ <date=.date-number-range> ] [\h* ',' \h* | \h* ] <year=.year-number-range> }
+  regex iso-date-spec { <year=.year-number-range> <:Pd> <month=.integer-value> <:Pd> <date=.integer-value> }
+  regex full-date-hour-spec { <hour=.time-spec-number> [ ':' <minite=.time-spec-number> ] [ <am-time-spec-word> | <pm-time-spec-word> ] }
 
   token week-number-range { (\d+) <?{ 1 <= $0.Str.Num <= 52 }> | <numeric-word-form> }
   token date-number-range { (\d+) <?{ 1 <= $0.Str.Num <= 31 }> | <numeric-word-form> }
