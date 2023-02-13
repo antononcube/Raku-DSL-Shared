@@ -316,6 +316,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token translation-noun:sym<Bulgarian> { :i 'транслация' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'транслация', 2) }> }
     token type-noun:sym<Bulgarian> { :i 'тип' | ([\w]+) <?{ $0.Str !(elem) <и то си ид мин низ тях> and is-bg-fuzzy-match($0.Str, 'тип', 1) }> }
     token types-noun:sym<Bulgarian> { :i 'типове' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'типове', 2) }> }
+    token until-preposition:sym<Bulgarian> { :i 'до' | 'докато' | ([\w]+) <?{ $0.Str ne 'като' and is-bg-fuzzy-match($0.Str, 'докато', 2) }> }
     token up-adverb:sym<Bulgarian> { :i 'горе' | ([\w]+) <?{ $0.Str ne 'нагоре' and is-bg-fuzzy-match($0.Str, 'горе', 2) }> | 'нагоре' | ([\w]+) <?{ $0.Str ne 'горе' and is-bg-fuzzy-match($0.Str, 'нагоре', 2) }> }
     token use-verb:sym<Bulgarian> { :i 'ползвай' | ([\w]+) <?{ $0.Str !(elem) <показвай използвай ползван> and is-bg-fuzzy-match($0.Str, 'ползвай', 2) }> | 'използвай' | ([\w]+) <?{ $0.Str !(elem) <ползвай използван> and is-bg-fuzzy-match($0.Str, 'използвай', 2) }> }
     token used-verb:sym<Bulgarian> { :i 'ползван' | ([\w]+) <?{ $0.Str !(elem) <ползвай използван> and is-bg-fuzzy-match($0.Str, 'ползван', 2) }> | 'използван' | ([\w]+) <?{ $0.Str !(elem) <използвай ползван> and is-bg-fuzzy-match($0.Str, 'използван', 2) }> }

@@ -85,8 +85,8 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token dataset:sym<Portuguese> { :i <dataset-noun> }
     token dataset-noun:sym<Portuguese> { :i  'conjunto' \h+ 'de' \h+ 'dados' | <array-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <array-noun> }
     token datasets-noun:sym<Portuguese> { :i  'conjuntos' \h+ 'de' \h+ 'dados' | <arrays-noun> \h+ 'a' \h+ 'partir' \h+ 'de' \h+ <data-noun> | <data-adjective> \h+ <arrays-noun>  }
-    token date-adjective:sym<Portuguese> { :i 'data' | ([\w]+) <?{ $0.Str !(elem) <meta cada dado datas para alta da das esta> and is-pt-fuzzy-match($0.Str, 'data', 2) }> | 'datas' | ([\w]+) <?{ $0.Str !(elem) <dados data das fitas estas> and is-pt-fuzzy-match($0.Str, 'datas', 2) }> }
-    token date-noun:sym<Portuguese> { :i 'data' | ([\w]+) <?{ $0.Str !(elem) <meta cada dado datas para alta da das esta> and is-pt-fuzzy-match($0.Str, 'data', 2) }> }
+    token date-adjective:sym<Portuguese> { :i 'data' | ([\w]+) <?{ $0.Str !(elem) <meta cada dado datas para alta da das esta até> and is-pt-fuzzy-match($0.Str, 'data', 2) }> | 'datas' | ([\w]+) <?{ $0.Str !(elem) <dados data das fitas estas> and is-pt-fuzzy-match($0.Str, 'datas', 2) }> }
+    token date-noun:sym<Portuguese> { :i 'data' | ([\w]+) <?{ $0.Str !(elem) <meta cada dado datas para alta da das esta até> and is-pt-fuzzy-match($0.Str, 'data', 2) }> }
     token dates-noun:sym<Portuguese> { :i 'datas' | ([\w]+) <?{ $0.Str !(elem) <dados data das fitas estas> and is-pt-fuzzy-match($0.Str, 'datas', 2) }> }
     token datum-noun:sym<Portuguese> { :i <data-noun> }
     token default:sym<Portuguese> { :i <default-noun> }
@@ -147,7 +147,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token head-noun:sym<Portuguese> { :i 'cabeça' | ([\w]+) <?{ $0.Str ne 'tabela' and is-pt-fuzzy-match($0.Str, 'cabeça', 2) }> }
     token had-verb:sym<Portuguese> { :i 'tive' | ([\w]+) <?{ $0.Str ne 'tipo' and is-pt-fuzzy-match($0.Str, 'tive', 2) }> }
     token have-verb:sym<Portuguese> { :i 'tenho' | ([\w]+) <?{ $0.Str !(elem) <texto tempo> and is-pt-fuzzy-match($0.Str, 'tenho', 2) }> | 'temos' | ([\w]+) <?{ $0.Str !(elem) <todos tem textos tempo tipos pesos> and is-pt-fuzzy-match($0.Str, 'temos', 2) }> | 'tem' | ([\w]+) <?{ $0.Str !(elem) <um e em ser com temos meu sem de tempo quem> and is-pt-fuzzy-match($0.Str, 'tem', 1) }> }
-    token high-adjective:sym<Portuguese> { :i 'alto' | ([\w]+) <?{ $0.Str !(elem) <alvo alta isto> and is-pt-fuzzy-match($0.Str, 'alto', 2) }> | 'alta' | ([\w]+) <?{ $0.Str !(elem) <meta alvo data alto esta> and is-pt-fuzzy-match($0.Str, 'alta', 2) }> }
+    token high-adjective:sym<Portuguese> { :i 'alto' | ([\w]+) <?{ $0.Str !(elem) <alvo alta isto até> and is-pt-fuzzy-match($0.Str, 'alto', 2) }> | 'alta' | ([\w]+) <?{ $0.Str !(elem) <meta alvo data alto esta até> and is-pt-fuzzy-match($0.Str, 'alta', 2) }> }
     token higher-adjective:sym<Portuguese> { :i  'mais' \h+ <high-adjective>  }
     token highest-adjective:sym<Portuguese> { :i  'maior' \h+ <high-adjective>   }
     token histogram:sym<Portuguese> { :i 'histograma' | ([\w]+) <?{ $0.Str ne 'histogramas' and is-pt-fuzzy-match($0.Str, 'histograma', 2) }> }
@@ -316,6 +316,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token translation-noun:sym<Portuguese> { :i 'tradução' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'tradução', 2) }> }
     token type-noun:sym<Portuguese> { :i 'tipo' | ([\w]+) <?{ $0.Str !(elem) <eixo tive tempo topo tipos> and is-pt-fuzzy-match($0.Str, 'tipo', 2) }> }
     token types-noun:sym<Portuguese> { :i 'tipos' | ([\w]+) <?{ $0.Str !(elem) <todos eixos temos topo tipo> and is-pt-fuzzy-match($0.Str, 'tipos', 2) }> }
+    token until-preposition:sym<Portuguese> { :i 'a' | 'até' | ([\w]+) <?{ $0.Str !(elem) <data alto alta é a as> and is-pt-fuzzy-match($0.Str, 'até', 1) }> }
     token up-adverb:sym<Portuguese> { :i 'acima' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'acima', 2) }> }
     token use-verb:sym<Portuguese> { :i 'usar' | ([\w]+) <?{ $0.Str !(elem) <uma ser estar puxar usado usada> and is-pt-fuzzy-match($0.Str, 'usar', 2) }> | 'utilizar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'utilizar', 2) }> }
     token used-verb:sym<Portuguese> { :i 'usado' | ([\w]+) <?{ $0.Str !(elem) <dado puxado usar usados usada usadas usando pesado> and is-pt-fuzzy-match($0.Str, 'usado', 2) }> | 'usados' | ([\w]+) <?{ $0.Str !(elem) <dados puxados usado usada usadas usando pesados> and is-pt-fuzzy-match($0.Str, 'usados', 2) }> | 'usada' | ([\w]+) <?{ $0.Str !(elem) <cada puxada usar usado usados usadas usando pesada> and is-pt-fuzzy-match($0.Str, 'usada', 2) }> 'usadas' | ([\w]+) <?{ $0.Str !(elem) <puxadas usado usados usada pesadas> and is-pt-fuzzy-match($0.Str, 'usadas', 2) }> }

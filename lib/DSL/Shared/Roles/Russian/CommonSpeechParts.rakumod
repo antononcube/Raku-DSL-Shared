@@ -24,7 +24,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token adjacent-adjective:sym<Russian> { :i 'адъютантский' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'адъютантский', 2) }> | 'адъютантский' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'адъютантский', 2) }> }
     token algorithm-noun:sym<Russian> { :i 'алгоритм' | ([\w]+) <?{ $0.Str ne 'алгоритмы' and is-ru-fuzzy-match($0.Str, 'алгоритм', 2) }> }
     token algorithms-noun:sym<Russian> { :i 'алгоритмы' | ([\w]+) <?{ $0.Str ne 'алгоритм' and is-ru-fuzzy-match($0.Str, 'алгоритмы', 2) }> }
-    token all-determiner:sym<Russian> { :i 'каждый' | ([\w]+) <?{ $0.Str !(elem) <каждая каждые каждое> and is-ru-fuzzy-match($0.Str, 'каждый', 2) }> | 'все' | ([\w]+) <?{ $0.Str !(elem) <оси ось с выше е вес веса в вo> and is-ru-fuzzy-match($0.Str, 'все', 1) }> }
+    token all-determiner:sym<Russian> { :i 'каждый' | ([\w]+) <?{ $0.Str !(elem) <каждая каждые каждое> and is-ru-fuzzy-match($0.Str, 'каждый', 2) }> | 'все' | ([\w]+) <?{ $0.Str !(elem) <оси ось с выше в во е вес веса вo> and is-ru-fuzzy-match($0.Str, 'все', 1) }> }
     token and-conjunction:sym<Russian> { :i 'и' }
     token annex-verb:sym<Russian> { :i 'соединить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'соединить', 2) }> }
     token append-verb:sym<Russian> { :i 'добавить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'добавить', 2) }> }
@@ -40,8 +40,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token axes-noun:sym<Russian> { :i 'оси' | ([\w]+) <?{ $0.Str !(elem) <все и ось оба от с один или эти> and is-ru-fuzzy-match($0.Str, 'оси', 1) }> }
     token axis-noun:sym<Russian> { :i 'ось' | ([\w]+) <?{ $0.Str !(elem) <все есть оси оба от с> and is-ru-fuzzy-match($0.Str, 'ось', 1) }> }
     token be-verb:sym<Russian> { :i 'be' }
-    token both-determiner:sym<Russian> { :i 'оба' | ([\w]+) <?{ $0.Str !(elem) <оси ось от на лоб> and is-ru-fuzzy-match($0.Str, 'оба', 1) }> | 'одновременно' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'одновременно', 2) }> | 'вместе' | ([\w]+) <?{ $0.Str ne 'место' and is-ru-fuzzy-match($0.Str, 'вместе', 2) }> }
-    token bottom-noun:sym<Russian> { :i 'дно' | ([\w]+) <?{ $0.Str !(elem) <по дело для на это что до кто> and is-ru-fuzzy-match($0.Str, 'дно', 1) }> | 'най-ниско' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'най-ниско', 2) }> }
+    token both-determiner:sym<Russian> { :i 'оба' | ([\w]+) <?{ $0.Str !(elem) <оси ось от на лоб пока> and is-ru-fuzzy-match($0.Str, 'оба', 1) }> | 'одновременно' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'одновременно', 2) }> | 'вместе' | ([\w]+) <?{ $0.Str ne 'место' and is-ru-fuzzy-match($0.Str, 'вместе', 2) }> }
+    token bottom-noun:sym<Russian> { :i 'дно' | ([\w]+) <?{ $0.Str !(elem) <по дело для на во это что до кто> and is-ru-fuzzy-match($0.Str, 'дно', 1) }> | 'най-ниско' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'най-ниско', 2) }> }
     token broaden-verb:sym<Russian> { :i 'расширить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'расширить', 2) }> }
     token by-preposition:sym<Russian> { :i 'по' | 'от' | 'с' | 'через' | ([\w]+) <?{ $0.Str ne 'чертеж' and is-ru-fuzzy-match($0.Str, 'через', 2) }> }
     token calculation:sym<Russian> { :i 'расчет' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'расчет', 2) }> }
@@ -56,7 +56,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token cluster:sym<Russian> { :i <cluster-noun> }
     token cluster-noun:sym<Russian> { :i 'кластер' | ([\w]+) <?{ $0.Str ne 'кластеры' and is-ru-fuzzy-match($0.Str, 'кластер', 2) }> | 'группа' | ([\w]+) <?{ $0.Str ne 'группы' and is-ru-fuzzy-match($0.Str, 'группа', 2) }> }
     token clusters-noun:sym<Russian> { :i 'кластеры' | ([\w]+) <?{ $0.Str ne 'кластер' and is-ru-fuzzy-match($0.Str, 'кластеры', 2) }> | 'группы' | ([\w]+) <?{ $0.Str ne 'группа' and is-ru-fuzzy-match($0.Str, 'группы', 2) }> }
-    token code-noun:sym<Russian> { :i 'код' | ([\w]+) <?{ $0.Str !(elem) <как по от коды лоб мой моя ряд под до топ когда кто> and is-ru-fuzzy-match($0.Str, 'код', 1) }> }
+    token code-noun:sym<Russian> { :i 'код' | ([\w]+) <?{ $0.Str !(elem) <как по от коды лоб во мой моя ряд под до топ когда кто> and is-ru-fuzzy-match($0.Str, 'код', 1) }> }
     token codes-noun:sym<Russian> { :i 'коды' | ([\w]+) <?{ $0.Str !(elem) <код под когда> and is-ru-fuzzy-match($0.Str, 'коды', 2) }> }
     token column-noun:sym<Russian> { :i 'колонка' | ([\w]+) <?{ $0.Str !(elem) <колонку колонки> and is-ru-fuzzy-match($0.Str, 'колонка', 2) }> | 'колонку' | ([\w]+) <?{ $0.Str !(elem) <колонка колонки> and is-ru-fuzzy-match($0.Str, 'колонку', 2) }> | 'столбцу' | ([\w]+) <?{ $0.Str !(elem) <столбец столбцa столбцы> and is-ru-fuzzy-match($0.Str, 'столбцу', 2) }> | 'столбец' | ([\w]+) <?{ $0.Str !(elem) <столбцу столбцa столбцы> and is-ru-fuzzy-match($0.Str, 'столбец', 2) }> | 'столбцa' | ([\w]+) <?{ $0.Str !(elem) <столбцу столбец столбцы> and is-ru-fuzzy-match($0.Str, 'столбцa', 2) }> }
     token columns:sym<Russian> { :i <columns-noun> }
@@ -146,13 +146,13 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token had-verb:sym<Russian> { :i 'имел' | ([\w]+) <?{ $0.Str !(elem) <имела имело имели иметь имя имена им> and is-ru-fuzzy-match($0.Str, 'имел', 2) }> | 'имела' | ([\w]+) <?{ $0.Str !(elem) <дела имел имело имели иметь имена> and is-ru-fuzzy-match($0.Str, 'имела', 2) }> | 'имело' | ([\w]+) <?{ $0.Str !(elem) <дело имел имела имели иметь имена> and is-ru-fuzzy-match($0.Str, 'имело', 2) }> | 'имели' | ([\w]+) <?{ $0.Str !(elem) <имел имела имело иметь имена или> and is-ru-fuzzy-match($0.Str, 'имели', 2) }> | 'было' | ([\w]+) <?{ $0.Str ne 'дело' and is-ru-fuzzy-match($0.Str, 'было', 2) }> }
     token have-verb:sym<Russian> { :i 'иметь' | ([\w]+) <?{ $0.Str !(elem) <имел имела имело имели имена> and is-ru-fuzzy-match($0.Str, 'иметь', 2) }> }
     token head-adjective:sym<Russian> { :i <head-noun> }
-    token head-noun:sym<Russian> { :i 'лоб' | ([\w]+) <?{ $0.Str !(elem) <оба по от код мой моя съб под до топ> and is-ru-fuzzy-match($0.Str, 'лоб', 1) }> | 'направляется' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'направляется', 2) }> }
+    token head-noun:sym<Russian> { :i 'лоб' | ([\w]+) <?{ $0.Str !(elem) <оба по от код во мой моя съб под до топ> and is-ru-fuzzy-match($0.Str, 'лоб', 1) }> | 'направляется' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'направляется', 2) }> }
     token high-adjective:sym<Russian> { :i 'высокий' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'высокий', 2) }> }
     token higher-adjective:sym<Russian> { :i 'выше' | ([\w]+) <?{ $0.Str ne 'все' and is-ru-fuzzy-match($0.Str, 'выше', 2) }> }
     token highest-adjective:sym<Russian> { :i  'самый' \h+ 'высокий' | 'самые' \h+ 'высокие'  }
     token histogram:sym<Russian> { :i 'гистограмма' | ([\w]+) <?{ $0.Str ne 'гистограммы' and is-ru-fuzzy-match($0.Str, 'гистограмма', 2) }> }
     token histograms:sym<Russian> { :i 'гистограммы' | ([\w]+) <?{ $0.Str ne 'гистограмма' and is-ru-fuzzy-match($0.Str, 'гистограммы', 2) }> }
-    token how-adverb:sym<Russian> {:i 'как' }
+    token how-adverb:sym<Russian> { :i 'как' | ([\w]+) <?{ $0.Str !(elem) <код на какой макс наш шаг раз кто> and is-ru-fuzzy-match($0.Str, 'как', 1) }> }
     token id-noun:sym<Russian> { :i 'заходите' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'заходите', 2) }> }
     token identifier-adjective:sym<Russian> { :i <IDENTIFIER-adjective> }
     token identifier-noun:sym<Russian> { :i <IDENTIFIER-noun> }
@@ -163,7 +163,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token interpreting-adjective:sym<Russian> { :i 'тезаурус' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'тезаурус', 2) }> | 'перевод' | ([\w]+) <?{ $0.Str ne 'первое' and is-ru-fuzzy-match($0.Str, 'перевод', 2) }> }
     token into-preposition:sym<Russian> { :i 'в' | 'во' }
     token is-verb:sym<Russian> { :i 'е' }
-    token it-pronoun:sym<Russian> { :i 'это' | ([\w]+) <?{ $0.Str !(elem) <дно по от итог эти что до топ кто> and is-ru-fuzzy-match($0.Str, 'это', 1) }> | 'какой' | ([\w]+) <?{ $0.Str ne 'как' and is-ru-fuzzy-match($0.Str, 'какой', 2) }> }
+    token it-pronoun:sym<Russian> { :i 'это' | ([\w]+) <?{ $0.Str !(elem) <дно по от во итог эти что до топ кто> and is-ru-fuzzy-match($0.Str, 'это', 1) }> | 'какой' | ([\w]+) <?{ $0.Str ne 'как' and is-ru-fuzzy-match($0.Str, 'какой', 2) }> }
     token iterations:sym<Russian> { :i 'итераций' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'итераций', 2) }> }
     token join-verb:sym<Russian> { :i 'соединить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'соединить', 2) }> }
     token join-noun:sym<Russian> { :i 'ссылка' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'ссылка', 2) }> | 'соединение' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'соединение', 2) }> }
@@ -198,7 +198,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token model-noun:sym<Russian> { :i 'модель' | ([\w]+) <?{ $0.Str ne 'модуль' and is-ru-fuzzy-match($0.Str, 'модель', 2) }> }
     token module-noun:sym<Russian> { :i 'модуль' | ([\w]+) <?{ $0.Str ne 'модель' and is-ru-fuzzy-match($0.Str, 'модуль', 2) }> }
     token much-pronoun:sym<Russian> { :i  'большая' \h+ 'часть'  }
-    token my-determiner:sym<Russian> { :i 'мой' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб мин моя под до топ> and is-ru-fuzzy-match($0.Str, 'мой', 1) }> | 'моя' | ([\w]+) <?{ $0.Str !(elem) <по от код для лоб мин мой имя под до топ> and is-ru-fuzzy-match($0.Str, 'моя', 1) }> | 'мой' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб мин моя под до топ> and is-ru-fuzzy-match($0.Str, 'мой', 1) }> }
+    token my-determiner:sym<Russian> { :i 'мой' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб во мин моя под до топ> and is-ru-fuzzy-match($0.Str, 'мой', 1) }> | 'моя' | ([\w]+) <?{ $0.Str !(elem) <по от код для лоб во мин мой имя под до топ> and is-ru-fuzzy-match($0.Str, 'моя', 1) }> | 'мой' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб во мин моя под до топ> and is-ru-fuzzy-match($0.Str, 'мой', 1) }> }
     token name-noun:sym<Russian> { :i 'имя' | ([\w]+) <?{ $0.Str !(elem) <и для из имел мин моя или им> and is-ru-fuzzy-match($0.Str, 'имя', 1) }> }
     token names-noun:sym<Russian> { :i 'имена' | ([\w]+) <?{ $0.Str !(elem) <имел имела имело имели иметь> and is-ru-fuzzy-match($0.Str, 'имена', 2) }> }
     token nearest-adjective:sym<Russian> { :i 'ближайшие' | ([\w]+) <?{ $0.Str ne 'ближайших' and is-ru-fuzzy-match($0.Str, 'ближайшие', 2) }> | 'ближайших' | ([\w]+) <?{ $0.Str ne 'ближайшие' and is-ru-fuzzy-match($0.Str, 'ближайших', 2) }> }
@@ -281,7 +281,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token step-noun:sym<Russian> { :i 'шаг' | ([\w]+) <?{ $0.Str !(elem) <как на наш шагом шаги раз> and is-ru-fuzzy-match($0.Str, 'шаг', 1) }> | 'шагом' | ([\w]+) <?{ $0.Str !(elem) <шаг шаги> and is-ru-fuzzy-match($0.Str, 'шагом', 2) }> }
     token steps-noun:sym<Russian> { :i 'шаги' | ([\w]+) <?{ $0.Str !(elem) <шаг шагом> and is-ru-fuzzy-match($0.Str, 'шаги', 2) }> }
     token string-noun:sym<Russian> { :i 'строка' | ([\w]+) <?{ $0.Str ne 'строки' and is-ru-fuzzy-match($0.Str, 'строка', 2) }> }
-    token sub-prefix:sym<Russian> { :i 'съб' | ([\w]+) <?{ $0.Str !(elem) <с лоб ср.> and is-ru-fuzzy-match($0.Str, 'съб', 1) }> | 'под' | ([\w]+) <?{ $0.Str !(elem) <по от код коды лоб мой моя ряд до топ> and is-ru-fuzzy-match($0.Str, 'под', 1) }> }
+    token sub-prefix:sym<Russian> { :i 'съб' | ([\w]+) <?{ $0.Str !(elem) <с лоб ср.> and is-ru-fuzzy-match($0.Str, 'съб', 1) }> | 'под' | ([\w]+) <?{ $0.Str !(elem) <по от код коды лоб во мой моя ряд до топ пока> and is-ru-fuzzy-match($0.Str, 'под', 1) }> }
     token summaries:sym<Russian> { :i <summaries-noun> }
     token summaries-noun:sym<Russian> { :i 'рекапс' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'рекапс', 2) }> | 'резюме' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'резюме', 2) }> }
     token summarize-directive:sym<Russian> { :i 'итог' | ([\w]+) <?{ $0.Str !(elem) <это что топ кто> and is-ru-fuzzy-match($0.Str, 'итог', 2) }> | 'обобщить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'обобщить', 2) }> }
@@ -299,10 +299,10 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token text-noun:sym<Russian> { :i 'текст' | ([\w]+) <?{ $0.Str ne 'тексты' and is-ru-fuzzy-match($0.Str, 'текст', 2) }> }
     token texts-noun:sym<Russian> { :i 'тексты' | ([\w]+) <?{ $0.Str ne 'текст' and is-ru-fuzzy-match($0.Str, 'тексты', 2) }> }
     token textual-adjective:sym<Russian> { :i 'текстовой' | ([\w]+) <?{ $0.Str !(elem) <текстовая текстовое текстовые> and is-ru-fuzzy-match($0.Str, 'текстовой', 2) }> | 'текстовая' | ([\w]+) <?{ $0.Str !(elem) <текстовой текстовое текстовые> and is-ru-fuzzy-match($0.Str, 'текстовая', 2) }> | 'текстовое' | ([\w]+) <?{ $0.Str !(elem) <текстовой текстовая текстовые> and is-ru-fuzzy-match($0.Str, 'текстовое', 2) }> | 'текстовые' | ([\w]+) <?{ $0.Str !(elem) <текстовой текстовая текстовое> and is-ru-fuzzy-match($0.Str, 'текстовые', 2) }> }
-    token that-pronoun:sym<Russian> { :i 'эти' | ([\w]+) <?{ $0.Str !(elem) <и оси от это или что тип кто> and is-ru-fuzzy-match($0.Str, 'эти', 1) }> | 'что' | ([\w]+) <?{ $0.Str !(elem) <дно по от это итог эти до топ кто> and is-ru-fuzzy-match($0.Str, 'что', 1) }> }
+    token that-pronoun:sym<Russian> { :i 'эти' | ([\w]+) <?{ $0.Str !(elem) <и оси от это или что тип кто> and is-ru-fuzzy-match($0.Str, 'эти', 1) }> | 'что' | ([\w]+) <?{ $0.Str !(elem) <дно по от во это итог эти до топ кто> and is-ru-fuzzy-match($0.Str, 'что', 1) }> }
     token the-determiner:sym<Russian> { :i '' }
     token them-pronoun:sym<Russian> { :i 'им' }
-    token this-pronoun:sym<Russian> { :i 'это' | ([\w]+) <?{ $0.Str !(elem) <дно по от итог эти что до топ кто> and is-ru-fuzzy-match($0.Str, 'это', 1) }> | 'это' | ([\w]+) <?{ $0.Str !(elem) <дно по от итог эти что до топ кто> and is-ru-fuzzy-match($0.Str, 'это', 1) }> }
+    token this-pronoun:sym<Russian> { :i 'это' | ([\w]+) <?{ $0.Str !(elem) <дно по от во итог эти что до топ кто> and is-ru-fuzzy-match($0.Str, 'это', 1) }> | 'это' | ([\w]+) <?{ $0.Str !(elem) <дно по от во итог эти что до топ кто> and is-ru-fuzzy-match($0.Str, 'это', 1) }> }
     token threshold-adjective:sym<Russian> { :i 'пороговый' | ([\w]+) <?{ $0.Str !(elem) <пороговая пороговое пороговые> and is-ru-fuzzy-match($0.Str, 'пороговый', 2) }> | 'пороговая' | ([\w]+) <?{ $0.Str !(elem) <пороговый пороговое пороговые> and is-ru-fuzzy-match($0.Str, 'пороговая', 2) }> | 'пороговое' | ([\w]+) <?{ $0.Str !(elem) <пороговый пороговая пороговые> and is-ru-fuzzy-match($0.Str, 'пороговое', 2) }> | 'пороговые' | ([\w]+) <?{ $0.Str !(elem) <пороговый пороговая пороговое> and is-ru-fuzzy-match($0.Str, 'пороговые', 2) }> }
     token threshold-noun:sym<Russian> { :i 'порог' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'порог', 2) }> }
     token time-adjective:sym<Russian> { :i 'время' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'время', 2) }> | 'время' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'время', 2) }> }
@@ -310,12 +310,13 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token timeline-noun:sym<Russian> { :i  <time-adjective> 'строка'  }
     token times-noun:sym<Russian> { :i 'раз' | ([\w]+) <?{ $0.Str !(elem) <как граф на рама рамы из без наш ряд шаг> and is-ru-fuzzy-match($0.Str, 'раз', 1) }> }
     token to-preposition:sym<Russian> { :i 'на' | 'до' }
-    token top-adjective:sym<Russian> { :i 'най-горен' | ([\w]+) <?{ $0.Str !(elem) <най-горна най-горно най-горни> and is-ru-fuzzy-match($0.Str, 'най-горен', 2) }> | 'най-горна' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горно най-горни> and is-ru-fuzzy-match($0.Str, 'най-горна', 2) }> | 'най-горно' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горна най-горни> and is-ru-fuzzy-match($0.Str, 'най-горно', 2) }> | 'най-горни' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горна най-горно> and is-ru-fuzzy-match($0.Str, 'най-горни', 2) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> }
-    token top-noun:sym<Russian> { :i 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> }
+    token top-adjective:sym<Russian> { :i 'най-горен' | ([\w]+) <?{ $0.Str !(elem) <най-горна най-горно най-горни> and is-ru-fuzzy-match($0.Str, 'най-горен', 2) }> | 'най-горна' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горно най-горни> and is-ru-fuzzy-match($0.Str, 'най-горна', 2) }> | 'най-горно' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горна най-горни> and is-ru-fuzzy-match($0.Str, 'най-горно', 2) }> | 'най-горни' | ([\w]+) <?{ $0.Str !(elem) <най-горен най-горна най-горно> and is-ru-fuzzy-match($0.Str, 'най-горни', 2) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб во это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб во это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб во это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> | 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб во это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> }
+    token top-noun:sym<Russian> { :i 'топ' | ([\w]+) <?{ $0.Str !(elem) <по от код лоб во это мой моя под итог что до тип типы кто> and is-ru-fuzzy-match($0.Str, 'топ', 1) }> }
     token transform-verb:sym<Russian> { :i 'преобразование' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'преобразование', 2) }> }
     token translation-noun:sym<Russian> { :i 'перевод' | ([\w]+) <?{ $0.Str ne 'первое' and is-ru-fuzzy-match($0.Str, 'перевод', 2) }> }
     token type-noun:sym<Russian> { :i 'тип' | ([\w]+) <?{ $0.Str !(elem) <и из мин эти им топ типы> and is-ru-fuzzy-match($0.Str, 'тип', 1) }> }
     token types-noun:sym<Russian> { :i 'типы' | ([\w]+) <?{ $0.Str !(elem) <топ тип> and is-ru-fuzzy-match($0.Str, 'типы', 2) }> }
+    token until-preposition:sym<Russian> { :i 'до' | 'пока' | ([\w]+) <?{ $0.Str !(elem) <оба по под> and is-ru-fuzzy-match($0.Str, 'пока', 2) }> }
     token up-adverb:sym<Russian> { :i 'выше' | ([\w]+) <?{ $0.Str ne 'все' and is-ru-fuzzy-match($0.Str, 'выше', 2) }> | 'наверх' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'наверх', 2) }> }
     token use-verb:sym<Russian> { :i 'использовать' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'использовать', 2) }> | 'используйте' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'используйте', 2) }> }
     token used-verb:sym<Russian> { :i 'использованый' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'использованый', 2) }> | 'используется' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'используется', 2) }> }
@@ -328,12 +329,12 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token way-noun:sym<Russian> { :i 'раз' | ([\w]+) <?{ $0.Str !(elem) <как граф на рама рамы из без наш ряд шаг> and is-ru-fuzzy-match($0.Str, 'раз', 1) }> | 'способ' | ([\w]+) <?{ $0.Str ne 'список' and is-ru-fuzzy-match($0.Str, 'способ', 2) }> }
     token weight:sym<Russian> { :i <weight-noun> }
     token weight-adjective:sym<Russian> { :i 'весовой' | ([\w]+) <?{ $0.Str !(elem) <весовая весовое весовые> and is-ru-fuzzy-match($0.Str, 'весовой', 2) }> | 'весовая' | ([\w]+) <?{ $0.Str !(elem) <весовой весовое весовые> and is-ru-fuzzy-match($0.Str, 'весовая', 2) }> | 'весовое' | ([\w]+) <?{ $0.Str !(elem) <весовой весовая весовые> and is-ru-fuzzy-match($0.Str, 'весовое', 2) }> | 'весовые' | ([\w]+) <?{ $0.Str !(elem) <весовой весовая весовое> and is-ru-fuzzy-match($0.Str, 'весовые', 2) }> }
-    token weight-noun:sym<Russian> { :i 'вес' | ([\w]+) <?{ $0.Str !(elem) <все с е без нет вещь вещи веса в вo> and is-ru-fuzzy-match($0.Str, 'вес', 1) }> }
+    token weight-noun:sym<Russian> { :i 'вес' | ([\w]+) <?{ $0.Str !(elem) <все с в во е без нет вещь вещи веса вo> and is-ru-fuzzy-match($0.Str, 'вес', 1) }> }
     token weights:sym<Russian> { :i <weights-noun> }
     token weights-noun:sym<Russian> { :i 'веса' | ([\w]+) <?{ $0.Str !(elem) <все дела вещь вещи вес> and is-ru-fuzzy-match($0.Str, 'веса', 2) }> }
-    token what-pronoun:sym<Russian> { :i 'что' | ([\w]+) <?{ $0.Str !(elem) <дно по от это итог эти до топ кто> and is-ru-fuzzy-match($0.Str, 'что', 1) }> | 'который' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'который', 2) }> }
+    token what-pronoun:sym<Russian> { :i 'что' | ([\w]+) <?{ $0.Str !(elem) <дно по от во это итог эти до топ кто> and is-ru-fuzzy-match($0.Str, 'что', 1) }> | 'который' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'который', 2) }> }
     token when-pronoun:sym<Russian> { :i 'когда' | ([\w]+) <?{ $0.Str !(elem) <код коды> and is-ru-fuzzy-match($0.Str, 'когда', 2) }> }
-    token which-determiner:sym<Russian> { :i 'кто' | ([\w]+) <?{ $0.Str !(elem) <как дно по от код это итог эти что до топ> and is-ru-fuzzy-match($0.Str, 'кто', 1) }> | 'какой' | ([\w]+) <?{ $0.Str ne 'как' and is-ru-fuzzy-match($0.Str, 'какой', 2) }> }
+    token which-determiner:sym<Russian> { :i 'кто' | ([\w]+) <?{ $0.Str !(elem) <как дно по от код во это итог эти что до топ> and is-ru-fuzzy-match($0.Str, 'кто', 1) }> | 'какой' | ([\w]+) <?{ $0.Str ne 'как' and is-ru-fuzzy-match($0.Str, 'какой', 2) }> }
     token with-preposition:sym<Russian> { :i 'через' | ([\w]+) <?{ $0.Str ne 'чертеж' and is-ru-fuzzy-match($0.Str, 'через', 2) }> | 'с' }
     token within-preposition:sym<Russian> { :i 'в' | 'вo' | 'внутри' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'внутри', 2) }> }
     token without-preposition:sym<Russian> { :i 'без' | ([\w]+) <?{ $0.Str !(elem) <из е нет бери раз вес> and is-ru-fuzzy-match($0.Str, 'без', 1) }> }

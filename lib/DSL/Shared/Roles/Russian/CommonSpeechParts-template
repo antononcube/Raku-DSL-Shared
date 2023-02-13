@@ -311,6 +311,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token translation-noun { 'перевод' }
     token type-noun { 'тип' }
     token types-noun { 'типы' }
+    token until-preposition { 'до' | 'пока' }
     token up-adverb { 'выше' | 'наверх' }
     token use-verb { 'использовать' | 'используйте' }
     token used-verb { 'использованый' | 'используется' }

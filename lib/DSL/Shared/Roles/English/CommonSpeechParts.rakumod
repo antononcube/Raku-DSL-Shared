@@ -917,6 +917,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token types-noun {*}
     token types-noun:sym<English> { :i 'types' | ([\w]+) <?{ $0.Str !(elem) <tape times type> and is-fuzzy-match($0.Str, 'types', 2) }> }
 
+    proto token until-preposition {*}
+    token until-preposition:sym<English> { :i 'until' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'until', 2) }> }
+
     proto token up-adverb {*}
     token up-adverb:sym<English> { :i 'up' }
 

@@ -311,6 +311,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token translation-noun { 'translation' }
     token type-noun { 'type' }
     token types-noun { 'types' }
+    token until-preposition { 'until' }
     token up-adverb { 'up' }
     token use-verb { 'use' | 'utilize' }
     token used-verb { 'used' | 'utilized' }

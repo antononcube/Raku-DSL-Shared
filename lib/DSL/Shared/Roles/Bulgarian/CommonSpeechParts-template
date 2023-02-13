@@ -311,6 +311,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token translation-noun { 'транслация' }
     token type-noun { 'тип' }
     token types-noun { 'типове' }
+    token until-preposition { 'до' | 'докато' }
     token up-adverb { 'горе' | 'нагоре' }
     token use-verb { 'ползвай' | 'използвай' }
     token used-verb { 'ползван' | 'използван' }

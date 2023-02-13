@@ -311,6 +311,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token translation-noun { 'tradução' }
     token type-noun { 'tipo' }
     token types-noun { 'tipos' }
+    token until-preposition { 'a' | 'até' }
     token up-adverb { 'acima' }
     token use-verb { 'usar' | 'utilizar' }
     token used-verb { 'usado' | 'usados' | 'usada' 'usadas' }
