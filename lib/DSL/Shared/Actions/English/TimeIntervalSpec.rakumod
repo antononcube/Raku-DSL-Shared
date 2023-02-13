@@ -57,8 +57,8 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
             %res = %res, %( Timestamp => DateTime.now, Command => $/.Str);
             make %res;
         } else {
-            warn "No actions for '{$/}' from '{$/.orig}'.";
-            make Empty;
+            warn "No hash interpretation for '{$/}' from '{$/.orig}'.";
+            make $res;
         }
     }
 
