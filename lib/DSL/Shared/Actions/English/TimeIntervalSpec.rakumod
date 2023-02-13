@@ -51,9 +51,15 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
     ##----------------------------------------------------------
     method time-interval-spec($/) {
-        my %res = $/.values[0].made;
-        %res = %res, %( Timestamp => DateTime.now, Command => $/.Str);
-        make %res
+        my $res = $/.values[0].made;
+        if $res ~~ Hash {
+            my %res = $res.pairs;
+            %res = %res, %( Timestamp => DateTime.now, Command => $/.Str);
+            make %res;
+        } else {
+            warn "No actions for '{$/}' from '{$/.orig}'.";
+            make Empty;
+        }
     }
 
     ##----------------------------------------------------------
