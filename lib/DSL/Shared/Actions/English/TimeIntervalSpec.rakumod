@@ -184,7 +184,8 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
             }
             when $_ eq 'weekend' {
                 my ($y, $w) = Date.today.week;
-                $!from = Date.new($y, 1, 1).later(['week' => $w - 1, ]).later(:5day).Str;
+                # Since British and USA week starts with Sunday we add 6 days to reach the weekend.
+                $!from = Date.new($y, 1, 1).later(['week' => $w - 1, ]).later(:6day).Str;
                 $!to = Date.new($y, 1, 1).later(['week' => $w, ]).Str;
             }
         }
