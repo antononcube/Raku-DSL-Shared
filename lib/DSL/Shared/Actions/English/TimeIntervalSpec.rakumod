@@ -7,6 +7,8 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         is DSL::Shared::Actions::CommonStructures
         is Lingua::NumericWordForms::Actions::English::WordedNumberSpec {
 
+    # It might be better with $!from, $!to, and $!refPoint to be DateTime objects,
+    # and be converted to strings at a subsequent (or "last") interpretation step.
     has Str $.dir is rw;
     has Str $.refPoint is rw;
     has Str $.from is rw;
@@ -174,7 +176,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     }
 
     method right-now($/) {
-        $!refPoint = DateTime.now;
+        $!refPoint = DateTime.now.Str;
         $!unit = 'hour';
         $!length = 1;
         make %( Length => $!length, RefPoint => $!refPoint, Unit => $!unit)
