@@ -14,10 +14,11 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
 
   token time-units { <hours-time-spec-word> | <days-time-spec-word> | <weeks-time-spec-word> | <months-time-spec-word> | <years-time-spec-word> | <lifetimes-time-spec-word> }
 
-  regex number-of-time-units { <few-time-units> || <multi-time-units> || <one-time-unit> }
+  regex number-of-time-units { <few-time-units> || <multi-time-units> || <one-time-unit> || <this-time-unit> }
   regex few-time-units { [ <.a-determiner> \h+ ]? <few-time-spec-word> \h+ <time-units> }
   regex multi-time-units { <time-spec-number> \h+ <time-units> }
   regex one-time-unit { [ [ <.a-determiner> | <.one-time-spec-word> ] \h+ ]? <time-unit> }
+  regex this-time-unit { [ <.this-pronoun> \h+ ]? <time-unit> }
 
   regex named-time-intervals { <day-name-relative> | <time-interval-relative> | <month-name> }
 

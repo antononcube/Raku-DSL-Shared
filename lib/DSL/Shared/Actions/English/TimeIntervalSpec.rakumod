@@ -59,7 +59,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
             %res = %res, %( Timestamp => DateTime.now, Command => $/.Str);
             make %res;
         } else {
-            warn "No hash interpretation for '{$/}' from '{$/.orig}'.";
+            warn "No hash interpretation for '{ $/ }' from '{ $/.orig }'.";
             make $res;
         }
     }
@@ -162,6 +162,30 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make %( Length => $!length, Unit => $!unit)
     }
 
+    method this-time-unit($/) {
+        $!length = 1;
+        $!unit = $<time-unit>.made;
+        given $!unit {
+            when $_ ∈ <week month> {
+                my ($y, $w) = Date.today.week;
+                if $_ eq 'month' { $w = Date.today.month; }
+                $!from = Date.new($y, 1, 1).later([$_ => $w - 1, ]).Str;
+                $!to = Date.new($y, 1, 1).later([$_ => $w, ]).Str;
+            }
+            when 'year' {
+                my ($y, $w) = Date.today.week;
+                $!from = Date.new($y, 1, 1).Str;
+                $!to = Date.new($y, 12, 31).Str;
+            }
+            when $_ ∈ <hour minute> {
+                my $h = now.Int - now.Int % ($_ eq 'hour' ?? 3600 !! 60);
+                $!from = DateTime.new($h, timezone => $*TZ).Str;
+                $!to = DateTime.new($h + ($_ eq 'hour' ?? 3600 !! 60), timezone => $*TZ).Str;
+            }
+        }
+        make %(From => $!from, To => $!to, Length => $!length, Unit => $!unit)
+    }
+
     ##----------------------------------------------------------
     method year-spec($/) {
         $!refPoint = ($/.values[0].made){'RefPoint'};
@@ -184,7 +208,8 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
     method month-name($/) {
         my $val = $/.values[0].made;
-        make %( Unit => 'month', Length => 1, RefPoint => Date.new(Date.today.year, $/.values[0].made, 1).Str, Value => $val );
+        make %( Unit => 'month', Length => 1, RefPoint => Date.new(Date.today.year, $/.values[0].made, 1).Str,
+                Value => $val);
     }
 
     method month-name-long($/) {
