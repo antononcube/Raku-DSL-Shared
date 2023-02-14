@@ -182,6 +182,11 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
                 $!from = DateTime.new($h, timezone => $*TZ).Str;
                 $!to = DateTime.new($h + ($_ eq 'hour' ?? 3600 !! 60), timezone => $*TZ).Str;
             }
+            when $_ eq 'weekend' {
+                my ($y, $w) = Date.today.week;
+                $!from = Date.new($y, 1, 1).later(['week' => $w - 1, ]).later(:5day).Str;
+                $!to = Date.new($y, 1, 1).later(['week' => $w, ]).Str;
+            }
         }
         make %(From => $!from, To => $!to, Length => $!length, Unit => $!unit)
     }
