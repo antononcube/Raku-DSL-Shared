@@ -114,7 +114,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token mar-time-spec-word:sym<English> { :i 'mar' | ([\w]+) <?{ $0.Str !(elem) <am apr day jan march may mon sat year> and is-fuzzy-match($0.Str, 'mar', 1) }> }
 
   proto token march-time-spec-word {*}
-  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str !(elem) <mar each> and is-fuzzy-match($0.Str, 'march', 2) }> }
+  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str ne 'mar' and is-fuzzy-match($0.Str, 'march', 2) }> }
 
   proto token may-time-spec-word {*}
   token may-time-spec-word:sym<English> { :i 'may' | ([\w]+) <?{ $0.Str !(elem) <am day days jan mar mon sat> and is-fuzzy-match($0.Str, 'may', 1) }> }
@@ -243,7 +243,10 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token week-time-spec-word:sym<English> { :i 'week' | ([\w]+) <?{ $0.Str !(elem) <wed weeks> and is-fuzzy-match($0.Str, 'week', 2) }> }
 
   proto token weekend-time-spec-word {*}
-  token weekend-time-spec-word:sym<English> { :i 'weekend' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'weekend', 2) }> }
+  token weekend-time-spec-word:sym<English> { :i 'weekend' | ([\w]+) <?{ $0.Str ne 'weekends' and is-fuzzy-match($0.Str, 'weekend', 2) }> }
+
+  proto token weekends-time-spec-word {*}
+  token weekends-time-spec-word:sym<English> { :i 'weekends' | ([\w]+) <?{ $0.Str ne 'weekend' and is-fuzzy-match($0.Str, 'weekends', 2) }> }
 
   proto token weeks-time-spec-word {*}
   token weeks-time-spec-word:sym<English> { :i 'weeks' | ([\w]+) <?{ $0.Str ne 'week' and is-fuzzy-match($0.Str, 'weeks', 2) }> }

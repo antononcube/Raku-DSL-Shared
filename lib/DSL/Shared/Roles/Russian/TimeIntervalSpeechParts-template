@@ -85,7 +85,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token wednesday-time-spec-word { 'среда' };
   token wednesdays-time-spec-word { 'среды' };
   token week-time-spec-word { 'неделя' };
-  token weekend-time-spec-word { 'конец' \h+ 'недели' | 'уик-енд' | 'уикенд' | 'суббоота' \h+ 'и' \h+ 'воскресееньея' };
+  token weekend-time-spec-word { 'конец' \h+ 'недели' | 'уик-енд' | 'уикенд' | 'суббота' \h+ 'и' \h+ 'воскресееньея' };
+  token weekends-time-spec-word { 'конецы' \h+ 'недели' | 'уик-енды' | 'уикенды' | 'суббот' \h+ 'и' \h+ 'воскресееньей' };
   token weeks-time-spec-word { 'недел' };
   token within-time-spec-word { 'в' | 'докато' | 'в' \h+ 'то' \h+ 'время' \h+ 'как' };
   token year-time-spec-word { 'год' };

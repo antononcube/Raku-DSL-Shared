@@ -85,7 +85,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token wednesday-time-spec-word:sym<Russian> { :i 'среда' | ([\w]+) <?{ $0.Str !(elem) <след преди среды> and is-ru-fuzzy-match($0.Str, 'среда', 2) }> }
   token wednesdays-time-spec-word:sym<Russian> { :i 'среды' | ([\w]+) <?{ $0.Str !(elem) <след преди среда> and is-ru-fuzzy-match($0.Str, 'среды', 2) }> }
   token week-time-spec-word:sym<Russian> { :i 'неделя' | ([\w]+) <?{ $0.Str ne 'недел' and is-ru-fuzzy-match($0.Str, 'неделя', 2) }> }
-  token weekend-time-spec-word:sym<Russian> { :i  'конец' \h+ 'недели' | 'уик-енд' | 'уикенд' | 'суббоота' \h+ 'и' \h+ 'воскресееньея'  }
+  token weekend-time-spec-word:sym<Russian> { :i  'конец' \h+ 'недели' | 'уик-енд' | 'уикенд' | 'суббота' \h+ 'и' \h+ 'воскресееньея'  }
+  token weekends-time-spec-word:sym<Russian> { :i  'конецы' \h+ 'недели' | 'уик-енды' | 'уикенды' | 'суббот' \h+ 'и' \h+ 'воскресееньей'  }
   token weeks-time-spec-word:sym<Russian> { :i 'недел' | ([\w]+) <?{ $0.Str ne 'неделя' and is-ru-fuzzy-match($0.Str, 'недел', 2) }> }
   token within-time-spec-word:sym<Russian> { :i  'в' | 'докато' | 'в' \h+ 'то' \h+ 'время' \h+ 'как'  }
   token year-time-spec-word:sym<Russian> { :i 'год' | ([\w]+) <?{ $0.Str !(elem) <пон ноя от годы> and is-ru-fuzzy-match($0.Str, 'год', 1) }> }
