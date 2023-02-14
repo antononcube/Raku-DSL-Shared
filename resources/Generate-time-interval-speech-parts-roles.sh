@@ -38,7 +38,7 @@ echo 'Process Russian time interval speech parts template'
 
 cd ./lib/DSL/Shared/Roles/Russian
 
-add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --/add-protos --sym-name=Russian --add-exclusions --func-name=is-fuzzy-match ./TimeIntervalSpeechParts-template
+add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --/add-protos --sym-name=Russian --add-exclusions --func-name=is-ru-fuzzy-match ./TimeIntervalSpeechParts-template
 
 # Go back to the top directory
 cd ../../../../../
