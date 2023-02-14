@@ -93,8 +93,8 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
     ##----------------------------------------------------------
     method time-interval-from-to-spec($/) {
-        $!from = $<from>.made<RefPoint>;
-        $!to = $<to>.made<RefPoint>;
+        $!from = $<from>.made<RefPoint>.Str;
+        $!to = $<to>.made<RefPoint>.Str;
 
         my %res = $<from>.made, %(From => $!from, To => $!to);
         make %res
