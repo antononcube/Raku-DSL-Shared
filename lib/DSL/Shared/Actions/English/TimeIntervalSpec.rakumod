@@ -85,7 +85,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!unit = 'year-month';
         $!length = 1;
         my %res = $<year-spec> ?? $<year-spec>.made !! %( Unit => 'year', RefPoint => Date.today.year.Str);
-        $!refPoint = %res<RefPoint> ~ '-' ~ $<month-name>.made;
+        $!refPoint = %res<RefPoint> ~ '-' ~ $<month-name>.made<Value>;
         make %( RefPoint => $!refPoint, Length => $!length, Unit => $!unit)
     }
 
@@ -181,7 +181,8 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     }
 
     method month-name($/) {
-        make $/.values[0].made
+        my $val = $/.values[0].made;
+        make %( Unit => 'month', Length => 1, RefPoint => Date.new(Date.today.year, $/.values[0].made, 1).Str, Value => $val );
     }
 
     method month-name-long($/) {
