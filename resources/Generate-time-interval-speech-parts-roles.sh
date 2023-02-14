@@ -18,7 +18,7 @@ echo 'Process Bulgarian time interval speech parts template'
 
 cd ./lib/DSL/Shared/Roles/Bulgarian
 
-add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --/add-protos --sym-name=Bulgarian --add-exclusions --func-name=is-fuzzy-match ./TimeIntervalSpeechParts-template
+add-token-fuzzy-matching -o=./TimeIntervalSpeechParts.rakumod --/add-protos --sym-name=Bulgarian --add-exclusions --func-name=is-bg-fuzzy-match ./TimeIntervalSpeechParts-template
 
 # Go back to the top directory
 cd ../../../../../
