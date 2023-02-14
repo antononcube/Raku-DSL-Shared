@@ -85,6 +85,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token wednesday-time-spec-word { 'сряда' };
   token wednesdays-time-spec-word { 'среди' };
   token week-time-spec-word { 'седмица' };
+  token weekend-time-spec-word { 'уикенд' | 'края' \h+ 'на' \h+ 'седмицата' | 'събота' \h+ 'и' \h+ 'неделя' };
   token weeks-time-spec-word { 'седмици' };
   token within-time-spec-word { 'през' | 'докато' | 'в' \h+ 'рамките' \h+ 'на' };
   token year-time-spec-word { 'година' };

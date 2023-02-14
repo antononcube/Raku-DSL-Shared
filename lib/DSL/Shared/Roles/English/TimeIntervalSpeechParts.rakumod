@@ -1,3 +1,7 @@
+# I am not sure should we have these time interval speech parts separated from the CommonSpeechParts.rakumod.
+# One advantage of combining the files is that the finding the nearest neighbors is very direct
+# and straightforward with the CLI add-token-fuzzy-matching.
+
 use v6.d;
 use DSL::Shared::Utilities::FuzzyMatching;
 
@@ -95,7 +99,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token just-time-spec-word:sym<English> { :i 'just' | ([\w]+) <?{ $0.Str !(elem) <jul july jun june last past> and is-fuzzy-match($0.Str, 'just', 2) }> }
 
   proto token last-time-spec-word {*}
-  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <at just past sat> and is-fuzzy-match($0.Str, 'last', 2) }> }
+  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <just past sat> and is-fuzzy-match($0.Str, 'last', 2) }> }
 
   proto token lifetime-time-spec-word {*}
   token lifetime-time-spec-word:sym<English> { :i 'lifetime' | ([\w]+) <?{ $0.Str ne 'lifetimes' and is-fuzzy-match($0.Str, 'lifetime', 2) }> }
@@ -110,7 +114,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token mar-time-spec-word:sym<English> { :i 'mar' | ([\w]+) <?{ $0.Str !(elem) <am apr day jan march may mon sat year> and is-fuzzy-match($0.Str, 'mar', 1) }> }
 
   proto token march-time-spec-word {*}
-  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str !(elem) <mar each> and is-fuzzy-match($0.Str, 'march', 2) }> }
+  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str ne 'mar' and is-fuzzy-match($0.Str, 'march', 2) }> }
 
   proto token may-time-spec-word {*}
   token may-time-spec-word:sym<English> { :i 'may' | ([\w]+) <?{ $0.Str !(elem) <am day days jan mar mon sat> and is-fuzzy-match($0.Str, 'may', 1) }> }
@@ -164,7 +168,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token one-time-spec-word:sym<English> { :i 'one' | ([\w]+) <?{ $0.Str !(elem) <june mon new nov now oct of tue> and is-fuzzy-match($0.Str, 'one', 1) }> }
 
   proto token past-time-spec-word {*}
-  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <at just last sat> and is-fuzzy-match($0.Str, 'past', 2) }> }
+  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <just last sat> and is-fuzzy-match($0.Str, 'past', 2) }> }
 
   proto token pm-time-spec-word {*}
   token pm-time-spec-word:sym<English> { :i 'pm' }
@@ -238,6 +242,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   proto token week-time-spec-word {*}
   token week-time-spec-word:sym<English> { :i 'week' | ([\w]+) <?{ $0.Str !(elem) <wed weeks> and is-fuzzy-match($0.Str, 'week', 2) }> }
 
+  proto token weekend-time-spec-word {*}
+  token weekend-time-spec-word:sym<English> { :i 'weekend' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'weekend', 2) }> }
+
   proto token weeks-time-spec-word {*}
   token weeks-time-spec-word:sym<English> { :i 'weeks' | ([\w]+) <?{ $0.Str ne 'week' and is-fuzzy-match($0.Str, 'weeks', 2) }> }
 
@@ -245,7 +252,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token within-time-spec-word:sym<English> { :i 'within' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'within', 2) }> }
 
   proto token year-time-spec-word {*}
-  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <per mar years> and is-fuzzy-match($0.Str, 'year', 2) }> }
+  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <mar years> and is-fuzzy-match($0.Str, 'year', 2) }> }
 
   proto token years-time-spec-word {*}
   token years-time-spec-word:sym<English> { :i 'years' | ([\w]+) <?{ $0.Str ne 'year' and is-fuzzy-match($0.Str, 'years', 2) }> }

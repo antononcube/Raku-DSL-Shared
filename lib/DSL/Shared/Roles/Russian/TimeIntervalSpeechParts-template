@@ -9,7 +9,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
 
   token after-time-spec-word { 'след' };
   token ago-time-spec-word { 'преди' };
-  token am-time-spec-word { 'am' | 'сутрин' | 'сутринта' };
+  token am-time-spec-word { 'am' | 'утро' | 'утра' };
   token apr-time-spec-word { 'апр' };
   token april-time-spec-word { 'април' };
   token aug-time-spec-word { 'авг' };
@@ -85,6 +85,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token wednesday-time-spec-word { 'среда' };
   token wednesdays-time-spec-word { 'среды' };
   token week-time-spec-word { 'неделя' };
+  token weekend-time-spec-word { 'конец' \h+ 'недели' | 'уик-енд' | 'уикенд' | 'суббоота' \h+ 'и' \h+ 'воскресееньея' };
   token weeks-time-spec-word { 'недел' };
   token within-time-spec-word { 'в' | 'докато' | 'в' \h+ 'то' \h+ 'время' \h+ 'как' };
   token year-time-spec-word { 'год' };

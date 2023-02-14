@@ -85,6 +85,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token wednesday-time-spec-word { 'wednesday' };
   token wednesdays-time-spec-word { 'wednesdays' };
   token week-time-spec-word { 'week' };
+  token weekend-time-spec-word { 'weekend' };
   token weeks-time-spec-word { 'weeks' };
   token within-time-spec-word { 'within' };
   token year-time-spec-word { 'year' };
