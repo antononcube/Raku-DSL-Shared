@@ -85,7 +85,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token wednesday-time-spec-word { 'quarta-feira' | 'quarta' \h+ 'feira' | 'quarta' };
   token wednesdays-time-spec-word { 'quartas-feiras' };
   token week-time-spec-word { 'semana' };
-  token week-time-spec-word { 'fim' \h+ 'de' \h+ 'semana' };
+  token weekend-time-spec-word { 'fim' \h+ 'de' \h+ 'semana' };
   token weeks-time-spec-word { 'semanas' };
   token within-time-spec-word { 'em' };
   token year-time-spec-word { 'ano' };
