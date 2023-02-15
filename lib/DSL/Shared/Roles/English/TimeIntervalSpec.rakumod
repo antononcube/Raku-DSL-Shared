@@ -14,18 +14,33 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
 
   token time-units { <hours-time-spec-word> | <days-time-spec-word> | <weeks-time-spec-word> | <weekends-time-spec-word> | <months-time-spec-word> | <years-time-spec-word> | <lifetimes-time-spec-word> }
 
-  regex number-of-time-units { <few-time-units> || <multi-time-units> || <one-time-unit> || <this-time-unit> }
+  regex number-of-time-units { <few-time-units> || <multi-time-units> || <one-time-unit> }
+
   regex few-time-units { [ <.a-determiner> \h+ ]? <few-time-spec-word> \h+ <time-units> }
   regex multi-time-units { <time-spec-number> \h+ <time-units> }
   regex one-time-unit { [ [ <.a-determiner> | <.one-time-spec-word> ] \h+ ]? <time-unit> }
-  regex this-time-unit { [ <.this-pronoun> \h+ ]? <time-unit> }
+
+  regex last-time-unit { <.last-time-spec-word> \h+ <time-unit> }
+  regex this-time-unit { <.this-pronoun> \h+ <time-unit> }
+  regex next-time-unit { <.next-time-spec-word> \h+ <time-unit> }
 
   regex named-time-intervals { <day-name-relative> | <time-interval-relative> | <month-name> }
 
+  regex single-time-interval-relative {
+    || <last-time-unit>
+    || <this-time-unit>
+    || <next-time-unit>
+  }
+
+  regex multi-time-interval-relative {
+    || [ <.the-determiner> \h+ ]? [ <next-time-spec-word> | <last-time-spec-word> | <past-time-spec-word> ] \h+ <number-of-time-units>
+    || <number-of-time-units> \h+ <ago-time-spec-word>
+    || <before-time-spec-word> \h+ <number-of-time-units>
+  }
+
   regex time-interval-relative {
-    [ <.the-determiner> \h+ ]? [ <next-time-spec-word> | <last-time-spec-word> | <past-time-spec-word> ] \h+ <number-of-time-units> |
-    <number-of-time-units> \h+ <ago-time-spec-word> |
-    <before-time-spec-word> \h+ <number-of-time-units>
+    || <single-time-interval-relative>
+    || <multi-time-interval-relative>
   }
 
   regex time-interval-from-to-spec {

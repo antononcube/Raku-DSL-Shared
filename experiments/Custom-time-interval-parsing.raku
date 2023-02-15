@@ -63,12 +63,26 @@ my @commands = (
 #'thirty january, two thousand twenty three',
 '30 january 2023',
 '2023-01-01',
-'Sun, 06 Nov 1994 08:49:37 GMT'
+'Sun, 06 Nov 1994 08:49:37 GMT',
+'from jan to mar',
+'from jan to feb'
+);
+
+my @problematic = (
+#'margem',
+'this week',
+'this hour',
+'this month',
+'this year',
+'this weekend',
+'next week',
+'last month',
+'last weekend'
 );
 
 my $action-type = 'interpret';
 
-for @commands.kv -> $i, $c {
+for @problematic.kv -> $i, $c {
     say "=" x 80;
     say "$i : $c";
     say "-" x 80;

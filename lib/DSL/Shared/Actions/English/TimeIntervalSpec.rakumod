@@ -121,7 +121,12 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     }
 
     ##----------------------------------------------------------
-    method time-interval-relative($/) {
+    method single-time-interval-relative($/) {
+        make $/.values[0].made;
+    }
+
+    ##----------------------------------------------------------
+    method multi-time-interval-relative($/) {
         $!refPoint = 'now';
 
         with $<ago-time-spec-word> {
@@ -137,6 +142,11 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         }
 
         make %res
+    }
+
+    ##----------------------------------------------------------
+    method time-interval-relative($/) {
+        make $/.values[0].made;
     }
 
     ##----------------------------------------------------------
@@ -162,34 +172,58 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make %( Length => $!length, Unit => $!unit)
     }
 
-    method this-time-unit($/) {
+    method process-time-unit($/, Int $offset = 0) {
+        my ($fromLocal, $toLocal);
+
         $!length = 1;
         $!unit = $<time-unit>.made;
+
         given $!unit {
             when $_ ∈ <week month> {
                 my ($y, $w) = Date.today.week;
                 if $_ eq 'month' { $w = Date.today.month; }
-                $!from = Date.new($y, 1, 1).later([$_ => $w - 1, ]).Str;
-                $!to = Date.new($y, 1, 1).later([$_ => $w, ]).Str;
+                $fromLocal = Date.new($y, 1, 1).later([$_ => $w - 1, ]);
+                $toLocal = Date.new($y, 1, 1).later([$_ => $w, ]);
             }
             when 'year' {
                 my ($y, $w) = Date.today.week;
-                $!from = Date.new($y, 1, 1).Str;
-                $!to = Date.new($y, 12, 31).Str;
+                $fromLocal = Date.new($y, 1, 1);
+                $toLocal = Date.new($y, 12, 31);
             }
             when $_ ∈ <hour minute> {
                 my $h = now.Int - now.Int % ($_ eq 'hour' ?? 3600 !! 60);
-                $!from = DateTime.new($h, timezone => $*TZ).Str;
-                $!to = DateTime.new($h + ($_ eq 'hour' ?? 3600 !! 60), timezone => $*TZ).Str;
+                $fromLocal = DateTime.new($h, timezone => $*TZ);
+                $toLocal = DateTime.new($h + ($_ eq 'hour' ?? 3600 !! 60), timezone => $*TZ);
             }
             when $_ eq 'weekend' {
                 my ($y, $w) = Date.today.week;
                 # Since British and USA week starts with Sunday we add 6 days to reach the weekend.
-                $!from = Date.new($y, 1, 1).later(['week' => $w - 1, ]).later(:6day).Str;
-                $!to = Date.new($y, 1, 1).later(['week' => $w, ]).Str;
+                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1, ]).later(:6day);
+                $toLocal = Date.new($y, 1, 1).later(['week' => $w, ]);
             }
         }
-        make %(From => $!from, To => $!to, Length => $!length, Unit => $!unit)
+
+        if $offset != 0 {
+            $fromLocal = $fromLocal.later( [$!unit => $offset, ]);
+            $toLocal = $toLocal.later( [$!unit => $offset, ]);
+        }
+
+        $!from = $fromLocal.Str;
+        $!to = $toLocal.Str;
+
+        return %(From => $!from, To => $!to, Length => $!length, Unit => $!unit)
+    }
+
+    method this-time-unit($/) {
+        make self.process-time-unit($/, 0);
+    }
+
+    method next-time-unit($/) {
+        make self.process-time-unit($/, 1);
+    }
+
+    method last-time-unit($/) {
+        make self.process-time-unit($/, -1);
     }
 
     ##----------------------------------------------------------
