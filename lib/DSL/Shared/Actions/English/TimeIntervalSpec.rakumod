@@ -204,14 +204,15 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         }
 
         if $offset != 0 {
-            $fromLocal = $fromLocal.later( [$!unit => $offset, ]);
-            $toLocal = $toLocal.later( [$!unit => $offset, ]);
+            my $unitLocal = $!unit eq 'weekend' ?? 'week' !! $!unit;
+            $fromLocal = $fromLocal.later( [$unitLocal => $offset, ]);
+            $toLocal = $toLocal.later( [$unitLocal => $offset, ]);
         }
 
         $!from = $fromLocal.Str;
         $!to = $toLocal.Str;
 
-        return %(From => $!from, To => $!to, Length => $!length, Unit => $!unit)
+        return %(From => $!from, To => $!to, Length => $!length, Unit => $!unit);
     }
 
     method this-time-unit($/) {

@@ -77,7 +77,7 @@ my @problematic = (
 'this weekend',
 'next week',
 'last month',
-'last weekend'
+'next weekend'
 );
 
 my $action-type = 'interpret';
