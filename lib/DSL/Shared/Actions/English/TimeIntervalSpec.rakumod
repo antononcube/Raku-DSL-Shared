@@ -189,11 +189,16 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!unit = $<time-unit> ?? $<time-unit>.made !! $<named-time-intervals>.made;
 
         given $!unit {
-            when $_ ∈ <week month> {
+            when 'week'  {
                 my ($y, $w) = Date.today.week;
-                if $_ eq 'month' { $w = Date.today.month; }
-                $fromLocal = Date.new($y, 1, 1).later([$_ => $w - 1,]);
-                $toLocal = Date.new($y, 1, 1).later([$_ => $w,]);
+                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1,]);
+                $toLocal = $fromLocal.later(:1week).earlier(:1day);
+            }
+            when 'month' {
+                my $y = Date.today.year;
+                my $m = Date.today.month;
+                $fromLocal = Date.new($y, $m, 1);
+                $toLocal = $fromLocal.later(:1month).earlier(:1day);
             }
             when 'year' {
                 my ($y, $w) = Date.today.week;
@@ -227,8 +232,14 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
                 $unitLocal = 'week';
             }
 
-            $fromLocal = $fromLocal.later([$unitLocal => $offset,]);
-            $toLocal = $toLocal.later([$unitLocal => $offset,]);
+            if $!unit eq 'month' {
+                $fromLocal = $fromLocal.later([month => $offset,]);
+                my $mdays = $fromLocal.days-in-month;
+                $toLocal = $fromLocal.later([day => $mdays-1,]);
+            } else {
+                $fromLocal = $fromLocal.later([$unitLocal => $offset,]);
+                $toLocal = $toLocal.later([$unitLocal => $offset,]);
+            }
         }
 
         $!from = $fromLocal.Str;
