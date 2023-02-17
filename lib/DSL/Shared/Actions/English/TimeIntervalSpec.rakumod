@@ -16,6 +16,16 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     has Int $.length is rw;
     has Str $.unit is rw;
 
+    has %.monthNameLong = january => 1, february => 2, march => 3, april => 4, may => 5, june => 6,
+                          july => 7, august => 8, september => 9, october => 10, november => 11, december => 12;
+
+    has %.monthNameAbbr = jan => 1, feb => 2, mar => 3, apr => 4, may => 5, jun => 6,
+                          jul => 7, aug => 8, sep => 9, oct => 10, nov => 11, dec => 12;
+
+    has %.dayNameLong = sunday => 0, monday => 1, tuesday => 2, wednesday => 3, thursday => 4, friday => 5, saturday => 6;
+
+    has %.dayNameAbbr = sun => 0, mon => 1, tue => 2, wed => 3, thu => 4, fri => 5, sat => 6;
+
     ##----------------------------------------------------------
     method normalize-time-interval-spec(%tiSpec) {
         with %tiSpec<From> && %tiSpec<To> {
@@ -172,18 +182,18 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make %( Length => $!length, Unit => $!unit)
     }
 
-    method process-time-unit($/, Int $offset = 0) {
+    method process-time-interval($/, Int $offset = 0) {
         my ($fromLocal, $toLocal);
 
         $!length = 1;
-        $!unit = $<time-unit>.made;
+        $!unit = $<time-unit> ?? $<time-unit>.made !! $<named-time-intervals>.made;
 
         given $!unit {
             when $_ ∈ <week month> {
                 my ($y, $w) = Date.today.week;
                 if $_ eq 'month' { $w = Date.today.month; }
-                $fromLocal = Date.new($y, 1, 1).later([$_ => $w - 1, ]);
-                $toLocal = Date.new($y, 1, 1).later([$_ => $w, ]);
+                $fromLocal = Date.new($y, 1, 1).later([$_ => $w - 1,]);
+                $toLocal = Date.new($y, 1, 1).later([$_ => $w,]);
             }
             when 'year' {
                 my ($y, $w) = Date.today.week;
@@ -198,15 +208,27 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
             when $_ eq 'weekend' {
                 my ($y, $w) = Date.today.week;
                 # Since British and USA week starts with Sunday we add 6 days to reach the weekend.
-                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1, ]).later(:6day);
-                $toLocal = Date.new($y, 1, 1).later(['week' => $w, ]);
+                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1,]).later(:6day);
+                $toLocal = Date.new($y, 1, 1).later(['week' => $w,]);
+            }
+            when (%!dayNameAbbr{$_}:exists) || (%!dayNameLong{$_}:exists) {
+                my ($y, $w) = Date.today.week;
+                # Since British and USA week starts with Sunday we use Sunday => 0, etc.
+                my $offset = %!dayNameAbbr{$_} // %!dayNameLong{$_};
+                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1,]).later([day => $offset, ]);
+                $toLocal = $fromLocal;
             }
         }
 
         if $offset != 0 {
-            my $unitLocal = $!unit eq 'weekend' ?? 'week' !! $!unit;
-            $fromLocal = $fromLocal.later( [$unitLocal => $offset, ]);
-            $toLocal = $toLocal.later( [$unitLocal => $offset, ]);
+            my $unitLocal = $!unit;
+
+            if $!unit eq 'weekend' || (%!dayNameAbbr{$!unit}:exists) || (%!dayNameLong{$!unit}:exists) {
+                $unitLocal = 'week';
+            }
+
+            $fromLocal = $fromLocal.later([$unitLocal => $offset,]);
+            $toLocal = $toLocal.later([$unitLocal => $offset,]);
         }
 
         $!from = $fromLocal.Str;
@@ -215,16 +237,16 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         return %(From => $!from, To => $!to, Length => $!length, Unit => $!unit);
     }
 
-    method this-time-unit($/) {
-        make self.process-time-unit($/, 0);
+    method this-time-interval($/) {
+        make self.process-time-interval($/, 0);
     }
 
-    method next-time-unit($/) {
-        make self.process-time-unit($/, 1);
+    method next-time-interval($/) {
+        make self.process-time-interval($/, 1);
     }
 
-    method last-time-unit($/) {
-        make self.process-time-unit($/, -1);
+    method last-time-interval($/) {
+        make self.process-time-interval($/, -1);
     }
 
     ##----------------------------------------------------------
@@ -254,15 +276,11 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     }
 
     method month-name-long($/) {
-        my %m = %(january => 1, february => 2, march => 3, april => 4, may => 5, june => 6, july => 7, august => 8,
-                  september => 9, october => 10, november => 11, december => 12);
-        make %m{$/.Str.trim}
+        make %!monthNameLong{$/.Str.trim}
     }
 
     method month-name-abbr($/) {
-        my %m = %(jan => 1, feb => 2, mar => 3, apr => 4, may => 5, jun => 6, jul => 7, aug => 8, sep => 9, oct => 10,
-                  nov => 11, dec => 12);
-        make %m{$/.Str.trim}
+        make %!monthNameAbbr{$/.Str.trim}
     }
 
     ##----------------------------------------------------------
@@ -282,6 +300,24 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         }
 
         make %( RefPoint => $!refPoint, Direction => $!dir)
+    }
+
+    ##----------------------------------------------------------
+    method day-name($/) {
+        make $/.values[0].made;
+    }
+
+    method day-name-abbr($/) {
+        my $d = $/.Str.lc;
+        # This needs to be check for fuzzy matching
+        # make %!dayNameAbbr{$d} // 'None';
+        make $d;
+    }
+
+    method day-name-long($/) {
+        my $d = $/.Str.lc;
+        # This needs to be check for fuzzy matching
+        make $d;
     }
 
     ##----------------------------------------------------------
