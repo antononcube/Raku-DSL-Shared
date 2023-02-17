@@ -20,16 +20,16 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   regex multi-time-units { <time-spec-number> \h+ <time-units> }
   regex one-time-unit { [ [ <.a-determiner> | <.one-time-spec-word> ] \h+ ]? <time-unit> }
 
-  regex last-time-unit { <.last-time-spec-word> \h+ <time-unit> }
-  regex this-time-unit { <.this-pronoun> \h+ <time-unit> }
-  regex next-time-unit { <.next-time-spec-word> \h+ <time-unit> }
+  regex last-time-interval { <.last-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
+  regex this-time-interval { <.this-pronoun> \h+ [ <time-unit> || <named-time-intervals> ] }
+  regex next-time-interval { <.next-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
 
-  regex named-time-intervals { <day-name-relative> | <time-interval-relative> | <month-name> }
+  regex named-time-intervals { <day-name-relative> | <day-name> | <time-interval-relative> | <month-name> }
 
   regex single-time-interval-relative {
-    || <last-time-unit>
-    || <this-time-unit>
-    || <next-time-unit>
+    || <last-time-interval>
+    || <this-time-interval>
+    || <next-time-interval>
   }
 
   regex multi-time-interval-relative {
