@@ -117,7 +117,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token mar-time-spec-word:sym<English> { :i 'mar' | ([\w]+) <?{ $0.Str !(elem) <am apr day jan march may mon sat year> and is-fuzzy-match($0.Str, 'mar', 1) }> }
 
   proto token march-time-spec-word {*}
-  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str ne 'mar' and is-fuzzy-match($0.Str, 'march', 2) }> }
+  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str !(elem) <mar each> and is-fuzzy-match($0.Str, 'march', 2) }> }
 
   proto token may-time-spec-word {*}
   token may-time-spec-word:sym<English> { :i 'may' | ([\w]+) <?{ $0.Str !(elem) <am day days jan mar mon sat> and is-fuzzy-match($0.Str, 'may', 1) }> }
