@@ -35,6 +35,12 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   proto token between-time-spec-word {*}
   token between-time-spec-word:sym<English> { :i 'between' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'between', 2) }> }
 
+  proto token century-time-spec-word {*}
+  token century-time-spec-word:sym<English> { :i 'century' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'century', 2) }> }
+
+  proto token centuries-time-spec-word {*}
+  token centuries-time-spec-word:sym<English> { :i 'centuries' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'centuries', 2) }> }
+
   proto token christmas-time-spec-word {*}
   token christmas-time-spec-word:sym<English> { :i 'christmas' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'christmas', 2) }> }
 
@@ -49,6 +55,12 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
 
   proto token dec-time-spec-word {*}
   token dec-time-spec-word:sym<English> { :i 'dec' | ([\w]+) <?{ $0.Str !(elem) <day feb few new sep wed> and is-fuzzy-match($0.Str, 'dec', 1) }> }
+
+  proto token decade-time-spec-word {*}
+  token decade-time-spec-word:sym<English> { :i 'decade' | ([\w]+) <?{ $0.Str ne 'decades' and is-fuzzy-match($0.Str, 'decade', 2) }> }
+
+  proto token decades-time-spec-word {*}
+  token decades-time-spec-word:sym<English> { :i 'decades' | ([\w]+) <?{ $0.Str ne 'decade' and is-fuzzy-match($0.Str, 'decades', 2) }> }
 
   proto token december-time-spec-word {*}
   token december-time-spec-word:sym<English> { :i 'december' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'december', 2) }> }
@@ -124,6 +136,12 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
 
   proto token memorial-time-spec-word {*}
   token memorial-time-spec-word:sym<English> { :i 'memorial' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'memorial', 2) }> }
+
+  proto token millennium-time-spec-word {*}
+  token millennium-time-spec-word:sym<English> { :i 'millennium' | ([\w]+) <?{ $0.Str ne 'millenniums' and is-fuzzy-match($0.Str, 'millennium', 2) }> }
+
+  proto token millenniums-time-spec-word {*}
+  token millenniums-time-spec-word:sym<English> { :i 'millenniums' | ([\w]+) <?{ $0.Str ne 'millennium' and is-fuzzy-match($0.Str, 'millenniums', 2) }> }
 
   proto token mon-time-spec-word {*}
   token mon-time-spec-word:sym<English> { :i 'mon' | ([\w]+) <?{ $0.Str !(elem) <jan jun mar may month nov now of one sun> and is-fuzzy-match($0.Str, 'mon', 1) }> }

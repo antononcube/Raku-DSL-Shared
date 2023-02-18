@@ -16,11 +16,15 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token august-time-spec-word { 'agosto' };
   token before-time-spec-word { 'antes' \h* 'de' };
   token between-time-spec-word { 'entre' };
+  token century-time-spec-word { 'século' };
+  token centuries-time-spec-word { 'séculos' };
   token christmas-time-spec-word { ['o' \h*]? 'natal' };
   token coming-time-spec-word { 'próxima' | 'próximo' | 'vindoura' | 'vindouro'};
   token day-time-spec-word { 'dia' };
   token days-time-spec-word { 'dias' };
   token dec-time-spec-word { 'dez' };
+  token decade-time-spec-word { 'década' };
+  token decades-time-spec-word { 'décadas' };
   token december-time-spec-word { 'dezembro' };
   token during-time-spec-word { 'durante' };
   token feb-time-spec-word { 'fev' };
@@ -46,6 +50,8 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token march-time-spec-word { 'março' };
   token may-time-spec-word { 'maio' };
   token memorial-time-spec-word { 'memorial' };
+  token millennium-time-spec-word { 'milênio' | 'milenar' };
+  token millenniums-time-spec-word { 'milênios' | 'milenares' };
   token mon-time-spec-word { 'segunda' };
   token monday-time-spec-word { 'segunda-feira' };
   token mondays-time-spec-word { 'segundas-feiras' };

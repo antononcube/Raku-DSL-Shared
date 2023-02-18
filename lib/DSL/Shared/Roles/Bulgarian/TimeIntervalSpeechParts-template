@@ -17,10 +17,14 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token before-time-spec-word { 'преди' };
   token between-time-spec-word { 'между' };
   token christmas-time-spec-word { 'коледа' };
+  token century-time-spec-word { 'век' | 'века' |'векът' };
+  token centuries-time-spec-word { 'векове' | 'вековете' };
   token coming-time-spec-word { 'идващия' | 'идващата' | 'идващото' | 'идващите'};
   token day-time-spec-word { 'ден' };
   token days-time-spec-word { 'дни' };
   token dec-time-spec-word { 'дек' };
+  token decade-time-spec-word { 'декада' | 'десетилетие' | 'десетилетка' };
+  token decades-time-spec-word { 'декади' | 'десетилетия' | 'десетилетки' };
   token december-time-spec-word { 'декември' };
   token during-time-spec-word { 'по' \h+ 'време' \h+ 'на' };
   token feb-time-spec-word { 'фев' };
@@ -46,6 +50,8 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token march-time-spec-word { 'март' };
   token may-time-spec-word { 'май' };
   token memorial-time-spec-word { 'паметник' | 'паметен' | 'паметния' };
+  token millennium-time-spec-word { 'хилядолетие' | 'хилядолетието' | 'милениум' };
+  token millenniums-time-spec-word { 'хилядолетия' | 'хилядолетията' | 'милениуми' };
   token mon-time-spec-word { 'пон' };
   token monday-time-spec-word { 'понеделник' };
   token mondays-time-spec-word { 'понеделници' };

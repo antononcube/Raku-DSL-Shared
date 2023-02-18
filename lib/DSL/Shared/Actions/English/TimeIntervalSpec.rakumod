@@ -182,7 +182,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make %( Length => $!length, Unit => $!unit)
     }
 
-    method process-time-interval($/, Int $offset = 0) {
+    method process-time-interval($/, Int $offset is copy = 0) {
         my ($fromLocal, $toLocal);
 
         $!length = 1;
@@ -204,6 +204,21 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
                 my ($y, $w) = Date.today.week;
                 $fromLocal = Date.new($y, 1, 1);
                 $toLocal = Date.new($y, 12, 31);
+            }
+            when 'decade' {
+                my $y = Date.today.year;
+                $fromLocal = Date.new($y - $y % 10, 1, 1);
+                $toLocal = $fromLocal.later(:10year).earlier(:1day);
+            }
+            when 'century' {
+                my $y = Date.today.year;
+                $fromLocal = Date.new($y - $y % 100 + 1, 1, 1);
+                $toLocal = $fromLocal.later(:100year).earlier(:1day);
+            }
+            when 'millennium' {
+                my $y = Date.today.year;
+                $fromLocal = Date.new($y - $y % 1000 + 1, 1, 1);
+                $toLocal = $fromLocal.later(:1000year).earlier(:1day);
             }
             when $_ ∈ <hour minute> {
                 my $h = now.Int - now.Int % ($_ eq 'hour' ?? 3600 !! 60);
@@ -228,8 +243,11 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         if $offset != 0 {
             my $unitLocal = $!unit;
 
-            if $!unit eq 'weekend' || (%!dayNameAbbr{$!unit}:exists) || (%!dayNameLong{$!unit}:exists) {
-                $unitLocal = 'week';
+            given $!unit {
+                when $_ eq 'weekend' || (%!dayNameAbbr{$_}:exists) || (%!dayNameLong{$_}:exists) { $unitLocal = 'week'; }
+                when $_ eq 'decade' { $unitLocal = 'year'; $offset = 10 * $offset; }
+                when $_ eq 'century' { $unitLocal = 'year';  $offset = 100 * $offset; }
+                when $_ eq 'millennium' { $unitLocal = 'year';  $offset = 1000 * $offset; }
             }
 
             if $!unit eq 'month' {

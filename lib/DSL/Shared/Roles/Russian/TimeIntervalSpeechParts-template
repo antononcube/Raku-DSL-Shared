@@ -16,11 +16,15 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token august-time-spec-word { 'август' };
   token before-time-spec-word { 'прежде' };
   token between-time-spec-word { 'между' };
+  token century-time-spec-word { 'век' };
+  token centuries-time-spec-word { 'века' };
   token christmas-time-spec-word { 'рождество' };
   token coming-time-spec-word { 'предстоящий' | 'предстоящая' | 'предстоящое' | 'предстоящие'};
   token day-time-spec-word { 'ден' };
   token days-time-spec-word { 'дни' };
   token dec-time-spec-word { 'дек' };
+  token decade-time-spec-word { 'декада' | 'десятилетие' };
+  token decades-time-spec-word { 'декад' | 'десятилетия' };
   token december-time-spec-word { 'декември' };
   token during-time-spec-word { 'во' \h+ 'время' };
   token feb-time-spec-word { 'фев' };
@@ -46,6 +50,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token march-time-spec-word { 'март' };
   token may-time-spec-word { 'май' };
   token memorial-time-spec-word { 'памятный' };
+  token millennium-time-spec-word { 'тысячелетие' | 'миллениум' };
+  token millenniums-time-spec-word { 'тысячелетия' | 'миллениум' };
   token mon-time-spec-word { 'пон' };
   token monday-time-spec-word { 'понедельник' };
   token mondays-time-spec-word { 'понедельники' };

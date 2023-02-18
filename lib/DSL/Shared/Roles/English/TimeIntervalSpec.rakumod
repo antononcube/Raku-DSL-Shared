@@ -8,11 +8,38 @@ use DSL::Shared::Roles::English::TimeIntervalSpeechParts;
 
 role DSL::Shared::Roles::English::TimeIntervalSpec
         does DSL::Shared::Roles::English::TimeIntervalSpeechParts {
-  regex time-interval-spec { <week-of-year> || <month-of-year> || <time-interval-in-units-spec> || <time-interval-from-to-spec> || <time-interval-into-spec> || <time-interval-every-spec> || <number-of-time-units> }
+  regex time-interval-spec {
+    || <week-of-year>
+    || <month-of-year>
+    || <time-interval-in-units-spec>
+    || <time-interval-from-to-spec>
+    || <time-interval-into-spec>
+    || <time-interval-every-spec>
+    || <number-of-time-units> }
 
-  token time-unit  { <hour-time-spec-word>  | <day-time-spec-word>  | <week-time-spec-word> |  <weekend-time-spec-word> | <month-time-spec-word>  | <year-time-spec-word>  | <lifetime-time-spec-word> }
+  token time-unit {
+    | <hour-time-spec-word>
+    | <day-time-spec-word>
+    | <week-time-spec-word>
+    | <weekend-time-spec-word>
+    | <month-time-spec-word>
+    | <year-time-spec-word>
+    | <decade-time-spec-word>
+    | <century-time-spec-word>
+    | <millennium-time-spec-word>
+    | <lifetime-time-spec-word> }
 
-  token time-units { <hours-time-spec-word> | <days-time-spec-word> | <weeks-time-spec-word> | <weekends-time-spec-word> | <months-time-spec-word> | <years-time-spec-word> | <lifetimes-time-spec-word> }
+  token time-units {
+    | <hours-time-spec-word>
+    | <days-time-spec-word>
+    | <weeks-time-spec-word>
+    | <weekends-time-spec-word>
+    | <months-time-spec-word>
+    | <years-time-spec-word>
+    | <decades-time-spec-word>
+    | <centuries-time-spec-word>
+    | <millenniums-time-spec-word>
+    | <lifetimes-time-spec-word> }
 
   regex number-of-time-units { <few-time-units> || <multi-time-units> || <one-time-unit> }
 
