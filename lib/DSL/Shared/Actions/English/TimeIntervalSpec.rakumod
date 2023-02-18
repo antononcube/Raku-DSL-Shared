@@ -88,7 +88,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         my %num = $<time-spec-number>.made;
         my %res = $<number-of-time-units>.made;
 
-        %res = %res, %(from => %num<Length>, to => %res<Length>, Length => (%res<Length> + %num<Length>) / 2);
+        %res = %res, %(from => %num<length>, to => %res<length>, Length => (%res<length> + %num<length>) / 2);
         make %res
     }
 
@@ -139,7 +139,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     }
 
     method multi-time-units($/) {
-        $!length = $<time-spec-number>.made<Length>;
+        $!length = $<time-spec-number>.made<length>;
         $!unit = $<time-units>.made;
         make %(:$!length, :$!unit)
     }
