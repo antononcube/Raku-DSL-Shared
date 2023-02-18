@@ -1,0 +1,246 @@
+use v6.d;
+
+use lib '.';
+use lib './lib';
+
+use DSL::Shared::Actions::English::TimeIntervalSpec;
+use DSL::Shared::Actions::English::TimeIntervalSpecRefPoint;
+use DSL::Shared::Roles::English::PipelineCommand;
+use DSL::Shared::Roles::English::TimeIntervalSpec;
+use DSL::Shared::Roles::ErrorHandling;
+use DateTime::Grammar;
+use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
+
+use Test::Time;
+use Test;
+
+#============================================================
+# Custom grammar
+#============================================================
+
+grammar CustomTimeInterval
+        is DateTime::Grammar
+        does Lingua::NumericWordForms::Roles::English::WordedNumberSpec
+        does DSL::Shared::Roles::English::TimeIntervalSpec
+        does DSL::Shared::Roles::English::PipelineCommand {
+    regex TOP {
+        || <full-date-spec>
+        || <pipeline-command>
+        || <time-interval-spec>
+        || <numeric-word-form>
+    }
+    regex full-date-spec:sym<FullDate> {
+        <DateTime::Grammar::datetime-spec>
+    }
+}
+
+
+class FromCustomTimeInterval
+        is DSL::Shared::Actions::English::TimeIntervalSpec
+        is DateTime::Actions::Raku {
+    method full-date-spec:sym<FullDate>($/) {
+        my $d = $/.values[0].made;
+        self.from = $d;
+        self.to = $d;
+        self.unit = 'day';
+        self.length = 1;
+        make %(unit => self.unit, length => self.length, value => $d, from => self.from, to => self.to);
+    }
+}
+
+sub ti-interpret($cmd) {
+    return CustomTimeInterval.parse($cmd, rule => 'TOP', actions => FromCustomTimeInterval.new).made;
+}
+
+my $localHour = now.DateTime.hour;
+my $localDateTime = DateTime.new(2023, 2, 18, 0, 0, 0);
+#my $localDateTime = DateTime.new(2023, 2, 18, now.DateTime.hour, 0, 0);
+$*SCHEDULER = mock-time($localDateTime.later(day => 1).Instant);
+
+#============================================================
+# Tests
+#============================================================
+#============================================================
+# Tests
+#============================================================
+
+plan *;
+
+## 1
+is-deeply ti-interpret('past year')<from to>,
+        (Any, Any),
+        'past year';
+
+## 2
+is-deeply ti-interpret('last year')<from to>,
+        (Date.new(2022, 1, 1), Date.new(2022, 12, 31)),
+        'last year';
+
+## 3
+is-deeply ti-interpret('today')<from to>,
+        (DateTime.new(2023, 2, 18, 0, 0, 0), DateTime.new(2023, 2, 18, 0, 0, 0)),
+        'today';
+
+## 4
+is-deeply ti-interpret('from yesterday to tomorrow')<from to>,
+        (Date.new(2023, 2, 17), Date.new(2023, 2, 19)),
+        'from yesterday to tomorrow';
+
+## 5
+is-deeply ti-interpret('january 30 2023')<from to>,
+        (Date.new(2023, 1, 30), Date.new(2023, 1, 30)),
+        'january 30 2023';
+
+## 6
+is-deeply ti-interpret('january thirty, two thousand twenty three')<from to>,
+        (Date.new(2023, 1, 30), Date.new(2023, 1, 30)),
+        'january thirty, two thousand twenty three';
+
+## 7
+is-deeply ti-interpret('october eighteen two thousand twenty three')<from to>,
+        (Date.new(2023, 10, 18), Date.new(2023, 10, 18)),
+        'october eighteen two thousand twenty three';
+
+## 8
+is-deeply ti-interpret('30 january 2023')<from to>,
+        (Date.new(2023, 1, 30), Date.new(2023, 1, 30)),
+        '30 january 2023';
+
+## 9
+is-deeply ti-interpret('2023-01-01')<from to>,
+        (Date.new(2023, 1, 1), Date.new(2023, 1, 1)),
+        '2023-01-01';
+
+## 10
+is-deeply ti-interpret('Sun, 06 Nov 1994 08:49:37 GMT')<from to>,
+        (DateTime.new(1994, 11, 6, 8, 49, 37), DateTime.new(1994, 11, 6, 8, 49, 37)),
+        'Sun, 06 Nov 1994 08:49:37 GMT';
+
+## 11
+is-deeply ti-interpret('from jan to mar')<from to>,
+        (Date.new(2023, 1, 1), Date.new(2023, 3, 31)),
+        'from jan to mar';
+
+## 12
+is-deeply ti-interpret('from jan to feb')<from to>,
+        (Date.new(2023, 1, 1), Date.new(2023, 2, 28)),
+        'from jan to feb';
+
+## 13
+is-deeply ti-interpret('this hour')<from to>,
+        (DateTime.new(2023, 2, 18, $localHour-1, 0, 0, :timezone(-18000)),
+         DateTime.new(2023, 2, 18, $localHour, 0, 0, :timezone(-18000))),
+        'this hour';
+
+## 14
+is-deeply ti-interpret('this year')<from to>,
+        (Date.new(2023, 1, 1), Date.new(2023, 12, 31)),
+        'this year';
+
+## 15
+is-deeply ti-interpret('this week')<from to>,
+        (Date.new(2023, 2, 12), Date.new(2023, 2, 18)),
+        'this week';
+
+## 16
+is-deeply ti-interpret('this weekend')<from to>,
+        (Date.new(2023, 2, 18), Date.new(2023, 2, 19)),
+        'this weekend';
+
+## 17
+is-deeply ti-interpret('next week')<from to>,
+        (Date.new(2023, 2, 19), Date.new(2023, 2, 25)),
+        'next week';
+
+## 18
+is-deeply ti-interpret('this month')<from to>,
+        (Date.new(2023, 2, 1), Date.new(2023, 2, 28)),
+        'this month';
+
+## 19
+is-deeply ti-interpret('last month')<from to>,
+        (Date.new(2023, 1, 1), Date.new(2023, 1, 31)),
+        'last month';
+
+## 20
+is-deeply ti-interpret('next month')<from to>,
+        (Date.new(2023, 3, 1), Date.new(2023, 3, 31)),
+        'next month';
+
+## 21
+is-deeply ti-interpret('next weekend')<from to>,
+        (Date.new(2023, 2, 25), Date.new(2023, 2, 26)),
+        'next weekend';
+
+## 22
+is-deeply ti-interpret('this monday')<from to>,
+        (Date.new(2023, 2, 13), Date.new(2023, 2, 13)),
+        'this monday';
+
+## 23
+is-deeply ti-interpret('this fri')<from to>,
+        (Date.new(2023, 2, 17), Date.new(2023, 2, 17)),
+        'this fri';
+
+## 24
+is-deeply ti-interpret('next tuesday')<from to>,
+        (Date.new(2023, 2, 21), Date.new(2023, 2, 21)),
+        'next tuesday';
+
+## 25
+is-deeply ti-interpret('last fri')<from to>,
+        (Date.new(2023, 2, 10), Date.new(2023, 2, 10)),
+        'last fri';
+
+## 26
+is-deeply ti-interpret('last decade')<from to>,
+        (Date.new(2010, 1, 1), Date.new(2019, 12, 31)),
+        'last decade';
+
+## 27
+is-deeply ti-interpret('decade')<from to>,
+        (Date.new(2020, 1, 1), Date.new(2029, 12, 31)),
+        'decade';
+
+## 28
+is-deeply ti-interpret('this decade')<from to>,
+        (Date.new(2020, 1, 1), Date.new(2029, 12, 31)),
+        'this decade';
+
+## 29
+is-deeply ti-interpret('next decade')<from to>,
+        (Date.new(2030, 1, 1), Date.new(2039, 12, 31)),
+        'next decade';
+
+## 30
+is-deeply ti-interpret('last century')<from to>,
+        (Date.new(1901, 1, 1), Date.new(2000, 12, 31)),
+        'last century';
+
+## 31
+is-deeply ti-interpret('this century')<from to>,
+        (Date.new(2001, 1, 1), Date.new(2100, 12, 31)),
+        'this century';
+
+## 32
+is-deeply ti-interpret('next century')<from to>,
+        (Date.new(2101, 1, 1), Date.new(2200, 12, 31)),
+        'next century';
+
+## 33
+is-deeply ti-interpret('last millennium')<from to>,
+        (Date.new(1001, 1, 1), Date.new(2000, 12, 31)),
+        'last millennium';
+
+## 34
+is-deeply ti-interpret('this millennium')<from to>,
+        (Date.new(2001, 1, 1), Date.new(3000, 12, 31)),
+        'this millennium';
+
+## 35
+is-deeply ti-interpret('next millennium')<from to>,
+        (Date.new(3001, 1, 1), Date.new(4000, 12, 31)),
+        'next millennium';
+
+done-testing;
