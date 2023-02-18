@@ -83,7 +83,19 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   regex time-interval-in-units-spec {
     [ <.between-time-spec-word> | <.within-time-spec-word> ] \h+ <time-spec-number> \h+ <.and-conjunction> \h+ <number-of-time-units> }
 
-  regex time-spec { <right-now> || <day-name> || <week-of-year> || <week-number> || <month-of-year> || <month-name> || <holiday-name> || <hour-spec> || <holiday-offset> || <full-date-spec> }
+  regex time-spec {
+    || <right-now>
+    || <day-name>
+    || <day-name-relative>
+    || <week-of-year>
+    || <week-number>
+    || <month-of-year>
+    || <month-name>
+    || <holiday-name>
+    || <hour-spec>
+    || <holiday-offset>
+    || <full-date-spec> }
+
   token right-now { <now-time-spec-word> | <right-time-spec-word> \h+ <now-time-spec-word> | <just-time-spec-word> \h+ <now-time-spec-word> }
   token day-name-relative { <today-time-spec-word> | <yesterday-time-spec-word> | <tomorrow-time-spec-word> | <.the-determiner> \h+ <day-time-spec-word> \h+ <before-time-spec-word> \h+ <yesterday-time-spec-word> }
   token day-name-long { <monday-time-spec-word> | <tuesday-time-spec-word> | <wednesday-time-spec-word> | <thursday-time-spec-word> | <friday-time-spec-word> | <saturday-time-spec-word> | <sunday-time-spec-word> }
