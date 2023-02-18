@@ -17,6 +17,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token before-time-spec-word:sym<Russian> { :i 'прежде' | ([\w]+) <?{ $0.Str ne 'преди' and is-ru-fuzzy-match($0.Str, 'прежде', 2) }> }
   token between-time-spec-word:sym<Russian> { :i 'между' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'между', 2) }> }
   token christmas-time-spec-word:sym<Russian> { :i 'рождество' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'рождество', 2) }> }
+  token coming-time-spec-word:sym<Russian> { :i 'предстоящий' | ([\w]+) <?{ $0.Str !(elem) <предстоящая предстоящое предстоящие> and is-ru-fuzzy-match($0.Str, 'предстоящий', 2) }> | 'предстоящая' | ([\w]+) <?{ $0.Str !(elem) <предстоящий предстоящое предстоящие> and is-ru-fuzzy-match($0.Str, 'предстоящая', 2) }> | 'предстоящое' | ([\w]+) <?{ $0.Str !(elem) <предстоящий предстоящая предстоящие> and is-ru-fuzzy-match($0.Str, 'предстоящое', 2) }> | 'предстоящие' | ([\w]+) <?{ $0.Str !(elem) <предстоящий предстоящая предстоящое> and is-ru-fuzzy-match($0.Str, 'предстоящие', 2) }> }
   token day-time-spec-word:sym<Russian> { :i 'ден' | ([\w]+) <?{ $0.Str !(elem) <дни дек фев пон один дясен десни сен чет> and is-ru-fuzzy-match($0.Str, 'ден', 1) }> }
   token days-time-spec-word:sym<Russian> { :i 'дни' | ([\w]+) <?{ $0.Str !(elem) <ден дек янв ян. на один одна одно одни десни> and is-ru-fuzzy-match($0.Str, 'дни', 1) }> }
   token dec-time-spec-word:sym<Russian> { :i 'дек' | ([\w]+) <?{ $0.Str !(elem) <ден дни фев сен чет> and is-ru-fuzzy-match($0.Str, 'дек', 1) }> }

@@ -17,6 +17,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token before-time-spec-word { 'преди' };
   token between-time-spec-word { 'между' };
   token christmas-time-spec-word { 'коледа' };
+  token coming-time-spec-word { 'идващия' | 'идващата' | 'идващото' | 'идващите'};
   token day-time-spec-word { 'ден' };
   token days-time-spec-word { 'дни' };
   token dec-time-spec-word { 'дек' };

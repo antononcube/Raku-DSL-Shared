@@ -17,6 +17,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token before-time-spec-word { 'before' };
   token between-time-spec-word { 'between' };
   token christmas-time-spec-word { 'christmas' };
+  token coming-time-spec-word { 'coming' };
   token day-time-spec-word { 'day' };
   token days-time-spec-word { 'days' };
   token dec-time-spec-word { 'dec' };

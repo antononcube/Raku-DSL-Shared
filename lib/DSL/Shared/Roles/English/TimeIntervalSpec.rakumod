@@ -22,7 +22,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
 
   regex last-time-interval { <.last-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
   regex this-time-interval { <.this-pronoun> \h+ [ <time-unit> || <named-time-intervals> ] }
-  regex next-time-interval { <.next-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
+  regex next-time-interval { [ <.next-time-spec-word> | <.coming-time-spec-word> ] \h+ [ <time-unit> | <named-time-intervals> ] }
 
   regex named-time-intervals { <day-name-relative> | <day-name> | <time-interval-relative> | <month-name> }
 

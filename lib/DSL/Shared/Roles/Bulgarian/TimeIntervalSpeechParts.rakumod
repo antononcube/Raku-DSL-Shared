@@ -17,6 +17,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token before-time-spec-word:sym<Bulgarian> { :i 'преди' | ([\w]+) <?{ $0.Str ne 'среди' and is-bg-fuzzy-match($0.Str, 'преди', 2) }> }
   token between-time-spec-word:sym<Bulgarian> { :i 'между' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'между', 2) }> }
   token christmas-time-spec-word:sym<Bulgarian> { :i 'коледа' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'коледа', 2) }> }
+  token coming-time-spec-word:sym<Bulgarian> { :i 'идващия' | ([\w]+) <?{ $0.Str ne 'идващите' and is-bg-fuzzy-match($0.Str, 'идващия', 2) }> | 'идващата' | ([\w]+) <?{ $0.Str !(elem) <идващото идващите> and is-bg-fuzzy-match($0.Str, 'идващата', 2) }> | 'идващото' | ([\w]+) <?{ $0.Str !(elem) <идващата идващите> and is-bg-fuzzy-match($0.Str, 'идващото', 2) }> | 'идващите' | ([\w]+) <?{ $0.Str !(elem) <идващия идващата идващото> and is-bg-fuzzy-match($0.Str, 'идващите', 2) }> }
   token day-time-spec-word:sym<Bulgarian> { :i 'ден' | ([\w]+) <?{ $0.Str !(elem) <дни дек фев пон един една едно едни десен десни сеп чет днес> and is-bg-fuzzy-match($0.Str, 'ден', 1) }> }
   token days-time-spec-word:sym<Bulgarian> { :i 'дни' | ([\w]+) <?{ $0.Str !(elem) <ден дек яну ян. юли юни на един една едно едни десни днес> and is-bg-fuzzy-match($0.Str, 'дни', 1) }> }
   token dec-time-spec-word:sym<Bulgarian> { :i 'дек' | ([\w]+) <?{ $0.Str !(elem) <ден дни фев сеп чет днес> and is-bg-fuzzy-match($0.Str, 'дек', 1) }> }

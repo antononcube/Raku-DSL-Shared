@@ -17,6 +17,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token before-time-spec-word { 'antes' \h* 'de' };
   token between-time-spec-word { 'entre' };
   token christmas-time-spec-word { ['o' \h*]? 'natal' };
+  token coming-time-spec-word { 'próxima' | 'próximo' | 'vindoura' | 'vindouro'};
   token day-time-spec-word { 'dia' };
   token days-time-spec-word { 'dias' };
   token dec-time-spec-word { 'dez' };

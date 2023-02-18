@@ -17,6 +17,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token before-time-spec-word { 'прежде' };
   token between-time-spec-word { 'между' };
   token christmas-time-spec-word { 'рождество' };
+  token coming-time-spec-word { 'предстоящий' | 'предстоящая' | 'предстоящое' | 'предстоящие'};
   token day-time-spec-word { 'ден' };
   token days-time-spec-word { 'дни' };
   token dec-time-spec-word { 'дек' };

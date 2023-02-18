@@ -38,6 +38,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   proto token christmas-time-spec-word {*}
   token christmas-time-spec-word:sym<English> { :i 'christmas' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'christmas', 2) }> }
 
+  proto token coming-time-spec-word {*}
+  token coming-time-spec-word:sym<English> { :i 'coming' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'coming', 2) }> }
+
   proto token day-time-spec-word {*}
   token day-time-spec-word:sym<English> { :i 'day' | ([\w]+) <?{ $0.Str !(elem) <am days dec jan mar may sat today> and is-fuzzy-match($0.Str, 'day', 1) }> }
 
@@ -114,7 +117,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token mar-time-spec-word:sym<English> { :i 'mar' | ([\w]+) <?{ $0.Str !(elem) <am apr day jan march may mon sat year> and is-fuzzy-match($0.Str, 'mar', 1) }> }
 
   proto token march-time-spec-word {*}
-  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str !(elem) <mar each> and is-fuzzy-match($0.Str, 'march', 2) }> }
+  token march-time-spec-word:sym<English> { :i 'march' | ([\w]+) <?{ $0.Str ne 'mar' and is-fuzzy-match($0.Str, 'march', 2) }> }
 
   proto token may-time-spec-word {*}
   token may-time-spec-word:sym<English> { :i 'may' | ([\w]+) <?{ $0.Str !(elem) <am day days jan mar mon sat> and is-fuzzy-match($0.Str, 'may', 1) }> }
