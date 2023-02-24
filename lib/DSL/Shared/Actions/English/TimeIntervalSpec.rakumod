@@ -39,7 +39,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
     ##----------------------------------------------------------
     method time-unit($/) {
-        make $/.Str;
+        make $/.values[0].made;
     }
 
     method time-units($/) {
@@ -402,4 +402,16 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!length = $/.values[0].made.Int;
         make %(:$!length);
     }
+
+    #------------------------------------------------------
+    method hour-time-spec-word:sym<English>($/) { make 'hour'; }
+    method day-time-spec-word:sym<English>($/) { make 'day'; }
+    method weekend-time-spec-word:sym<English>($/) { make 'weekend'; }
+    method week-time-spec-word:sym<English>($/) { make 'week'; }
+    method month-time-spec-word:sym<English>($/) { make 'month'; }
+    method year-time-spec-word:sym<English>($/) { make 'year'; }
+    method decade-time-spec-word:sym<English>($/) { make 'decade'; }
+    method century-time-spec-word:sym<English>($/) { make 'century'; }
+    method millennium-time-spec-word:sym<English>($/) { make 'millennium'; }
+    method lifetime-time-spec-word:sym<English>($/) { make 'lifetime'; }
 }
