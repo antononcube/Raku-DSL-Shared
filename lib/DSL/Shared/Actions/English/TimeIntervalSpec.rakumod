@@ -39,11 +39,21 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
     ##----------------------------------------------------------
     method time-unit($/) {
-        make $/.values[0].made;
+        my @units = <hour day weekend week month year decade century millennium lifetime>;
+        my %unitMap = @units.map({ $_ ~ '-time-spec-word' => $_ });
+        # note %unitMap.keys Z=> $/{%unitMap.keys}>>.so;
+        for %unitMap.kv -> $k, $v {
+            if so $/{$k} { make $v; last }
+        }
     }
 
     method time-units($/) {
-        make $/.Str.trim.substr(0, *- 1);
+        my @units = <hours days weekends weeks months years decades centuries millenniums lifetimes>;
+        my %unitMap = @units.map({ $_ ~ '-time-spec-word' => $_ });
+        # note %unitMap.keys Z=> $/{%unitMap.keys}>>.so;
+        for %unitMap.kv -> $k, $v {
+            if so $/{$k} { make $v.substr(0,*-1); last }
+        }
     }
 
     ##----------------------------------------------------------
@@ -52,7 +62,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!length = 1;
         my $y = $<year-spec>.made;
         $!value = $<week-number-range>.made<value>;
-        $!from = Date.new($y, 1, 1).later([ week => $!value, ]);
+        $!from = Date.new($y, 1, 1).later([week => $!value,]);
         $!to = $!from.later(:6day);
         make %(:$!unit, :$!length, :$!value, $!from, $!to);
     }
@@ -61,7 +71,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
     method month-of-year($/) {
         $!unit = 'year-month';
         $!length = 1;
-        my $y = $<year-spec> ?? $<year-spec>.made !!Date.today.year;
+        my $y = $<year-spec> ?? $<year-spec>.made !! Date.today.year;
         $!value = $<month-name>.made<value>;
         $!from = Date.new($y, $<month-name>.made<value>, 1);
         $!to = Date.new($y, $<month-name>.made<value> + 1, 1).earlier(:1day);
@@ -154,6 +164,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         my ($fromLocal, $toLocal);
 
         $!length = 1;
+        note $<time-unit>;
         $!unit = $<time-unit> ?? $<time-unit>.made !! $<named-time-intervals>.made;
 
         given $!unit {
@@ -274,8 +285,8 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!value = DateTime.now;
         $!unit = 'hour';
         $!length = 1;
-        $!from = Date.today.DateTime.later([ hour => $!value.hour, ]);
-        $!to = Date.today.DateTime.later([ hour => $!value.hour, ]);
+        $!from = Date.today.DateTime.later([hour => $!value.hour,]);
+        $!to = Date.today.DateTime.later([hour => $!value.hour,]);
         make %(:$!unit, :$!length, :$!value, $!from, $!to);
     }
 
@@ -402,16 +413,4 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         $!length = $/.values[0].made.Int;
         make %(:$!length);
     }
-
-    #------------------------------------------------------
-    method hour-time-spec-word:sym<English>($/) { make 'hour'; }
-    method day-time-spec-word:sym<English>($/) { make 'day'; }
-    method weekend-time-spec-word:sym<English>($/) { make 'weekend'; }
-    method week-time-spec-word:sym<English>($/) { make 'week'; }
-    method month-time-spec-word:sym<English>($/) { make 'month'; }
-    method year-time-spec-word:sym<English>($/) { make 'year'; }
-    method decade-time-spec-word:sym<English>($/) { make 'decade'; }
-    method century-time-spec-word:sym<English>($/) { make 'century'; }
-    method millennium-time-spec-word:sym<English>($/) { make 'millennium'; }
-    method lifetime-time-spec-word:sym<English>($/) { make 'lifetime'; }
 }
