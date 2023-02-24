@@ -114,7 +114,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token just-time-spec-word:sym<English> { :i 'just' | ([\w]+) <?{ $0.Str !(elem) <jul july jun june last past> and is-fuzzy-match($0.Str, 'just', 2) }> }
 
   proto token last-time-spec-word {*}
-  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <just past sat> and is-fuzzy-match($0.Str, 'last', 2) }> }
+  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <just past sat at> and is-fuzzy-match($0.Str, 'last', 1) }> }
 
   proto token lifetime-time-spec-word {*}
   token lifetime-time-spec-word:sym<English> { :i 'lifetime' | ([\w]+) <?{ $0.Str ne 'lifetimes' and is-fuzzy-match($0.Str, 'lifetime', 2) }> }
@@ -189,7 +189,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token one-time-spec-word:sym<English> { :i 'one' | ([\w]+) <?{ $0.Str !(elem) <june mon new nov now oct of tue> and is-fuzzy-match($0.Str, 'one', 1) }> }
 
   proto token past-time-spec-word {*}
-  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <just last sat> and is-fuzzy-match($0.Str, 'past', 2) }> }
+  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <just last sat at> and is-fuzzy-match($0.Str, 'past', 1) }> }
 
   proto token pm-time-spec-word {*}
   token pm-time-spec-word:sym<English> { :i 'pm' }
@@ -201,7 +201,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token right-time-spec-word:sym<English> { :i 'right' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'right', 2) }> }
 
   proto token sat-time-spec-word {*}
-  token sat-time-spec-word:sym<English> { :i 'sat' | ([\w]+) <?{ $0.Str !(elem) <am day jan last mar may oct past sep sun> and is-fuzzy-match($0.Str, 'sat', 1) }> }
+  token sat-time-spec-word:sym<English> { :i 'sat' | ([\w]+) <?{ $0.Str !(elem) <am at day jan last mar may oct past sep sun> and is-fuzzy-match($0.Str, 'sat', 1) }> }
 
   proto token saturday-time-spec-word {*}
   token saturday-time-spec-word:sym<English> { :i 'saturday' | ([\w]+) <?{ $0.Str ne 'saturdays' and is-fuzzy-match($0.Str, 'saturday', 2) }> }

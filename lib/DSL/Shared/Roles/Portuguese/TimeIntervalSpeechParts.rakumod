@@ -71,7 +71,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token pm-time-spec-word:sym<Portuguese> { :i 'pm' }
   token ramadan-time-spec-word:sym<Portuguese> { :i  ['o' \h*]? 'ramadan'  }
   token right-time-spec-word:sym<Portuguese> { :i 'direita' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'direita', 2) }> }
-  token sat-time-spec-word:sym<Portuguese> { :i 'sat' | ([\w]+) <?{ $0.Str !(elem) <am jan mar oct sep sol> and is-pt-fuzzy-match($0.Str, 'sat', 1) }> }
+  token sat-time-spec-word:sym<Portuguese> { :i 'sat' | ([\w]+) <?{ $0.Str !(elem) <am at jan mar oct sep sol> and is-pt-fuzzy-match($0.Str, 'sat', 1) }> }
   token saturday-time-spec-word:sym<Portuguese> { :i 'sábado' | ([\w]+) <?{ $0.Str ne 'sábados' and is-pt-fuzzy-match($0.Str, 'sábado', 2) }> }
   token saturdays-time-spec-word:sym<Portuguese> { :i 'sábados' | ([\w]+) <?{ $0.Str ne 'sábado' and is-pt-fuzzy-match($0.Str, 'sábados', 2) }> }
   token sep-time-spec-word:sym<Portuguese> { :i 'sep' | ([\w]+) <?{ $0.Str !(elem) <dez fev de sat sol em> and is-pt-fuzzy-match($0.Str, 'sep', 1) }> }
