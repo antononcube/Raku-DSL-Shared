@@ -20,8 +20,8 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   token time-unit {
     | <hour-time-spec-word>
     | <day-time-spec-word>
-    | <week-time-spec-word>
     | <weekend-time-spec-word>
+    | <week-time-spec-word>
     | <month-time-spec-word>
     | <year-time-spec-word>
     | <decade-time-spec-word>
@@ -32,8 +32,8 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   token time-units {
     | <hours-time-spec-word>
     | <days-time-spec-word>
-    | <weeks-time-spec-word>
     | <weekends-time-spec-word>
+    | <weeks-time-spec-word>
     | <months-time-spec-word>
     | <years-time-spec-word>
     | <decades-time-spec-word>
