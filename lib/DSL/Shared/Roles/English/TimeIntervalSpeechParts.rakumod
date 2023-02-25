@@ -276,7 +276,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token within-time-spec-word:sym<English> { :i 'within' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'within', 2) }> }
 
   proto token year-time-spec-word {*}
-  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <mar years> and is-fuzzy-match($0.Str, 'year', 2) }> }
+  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <mar years per> and is-fuzzy-match($0.Str, 'year', 2) }> }
 
   proto token years-time-spec-word {*}
   token years-time-spec-word:sym<English> { :i 'years' | ([\w]+) <?{ $0.Str ne 'year' and is-fuzzy-match($0.Str, 'years', 2) }> }
