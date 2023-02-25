@@ -1,7 +1,7 @@
 {
   "name": "DSL::Shared",
   "description": "DSL::Shared provides utilities and grammar roles for making DSL translators.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
