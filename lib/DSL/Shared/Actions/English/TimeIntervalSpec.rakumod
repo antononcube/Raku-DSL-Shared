@@ -166,7 +166,6 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         my ($fromLocal, $toLocal);
 
         $!length = 1;
-        note $<time-unit>;
         $!unit = $<time-unit> ?? $<time-unit>.made !! $<named-time-intervals>.made;
 
         given $!unit {
