@@ -1,4 +1,4 @@
-use v6;
+use v6.d;
 
 use DSL::Shared::Actions::CommonStructures;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
@@ -31,10 +31,12 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
             my %res = $res.pairs;
             %res = %res, %( Timestamp => DateTime.now, Command => $/.Str);
             make %res;
-        } else {
-            warn "No hash interpretation for '{ $/ }' from '{ $/.orig }'.";
-            make $res;
         }
+        # This is used in development-debugging loops
+        # else {
+        #     warn "No hash interpretation for '{ $/ }' from '{ $/.orig }'.";
+        #     make $res;
+        # }
     }
 
     ##----------------------------------------------------------
