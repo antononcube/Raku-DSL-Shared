@@ -15,7 +15,7 @@ grammar ParseObj
 };
 
 
-plan 18;
+plan 20;
 
 #-----------------------------------------------------------
 # Time interval specifications parsing
@@ -92,5 +92,13 @@ ok ParseObj.parse('past century'),
 ## 18
 ok ParseObj.parse('last week'),
         'last week';
+
+## 19
+ok ParseObj.parse('decade'),
+        'decade';
+
+## 20
+ok ParseObj.parse('between yesterday and tomorrow'),
+        'between yesterday and tomorrow';
 
 done-testing;
