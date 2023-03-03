@@ -282,6 +282,28 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make $/.values[0].made;
     }
 
+    method time-unit-beginning-spec($/) {
+        my %res = do if $<single-time-interval-relative> {
+            $<single-time-interval-relative>.made;
+        } else {
+            self.process-time-interval($/, 0);
+        }
+        $!unit = 'day';
+        %res<unit> = $!unit;
+        make %res;
+    }
+
+    method time-unit-ending-spec($/) {
+        my %res = do if $<single-time-interval-relative> {
+            $<single-time-interval-relative>.made;
+        } else {
+            self.process-time-interval($/, 0);
+        }
+        $!unit = 'day';
+        %res<unit> = $!unit;
+        make %res;
+    }
+
     method right-now($/) {
         $!value = DateTime.now;
         $!unit = 'hour';
