@@ -240,7 +240,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token thanksgiving-time-spec-word:sym<English> { :i 'thanksgiving' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'thanksgiving', 2) }> }
 
   proto token thu-time-spec-word {*}
-  token thu-time-spec-word:sym<English> { :i 'thu' | ([\w]+) <?{ $0.Str ne 'tue' and is-fuzzy-match($0.Str, 'thu', 1) }> }
+  token thu-time-spec-word:sym<English> { :i 'thu' | ([\w]+) <?{ $0.Str !(elem) <tue the> and is-fuzzy-match($0.Str, 'thu', 1) }> }
 
   proto token thursday-time-spec-word {*}
   token thursday-time-spec-word:sym<English> { :i 'thursday' | ([\w]+) <?{ $0.Str !(elem) <thursdays tuesday> and is-fuzzy-match($0.Str, 'thursday', 2) }> }
@@ -255,7 +255,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token tomorrow-time-spec-word:sym<English> { :i 'tomorrow' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'tomorrow', 2) }> }
 
   proto token tue-time-spec-word {*}
-  token tue-time-spec-word:sym<English> { :i 'tue' | ([\w]+) <?{ $0.Str !(elem) <aug jul jun june one sun thu> and is-fuzzy-match($0.Str, 'tue', 1) }> }
+  token tue-time-spec-word:sym<English> { :i 'tue' | ([\w]+) <?{ $0.Str !(elem) <aug jul jun june one sun the thu> and is-fuzzy-match($0.Str, 'tue', 1) }> }
 
   proto token tuesday-time-spec-word {*}
   token tuesday-time-spec-word:sym<English> { :i 'tuesday' | ([\w]+) <?{ $0.Str !(elem) <thursday tuesdays> and is-fuzzy-match($0.Str, 'tuesday', 2) }> }
