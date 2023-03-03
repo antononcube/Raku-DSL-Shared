@@ -71,6 +71,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token of-time-spec-word:sym<Portuguese> { :i 'de' }
   token one-time-spec-word:sym<Portuguese> { :i 'um' }
   token past-time-spec-word:sym<Portuguese> { :i 'passado' | ([\w]+) <?{ $0.Str ne 'passada' and is-pt-fuzzy-match($0.Str, 'passado', 2) }> | 'passada' | ([\w]+) <?{ $0.Str ne 'passado' and is-pt-fuzzy-match($0.Str, 'passada', 2) }> }
+  token penultimate-time-spec-word:sym<Portuguese> { :i 'penúltima' | ([\w]+) <?{ $0.Str ne 'penúltimо' and is-pt-fuzzy-match($0.Str, 'penúltima', 2) }> | 'penúltimо' | ([\w]+) <?{ $0.Str ne 'penúltima' and is-pt-fuzzy-match($0.Str, 'penúltimо', 2) }> }
   token pm-time-spec-word:sym<Portuguese> { :i 'pm' }
   token ramadan-time-spec-word:sym<Portuguese> { :i  ['o' \h*]? 'ramadan'  }
   token right-time-spec-word:sym<Portuguese> { :i 'direita' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'direita', 2) }> }

@@ -71,6 +71,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token of-time-spec-word { 'на' | 'от' };
   token one-time-spec-word { 'один' | 'одна' | 'одно' | 'одни' };
   token past-time-spec-word { 'последний' | 'прошлый' | 'прошлая' | 'прошедшее' | 'миналите' };
+  token penultimate-time-spec-word { 'предпоследний' | 'предпоследная' | 'предпоследное' };
   token pm-time-spec-word { 'pm' | 'полдень' | 'после' \h+ 'полудня' };
   token ramadan-time-spec-word { 'рамадан' };
   token right-time-spec-word { 'вдясно' | 'дясен' | 'дясна' | 'дясно' | 'десни' };

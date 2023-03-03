@@ -71,6 +71,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token of-time-spec-word { 'на' | 'от' };
   token one-time-spec-word { 'един' | 'една' | 'едно' | 'едни' };
   token past-time-spec-word { 'из'? [ 'миналия' | 'миналата' | 'миналато' | 'миналите' ] };
+  token penultimate-time-spec-word { 'предпоследен' | 'предпоследна' | 'предпоследно' | 'предпоследни' };
   token pm-time-spec-word { 'pm' | 'следобед' | 'следобяд' | 'след' \h+ 'обяд'};
   token ramadan-time-spec-word { 'рамадан' };
   token right-time-spec-word { 'вдясно' | 'десен' | 'дясна' | 'дясно' | 'десни' };

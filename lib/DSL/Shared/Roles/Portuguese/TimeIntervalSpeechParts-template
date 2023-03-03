@@ -71,6 +71,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token of-time-spec-word { 'de' };
   token one-time-spec-word { 'um' };
   token past-time-spec-word { 'passado' | 'passada' };
+  token penultimate-time-spec-word { 'penúltima' | 'penúltimо' };
   token pm-time-spec-word { 'pm' };
   token ramadan-time-spec-word { ['o' \h*]? 'ramadan' };
   token right-time-spec-word { 'direita' };
