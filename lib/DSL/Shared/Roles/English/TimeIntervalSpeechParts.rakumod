@@ -203,6 +203,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   proto token pm-time-spec-word {*}
   token pm-time-spec-word:sym<English> { :i 'pm' }
 
+  proto token penultimate-time-spec-word {*}
+  token penultimate-time-spec-word:sym<English> { :i 'penultimate' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'penultimate', 2) }> }
+
   proto token ramadan-time-spec-word {*}
   token ramadan-time-spec-word:sym<English> { :i 'ramadan' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ramadan', 2) }> }
 

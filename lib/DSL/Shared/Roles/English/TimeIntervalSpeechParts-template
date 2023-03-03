@@ -72,6 +72,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token one-time-spec-word { 'one' };
   token past-time-spec-word { 'past' };
   token pm-time-spec-word { 'pm' };
+  token penultimate-time-spec-word { 'penultimate' };
   token ramadan-time-spec-word { 'ramadan' };
   token right-time-spec-word { 'right' };
   token sat-time-spec-word { 'sat' };

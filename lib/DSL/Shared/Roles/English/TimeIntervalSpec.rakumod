@@ -47,6 +47,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   regex multi-time-units { <time-spec-number> \h+ <time-units> }
   regex one-time-unit { [ [ <.a-determiner> | <.one-time-spec-word> ] \h+ ]? <time-unit> }
 
+  regex penultimate-time-interval { <.penultimate-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
   regex last-time-interval { <.last-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
   regex this-time-interval { <.this-pronoun> \h+ [ <time-unit> || <named-time-intervals> ] }
   regex next-time-interval { [ <.next-time-spec-word> | <.coming-time-spec-word> ] \h+ [ <time-unit> | <named-time-intervals> ] }
@@ -54,6 +55,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   regex named-time-intervals { <day-name-relative> | <day-name> | <time-interval-relative> | <month-name> }
 
   regex single-time-interval-relative {
+    || <penultimate-time-interval>
     || <last-time-interval>
     || <this-time-interval>
     || <next-time-interval>

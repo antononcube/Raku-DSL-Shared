@@ -267,6 +267,10 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make self.process-time-interval($/, -1);
     }
 
+    method penultimate-time-interval($/) {
+        make self.process-time-interval($/, -2);
+    }
+
     ##----------------------------------------------------------
     method year-spec($/) {
         $!value = ($/.values[0].made)<value>;
