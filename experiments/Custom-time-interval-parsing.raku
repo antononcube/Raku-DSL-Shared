@@ -111,6 +111,20 @@ my @commands3 = (
 'next millennium',
 );
 
+my @commands4 = (
+'from beginning of the week to end of month',
+'from start of year to end of week',
+'from the beginning of the last month to the end of the next month',
+'from start of this year to end of next week',
+'between the beginning of the year and tomorrow',
+'from the beginning of the year until tomorrow',
+'between today and the end of the year',
+'between yesterday and tomorrow',
+'from yesterday to tomorrow',
+'between end of week and tomorrow',
+'from end of week to ramadan',
+);
+
 my @problematic = (
 #'margem',
 'from yesterday to today',
@@ -124,7 +138,7 @@ my $action-type = 'subparse';
 
 my $test = "#{'=' x 60}\n# Tests\n#{'=' x 60}\n\nplan *;";
 
-for @commands3.kv -> $i, $c {
+for @commands4.kv -> $i, $c {
     say "=" x 80;
     say "$i : $c";
     say "-" x 80;
