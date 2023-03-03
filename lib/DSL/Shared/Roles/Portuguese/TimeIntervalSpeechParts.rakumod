@@ -15,19 +15,22 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token aug-time-spec-word:sym<Portuguese> { :i 'aug' | ([\w]+) <?{ $0.Str !(elem) <am apr jul jun um ano> and is-pt-fuzzy-match($0.Str, 'aug', 1) }> }
   token august-time-spec-word:sym<Portuguese> { :i 'agosto' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'agosto', 2) }> }
   token before-time-spec-word:sym<Portuguese> { :i  'antes' \h* 'de'  }
+  token beginning-time-spec-word:sym<Portuguese> { :i 'início' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'início', 2) }> }
   token between-time-spec-word:sym<Portuguese> { :i 'entre' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'entre', 2) }> }
   token century-time-spec-word:sym<Portuguese> { :i 'século' | ([\w]+) <?{ $0.Str ne 'séculos' and is-pt-fuzzy-match($0.Str, 'século', 2) }> }
   token centuries-time-spec-word:sym<Portuguese> { :i 'séculos' | ([\w]+) <?{ $0.Str ne 'século' and is-pt-fuzzy-match($0.Str, 'séculos', 2) }> }
   token christmas-time-spec-word:sym<Portuguese> { :i  ['o' \h*]? 'natal'  }
   token coming-time-spec-word:sym<Portuguese> { :i 'próxima' | ([\w]+) <?{ $0.Str ne 'próximo' and is-pt-fuzzy-match($0.Str, 'próxima', 2) }> | 'próximo' | ([\w]+) <?{ $0.Str ne 'próxima' and is-pt-fuzzy-match($0.Str, 'próximo', 2) }> | 'vindoura' | ([\w]+) <?{ $0.Str ne 'vindouro' and is-pt-fuzzy-match($0.Str, 'vindoura', 2) }> | 'vindouro' | ([\w]+) <?{ $0.Str ne 'vindoura' and is-pt-fuzzy-match($0.Str, 'vindouro', 2) }> }
-  token day-time-spec-word:sym<Portuguese> { :i 'dia' | ([\w]+) <?{ $0.Str !(elem) <dias dez de> and is-pt-fuzzy-match($0.Str, 'dia', 1) }> }
+  token day-time-spec-word:sym<Portuguese> { :i 'dia' | ([\w]+) <?{ $0.Str !(elem) <dias dez fim de> and is-pt-fuzzy-match($0.Str, 'dia', 1) }> }
   token days-time-spec-word:sym<Portuguese> { :i 'dias' | ([\w]+) <?{ $0.Str ne 'dia' and is-pt-fuzzy-match($0.Str, 'dias', 2) }> }
   token dec-time-spec-word:sym<Portuguese> { :i 'dez' | ([\w]+) <?{ $0.Str !(elem) <dia fev de sep em> and is-pt-fuzzy-match($0.Str, 'dez', 1) }> }
-  token decade-time-spec-word:sym<Portuguese> { :i 'década' | ([\w]+) <?{ $0.Str ne 'décadas' and is-pt-fuzzy-match($0.Str, 'década', 2) }> }
-  token decades-time-spec-word:sym<Portuguese> { :i 'décadas' | ([\w]+) <?{ $0.Str ne 'década' and is-pt-fuzzy-match($0.Str, 'décadas', 2) }> }
+  token decade-time-spec-word:sym<Portuguese> { :i 'década' | ([\w]+) <?{ $0.Str !(elem) <décadas cada> and is-pt-fuzzy-match($0.Str, 'década', 2) }> }
+  token decades-time-spec-word:sym<Portuguese> { :i 'décadas' | ([\w]+) <?{ $0.Str !(elem) <década cada> and is-pt-fuzzy-match($0.Str, 'décadas', 2) }> }
   token december-time-spec-word:sym<Portuguese> { :i 'dezembro' | ([\w]+) <?{ $0.Str ne 'setembro' and is-pt-fuzzy-match($0.Str, 'dezembro', 2) }> }
   token during-time-spec-word:sym<Portuguese> { :i 'durante' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'durante', 2) }> }
-  token feb-time-spec-word:sym<Portuguese> { :i 'fev' | ([\w]+) <?{ $0.Str !(elem) <dez nov de sep em> and is-pt-fuzzy-match($0.Str, 'fev', 1) }> }
+  token end-time-spec-word:sym<Portuguese> { :i 'fim' | ([\w]+) <?{ $0.Str !(elem) <am dia fev um pm em> and is-pt-fuzzy-match($0.Str, 'fim', 1) }> }
+  token ending-time-spec-word:sym<Portuguese> { :i 'final' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'final', 2) }> }
+  token feb-time-spec-word:sym<Portuguese> { :i 'fev' | ([\w]+) <?{ $0.Str !(elem) <dez fim nov de sep em> and is-pt-fuzzy-match($0.Str, 'fev', 1) }> }
   token february-time-spec-word:sym<Portuguese> { :i 'fevereiro' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'fevereiro', 2) }> }
   token few-time-spec-word:sym<Portuguese> { :i 'poucos' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'poucos', 2) }> }
   token fri-time-spec-word:sym<Portuguese> { :i 'sexta' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'sexta', 2) }> }
@@ -76,6 +79,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token saturdays-time-spec-word:sym<Portuguese> { :i 'sábados' | ([\w]+) <?{ $0.Str ne 'sábado' and is-pt-fuzzy-match($0.Str, 'sábados', 2) }> }
   token sep-time-spec-word:sym<Portuguese> { :i 'sep' | ([\w]+) <?{ $0.Str !(elem) <dez fev de sat sol em> and is-pt-fuzzy-match($0.Str, 'sep', 1) }> }
   token september-time-spec-word:sym<Portuguese> { :i 'setembro' | ([\w]+) <?{ $0.Str ne 'dezembro' and is-pt-fuzzy-match($0.Str, 'setembro', 2) }> }
+  token start-time-spec-word:sym<Portuguese> { :i 'início' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'início', 2) }> }
   token sun-time-spec-word:sym<Portuguese> { :i 'sol' | ([\w]+) <?{ $0.Str !(elem) <jul nov sat sep> and is-pt-fuzzy-match($0.Str, 'sol', 1) }> }
   token sunday-time-spec-word:sym<Portuguese> { :i 'domingo' | ([\w]+) <?{ $0.Str ne 'domingos' and is-pt-fuzzy-match($0.Str, 'domingo', 2) }> }
   token sundays-time-spec-word:sym<Portuguese> { :i 'domingos' | ([\w]+) <?{ $0.Str ne 'domingo' and is-pt-fuzzy-match($0.Str, 'domingos', 2) }> }
@@ -83,7 +87,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token thu-time-spec-word:sym<Portuguese> { :i 'quinta' | ([\w]+) <?{ $0.Str ne 'quarta' and is-pt-fuzzy-match($0.Str, 'quinta', 2) }> }
   token thursday-time-spec-word:sym<Portuguese> { :i 'quinta-feira' | ([\w]+) <?{ $0.Str ne 'quintas-feiras' and is-pt-fuzzy-match($0.Str, 'quinta-feira', 2) }> }
   token thursdays-time-spec-word:sym<Portuguese> { :i 'quintas-feiras' | ([\w]+) <?{ $0.Str !(elem) <quinta-feira quartas-feiras> and is-pt-fuzzy-match($0.Str, 'quintas-feiras', 2) }> }
-  token today-time-spec-word:sym<Portuguese> { :i 'hoje' | ([\w]+) <?{ $0.Str ne 'hora' and is-pt-fuzzy-match($0.Str, 'hoje', 2) }> }
+  token today-time-spec-word:sym<Portuguese> { :i 'hoje' | ([\w]+) <?{ $0.Str !(elem) <hora doze> and is-pt-fuzzy-match($0.Str, 'hoje', 2) }> }
   token tomorrow-time-spec-word:sym<Portuguese> { :i 'amanhã' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'amanhã', 2) }> }
   token tue-time-spec-word:sym<Portuguese> { :i 'terça' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'terça', 2) }> }
   token tuesday-time-spec-word:sym<Portuguese> { :i 'terça-feira' | ([\w]+) <?{ $0.Str ne 'terças-feiras' and is-pt-fuzzy-match($0.Str, 'terça-feira', 2) }> }
@@ -96,7 +100,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token weekends-time-spec-word:sym<Portuguese> { :i  'fims' \h+ 'de' \h+ <weeks-time-spec-word>  }
   token weeks-time-spec-word:sym<Portuguese> { :i 'semanas' | ([\w]+) <?{ $0.Str ne 'semana' and is-pt-fuzzy-match($0.Str, 'semanas', 2) }> }
   token within-time-spec-word:sym<Portuguese> { :i 'em' }
-  token year-time-spec-word:sym<Portuguese> { :i 'ano' | ([\w]+) <?{ $0.Str !(elem) <am apr aug jan maio nov anos> and is-pt-fuzzy-match($0.Str, 'ano', 1) }> }
+  token year-time-spec-word:sym<Portuguese> { :i 'ano' | ([\w]+) <?{ $0.Str !(elem) <am ago apr aug jan maio nov anos> and is-pt-fuzzy-match($0.Str, 'ano', 1) }> }
   token years-time-spec-word:sym<Portuguese> { :i 'anos' | ([\w]+) <?{ $0.Str !(elem) <nov ano> and is-pt-fuzzy-match($0.Str, 'anos', 2) }> }
   token yesterday-time-spec-word:sym<Portuguese> { :i 'ontem' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'ontem', 2) }> }
 }

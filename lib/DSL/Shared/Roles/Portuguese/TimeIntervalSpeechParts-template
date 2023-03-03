@@ -15,6 +15,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token aug-time-spec-word { 'aug' };
   token august-time-spec-word { 'agosto' };
   token before-time-spec-word { 'antes' \h* 'de' };
+  token beginning-time-spec-word { 'início' }
   token between-time-spec-word { 'entre' };
   token century-time-spec-word { 'século' };
   token centuries-time-spec-word { 'séculos' };
@@ -27,6 +28,8 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token decades-time-spec-word { 'décadas' };
   token december-time-spec-word { 'dezembro' };
   token during-time-spec-word { 'durante' };
+  token end-time-spec-word { 'fim' };
+  token ending-time-spec-word { 'final' };
   token feb-time-spec-word { 'fev' };
   token february-time-spec-word { 'fevereiro' };
   token few-time-spec-word { 'poucos' };
@@ -76,6 +79,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token saturdays-time-spec-word { 'sábados' };
   token sep-time-spec-word { 'sep' };
   token september-time-spec-word { 'setembro' };
+  token start-time-spec-word { 'início' };
   token sun-time-spec-word { 'sol' };
   token sunday-time-spec-word { 'domingo' };
   token sundays-time-spec-word { 'domingos' };

@@ -15,6 +15,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token aug-time-spec-word { 'авг' };
   token august-time-spec-word { 'август' };
   token before-time-spec-word { 'прежде' };
+  token beginning-time-spec-word { 'начало' }
   token between-time-spec-word { 'между' };
   token century-time-spec-word { 'век' };
   token centuries-time-spec-word { 'века' };
@@ -27,6 +28,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token decades-time-spec-word { 'декад' | 'десятилетия' };
   token december-time-spec-word { 'декември' };
   token during-time-spec-word { 'во' \h+ 'время' };
+  token end-time-spec-word { 'конец' | 'край' };
+  token ending-time-spec-word { 'конец' | 'кончание' };
   token feb-time-spec-word { 'фев' };
   token february-time-spec-word { 'февраль' };
   token few-time-spec-word { 'несколько' };
@@ -76,6 +79,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token saturdays-time-spec-word { 'субботы' };
   token sep-time-spec-word { 'сен' };
   token september-time-spec-word { 'сентябрь' };
+  token start-time-spec-word { 'старт' | 'начало' };
   token sun-time-spec-word { 'солнце' | 'солнечный' | 'солнечная' | 'солнечное' | 'солнечные' };
   token sunday-time-spec-word { 'воскресенье' };
   token sundays-time-spec-word { 'воскресенья' };

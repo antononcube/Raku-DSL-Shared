@@ -15,6 +15,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token aug-time-spec-word { 'aug' };
   token august-time-spec-word { 'august' };
   token before-time-spec-word { 'before' };
+  token beginning-time-spec-word { 'beginning' }
   token between-time-spec-word { 'between' };
   token century-time-spec-word { 'century' };
   token centuries-time-spec-word { 'centuries' };
@@ -27,6 +28,8 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token decades-time-spec-word { 'decades' };
   token december-time-spec-word { 'december' };
   token during-time-spec-word { 'during' };
+  token end-time-spec-word { 'end' };
+  token ending-time-spec-word { 'ending' };
   token feb-time-spec-word { 'feb' };
   token february-time-spec-word { 'february' };
   token few-time-spec-word { 'few' };
@@ -76,6 +79,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token saturdays-time-spec-word { 'saturdays' };
   token sep-time-spec-word { 'sep' };
   token september-time-spec-word { 'september' };
+  token start-time-spec-word { 'start' };
   token sun-time-spec-word { 'sun' };
   token sunday-time-spec-word { 'sunday' };
   token sundays-time-spec-word { 'sundays' };

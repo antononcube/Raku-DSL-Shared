@@ -15,6 +15,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token aug-time-spec-word { 'авг' };
   token august-time-spec-word { 'август' };
   token before-time-spec-word { 'преди' };
+  token beginning-time-spec-word { 'начало' | 'началото' }
   token between-time-spec-word { 'между' };
   token christmas-time-spec-word { 'коледа' };
   token century-time-spec-word { 'век' | 'века' |'векът' };
@@ -27,6 +28,8 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token decades-time-spec-word { 'декади' | 'десетилетия' | 'десетилетки' };
   token december-time-spec-word { 'декември' };
   token during-time-spec-word { 'по' \h+ 'време' \h+ 'на' };
+  token end-time-spec-word { 'край' | 'края' | 'краят' };
+  token ending-time-spec-word { 'свършека' | 'свършека' | 'свършекът' };
   token feb-time-spec-word { 'фев' };
   token february-time-spec-word { 'февруари' };
   token few-time-spec-word { 'няколко' };
@@ -76,6 +79,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token saturdays-time-spec-word { 'съботи' };
   token sep-time-spec-word { 'сеп' };
   token september-time-spec-word { 'септември' };
+  token start-time-spec-word { 'старт' | 'старта' | 'стартът' };
   token sun-time-spec-word { 'слънце' | 'слънчев' | 'слънчева' | 'слънчево' | 'слънчеви'};
   token sunday-time-spec-word { 'неделя' };
   token sundays-time-spec-word { 'недели' };

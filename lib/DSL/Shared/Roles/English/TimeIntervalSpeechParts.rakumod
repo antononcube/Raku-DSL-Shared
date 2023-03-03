@@ -32,6 +32,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   proto token before-time-spec-word {*}
   token before-time-spec-word:sym<English> { :i 'before' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'before', 2) }> }
 
+  proto token beginning-time-spec-word {*}
+  token beginning-time-spec-word:sym<English> { :i 'beginning' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'beginning', 2) }> }
+
   proto token between-time-spec-word {*}
   token between-time-spec-word:sym<English> { :i 'between' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'between', 2) }> }
 
@@ -67,6 +70,12 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
 
   proto token during-time-spec-word {*}
   token during-time-spec-word:sym<English> { :i 'during' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'during', 2) }> }
+
+  proto token end-time-spec-word {*}
+  token end-time-spec-word:sym<English> { :i 'end' | ([\w]+) <?{ $0.Str !(elem) <new one wed> and is-fuzzy-match($0.Str, 'end', 1) }> }
+
+  proto token ending-time-spec-word {*}
+  token ending-time-spec-word:sym<English> { :i 'ending' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ending', 2) }> }
 
   proto token feb-time-spec-word {*}
   token feb-time-spec-word:sym<English> { :i 'feb' | ([\w]+) <?{ $0.Str !(elem) <dec few fri new sep wed> and is-fuzzy-match($0.Str, 'feb', 1) }> }
@@ -114,7 +123,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token just-time-spec-word:sym<English> { :i 'just' | ([\w]+) <?{ $0.Str !(elem) <jul july jun june last past> and is-fuzzy-match($0.Str, 'just', 2) }> }
 
   proto token last-time-spec-word {*}
-  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <just past sat at> and is-fuzzy-match($0.Str, 'last', 1) }> }
+  token last-time-spec-word:sym<English> { :i 'last' | ([\w]+) <?{ $0.Str !(elem) <just past sat> and is-fuzzy-match($0.Str, 'last', 2) }> }
 
   proto token lifetime-time-spec-word {*}
   token lifetime-time-spec-word:sym<English> { :i 'lifetime' | ([\w]+) <?{ $0.Str ne 'lifetimes' and is-fuzzy-match($0.Str, 'lifetime', 2) }> }
@@ -162,7 +171,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token mother-time-spec-word:sym<English> { :i 'mother' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'mother', 2) }> }
 
   proto token new-time-spec-word {*}
-  token new-time-spec-word:sym<English> { :i 'new' | ([\w]+) <?{ $0.Str !(elem) <dec feb few next nov now one sep wed> and is-fuzzy-match($0.Str, 'new', 1) }> }
+  token new-time-spec-word:sym<English> { :i 'new' | ([\w]+) <?{ $0.Str !(elem) <dec end feb few next nov now one sep wed> and is-fuzzy-match($0.Str, 'new', 1) }> }
 
   proto token next-time-spec-word {*}
   token next-time-spec-word:sym<English> { :i 'next' | ([\w]+) <?{ $0.Str ne 'new' and is-fuzzy-match($0.Str, 'next', 2) }> }
@@ -186,10 +195,10 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token of-time-spec-word:sym<English> { :i 'of' }
 
   proto token one-time-spec-word {*}
-  token one-time-spec-word:sym<English> { :i 'one' | ([\w]+) <?{ $0.Str !(elem) <june mon new nov now oct of tue> and is-fuzzy-match($0.Str, 'one', 1) }> }
+  token one-time-spec-word:sym<English> { :i 'one' | ([\w]+) <?{ $0.Str !(elem) <end june mon new nov now oct of tue> and is-fuzzy-match($0.Str, 'one', 1) }> }
 
   proto token past-time-spec-word {*}
-  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <just last sat at> and is-fuzzy-match($0.Str, 'past', 1) }> }
+  token past-time-spec-word:sym<English> { :i 'past' | ([\w]+) <?{ $0.Str !(elem) <just last sat> and is-fuzzy-match($0.Str, 'past', 2) }> }
 
   proto token pm-time-spec-word {*}
   token pm-time-spec-word:sym<English> { :i 'pm' }
@@ -201,7 +210,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token right-time-spec-word:sym<English> { :i 'right' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'right', 2) }> }
 
   proto token sat-time-spec-word {*}
-  token sat-time-spec-word:sym<English> { :i 'sat' | ([\w]+) <?{ $0.Str !(elem) <am at day jan last mar may oct past sep sun> and is-fuzzy-match($0.Str, 'sat', 1) }> }
+  token sat-time-spec-word:sym<English> { :i 'sat' | ([\w]+) <?{ $0.Str !(elem) <am day jan last mar may oct past sep start sun> and is-fuzzy-match($0.Str, 'sat', 1) }> }
 
   proto token saturday-time-spec-word {*}
   token saturday-time-spec-word:sym<English> { :i 'saturday' | ([\w]+) <?{ $0.Str ne 'saturdays' and is-fuzzy-match($0.Str, 'saturday', 2) }> }
@@ -214,6 +223,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
 
   proto token september-time-spec-word {*}
   token september-time-spec-word:sym<English> { :i 'september' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'september', 2) }> }
+
+  proto token start-time-spec-word {*}
+  token start-time-spec-word:sym<English> { :i 'start' | ([\w]+) <?{ $0.Str ne 'sat' and is-fuzzy-match($0.Str, 'start', 2) }> }
 
   proto token sun-time-spec-word {*}
   token sun-time-spec-word:sym<English> { :i 'sun' | ([\w]+) <?{ $0.Str !(elem) <aug jan jul jun june mon sat sep tue> and is-fuzzy-match($0.Str, 'sun', 1) }> }
@@ -252,7 +264,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token tuesdays-time-spec-word:sym<English> { :i 'tuesdays' | ([\w]+) <?{ $0.Str !(elem) <thursdays tuesday> and is-fuzzy-match($0.Str, 'tuesdays', 2) }> }
 
   proto token wed-time-spec-word {*}
-  token wed-time-spec-word:sym<English> { :i 'wed' | ([\w]+) <?{ $0.Str !(elem) <dec feb few new sep week> and is-fuzzy-match($0.Str, 'wed', 1) }> }
+  token wed-time-spec-word:sym<English> { :i 'wed' | ([\w]+) <?{ $0.Str !(elem) <dec end feb few new sep week> and is-fuzzy-match($0.Str, 'wed', 1) }> }
 
   proto token wednesday-time-spec-word {*}
   token wednesday-time-spec-word:sym<English> { :i 'wednesday' | ([\w]+) <?{ $0.Str ne 'wednesdays' and is-fuzzy-match($0.Str, 'wednesday', 2) }> }
@@ -276,7 +288,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token within-time-spec-word:sym<English> { :i 'within' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'within', 2) }> }
 
   proto token year-time-spec-word {*}
-  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <mar years per> and is-fuzzy-match($0.Str, 'year', 2) }> }
+  token year-time-spec-word:sym<English> { :i 'year' | ([\w]+) <?{ $0.Str !(elem) <mar years> and is-fuzzy-match($0.Str, 'year', 2) }> }
 
   proto token years-time-spec-word {*}
   token years-time-spec-word:sym<English> { :i 'years' | ([\w]+) <?{ $0.Str ne 'year' and is-fuzzy-match($0.Str, 'years', 2) }> }

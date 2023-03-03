@@ -15,6 +15,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token aug-time-spec-word:sym<Bulgarian> { :i 'авг' | ([\w]+) <?{ $0.Str ne 'апр' and is-bg-fuzzy-match($0.Str, 'авг', 1) }> }
   token august-time-spec-word:sym<Bulgarian> { :i 'август' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'август', 2) }> }
   token before-time-spec-word:sym<Bulgarian> { :i 'преди' | ([\w]+) <?{ $0.Str ne 'среди' and is-bg-fuzzy-match($0.Str, 'преди', 2) }> }
+  token beginning-time-spec-word:sym<Bulgarian> { :i 'начало' | ([\w]+) <?{ $0.Str ne 'началото' and is-bg-fuzzy-match($0.Str, 'начало', 2) }> | 'началото' | ([\w]+) <?{ $0.Str ne 'начало' and is-bg-fuzzy-match($0.Str, 'началото', 2) }> }
   token between-time-spec-word:sym<Bulgarian> { :i 'между' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'между', 2) }> }
   token christmas-time-spec-word:sym<Bulgarian> { :i 'коледа' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'коледа', 2) }> }
   token century-time-spec-word:sym<Bulgarian> { :i 'век' | ([\w]+) <?{ $0.Str !(elem) <века векът ден дек фев сеп чет вто> and is-bg-fuzzy-match($0.Str, 'век', 1) }> | 'века' | ([\w]+) <?{ $0.Str !(elem) <век векът дек сега вчера> and is-bg-fuzzy-match($0.Str, 'века', 2) }> | 'векът' | ([\w]+) <?{ $0.Str !(elem) <век века> and is-bg-fuzzy-match($0.Str, 'векът', 2) }> }
@@ -27,6 +28,8 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token decades-time-spec-word:sym<Bulgarian> { :i 'декади' | ([\w]+) <?{ $0.Str ne 'декада' and is-bg-fuzzy-match($0.Str, 'декади', 2) }> | 'десетилетия' | ([\w]+) <?{ $0.Str !(elem) <десетилетие десетилетка десетилетки> and is-bg-fuzzy-match($0.Str, 'десетилетия', 2) }> | 'десетилетки' | ([\w]+) <?{ $0.Str !(elem) <десетилетие десетилетка десетилетия> and is-bg-fuzzy-match($0.Str, 'десетилетки', 2) }> }
   token december-time-spec-word:sym<Bulgarian> { :i 'декември' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'декември', 2) }> }
   token during-time-spec-word:sym<Bulgarian> { :i  'по' \h+ 'време' \h+ 'на'  }
+  token end-time-spec-word:sym<Bulgarian> { :i 'край' | ([\w]+) <?{ $0.Str !(elem) <края краят май> and is-bg-fuzzy-match($0.Str, 'край', 2) }> | 'края' | ([\w]+) <?{ $0.Str !(elem) <край краят сря> and is-bg-fuzzy-match($0.Str, 'края', 2) }> | 'краят' | ([\w]+) <?{ $0.Str !(elem) <край края> and is-bg-fuzzy-match($0.Str, 'краят', 2) }> }
+  token ending-time-spec-word:sym<Bulgarian> { :i 'свършека' | ([\w]+) <?{ $0.Str ne 'свършекът' and is-bg-fuzzy-match($0.Str, 'свършека', 2) }> | 'свършека' | ([\w]+) <?{ $0.Str ne 'свършекът' and is-bg-fuzzy-match($0.Str, 'свършека', 2) }> | 'свършекът' | ([\w]+) <?{ $0.Str ne 'свършека' and is-bg-fuzzy-match($0.Str, 'свършекът', 2) }> }
   token feb-time-spec-word:sym<Bulgarian> { :i 'фев' | ([\w]+) <?{ $0.Str !(elem) <век ден дек нов сеп чет> and is-bg-fuzzy-match($0.Str, 'фев', 1) }> }
   token february-time-spec-word:sym<Bulgarian> { :i 'февруари' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'февруари', 2) }> }
   token few-time-spec-word:sym<Bulgarian> { :i 'няколко' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'няколко', 2) }> }
@@ -47,8 +50,8 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token lifetimes-time-spec-word:sym<Bulgarian> { :i 'животи' | ([\w]+) <?{ $0.Str ne 'живот' and is-bg-fuzzy-match($0.Str, 'животи', 2) }> }
   token lincoln-time-spec-word:sym<Bulgarian> { :i 'линкълн' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'линкълн', 2) }> }
   token mar-time-spec-word:sym<Bulgarian> { :i 'мар' | ([\w]+) <?{ $0.Str !(elem) <апр час март май на> and is-bg-fuzzy-match($0.Str, 'мар', 1) }> }
-  token march-time-spec-word:sym<Bulgarian> { :i 'март' | ([\w]+) <?{ $0.Str !(elem) <мар май> and is-bg-fuzzy-match($0.Str, 'март', 2) }> }
-  token may-time-spec-word:sym<Bulgarian> { :i 'май' | ([\w]+) <?{ $0.Str !(elem) <час мар март майка на> and is-bg-fuzzy-match($0.Str, 'май', 1) }> }
+  token march-time-spec-word:sym<Bulgarian> { :i 'март' | ([\w]+) <?{ $0.Str !(elem) <мар май старт> and is-bg-fuzzy-match($0.Str, 'март', 2) }> }
+  token may-time-spec-word:sym<Bulgarian> { :i 'май' | ([\w]+) <?{ $0.Str !(elem) <край час мар март майка на> and is-bg-fuzzy-match($0.Str, 'май', 1) }> }
   token memorial-time-spec-word:sym<Bulgarian> { :i 'паметник' | ([\w]+) <?{ $0.Str ne 'паметния' and is-bg-fuzzy-match($0.Str, 'паметник', 2) }> | 'паметен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'паметен', 2) }> | 'паметния' | ([\w]+) <?{ $0.Str ne 'паметник' and is-bg-fuzzy-match($0.Str, 'паметния', 2) }> }
   token millennium-time-spec-word:sym<Bulgarian> { :i 'хилядолетие' | ([\w]+) <?{ $0.Str !(elem) <хилядолетието хилядолетия> and is-bg-fuzzy-match($0.Str, 'хилядолетие', 2) }> | 'хилядолетието' | ([\w]+) <?{ $0.Str !(elem) <хилядолетие хилядолетията> and is-bg-fuzzy-match($0.Str, 'хилядолетието', 2) }> | 'милениум' | ([\w]+) <?{ $0.Str ne 'милениуми' and is-bg-fuzzy-match($0.Str, 'милениум', 2) }> }
   token millenniums-time-spec-word:sym<Bulgarian> { :i 'хилядолетия' | ([\w]+) <?{ $0.Str !(elem) <хилядолетие хилядолетията> and is-bg-fuzzy-match($0.Str, 'хилядолетия', 2) }> | 'хилядолетията' | ([\w]+) <?{ $0.Str !(elem) <хилядолетието хилядолетия> and is-bg-fuzzy-match($0.Str, 'хилядолетията', 2) }> | 'милениуми' | ([\w]+) <?{ $0.Str ne 'милениум' and is-bg-fuzzy-match($0.Str, 'милениуми', 2) }> }
@@ -76,6 +79,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token saturdays-time-spec-word:sym<Bulgarian> { :i 'съботи' | ([\w]+) <?{ $0.Str ne 'събота' and is-bg-fuzzy-match($0.Str, 'съботи', 2) }> }
   token sep-time-spec-word:sym<Bulgarian> { :i 'сеп' | ([\w]+) <?{ $0.Str !(elem) <след век ден дек фев сега съб чет сря> and is-bg-fuzzy-match($0.Str, 'сеп', 1) }> }
   token september-time-spec-word:sym<Bulgarian> { :i 'септември' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'септември', 2) }> }
+  token start-time-spec-word:sym<Bulgarian> { :i 'старт' | ([\w]+) <?{ $0.Str !(elem) <март старта стартът> and is-bg-fuzzy-match($0.Str, 'старт', 2) }> | 'старта' | ([\w]+) <?{ $0.Str !(elem) <старт стартът> and is-bg-fuzzy-match($0.Str, 'старта', 2) }> | 'стартът' | ([\w]+) <?{ $0.Str !(elem) <старт старта> and is-bg-fuzzy-match($0.Str, 'стартът', 2) }> }
   token sun-time-spec-word:sym<Bulgarian> { :i 'слънце' | ([\w]+) <?{ $0.Str ne 'слънчев' and is-bg-fuzzy-match($0.Str, 'слънце', 2) }> | 'слънчев' | ([\w]+) <?{ $0.Str !(elem) <слънце слънчева слънчево слънчеви> and is-bg-fuzzy-match($0.Str, 'слънчев', 2) }> | 'слънчева' | ([\w]+) <?{ $0.Str !(elem) <слънчев слънчево слънчеви> and is-bg-fuzzy-match($0.Str, 'слънчева', 2) }> | 'слънчево' | ([\w]+) <?{ $0.Str !(elem) <слънчев слънчева слънчеви> and is-bg-fuzzy-match($0.Str, 'слънчево', 2) }> | 'слънчеви' | ([\w]+) <?{ $0.Str !(elem) <слънчев слънчева слънчево> and is-bg-fuzzy-match($0.Str, 'слънчеви', 2) }> }
   token sunday-time-spec-word:sym<Bulgarian> { :i 'неделя' | ([\w]+) <?{ $0.Str ne 'недели' and is-bg-fuzzy-match($0.Str, 'неделя', 2) }> }
   token sundays-time-spec-word:sym<Bulgarian> { :i 'недели' | ([\w]+) <?{ $0.Str ne 'неделя' and is-bg-fuzzy-match($0.Str, 'недели', 2) }> }
@@ -88,7 +92,7 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token tue-time-spec-word:sym<Bulgarian> { :i 'вто' | ([\w]+) <?{ $0.Str !(elem) <век от> and is-bg-fuzzy-match($0.Str, 'вто', 1) }> }
   token tuesday-time-spec-word:sym<Bulgarian> { :i 'вторник' | ([\w]+) <?{ $0.Str ne 'вторници' and is-bg-fuzzy-match($0.Str, 'вторник', 2) }> }
   token tuesdays-time-spec-word:sym<Bulgarian> { :i 'вторници' | ([\w]+) <?{ $0.Str ne 'вторник' and is-bg-fuzzy-match($0.Str, 'вторници', 2) }> }
-  token wed-time-spec-word:sym<Bulgarian> { :i 'сря' | ([\w]+) <?{ $0.Str !(elem) <съб сеп сряда> and is-bg-fuzzy-match($0.Str, 'сря', 1) }> }
+  token wed-time-spec-word:sym<Bulgarian> { :i 'сря' | ([\w]+) <?{ $0.Str !(elem) <края съб сеп сряда> and is-bg-fuzzy-match($0.Str, 'сря', 1) }> }
   token wednesday-time-spec-word:sym<Bulgarian> { :i 'сряда' | ([\w]+) <?{ $0.Str !(elem) <сря среди> and is-bg-fuzzy-match($0.Str, 'сряда', 2) }> }
   token wednesdays-time-spec-word:sym<Bulgarian> { :i 'среди' | ([\w]+) <?{ $0.Str !(elem) <след преди сряда> and is-bg-fuzzy-match($0.Str, 'среди', 2) }> }
   token week-time-spec-word:sym<Bulgarian> { :i 'седмица' | ([\w]+) <?{ $0.Str ne 'седмици' and is-bg-fuzzy-match($0.Str, 'седмица', 2) }> }
