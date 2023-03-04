@@ -45,7 +45,10 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         my %unitMap = @units.map({ $_ ~ '-time-spec-word' => $_ });
         # note %unitMap.keys Z=> $/{%unitMap.keys}>>.so;
         for %unitMap.kv -> $k, $v {
-            if so $/{$k} { make $v; last }
+            if so $/{$k} {
+                make $v;
+                last
+            }
         }
     }
 
@@ -54,7 +57,10 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         my %unitMap = @units.map({ $_ ~ '-time-spec-word' => $_ });
         # note %unitMap.keys Z=> $/{%unitMap.keys}>>.so;
         for %unitMap.kv -> $k, $v {
-            if so $/{$k} { make $v.substr(0,*-1); last }
+            if so $/{$k} {
+                make $v.substr(0, *- 1);
+                last
+            }
         }
     }
 
@@ -166,7 +172,15 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         my ($fromLocal, $toLocal);
 
         $!length = 1;
-        $!unit = $<time-unit> ?? $<time-unit>.made !! $<named-time-intervals>.made;
+
+        if $<time-unit> {
+            $!unit = $<time-unit>.made;
+        } elsif $<named-time-intervals> {
+            given $<named-time-intervals>.made {
+                when Str { $!unit = $_; }
+                when Hash { $!unit = $_<value>; }
+            }
+        }
 
         given $!unit {
             when 'week' {
@@ -352,20 +366,26 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
     ##----------------------------------------------------------
     method day-name($/) {
-        make $/.values[0].made;
+        my $dnVal = self.day-name-value($/.values[0]);
+        $!unit = $dnVal;
+        my %res = self.process-time-interval($/.values[0]);
+        %res<value> = $dnVal;
+        %res<unit> = 'day';
+        $!unit = 'day';
+        make %res;
     }
 
-    method day-name-abbr($/) {
-        my $d = $/.Str.lc;
-        # This needs to be check for fuzzy matching
-        # make %!dayNameAbbr{$d} // 'None';
-        make $d;
-    }
-
-    method day-name-long($/) {
-        my $d = $/.Str.lc;
-        # This needs to be check for fuzzy matching
-        make $d;
+    method day-name-value ($/) {
+        # May be this can sped-up twice by using two separate functions:
+        # one for long names and one for short names.
+        my @names = <monday tuesday wednesday thursday friday saturday sunday>;
+        @names.append(<mon tue wed thu fri sat sun>);
+        my %namesMap = @names.map({ $_ ~ '-time-spec-word' => $_ });
+        for %namesMap.kv -> $k, $v {
+            if so $/{$k} { return $v; }
+        }
+        # This should not happen
+        return Nil;
     }
 
     ##----------------------------------------------------------
