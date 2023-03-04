@@ -251,6 +251,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token rows-noun:sym<Portuguese> { :i 'linhas' | ([\w]+) <?{ $0.Str ne 'linha' and is-pt-fuzzy-match($0.Str, 'linhas', 2) }> }
     token run-verb:sym<Portuguese> { :i 'executar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'executar', 2) }> | 'rodar' | ([\w]+) <?{ $0.Str !(elem) <todas trocar tomar> and is-pt-fuzzy-match($0.Str, 'rodar', 2) }> }
     token running-verb:sym<Portuguese> { :i  'em' \h+ 'execução' | 'rodando'  }
+    token second-adjective:sym<Portuguese> { :i 'segundo' | ([\w]+) <?{ $0.Str !(elem) <segunda segundas> and is-pt-fuzzy-match($0.Str, 'segundo', 2) }> | 'segunda' | ([\w]+) <?{ $0.Str !(elem) <segundo segundas> and is-pt-fuzzy-match($0.Str, 'segunda', 2) }> | 'segundas' | ([\w]+) <?{ $0.Str !(elem) <segundo segunda> and is-pt-fuzzy-match($0.Str, 'segundas', 2) }> }
     token separate-verb:sym<Portuguese> { :i 'separar' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'separar', 2) }> }
     token series-noun:sym<Portuguese> { :i 'série' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'série', 2) }> }
     token set-directive:sym<Portuguese> { :i 'defina' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'defina', 2) }> | 'attribua' | ([\w]+) <?{ is-pt-fuzzy-match($0.Str, 'attribua', 2) }> }

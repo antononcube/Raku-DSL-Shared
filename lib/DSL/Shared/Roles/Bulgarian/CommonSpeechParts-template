@@ -246,6 +246,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token rows-noun { 'редове' }
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
+    token second-adjective { 'втори' | 'втора' | 'второ' | 'втори' }
     token separate-verb { 'раздели' }
     token series-noun { 'серия' | 'ред' | 'редица' }
     token set-directive { 'присвои' }

@@ -251,6 +251,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token rows-noun:sym<Russian> { :i 'строки' | ([\w]+) <?{ $0.Str ne 'строка' and is-ru-fuzzy-match($0.Str, 'строки', 2) }> }
     token run-verb:sym<Russian> { :i 'run' | ([\w]+) <?{ $0.Str ne 'runs' and is-ru-fuzzy-match($0.Str, 'run', 1) }> | 'runs' | ([\w]+) <?{ $0.Str ne 'run' and is-ru-fuzzy-match($0.Str, 'runs', 2) }> }
     token running-verb:sym<Russian> { :i 'running' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'running', 2) }> }
+    token second-adjective:sym<Russian> { :i 'второй' | ([\w]+) <?{ $0.Str !(elem) <вторая вторoe вторые> and is-ru-fuzzy-match($0.Str, 'второй', 2) }> | 'вторая' | ([\w]+) <?{ $0.Str !(elem) <второй вторoe вторые> and is-ru-fuzzy-match($0.Str, 'вторая', 2) }> | 'вторoe' | ([\w]+) <?{ $0.Str !(elem) <второй вторая вторые> and is-ru-fuzzy-match($0.Str, 'вторoe', 2) }> | 'вторые' | ([\w]+) <?{ $0.Str !(elem) <второй вторая вторoe> and is-ru-fuzzy-match($0.Str, 'вторые', 2) }> }
     token separate-verb:sym<Russian> { :i 'разделить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'разделить', 2) }> }
     token series-noun:sym<Russian> { :i 'серия' | ([\w]+) <?{ $0.Str ne 'бери' and is-ru-fuzzy-match($0.Str, 'серия', 2) }> | 'строка' | ([\w]+) <?{ $0.Str ne 'строки' and is-ru-fuzzy-match($0.Str, 'строка', 2) }> | 'ряд' | ([\w]+) <?{ $0.Str !(elem) <код под раз> and is-ru-fuzzy-match($0.Str, 'ряд', 1) }> }
     token set-directive:sym<Russian> { :i 'назначить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'назначить', 2) }> }

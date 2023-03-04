@@ -246,6 +246,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token rows-noun { 'строки' }
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
+    token second-adjective { 'второй' | 'вторая' | 'вторoe' | 'вторые' }
     token separate-verb { 'разделить' }
     token series-noun { 'серия' | 'строка' | 'ряд' }
     token set-directive { 'назначить' }

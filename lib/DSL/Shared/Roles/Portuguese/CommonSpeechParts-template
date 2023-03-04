@@ -246,6 +246,7 @@ role DSL::Shared::Roles::Portuguese::CommonSpeechParts {
     token rows-noun { 'linhas' }
     token run-verb { 'executar' | 'rodar' }
     token running-verb { 'em' \h+ 'execução' | 'rodando' }
+    token second-adjective { 'segundo' | 'segunda' | 'segundas' }
     token separate-verb { 'separar' }
     token series-noun { 'série' }
     token set-directive { 'defina' | 'attribua' }

@@ -246,6 +246,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token rows-noun { 'rows' }
     token run-verb { 'run' | 'runs' }
     token running-verb { 'running' }
+    token second-adjective { 'second' }
     token separate-verb { 'separate' }
     token series-noun { 'series' }
     token set-directive { 'set' }

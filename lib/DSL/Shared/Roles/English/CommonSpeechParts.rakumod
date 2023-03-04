@@ -722,6 +722,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token running-verb {*}
     token running-verb:sym<English> { :i 'running' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'running', 2) }> }
 
+    proto token second-adjective {*}
+    token second-adjective:sym<English> { :i 'second' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'second', 2) }> }
+
     proto token separate-verb {*}
     token separate-verb:sym<English> { :i 'separate' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'separate', 2) }> }
 
