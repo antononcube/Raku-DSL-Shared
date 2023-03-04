@@ -226,11 +226,16 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
                 $toLocal = Date.new($y, 1, 1).later(['week' => $w,]);
             }
             when (%!dayNameAbbr{$_}:exists) || (%!dayNameLong{$_}:exists) {
-                my ($y, $w) = Date.today.week;
                 # Since British and USA week starts with Sunday we use Sunday => 0, etc.
-                my $offset = %!dayNameAbbr{$_} // %!dayNameLong{$_};
-                $fromLocal = Date.today.earlier(['day' => Date.today.day-of-week, ]).later([ 'day' => $offset, ]);
+                my $weekOffset = %!dayNameAbbr{$_} // %!dayNameLong{$_};
+                $fromLocal = Date.today.earlier(['day' => Date.today.day-of-week, ]).later([ 'day' => $weekOffset, ]);
                 $toLocal = $fromLocal;
+
+                if Date.today.day-of-week > $weekOffset && $offset == -1 {
+                    $offset = 0;
+                } elsif Date.today.day-of-week < $weekOffset && $offset == 1 {
+                    $offset = 0;
+                }
             }
         }
 
