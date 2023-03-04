@@ -76,7 +76,9 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
 
   regex time-interval-from-to-spec {
     || <.between-time-spec-word> \h+ <from=.time-spec> \h+ <.and-conjunction> \h+ <to=.time-spec>
-    || <.from-preposition> \h+ <from=.time-spec> \h+ [ <.to-preposition> | <.until-preposition> ] \h+ <to=.time-spec> }
+    || <.from-preposition> \h+ <from=.time-spec> \h+ [ <.to-preposition> | <.until-preposition> ] \h+ <to=.time-spec>
+    || <from=.time-spec> \h+ [ <.and-conjunction> | <.to-preposition> | <.until-preposition> ] \h+ <to=.time-spec>
+  }
 
   regex time-interval-into-spec {
     [ [ <.in-preposition> | <.during-time-spec-word> ] \h+ ]? <named-time-intervals> }
