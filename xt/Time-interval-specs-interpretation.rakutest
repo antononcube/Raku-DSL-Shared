@@ -70,7 +70,7 @@ plan *;
 
 ## 1
 is-deeply ti-interpret('past year')<from to>,
-        $(Date.new(2022,1,1), Date.new(2022,12,31)),
+        (Date.today.earlier(:1year), Date.today),
         'past year';
 
 ## 2
