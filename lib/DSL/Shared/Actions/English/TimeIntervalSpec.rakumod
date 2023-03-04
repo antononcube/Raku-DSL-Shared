@@ -281,6 +281,20 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make self.process-time-interval($/, -1);
     }
 
+    method past-time-interval($/) {
+        if $<time-unit> eq 'year' {
+            $!unit = 'year';
+            $!length = 1;
+            $!to = Date.today;
+            $!from = $!to.earlier(:1year);
+            make %(:$!unit, :$!length, :$!from, :$!to);
+        } else {
+            # With this implementation "past" is a synonym of "last".
+            # But "past year" has a different interpretation of "last year". (See above.)
+            make self.process-time-interval($/, -1);
+        }
+    }
+
     method penultimate-time-interval($/) {
         make self.process-time-interval($/, -2);
     }
