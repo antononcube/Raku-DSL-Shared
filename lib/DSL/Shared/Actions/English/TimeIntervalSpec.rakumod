@@ -229,7 +229,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
                 my ($y, $w) = Date.today.week;
                 # Since British and USA week starts with Sunday we use Sunday => 0, etc.
                 my $offset = %!dayNameAbbr{$_} // %!dayNameLong{$_};
-                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1,]).later([day => $offset,]);
+                $fromLocal = Date.today.earlier(['day' => Date.today.day-of-week, ]).later([ 'day' => $offset, ]);
                 $toLocal = $fromLocal;
             }
         }
