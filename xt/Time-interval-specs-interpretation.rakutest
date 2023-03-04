@@ -191,7 +191,7 @@ is-deeply ti-interpret('next tuesday')<from to>,
 
 ## 25
 is-deeply ti-interpret('last fri')<from to>,
-        (Date.new(2023, 2, 10), Date.new(2023, 2, 10)),
+        (Date.new(2023, 2, 17), Date.new(2023, 2, 17)),
         'last fri';
 
 ## 26
