@@ -15,7 +15,7 @@ grammar ParseObj
 };
 
 
-plan 24;
+plan 26;
 
 #-----------------------------------------------------------
 # Time interval specifications parsing
@@ -117,5 +117,12 @@ ok ParseObj.parse('from end of week to ramadan'),
 ok ParseObj.parse('from the beginning of the year until tomorrow'),
         'from the beginning of the year until tomorrow';
 
+## 25
+ok ParseObj.parse('feb to july'),
+        'feb to july';
+
+## 26
+ok ParseObj.parse('yesterday until tomorrow'),
+        'yesterday until tomorrow';
 
 done-testing;
