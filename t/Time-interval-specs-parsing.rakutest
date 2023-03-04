@@ -6,13 +6,23 @@ use DSL::Shared::Roles::English::TimeIntervalSpec;
 use DSL::Shared::Roles::English::PipelineCommand;
 
 grammar ParseObj
-        does DSL::Shared::Roles::ErrorHandling
         does Lingua::NumericWordForms::Roles::English::WordedNumberSpec
         does DSL::Shared::Roles::English::TimeIntervalSpec
         does DSL::Shared::Roles::English::PipelineCommand {
+    regex TOP {
+        || <pipeline-command>
+        || <time-interval-spec>
+    }
+}
 
-    rule TOP { <pipeline-command> | <time-interval-spec> }
-};
+#grammar ParseObj
+#        does DSL::Shared::Roles::ErrorHandling
+#        does Lingua::NumericWordForms::Roles::English::WordedNumberSpec
+#        does DSL::Shared::Roles::English::TimeIntervalSpec
+#        does DSL::Shared::Roles::English::PipelineCommand {
+#
+#    rule TOP { <pipeline-command> | <time-interval-spec> }
+#};
 
 
 plan 26;
