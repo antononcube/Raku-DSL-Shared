@@ -53,10 +53,11 @@ sub ti-interpret($cmd) {
     return CustomTimeInterval.parse($cmd, rule => 'TOP', actions => FromCustomTimeInterval.new).made;
 }
 
-my $localHour = now.DateTime.hour;
-my $localDateTime = DateTime.new(2023, 2, 18, 0, 0, 0);
+#my $localHour = now.DateTime.hour;
+my $localHour = 2;
+my $localDateTime = DateTime.new(2023, 2, 18, $localHour, 0, 0, :timezone(-18000));
 #my $localDateTime = DateTime.new(2023, 2, 18, now.DateTime.hour, 0, 0);
-$*SCHEDULER = mock-time($localDateTime.later(day => 1).Instant);
+$*SCHEDULER = mock-time($localDateTime.Instant);
 
 #============================================================
 # Tests
@@ -69,7 +70,7 @@ plan *;
 
 ## 1
 is-deeply ti-interpret('past year')<from to>,
-        (Any, Any),
+        $(Date.new(2022,1,1), Date.new(2022,12,31)),
         'past year';
 
 ## 2
@@ -129,8 +130,8 @@ is-deeply ti-interpret('from jan to feb')<from to>,
 
 ## 13
 is-deeply ti-interpret('this hour')<from to>,
-        (DateTime.new(2023, 2, 18, $localHour-1, 0, 0, :timezone(-18000)),
-         DateTime.new(2023, 2, 18, $localHour, 0, 0, :timezone(-18000))),
+        (DateTime.new(2023, 2, 18, $localHour, 0, 0, :timezone(-18000)),
+         DateTime.new(2023, 2, 18, $localHour+1, 0, 0, :timezone(-18000))),
         'this hour';
 
 ## 14
