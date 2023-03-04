@@ -15,7 +15,7 @@ grammar ParseObj
 };
 
 
-plan 20;
+plan 24;
 
 #-----------------------------------------------------------
 # Time interval specifications parsing
@@ -100,5 +100,22 @@ ok ParseObj.parse('decade'),
 ## 20
 ok ParseObj.parse('between yesterday and tomorrow'),
         'between yesterday and tomorrow';
+
+## 21
+ok ParseObj.parse('between the beginning of the year and tomorrow'),
+        'between the beginning of the year and tomorrow';
+
+## 22
+ok ParseObj.parse('from the beginning of the last month to the end of the next month'),
+        'from the beginning of the last month to the end of the next month';
+
+## 23
+ok ParseObj.parse('from end of week to ramadan'),
+        'from end of week to ramadan';
+
+## 24
+ok ParseObj.parse('from the beginning of the year until tomorrow'),
+        'from the beginning of the year until tomorrow';
+
 
 done-testing;
