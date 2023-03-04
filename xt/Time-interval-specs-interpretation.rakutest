@@ -244,4 +244,14 @@ is-deeply ti-interpret('next millennium')<from to>,
         (Date.new(3001, 1, 1), Date.new(4000, 12, 31)),
         'next millennium';
 
+## 36
+is-deeply ti-interpret('monday')<from to>,
+        (Date.new(2023,2,13), Date.new(2023,2,13)),
+        'monday';
+
+## 37
+is-deeply ti-interpret('fri')<from to>,
+        (Date.new(2023,2,17), Date.new(2023,2,17)),
+        'fri';
+
 done-testing;
