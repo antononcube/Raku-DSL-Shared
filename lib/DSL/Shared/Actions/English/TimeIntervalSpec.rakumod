@@ -278,6 +278,10 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         make self.process-time-interval($/, 0);
     }
 
+    method the-time-interval($/) {
+        make self.this-time-interval($/);
+    }
+
     method next-time-interval($/) {
         make self.process-time-interval($/, 1);
     }

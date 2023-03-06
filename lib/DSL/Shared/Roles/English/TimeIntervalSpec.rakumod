@@ -50,6 +50,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
   regex penultimate-time-interval { <.penultimate-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
   regex last-time-interval { <.last-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
   regex past-time-interval { <.past-time-spec-word> \h+ [ <time-unit> | <named-time-intervals> ] }
+  regex the-time-interval  { <.the-determiner> \h+ <time-unit> }
   regex this-time-interval { <.this-pronoun> \h+ [ <time-unit> || <named-time-intervals> ] }
   regex next-time-interval { [ <.next-time-spec-word> | <.coming-time-spec-word> ] \h+ [ <time-unit> | <named-time-intervals> ] }
 
@@ -65,6 +66,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
     || <last-time-interval>
     || <past-time-interval>
     || <this-time-interval>
+    || <the-time-interval>
     || <next-time-interval>
   }
 
