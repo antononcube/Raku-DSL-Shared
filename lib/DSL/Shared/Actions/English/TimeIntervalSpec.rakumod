@@ -220,10 +220,11 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
                 $toLocal = DateTime.new($h + ($_ eq 'hour' ?? 3600 !! 60), timezone => $*TZ);
             }
             when $_ eq 'weekend' {
-                my ($y, $w) = Date.today.week;
                 # Since British and USA week starts with Sunday we add 6 days to reach the weekend.
-                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1,]).later(:6day);
-                $toLocal = Date.new($y, 1, 1).later(['week' => $w,]);
+                # If $TODAY is a Sunday then Date.today.day-of-week == 0 .
+                $fromLocal = Date.today.earlier([ day => Date.today.day-of-week, ]);
+                $fromLocal = $fromLocal.later(:6day);
+                $toLocal = $fromLocal.later(:1day);
             }
             when (%!dayNameAbbr{$_}:exists) || (%!dayNameLong{$_}:exists) {
                 # Since British and USA week starts with Sunday we use Sunday => 0, etc.
