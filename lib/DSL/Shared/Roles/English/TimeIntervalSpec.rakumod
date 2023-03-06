@@ -55,6 +55,11 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
 
   regex named-time-intervals { <day-name-relative> | <day-name> | <time-interval-relative> | <month-name> }
 
+  regex time-interval-relative {
+    || <single-time-interval-relative>
+    || <multi-time-interval-relative>
+  }
+
   regex single-time-interval-relative {
     || <penultimate-time-interval>
     || <last-time-interval>
@@ -67,11 +72,6 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
     || [ <.the-determiner> \h+ ]? [ <next-time-spec-word> | <last-time-spec-word> | <past-time-spec-word> ] \h+ <number-of-time-units>
     || <number-of-time-units> \h+ <ago-time-spec-word>
     || <before-time-spec-word> \h+ <number-of-time-units>
-  }
-
-  regex time-interval-relative {
-    || <single-time-interval-relative>
-    || <multi-time-interval-relative>
   }
 
   regex time-interval-from-to-spec {
