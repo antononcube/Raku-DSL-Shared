@@ -184,9 +184,10 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
 
         given $!unit {
             when 'week' {
-                my ($y, $w) = Date.today.week;
-                $fromLocal = Date.new($y, 1, 1).later(['week' => $w - 1,]);
-                $toLocal = $fromLocal.later(:1week).earlier(:1day);
+                # Since British and USA week starts with Sunday we add 6 days to reach the weekend.
+                # If $TODAY is a Sunday then Date.today.day-of-week == 0 .
+                $fromLocal = Date.today.earlier([ day => Date.today.day-of-week, ]);
+                $toLocal = $fromLocal.later(:6day);
             }
             when 'month' {
                 my $y = Date.today.year;
