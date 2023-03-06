@@ -72,7 +72,7 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   token during-time-spec-word:sym<English> { :i 'during' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'during', 2) }> }
 
   proto token end-time-spec-word {*}
-  token end-time-spec-word:sym<English> { :i 'end' | ([\w]+) <?{ $0.Str !(elem) <new one wed> and is-fuzzy-match($0.Str, 'end', 1) }> }
+  token end-time-spec-word:sym<English> { :i 'end' | ([\w]+) <?{ $0.Str !(elem) <new one wed and> and is-fuzzy-match($0.Str, 'end', 1) }> }
 
   proto token ending-time-spec-word {*}
   token ending-time-spec-word:sym<English> { :i 'ending' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'ending', 2) }> }
