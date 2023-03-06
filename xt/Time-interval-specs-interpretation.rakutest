@@ -254,4 +254,10 @@ is-deeply ti-interpret('fri')<from to>,
         (Date.new(2023,2,17), Date.new(2023,2,17)),
         'fri';
 
+## 38
+note ti-interpret('last week');
+isa-ok ti-interpret('last week')<from to>,
+        (Date.new(2023,2,5), Date.new(2023,2,11)),
+        'last week';
+
 done-testing;
