@@ -255,9 +255,16 @@ is-deeply ti-interpret('fri')<from to>,
         'fri';
 
 ## 38
-note ti-interpret('last week');
-isa-ok ti-interpret('last week')<from to>,
+is-deeply ti-interpret('last week')<from to>,
         (Date.new(2023,2,5), Date.new(2023,2,11)),
         'last week';
+
+## 39
+is-deeply ti-interpret('this month')<from to unit>, ti-interpret('the month')<from to unit>,
+        'this month is the same as the month';
+
+## 40
+is-deeply ti-interpret('this week')<from to unit>, ti-interpret('the week')<from to unit>,
+        'this week is the same as the week';
 
 done-testing;
