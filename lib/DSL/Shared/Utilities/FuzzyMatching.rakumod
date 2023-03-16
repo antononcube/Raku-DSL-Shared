@@ -85,7 +85,11 @@ multi is-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
 #============================================================
 # TBD...
 
-sub known-string-candidates(Set $knownStrings, Str:D $candidate, UInt :$maxDist = 2) is export {
+#============================================================
+# Known strings and phrases
+#============================================================
+
+multi sub known-string-candidates(Set $knownStrings, Str:D $candidate, UInt :$maxDist = 2) is export {
 
     my @res;
     my @candidates = $maxDist < 2 ?? edits1($candidate) !! edit-candidates($candidate);
@@ -99,7 +103,7 @@ sub known-string-candidates(Set $knownStrings, Str:D $candidate, UInt :$maxDist 
 
 }
 
-sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
+multi sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
 
     if $candidate (elem) $knownStrings {
         if $bool { return True } else { return $candidate }
@@ -116,7 +120,7 @@ sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :
     $bool ?? False !! Nil
 }
 
-sub known-phrase(Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
+multi sub known-phrase(Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
 
     ## First test
     my Str $res = known-string($knownPhrases, $phrase, :!bool, :$warn, :$maxDist);
@@ -156,4 +160,28 @@ sub known-phrase(Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$boo
 
     ## Final result
     return $bool ?? False !! Nil
+}
+
+
+#============================================================
+# Matched strings
+#============================================================
+
+multi sub matched-string(@knownRegexes, Str:D $candidate, Bool :$bool is copy = True, Bool :p(:$pair) = False) is export {
+
+    if $pair { $bool = False; }
+    if $candidate (elem) @knownRegexes {
+        # This is some sort of optimization
+        if $bool { return True; }
+        else { return $pair ?? ($candidate => $candidate) !! $candidate; }
+    } else {
+        for @knownRegexes -> $rx {
+            if $candidate ~~ / (<$rx>) / {
+                if $bool { return True; }
+                else { return $pair ?? ($rx => $0) !! $0; }
+            }
+        }
+    }
+
+    $bool ?? False !! Nil
 }
