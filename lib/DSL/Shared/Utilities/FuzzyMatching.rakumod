@@ -11,7 +11,7 @@ unit module DSL::Shared::Utilities::FuzzyMatching;
 # All edits that are one edit from `word`
 sub edits1(Str $word) {
     my @letters = 'a' .. 'z';
-    my @splits = (|($word.substr(0 .. $_ - 1), $word.substr($_)) for 0 .. $word.chars);
+    my @splits = (|($word.substr(^$_), $word.substr($_)) for 0 .. $word.chars);
     my @deletes = do for @splits -> $L, $R { if $R { $L ~ $R.substr(1) } };
     my @transposes = do for @splits -> $L, $R { if $R.chars > 1 { $L ~ $R.substr(1, 1) ~ $R.substr(0, 0) ~ $R.substr(2) } }
     my @replaces = do for @splits -> $L, $R { @letters.map: { $L ~ $_ ~ $R.substr(1) } if $R }
