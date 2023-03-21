@@ -103,7 +103,11 @@ multi sub known-string-candidates(Set $knownStrings, Str:D $candidate, UInt :$ma
 
 }
 
-multi sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
+multi sub known-string(Set $knownStrings,
+                       Str:D $candidate,
+                       Bool :$bool = True,
+                       Bool :$warn = True,
+                       UInt :$maxDist = 2) is export {
 
     if $candidate (elem) $knownStrings {
         if $bool { return True } else { return $candidate }
@@ -120,7 +124,12 @@ multi sub known-string(Set $knownStrings, Str:D $candidate, Bool :$bool = True, 
     $bool ?? False !! Nil
 }
 
-multi sub known-phrase(Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) is export {
+multi sub known-phrase(Set $knownPhrases,
+                       Set $knownStrings,
+                       Str:D $phrase, Bool
+                       :$bool = True,
+                       Bool :$warn = True,
+                       UInt :$maxDist = 2) is export {
 
     ## First test
     my Str $res = known-string($knownPhrases, $phrase, :!bool, :$warn, :$maxDist);
@@ -167,9 +176,14 @@ multi sub known-phrase(Set $knownPhrases, Set $knownStrings, Str:D $phrase, Bool
 # Matched strings
 #============================================================
 
-multi sub matched-string(@knownRegexes, Str:D $candidate, Bool :$bool is copy = True, Bool :p(:$pair) = False) is export {
+multi sub matched-string(@knownRegexes,
+                         Str:D $candidate,
+                         Bool :$bool is copy = True,
+                         Bool :$all,
+                         Bool :p(:$pair) = False) is export {
 
-    if $pair { $bool = False; }
+    my @allMatches;
+    if $pair || $all { $bool = False; }
     if $candidate (elem) @knownRegexes {
         # This is some sort of optimization
         if $bool { return True; }
@@ -177,11 +191,23 @@ multi sub matched-string(@knownRegexes, Str:D $candidate, Bool :$bool is copy = 
     } else {
         for @knownRegexes -> $rx {
             if $candidate ~~ / (<$rx>) / {
-                if $bool { return True; }
-                else { return $pair ?? ($rx => $0) !! $0; }
+                if $bool {
+                    return True;
+                } else {
+                    if $all {
+                        if $pair {
+                            @allMatches.append($rx => $0.Str);
+                        } else {
+                            @allMatches.append($0.Str);
+                        }
+                    } else {
+                        return $pair ?? ($rx => $0.Str) !! $0.Str;
+                    }
+                }
             }
         }
     }
 
+    if $all { return @allMatches; }
     $bool ?? False !! Nil
 }
