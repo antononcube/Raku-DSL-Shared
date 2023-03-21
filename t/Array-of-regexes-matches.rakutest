@@ -1,0 +1,38 @@
+use v6.d;
+use Test;
+
+use lib '.';
+use lib './lib';
+
+use DSL::Shared::Utilities::FuzzyMatching;
+
+my $string   = 'Is this a regex or a string: 123\w+ False $pattern1 90932 ?';
+my $pattern1 = 'string';
+my $pattern2 = '\w+';
+my $number   = 123;
+my $numberPattern = '<wb>\d+<wb>';
+my $regex    = /\w+/;
+
+plan *;
+
+## 1
+is matched-string([$pattern1, $pattern2, $number], 'or', :bool), True;
+
+## 2
+is matched-string([$pattern1, $pattern2, $number], 'or', :!bool), 'or';
+
+## 3
+is matched-string([$pattern1, $pattern2, $number], 'or', :pair), "\\w+" => "or";
+
+## 4
+ok $string.words.map({ matched-string([$number, $numberPattern, $pattern1, $pattern2], $_):p });
+
+## 5
+my $res5 = $string.words.head(*-1).map({ matched-string([$number, $numberPattern, $pattern1, $pattern2], $_):p }).Array;
+is $res5 ~~ Positional && ($res5.all ~~ Pair), True;
+
+## 6
+my $res6 = $string.words.head(*-1).map({ matched-string([$number, $numberPattern, $pattern1, $pattern2], $_):all }).Array;
+is $res6 ~~ Positional && ($res6.all ~~ Array), True;
+
+done-testing;
