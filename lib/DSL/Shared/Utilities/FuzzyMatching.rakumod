@@ -176,12 +176,18 @@ multi sub known-phrase(Set $knownPhrases,
 # Matched strings
 #============================================================
 
+proto sub matched-string(|) is export {*}
+
+multi sub matched-string(Str $knownRegex, Str:D $candidate, *%args) {
+    return matched-string([$knownRegex, ], $candidate, |%args)
+}
+
 multi sub matched-string(@knownRegexes,
                          Str:D $candidate,
                          Bool :$bool is copy = True,
-                         Bool :$all,
+                         Bool :$all = False,
                          Bool :p(:$pair) = False,
-                         Bool :c(:$contains) = True) is export {
+                         Bool :c(:$contains) = False) {
 
     my @allMatches;
     if $pair || $all { $bool = False; }
@@ -191,7 +197,7 @@ multi sub matched-string(@knownRegexes,
         else { return $pair ?? ($candidate => $candidate) !! $candidate; }
     } else {
         for @knownRegexes -> $rx {
-            if $candidate ~~ ( $contains ??  / (<$rx>) / !! / ^ (<$rx>) $ / ) {
+            if $candidate ~~ ( $contains ?? / (<$rx>) / !! / ^ (<$rx>) $ / ) {
                 if $bool {
                     return True;
                 } else {
