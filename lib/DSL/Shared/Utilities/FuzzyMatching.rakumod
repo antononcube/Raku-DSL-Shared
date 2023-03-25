@@ -181,7 +181,7 @@ multi sub matched-string(@knownRegexes,
                          Bool :$bool is copy = True,
                          Bool :$all,
                          Bool :p(:$pair) = False,
-                         Bool :c(:$contained) = True) is export {
+                         Bool :c(:$contains) = True) is export {
 
     my @allMatches;
     if $pair || $all { $bool = False; }
@@ -191,7 +191,7 @@ multi sub matched-string(@knownRegexes,
         else { return $pair ?? ($candidate => $candidate) !! $candidate; }
     } else {
         for @knownRegexes -> $rx {
-            if $candidate ~~ ( $contained ??  / (<$rx>) / !! / ^ (<$rx>) $ / ) {
+            if $candidate ~~ ( $contains ??  / (<$rx>) / !! / ^ (<$rx>) $ / ) {
                 if $bool {
                     return True;
                 } else {
