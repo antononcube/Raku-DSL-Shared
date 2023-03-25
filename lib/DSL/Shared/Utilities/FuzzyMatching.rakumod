@@ -180,7 +180,8 @@ multi sub matched-string(@knownRegexes,
                          Str:D $candidate,
                          Bool :$bool is copy = True,
                          Bool :$all,
-                         Bool :p(:$pair) = False) is export {
+                         Bool :p(:$pair) = False,
+                         Bool :$exact = True) is export {
 
     my @allMatches;
     if $pair || $all { $bool = False; }
@@ -190,7 +191,7 @@ multi sub matched-string(@knownRegexes,
         else { return $pair ?? ($candidate => $candidate) !! $candidate; }
     } else {
         for @knownRegexes -> $rx {
-            if $candidate ~~ / (<$rx>) / {
+            if $candidate ~~ ( $exact ?? / ^ (<$rx>) $ / !! / (<$rx>) / ) {
                 if $bool {
                     return True;
                 } else {
