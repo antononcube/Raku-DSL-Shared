@@ -303,7 +303,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token threshold-noun { 'порог' }
     token time-adjective { 'время' | 'время' }
     token time-noun { 'время' }
-    token timeline-noun { <time-adjective> 'строка' }
+    token timeline-noun { <time-adjective> \h+ 'строка' }
     token times-noun { 'раз' }
     token to-preposition { 'на' | 'до'  }
     token top-adjective { 'най-горен' | 'най-горна' | 'най-горно' | 'най-горни' | 'топ' | 'топ' | 'топ' | 'топ' }
