@@ -230,8 +230,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token plot-noun:sym<Russian> { :i 'чертеж' | ([\w]+) <?{ $0.Str !(elem) <через чертежи> and is-ru-fuzzy-match($0.Str, 'чертеж', 2) }> | 'графика' | ([\w]+) <?{ $0.Str !(elem) <график графики> and is-ru-fuzzy-match($0.Str, 'графика', 2) }> }
     token plots-noun:sym<Russian> { :i 'чертежи' | ([\w]+) <?{ $0.Str ne 'чертеж' and is-ru-fuzzy-match($0.Str, 'чертежи', 2) }> | 'графики' | ([\w]+) <?{ $0.Str !(elem) <график графика> and is-ru-fuzzy-match($0.Str, 'графики', 2) }> }
     token position-noun:sym<Russian> { :i 'позиция' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'позиция', 2) }> }
-    token pull-noun { 'извлечено из' | 'потяните' }
-    token pull-verb { 'извлечено из' | 'подтягивание' }
+    token pull-noun:sym<Russian> { 'извлечено' \h+ 'из' | 'подтягивание' }
+    token pull-verb:sym<Russian> { 'извлечено' \h+ 'из' | 'потяните' }
     token random-adjective:sym<Russian> { :i 'случайный' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'случайный', 2) }> }
     token records:sym<Russian> { :i 'записи' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'записи', 2) }> }
     token reduce-verb:sym<Russian> { :i 'сократить' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'сократить', 2) }> }

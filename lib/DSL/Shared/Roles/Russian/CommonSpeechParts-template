@@ -225,8 +225,8 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token plot-noun { 'чертеж' | 'графика' }
     token plots-noun { 'чертежи' | 'графики' }
     token position-noun { 'позиция' }
-    token pull-noun { 'извлечено из' | 'потяните' }
-    token pull-verb { 'извлечено из' | 'подтягивание' }
+    token pull-noun { 'извлечено' \h+ 'из' | 'подтягивание' }
+    token pull-verb { 'извлечено' \h+ 'из' | 'потяните' }
     token random-adjective { 'случайный' }
     token records { 'записи' }
     token reduce-verb { 'сократить' }
