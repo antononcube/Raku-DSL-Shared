@@ -1,3 +1,7 @@
+use v6.d;
+
+use lib '.';
+use lib './lib';
 
 use DSL::Shared::Entity::Actions::WL::System;
 use DSL::Shared::Entity::Grammar::EntityNames;
@@ -12,6 +16,11 @@ grammar ParseObj
     rule TOP($obj, $class) { <entity-name($obj, $class)> }
 };
 
+grammar ParseObj2
+        does DSL::Shared::Entity::Grammar::EntityNames {
+    rule TOP($obj) { <entity-name($obj, Whatever)> }
+};
+
 sub parse-func(Str $class, Str:D $spec) {
     ParseObj.parse(
             $spec.lc,
@@ -21,9 +30,18 @@ sub parse-func(Str $class, Str:D $spec) {
             ).made
 }
 
+sub parse-func2( Str:D $spec) {
+    ParseObj2.parse(
+            $spec.lc,
+            rule => 'TOP',
+            actions => DSL::Shared::Entity::Actions::WL::System.new(resources => $resourceObj),
+            args => ($resourceObj,)
+            ).made
+}
+
 use Test;
 
-plan 2;
+plan 4;
 
 ## 1
 is-deeply
@@ -34,6 +52,18 @@ is-deeply
 ## 2
 is-deeply
         parse-func('DataFormat', 'Character32'),
+        '"Character32"',
+        'Character32';
+
+## 3
+is-deeply
+        parse-func2('character 32'),
+        '"Character32"',
+        'character 32';
+
+## 4
+is-deeply
+        parse-func2('Character32'),
         '"Character32"',
         'Character32';
 
