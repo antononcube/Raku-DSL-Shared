@@ -81,8 +81,19 @@ role DSL::Shared::Entity::ResourceAccessish {
     }
 
     #-----------------------------------------------------------
-    method known-name(Str:D $class, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
+    multi method known-name(Str:D $class, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
         known-phrase(self.getKnownNames(){$class}, self.getKnownNameWords(){$class}, $phrase, :$bool, :$warn)
+    }
+
+    multi method known-name(Whatever, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
+        for self.getNameToEntityID().keys -> $class {
+            my $name = known-phrase(self.getKnownNames(){$class}, self.getKnownNameWords(){$class}, $phrase, :!bool, :!warn);
+            with $name {
+                return $bool ?? True !! $name;
+            }
+        }
+        note "Cannot find '$phrase'." if $warn;
+        return $bool ?? False !! Nil;
     }
 
     #-----------------------------------------------------------
@@ -91,6 +102,10 @@ role DSL::Shared::Entity::ResourceAccessish {
             my $name = self.known-name($class, $phrase, :!bool, :!warn);
             return self.getNameToEntityID{$class}{$name} if $name
         }
+    }
+
+    multi method name-to-entity-id(Whatever, Str:D $phrase, Bool :$warn = False) {
+        return self.name-to-entity-id($phrase, $warn);
     }
 
     #-----------------------------------------------------------
