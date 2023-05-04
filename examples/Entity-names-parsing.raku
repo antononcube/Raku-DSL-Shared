@@ -8,6 +8,9 @@ my DSL::Shared::Entity::ResourceAccess $resourceObj .= new;
 
 $resourceObj.ingest-resource-files();
 
+# Show the entities in the resource object
+.say for $resourceObj.getNameToEntityID;
+
 grammar ParseObj
         does DSL::Shared::Entity::Grammar::EntityNames {
     rule TOP($obj, $class) { <entity-name($obj, $class)> }
@@ -35,7 +38,7 @@ for @testCommands -> $c {
     say "=" x 30;
     say $c;
     my $start = now;
-    my $res = parse-func('DataFormatNameToEntityID_EN', $c);
+    my $res = parse-func('DataFormat', $c);
     say "time:", now - $start;
     say $res;
 }
