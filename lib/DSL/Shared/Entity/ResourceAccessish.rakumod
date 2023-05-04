@@ -97,20 +97,31 @@ role DSL::Shared::Entity::ResourceAccessish {
     }
 
     #-----------------------------------------------------------
-    multi method name-to-entity-id(Str:D $phrase, Bool :$warn = False) {
+    multi method name-to-entity-id(Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False) {
         for self.getNameToEntityID().keys -> $class {
             my $name = self.known-name($class, $phrase, :!bool, :!warn);
-            return self.getNameToEntityID{$class}{$name} if $name
+            if $name {
+                return do if $pair {
+                    $class => self.getNameToEntityID{$class}{$name}
+                } else {
+                    self.getNameToEntityID{$class}{$name}
+                }
+            }
         }
     }
 
-    multi method name-to-entity-id(Whatever, Str:D $phrase, Bool :$warn = False) {
-        return self.name-to-entity-id($phrase, :$warn);
+    multi method name-to-entity-id(Whatever, Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False) {
+        return self.name-to-entity-id($phrase, :$warn, :$pair);
     }
 
     #-----------------------------------------------------------
-    multi method name-to-entity-id(Str:D $class, Str:D $phrase, Bool :$warn = False) {
+    multi method name-to-entity-id(Str:D $class, Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False) {
         my $name = self.known-name($class, $phrase.lc, :!bool, :$warn);
-        $name ?? self.getNameToEntityID{$class}{$name} !! Nil
+        my $res = self.getNameToEntityID{$class}{$name};
+        return do if $pair {
+            $name ?? ($class => $res) !! Nil
+        } else {
+            $name ?? $res !! Nil
+        }
     }
 }
