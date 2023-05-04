@@ -105,7 +105,7 @@ role DSL::Shared::Entity::ResourceAccessish {
     }
 
     multi method name-to-entity-id(Whatever, Str:D $phrase, Bool :$warn = False) {
-        return self.name-to-entity-id($phrase, $warn);
+        return self.name-to-entity-id($phrase, :$warn);
     }
 
     #-----------------------------------------------------------
