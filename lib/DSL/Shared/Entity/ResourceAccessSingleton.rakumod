@@ -100,7 +100,7 @@ class DSL::Shared::Entity::ResourceAccessSingleton {
 
             self.getKnownNames().push( $fileNameKey => Set(%nameRules) );
 
-            self.getKnownNameWords().push( $fileNameKey => Set(%nameRules.keys.map({ $_.split(/h+/) }).flat) );
+            self.getKnownNameWords().push( $fileNameKey => Set(%nameRules.keys.map({ $_.split(/\h+/) }).flat) );
         }
 
         #-----------------------------------------------------------
