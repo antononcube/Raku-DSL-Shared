@@ -48,7 +48,7 @@ role DSL::Shared::Entity::ResourceAccessish {
     #| Make the entity name dictionaries.
     method ingest-entity-dictionary( Str $class, %nameToIDRules ) {
 
-        my @words = %nameToIDRules.keys.map({ $_.split(/h+/) }).flat;
+        my @words = %nameToIDRules.keys.map({ $_.split(/\h+/) }).flat;
 
         if self.getNameToEntityID(){$class}:exists {
             # We cannot just use append because that would produce arrays that are not hashes,
