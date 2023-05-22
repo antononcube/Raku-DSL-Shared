@@ -13,6 +13,7 @@ use DateTime::Grammar;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 
+use Test::Time;
 
 #============================================================
 # Custom grammar
@@ -112,33 +113,63 @@ my @commands3 = (
 );
 
 my @commands4 = (
+'between beginning of year and tomorrow',
+'between end of week and tomorrow',
+'between the beginning of the month and tomorrow',
+'between the beginning of the year and tomorrow',
+'between today and the end of the year',
+'between tomorrow and end of year',
+'between yesterday and tomorrow',
 'from beginning of the week to end of month',
+'from end of week to ramadan',
+'from start of this year to end of next week',
 'from start of year to end of week',
 'from the beginning of the last month to the end of the next month',
-'from start of this year to end of next week',
-'between the beginning of the year and tomorrow',
 'from the beginning of the year until tomorrow',
-'between today and the end of the year',
-'between yesterday and tomorrow',
 'from yesterday to tomorrow',
-'between end of week and tomorrow',
-'from end of week to ramadan',
+);
+
+my @commands5 = (
+'penultimate week',
+'past week',
+'past year',
+'past decade',
+'next friday',
+'next mon',
+'monday',
+'mon',
 );
 
 my @problematic = (
-#'margem',
-'from yesterday to today',
-'between christmas and ramadan',
-'2023-02-12'
+#'mon',
+#'last mon',
+#'next mon',
+#'mon',
+#'last mon',
+#'next mon',
+#'wed',
+#'last wed',
+#'next wed',
+#'mon tue wed fri'
+'feb to july'
 );
 
-my @commandsAll = [|@commands, |@commands2, |@commands3];
+#my $localHour = now.DateTime.hour;
+my $localHour = 2;
+my $localDate = Date.new(2023, 2, 15);
+my $localDateTime = DateTime.new(2023, 2, 15, $localHour, 0, 0, :timezone(-18000));
+#my $localDateTime = DateTime.new(2023, 2, 18, now.DateTime.hour, 0, 0);
+$*SCHEDULER = mock-time($localDateTime.Instant);
 
-my $action-type = 'subparse';
+note (Date.today, $localDate, 'expected date');
+
+my @commandsAll = [|@commands, |@commands2, |@commands3, |@commands4, |@commands5];
+
+my $action-type = 'parse';
 
 my $test = "#{'=' x 60}\n# Tests\n#{'=' x 60}\n\nplan *;";
 
-for @commands4.kv -> $i, $c {
+for @problematic.kv -> $i, $c {
     say "=" x 80;
     say "$i : $c";
     say "-" x 80;
