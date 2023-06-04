@@ -67,27 +67,27 @@ role DSL::Shared::Entity::ResourceAccessish {
     ##========================================================
     ## Access
     ##========================================================
-    method is-known-name-word(Str:D $word) {
+    method is-known-name-word(Str:D $word, UInt :$maxDist = 2) {
         my Bool $res = False;
         for self.getKnownNameWords().keys -> $c {
-            $res = known-string(self.getKnownNameWords(){$c}, $word, :bool, :!warn);
+            $res = known-string(self.getKnownNameWords(){$c}, $word, :bool, :!warn, :$maxDist);
             last when $res
         }
         $res
     }
 
-    method known-name-word(Str:D $class, Str:D $word, Bool :$bool = True, Bool :$warn = True) {
-        known-string(self.getKnownNameWords(){$class}, $word, :$bool, :$warn)
+    method known-name-word(Str:D $class, Str:D $word, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) {
+        known-string(self.getKnownNameWords(){$class}, $word, :$bool, :$warn, :$maxDist)
     }
 
     #-----------------------------------------------------------
-    multi method known-name(Str:D $class, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
-        known-phrase(self.getKnownNames(){$class}, self.getKnownNameWords(){$class}, $phrase, :$bool, :$warn)
+    multi method known-name(Str:D $class, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) {
+        known-phrase(self.getKnownNames(){$class}, self.getKnownNameWords(){$class}, $phrase, :$bool, :$warn, :$maxDist)
     }
 
-    multi method known-name(Whatever, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
+    multi method known-name(Whatever, Str:D $phrase, Bool :$bool = True, Bool :$warn = True, UInt :$maxDist = 2) {
         for self.getNameToEntityID().keys -> $class {
-            my $name = known-phrase(self.getKnownNames(){$class}, self.getKnownNameWords(){$class}, $phrase, :!bool, :!warn);
+            my $name = known-phrase(self.getKnownNames(){$class}, self.getKnownNameWords(){$class}, $phrase, :!bool, :!warn, :$maxDist);
             with $name {
                 return $bool ?? True !! $name;
             }
@@ -97,9 +97,9 @@ role DSL::Shared::Entity::ResourceAccessish {
     }
 
     #-----------------------------------------------------------
-    multi method name-to-entity-id(Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False) {
+    multi method name-to-entity-id(Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False, UInt :$maxDist = 2) {
         for self.getNameToEntityID().keys -> $class {
-            my $name = self.known-name($class, $phrase, :!bool, :!warn);
+            my $name = self.known-name($class, $phrase, :!bool, :!warn, :$maxDist);
             if $name {
                 return do if $pair {
                     $class => self.getNameToEntityID{$class}{$name}
@@ -110,13 +110,13 @@ role DSL::Shared::Entity::ResourceAccessish {
         }
     }
 
-    multi method name-to-entity-id(Whatever, Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False) {
-        return self.name-to-entity-id($phrase, :$warn, :$pair);
+    multi method name-to-entity-id(Whatever, Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False, UInt :$maxDist = 2) {
+        return self.name-to-entity-id($phrase, :$warn, :$pair, :$maxDist);
     }
 
     #-----------------------------------------------------------
-    multi method name-to-entity-id(Str:D $class, Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False) {
-        my $name = self.known-name($class, $phrase.lc, :!bool, :$warn);
+    multi method name-to-entity-id(Str:D $class, Str:D $phrase, Bool :$warn = False, Bool :p(:$pair) = False, UInt :$maxDist = 2) {
+        my $name = self.known-name($class, $phrase.lc, :!bool, :$warn, :$maxDist);
         my $res = self.getNameToEntityID{$class}{$name};
         return do if $pair {
             $name ?? ($class => $res) !! Nil
