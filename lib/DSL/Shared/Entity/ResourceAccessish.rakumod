@@ -46,8 +46,10 @@ role DSL::Shared::Entity::ResourceAccessish {
     }
 
     #| Make the entity name dictionaries.
-    method ingest-entity-dictionary( Str $class, %nameToIDRules ) {
+    method ingest-entity-dictionary( Str $class, %nameToIDRulesArg ) {
 
+        my %nameToIDRules = %nameToIDRulesArg.clone;
+        %nameToIDRules = %nameToIDRules.map({ $_.key.lc => $_.value });
         my @words = %nameToIDRules.keys.map({ $_.split(/\h+/) }).flat;
 
         if self.getNameToEntityID(){$class}:exists {
