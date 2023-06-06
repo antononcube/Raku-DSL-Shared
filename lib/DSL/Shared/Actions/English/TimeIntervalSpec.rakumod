@@ -178,7 +178,7 @@ class DSL::Shared::Actions::English::TimeIntervalSpec
         } elsif $<named-time-intervals> {
             given $<named-time-intervals>.made {
                 when Str { $!unit = $_; }
-                when Hash { $!unit = $_<value>; }
+                when Hash { $!unit = $_<unit>; }
             }
         }
 
