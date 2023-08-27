@@ -1,7 +1,7 @@
 {
   "name": "DSL::Shared",
   "description": "DSL::Shared provides utilities and grammar roles for making DSL translators.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
@@ -93,7 +93,6 @@
     "DSL::Shared::Roles::Russian::PipelineCommand": "lib/DSL/Shared/Roles/Russian/PipelineCommand.rakumod",
     "DSL::Shared::Roles::Russian::PredicateSpecification": "lib/DSL/Shared/Roles/Russian/PredicateSpecification.rakumod",
     "DSL::Shared::Utilities::CommandProcessing": "lib/DSL/Shared/Utilities/CommandProcessing.rakumod",
-    "DSL::Shared::Utilities::CopyToClipboard": "lib/DSL/Shared/Utilities/CopyToClipboard.rakumod",
     "DSL::Shared::Utilities::DeterminedWordsMatching": "lib/DSL/Shared/Utilities/DeterminedWordsMatching.rakumod",
     "DSL::Shared::Utilities::FuzzyMatching": "lib/DSL/Shared/Utilities/FuzzyMatching.rakumod",
     "DSL::Shared::Utilities::MetaSpecsProcessing": "lib/DSL/Shared/Utilities/MetaSpecsProcessing.rakumod"
