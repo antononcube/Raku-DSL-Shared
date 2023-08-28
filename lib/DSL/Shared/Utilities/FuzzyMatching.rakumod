@@ -8,15 +8,26 @@ unit module DSL::Shared::Utilities::FuzzyMatching;
 # Core fuzzy match functions
 #============================================================
 
+my %savedEdits;
+
+sub get-saved-edits() is export { %savedEdits }
+
 # All edits that are one edit from `word`
 sub edits1(Str $word) {
+
+    if %savedEdits{$word}:exists { return %savedEdits{$word}.Seq; }
+
     my @letters = 'a' .. 'z';
     my @splits = (|($word.substr(^$_), $word.substr($_)) for 0 .. $word.chars);
     my @deletes = do for @splits -> $L, $R { if $R { $L ~ $R.substr(1) } };
     my @transposes = do for @splits -> $L, $R { if $R.chars > 1 { $L ~ $R.substr(1, 1) ~ $R.substr(0, 0) ~ $R.substr(2) } }
     my @replaces = do for @splits -> $L, $R { @letters.map: { $L ~ $_ ~ $R.substr(1) } if $R }
     my @inserts = do for @splits -> $L, $R { @letters.map: { $L ~ $_ ~ $R } }
-    return (gather (@deletes, @transposes, @replaces, @inserts).deepmap: *.take).unique;
+    my @res = (gather (@deletes, @transposes, @replaces, @inserts).deepmap: *.take).unique;
+
+    %savedEdits{$word} = @res;
+
+    return @res.Seq;
 }
 
 # All edits that are two edits from `word`
@@ -38,6 +49,10 @@ proto is-fuzzy-match($c, $a, $maxDist = 2) is export {*};
 
 multi is-fuzzy-match(Str $candidate, @actuals, UInt $maxDist = 2) {
 
+    if $maxDist == 0 {
+        return $candidate ∈ @actuals;
+    }
+
     my %dists = map({ $_ => dld($candidate, $_) }, @actuals);
 
     my $distPair = %dists.min({ $_.value });
@@ -58,6 +73,11 @@ multi is-fuzzy-match(Str $candidate, @actuals, UInt $maxDist = 2) {
 }
 
 multi is-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
+
+    if $maxDist == 0 {
+        return $candidate eq $actual;
+    }
+
     my $dist = dld($candidate, $actual);
 
     if 0 == $dist {
@@ -110,7 +130,9 @@ multi sub known-string(Set $knownStrings,
                        UInt :$maxDist = 2) is export {
 
     if $candidate (elem) $knownStrings {
-        if $bool { return True } else { return $candidate }
+        return $bool ?? True !! $candidate;
+    } elsif $maxDist == 0 {
+        return $bool ?? False !! Nil;
     } else {
         my @candidates = $maxDist < 2 ?? edits1($candidate) !! edit-candidates($candidate);
         for @candidates -> $var {
