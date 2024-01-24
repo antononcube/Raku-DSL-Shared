@@ -10,9 +10,9 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token after-time-spec-word { 'depois' \h* 'de'? };
   token ago-time-spec-word { 'atrás' };
   token am-time-spec-word { 'am' };
-  token apr-time-spec-word { 'apr' };
+  token apr-time-spec-word { 'abr' };
   token april-time-spec-word { 'abril' };
-  token aug-time-spec-word { 'aug' };
+  token aug-time-spec-word { 'ago' };
   token august-time-spec-word { 'agosto' };
   token before-time-spec-word { 'antes' \h* 'de' };
   token beginning-time-spec-word { 'início' }
@@ -20,7 +20,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token century-time-spec-word { 'século' };
   token centuries-time-spec-word { 'séculos' };
   token christmas-time-spec-word { ['o' \h*]? 'natal' };
-  token coming-time-spec-word { 'próxima' | 'próximo' | 'vindoura' | 'vindouro'};
+  token coming-time-spec-word { 'próxima' | 'próximo'};
   token day-time-spec-word { 'dia' };
   token days-time-spec-word { 'dias' };
   token dec-time-spec-word { 'dez' };
@@ -35,7 +35,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token few-time-spec-word { 'poucos' };
   token fri-time-spec-word { 'sexta' };
   token friday-time-spec-word { 'sexta-feira' | 'sexta' \h+ 'feira' };
-  token fridays-time-spec-word { 'sextas-feiras' };
+  token fridays-time-spec-word { 'sextas-feiras', 'sextas' };
   token hour-time-spec-word { 'hora' };
   token hours-time-spec-word { 'horas' };
   token jan-time-spec-word { 'jan' };
@@ -66,7 +66,7 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token nov-time-spec-word { 'nov' };
   token november-time-spec-word { 'novembro' };
   token now-time-spec-word { 'agora' };
-  token oct-time-spec-word { 'oct' };
+  token oct-time-spec-word { 'out' };
   token october-time-spec-word { 'outubro' };
   token of-time-spec-word { 'de' };
   token one-time-spec-word { 'um' };
@@ -75,16 +75,16 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token pm-time-spec-word { 'pm' };
   token ramadan-time-spec-word { ['o' \h*]? 'ramadan' };
   token right-time-spec-word { 'direita' };
-  token sat-time-spec-word { 'sat' };
+  token sat-time-spec-word { 'sab' };
   token saturday-time-spec-word { 'sábado' };
   token saturdays-time-spec-word { 'sábados' };
-  token sep-time-spec-word { 'sep' };
+  token sep-time-spec-word { 'set' };
   token september-time-spec-word { 'setembro' };
   token start-time-spec-word { 'início' };
   token sun-time-spec-word { 'sol' };
   token sunday-time-spec-word { 'domingo' };
   token sundays-time-spec-word { 'domingos' };
-  token thanksgiving-time-spec-word { [ 'ação' | 'acção' ] \h+ 'de' \h+ 'graças' };
+  token thanksgiving-time-spec-word { 'ação' \h+ 'de' \h+ 'graças' };
   token thu-time-spec-word { 'quinta' };
   token thursday-time-spec-word { 'quinta-feira' };
   token thursdays-time-spec-word { 'quintas-feiras' };
@@ -104,4 +104,5 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token year-time-spec-word { 'ano' };
   token years-time-spec-word { 'anos' };
   token yesterday-time-spec-word { 'ontem' };
+
 }
