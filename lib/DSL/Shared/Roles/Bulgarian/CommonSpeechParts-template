@@ -153,7 +153,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token identifier-noun { <IDENTIFIER-noun> }
     token in-preposition { 'в' | 'във' }
     token include-verb { 'включи' | 'включвай' }
-    token ingest-verb { 'прочети' }
+    token ingest-verb { 'прочети' | 'обработи' }
     token interpreter-noun { 'интерпретатор' | 'тълковник' }
     token interpreting-adjective { 'тълковен' | 'интерпретиращ' }
     token into-preposition { 'в' | 'във' }

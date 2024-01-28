@@ -158,7 +158,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token identifier-noun:sym<Bulgarian> { :i <IDENTIFIER-noun> }
     token in-preposition:sym<Bulgarian> { :i 'в' | 'във' | ([\w]+) <?{ $0.Str !(elem) <със съм в ляв съб към връх път> and is-bg-fuzzy-match($0.Str, 'във', 1) }> }
     token include-verb:sym<Bulgarian> { :i 'включи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'включи', 2) }> | 'включвай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'включвай', 2) }> }
-    token ingest-verb:sym<Bulgarian> { :i 'прочети' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'прочети', 2) }> }
+    token ingest-verb:sym<Bulgarian> { :i 'прочети' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'прочети', 2) }> | 'обработи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'обработи', 2) }> }
     token interpreter-noun:sym<Bulgarian> { :i 'интерпретатор' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'интерпретатор', 2) }> | 'тълковник' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'тълковник', 2) }> }
     token interpreting-adjective:sym<Bulgarian> { :i 'тълковен' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'тълковен', 2) }> | 'интерпретиращ' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'интерпретиращ', 2) }> }
     token into-preposition:sym<Bulgarian> { :i 'в' | 'във' | ([\w]+) <?{ $0.Str !(elem) <със съм в ляв съб към връх път> and is-bg-fuzzy-match($0.Str, 'във', 1) }> }
