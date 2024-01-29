@@ -9,7 +9,6 @@ use DSL::Shared::Roles::English::PipelineCommand;
 # This role class has pipeline commands.
 role DSL::Shared::Roles::Bulgarian::PipelineCommand
         does DSL::Shared::Roles::English::PipelineCommand
-        does DSL::Shared::Roles::CommonStructures
         does DSL::Shared::Roles::Bulgarian::CommonSpeechParts
         does Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec {
 
