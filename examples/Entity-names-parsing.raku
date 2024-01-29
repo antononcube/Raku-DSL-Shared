@@ -1,8 +1,12 @@
 use v6.d;
 
+use lib '.';
+use lib './lib';
+
 use DSL::Shared::Entity::Actions::WL::System;
 use DSL::Shared::Entity::Grammar::EntityNames;
 use DSL::Shared::Entity::ResourceAccess;
+use DSL::Shared::Utilities::FuzzyMatching;
 
 my DSL::Shared::Entity::ResourceAccess $resourceObj .= new;
 
@@ -16,7 +20,7 @@ grammar ParseObj
     rule TOP($obj, $class) { <entity-name($obj, $class)> }
 };
 
-sub parse-func(Str $class, Str:D $spec) {
+sub parse-func($class, Str:D $spec) {
     ParseObj.parse(
             $spec.lc,
             rule => 'TOP',
@@ -31,14 +35,25 @@ say "=" x 60;
 my @testCommands = (
 'charcter 32',
 'character 32',
-'Character32'
+'Character32',
+'beauty salon',
+'drive wheel configuration value',
+'postal code ranger specification',
+'unsigned integer 8',
 );
 
-for @testCommands -> $c {
-    say "=" x 30;
-    say $c;
-    my $start = now;
-    my $res = parse-func('DataFormat', $c);
-    say "time:", now - $start;
-    say $res;
+my $tstart = now;
+for ^100 {
+    for @testCommands -> $c {
+#        say "=" x 30;
+#        say $c;
+#        my $start = now;
+        my $res = parse-func(Whatever, $c);
+#        say "time: ", now - $start;
+#        say $res;
+    }
 }
+my $tend = now;
+say "Total time: ", $tend - $tstart;
+
+.value.WHAT.say for get-saved-edits;
