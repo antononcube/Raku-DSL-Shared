@@ -63,8 +63,8 @@ role DSL::Shared::Roles::CommonStructures {
     regex regex-pattern-spec { [ 'rx/' | '/' ] <regex-pattern> '/' }
 
     # Value types
-    token number-value { (\d+ ['.' \d*]?  [ [e|E] \d+]?) }
-    token integer-value { \d+ }
+    token number-value { ['+'|'-']? \d+ ['.' \d*]?  [ [e|E] \d+]? }
+    token integer-value { ['+'|'-']? \d+ }
     token percent { '%' | 'percent' }
     token percent-value { <number-value> \h* <.percent> }
     token boolean-value { 'True' | 'False' | 'true' | 'false' | 'TRUE' | 'FALSE' }
