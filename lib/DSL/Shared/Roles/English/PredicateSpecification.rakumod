@@ -19,7 +19,7 @@ role DSL::Shared::Roles::English::PredicateSpecification {
     token less-relation-phrase:sym<English> { :i  '<' | 'lt' | 'is'? \h* 'less' \h+ 'than'?  }
 
     proto token less-equal-relation-phrase {*}
-    token less-equal-relation-phrase:sym<English> { :i  '<=' | '≤' | 'lte' | 'less' \h* 'or'? \h* 'equal' \h+ [ 'than' | 'to' ]?  }
+    token less-equal-relation-phrase:sym<English> { :i  ['is' \h*]? [ '<=' | '≤' | 'lte' | 'less' \h* 'or'? \h* 'equal' ] \h+ [ 'than' | 'to' ]?  }
 
     proto token greater-relation-phrase {*}
     token greater-relation-phrase:sym<English> { :i  '>' | 'gt' | 'is'? \h* 'greater' \h* 'than'?  }
@@ -34,10 +34,10 @@ role DSL::Shared::Roles::English::PredicateSpecification {
     token not-same-relation-phrase:sym<English> { :i  '=!=' | 'is'? \h* 'not' \h+ 'the'? \h* 'same' \h+ 'as'?  }
 
     proto token in-relation-phrase {*}
-    token in-relation-phrase:sym<English> { :i  'in' | 'belongs' \h+ 'to'  }
+    token in-relation-phrase:sym<English> { :i  'in' | '∈' | 'belongs' \h+ 'to'  }
 
     proto token not-in-relation-phrase {*}
-    token not-in-relation-phrase:sym<English> { :i  '!in' | '¬in' | 'is'? \h* 'not' \h+ 'in' | [ 'does' \h+ 'not' | 'doesn\'t' ] 'belong' \h+ 'to'  }
+    token not-in-relation-phrase:sym<English> { :i  '!in' | '¬in' | '∉' | 'is'? \h* 'not' \h+ 'in' | [ 'does' \h+ 'not' | 'doesn\'t' ] 'belong' \h+ 'to'  }
 
     proto token like-relation-phrase {*}
     token like-relation-phrase:sym<English> { :i  'is'? \h* [ 'like' | 'similar' \h+ 'to' ]  }
