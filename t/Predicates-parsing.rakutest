@@ -18,7 +18,7 @@ grammar ParseObj
     regex TOP { <predicates-list> }
 };
 
-plan 10;
+plan 11;
 
 #-----------------------------------------------------------
 # Predicates parsing
@@ -53,5 +53,9 @@ ok ParseObj.parse('X2 is `12+x`'),
 
 ok ParseObj.parse('X2 is ${12+x}'),
         'X2 is ${12+x}';
+
+
+ok ParseObj.parse('X2 is ${%h1 , {x=>1, y=>3}}'),
+        'X2 is ${%h1 , {x=>1, y=>3}}';
 
 done-testing;
