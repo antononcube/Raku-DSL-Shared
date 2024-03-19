@@ -46,10 +46,11 @@ my @commands = (
 'Title is like `air_`',
 'Title starts with "air"',
 'Title ends with "snow"',
-'var1 in ${"blue", "red"}'
+'var1 in ${["blue", "red", {green =>2}]}',
+"dist ≤ `geo-distance(\$_<dropoff_latitude>, \$_<dropoff_longitude>, 33.9028, -118.069, 'miles') <= 50 })`"
 );
 
-my $action-type = 'interpret';
+my $action-type = 'parse';
 
 for @commands.kv -> $i, $c {
     say "=" x 80;
