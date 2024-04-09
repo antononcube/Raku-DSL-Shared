@@ -27,6 +27,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token all-determiner { 'всяко' | 'всички' }
     token and-conjunction { 'и' }
     token annex-verb { 'присъедини' }
+    token answer-noun { 'отговор' }
+    token answer-verb { 'отговори' | 'кажи' }
     token append-verb { 'добави' }
     token apply-verb { 'приложи' }
     token are-verb { 'са' }
@@ -137,9 +139,10 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token generate-directive { <generate-verb> | <create-verb> | 'направи' }
     token generate-verb { 'генерирай' }
     token get-verb { 'вземи' }
+    token give-verb { 'дай' | 'давай' }
     token graph-noun { 'граф' }
     token head-adjective { <head-noun> }
-    token head-noun { 'чело' | 'начело' }
+    token head-noun { 'чело' | 'начело' | 'глава' }
     token had-verb { 'имах' | 'имаше' | 'имал' | 'имала' | 'имали' }
     token have-verb { 'имам' | 'имаш' | 'има' | 'имат' | 'съм' | 'си' | 'са' | 'е' }
     token high-adjective { 'висок' }
@@ -231,6 +234,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token records { 'записи' }
     token reduce-verb { 'редуцирай' }
     token remove-verb { 'премахни' | 'изтрий'  }
+    token repeat-verb { 'повтори' }
     token replace-verb { 'замести' | 'замени' }
     token represent-directive { <represent-verb> | 'чертай' | 'отрази' }
     token represent-verb { 'представи' }

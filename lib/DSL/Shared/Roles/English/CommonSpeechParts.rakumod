@@ -60,6 +60,12 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token annex-verb {*}
     token annex-verb:sym<English> { :i 'annex' | ([\w]+) <?{ $0.Str ne 'manner' and is-fuzzy-match($0.Str, 'annex', 2) }> }
 
+    proto token answer-noun {*}
+    token answer-noun:sym<English> {:i <answer-verb> }
+
+    proto token answer-verb {*}
+    token answer-verb:sym<English> { :i 'answer' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'answer', 1) }> }
+
     proto token append-verb {*}
     token append-verb:sym<English> { :i 'append' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'append', 2) }> }
 
@@ -676,6 +682,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
 
     proto token remove-verb {*}
     token remove-verb:sym<English> { :i 'remove' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'remove', 2) }> }
+
+    proto token repeat-verb {*}
+    token repeat-verb:sym<English> { :i 'repeat' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'repeat', 1) }> }
 
     proto token replace-verb {*}
     token replace-verb:sym<English> { :i 'replace' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'replace', 2) }> }

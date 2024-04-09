@@ -27,6 +27,8 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token all-determiner { 'all' }
     token and-conjunction { 'and' }
     token annex-verb { 'annex' }
+    token answer-noun { <answer-noun> }
+    token answer-verb { 'answer' }
     token append-verb { 'append' }
     token apply-verb { 'apply' }
     token are-verb { 'are' }
@@ -231,6 +233,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token records { 'records' }
     token reduce-verb { 'reduce' }
     token remove-verb { 'remove' }
+    token repeat-verb { 'repeat' }
     token replace-verb { 'replace' }
     token represent-directive { <represent-verb> | 'render' | 'reflect' }
     token represent-verb { 'represent' }

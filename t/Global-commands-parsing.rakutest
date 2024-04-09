@@ -1,5 +1,7 @@
 use Test;
 
+use lib <. lib>;
+
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::GlobalCommand;
 use DSL::Shared::Roles::English::PipelineCommand;
@@ -13,7 +15,7 @@ grammar ParseObj
 };
 
 
-plan 16;
+plan *;
 
 #-----------------------------------------------------------
 # Global commands parsing
@@ -82,5 +84,13 @@ ok ParseObj.parse('recover state'),
 ## 16
 ok ParseObj.parse('recover the last state'),
         'recover the last state';
+
+## 17
+ok ParseObj.parse('repeat it'),
+        'repeat it';
+
+## 18
+ok ParseObj.parse('display last result'),
+        'display last result';
 
 done-testing;

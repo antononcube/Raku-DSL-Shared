@@ -27,6 +27,8 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token all-determiner:sym<Bulgarian> { :i 'всяко' | ([\w]+) <?{ $0.Str !(elem) <всеки всяка> and is-bg-fuzzy-match($0.Str, 'всяко', 2) }> | 'всички' | ([\w]+) <?{ $0.Str ne 'всеки' and is-bg-fuzzy-match($0.Str, 'всички', 2) }> }
     token and-conjunction:sym<Bulgarian> { :i 'и' }
     token annex-verb:sym<Bulgarian> { :i 'присъедини' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'присъедини', 2) }> }
+    token answer-noun:sym<Bulgarian> { :i 'отговор' | ([\w]+) <?{ $0.Str ne 'отговори' and is-bg-fuzzy-match($0.Str, 'отговор', 2) }> }
+    token answer-verb:sym<Bulgarian> { :i 'кажи' | 'отговори' | ([\w]+) <?{ $0.Str ne 'отговор' and is-bg-fuzzy-match($0.Str, 'отговори', 2) }> }
     token append-verb:sym<Bulgarian> { :i 'добави' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'добави', 2) }> }
     token apply-verb:sym<Bulgarian> { :i 'приложи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'приложи', 2) }> }
     token are-verb:sym<Bulgarian> { :i 'са' }
@@ -142,6 +144,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token generate-directive:sym<Bulgarian> { :i  <generate-verb> | <create-verb> | 'направи'  }
     token generate-verb:sym<Bulgarian> { :i 'генерирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'генерирай', 2) }> }
     token get-verb:sym<Bulgarian> { :i 'вземи' | ([\w]+) <?{ $0.Str !(elem) <всеки време> and is-bg-fuzzy-match($0.Str, 'вземи', 2) }> }
+    token give-verb:sym<Bulgarian> { :i 'дай' | 'давай' | 'подай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'давай', 1) || is-bg-fuzzy-match($0.Str, 'подай', 1) }> }
     token graph-noun:sym<Bulgarian> { :i 'граф' | ([\w]+) <?{ $0.Str ne 'праг' and is-bg-fuzzy-match($0.Str, 'граф', 2) }> }
     token head-adjective:sym<Bulgarian> { :i <head-noun> }
     token head-noun:sym<Bulgarian> { :i 'чело' | ([\w]+) <?{ $0.Str !(elem) <дело ехо начело число нещо цел тегло> and is-bg-fuzzy-match($0.Str, 'чело', 2) }> | 'начело' | ([\w]+) <?{ $0.Str ne 'чело' and is-bg-fuzzy-match($0.Str, 'начело', 2) }> }
@@ -236,6 +239,7 @@ role DSL::Shared::Roles::Bulgarian::CommonSpeechParts {
     token records:sym<Bulgarian> { :i 'записи' | ([\w]+) <?{ $0.Str ne 'зачисти' and is-bg-fuzzy-match($0.Str, 'записи', 2) }> }
     token reduce-verb:sym<Bulgarian> { :i 'редуцирай' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'редуцирай', 2) }> }
     token remove-verb:sym<Bulgarian> { :i 'премахни' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'премахни', 2) }> | 'изтрий' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'изтрий', 2) }> }
+    token repeat-verb:sym<Bulgarian> { :i 'повтори' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'повтори', 2) }> }
     token replace-verb:sym<Bulgarian> { :i 'замести' | ([\w]+) <?{ $0.Str !(elem) <зачисти замени> and is-bg-fuzzy-match($0.Str, 'замести', 2) }> | 'замени' | ([\w]+) <?{ $0.Str !(elem) <намери зареди замести> and is-bg-fuzzy-match($0.Str, 'замени', 2) }> }
     token represent-directive:sym<Bulgarian> { :i  <represent-verb> | 'чертай' | 'отрази'  }
     token represent-verb:sym<Bulgarian> { :i 'представи' | ([\w]+) <?{ is-bg-fuzzy-match($0.Str, 'представи', 2) }> }

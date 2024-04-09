@@ -10,7 +10,8 @@ role DSL::Shared::Roles::English::GlobalCommand {
         <global-priority-list> |
         <global-recover-state> |
         <global-save-state> |
-        <global-save-data> }
+        <global-save-data> |
+        <global-repeat-last> }
     
     rule global-help {:i 'help' | <what-pronoun> <to-preposition> [ <do-verb> | 'enter' ] }
     rule global-quit-verb {:i 'quit' | 'exit' | 'halt' }
@@ -22,4 +23,5 @@ role DSL::Shared::Roles::English::GlobalCommand {
     rule global-recover-state {:i [ 'recover' | 'rollback' ] <the-determiner>? <last-adjective>? 'state' }
     rule global-save-state {:i [ 'save' | 'export' ] <the-determiner>? <current-adjective>? 'state' }
     rule global-save-data {:i [ 'save' | 'export' ] <the-determiner>? [ <data-noun> | <records-phrase> ] }
+    rule global-repeat-last {:i [ <repeat-verb> | <display-directive> ] <the-determiner>? <last-adjective> [ <result-noun> | <answer-noun> ] || <repeat-verb> 'it'? }
 }
