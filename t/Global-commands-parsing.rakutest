@@ -93,4 +93,8 @@ ok ParseObj.parse('repeat it'),
 ok ParseObj.parse('display last result'),
         'display last result';
 
+## 19
+ok ParseObj.parse('repeat last'),
+        'repeat last';
+
 done-testing;
