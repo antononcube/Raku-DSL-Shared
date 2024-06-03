@@ -48,11 +48,12 @@ our sub target-separator-rules() is export {
 
 #-----------------------------------------------------------
 #| Single line / basic parsing
-sub ToWorkflowCodeBasic(Str $command, Grammar :$grammar!, :$actions!, :$args = []) {
+sub ToWorkflowCodeBasic(Str $command, Grammar :$grammar!, :$actions!, :$rule = 'TOP', :$args = []) {
 
-    die 'The argument :$actions is not an actions class.' unless 'TOP' (elem) $actions.^methods>>.name;
+    die "The grammar rule ⎡$rule⎦ does not have a corresponding method in :\$actions class."
+    unless $rule (elem) $actions.^methods>>.name;
 
-    my $match = $grammar.parse($command.trim, :$actions, :$args):ignorecase;
+    my $match = $grammar.parse($command.trim, :$actions, :$rule,  :$args):ignorecase;
 
     die 'Cannot parse the given command.' unless $match;
 
@@ -66,6 +67,7 @@ our proto ToWorkflowCode(Str $command, Grammar :$grammar, |) is export {*}
 #| Interface for target specs
 multi ToWorkflowCode( Str $command,
                       Grammar :$grammar!,
+                      :$rule = 'TOP',
                       :$grammar-args = [],
                       :%targetToAction!,
                       :%targetToSeparator!,
@@ -94,13 +96,14 @@ multi ToWorkflowCode( Str $command,
     }
 
     # Delegate
-    ToWorkflowCode($command, :$grammar, :$actions, :$grammar-args, separator => %targetToSeparator{$specTarget}, :$format, :$splitter)
+    ToWorkflowCode($command, :$grammar, :$actions, :$rule, :$grammar-args, separator => %targetToSeparator{$specTarget}, :$format, :$splitter)
 }
 
 
 #| Multi-line parsing
 multi ToWorkflowCode( Str $command,
                       Grammar :$grammar!,
+                      :$rule = 'TOP',
                       :$grammar-args = [],
                       :$actions!,
                       :$separator = Whatever,
@@ -117,7 +120,7 @@ multi ToWorkflowCode( Str $command,
     @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
 
     # Parse each single line command
-    my @cmdLines = map { ToWorkflowCodeBasic($_, :$grammar, :$actions, args => $grammar-args) }, @commandLines;
+    my @cmdLines = map { ToWorkflowCodeBasic($_, :$grammar, :$actions, :$rule, args => $grammar-args) }, @commandLines;
 
     # Get the pairs results
     my %cmdPairs = grep { $_ ~~ Pair }, @cmdLines;
