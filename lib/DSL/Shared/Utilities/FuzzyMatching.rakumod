@@ -74,17 +74,29 @@ multi is-fuzzy-match(Str:D $candidate, @actuals, UInt:D $maxDist = 2 --> Bool) {
 
 multi is-fuzzy-match(Str:D $candidate, Str:D $actual, UInt:D $maxDist = 2 --> Bool) {
 
-    # Optimization
+    # Optimization (simple)
     if abs($candidate.chars - $actual.chars) > $maxDist { return False; }
     if $candidate eq $actual { return True; }
     if $maxDist == 0 { return $candidate eq $actual; }
 
-    # Full blown
+    # Optimization (character profile)
+    my %candidateFreq = $candidate.comb.Bag;
+    my %actualFreq = $actual.comb.Bag;
+
+    my $freqDiff = 0;
+    for %candidateFreq.kv -> $char, $count {
+        $freqDiff += abs($count - (%actualFreq{$char} // 0));
+        if $freqDiff > $maxDist * 2 {
+            return False;
+        }
+    }
+
+    # Full blown Damerau–Levenshtein distance comparison
     my $dist = dld($candidate, $actual);
 
     if 0 == $dist {
         return True;
-    } elsif 0 < $dist and $dist <= $maxDist {
+    } elsif 0 < $dist && $dist <= $maxDist {
         note "Possible misspelling of '$actual' as '$candidate'.";
         return True;
     }
