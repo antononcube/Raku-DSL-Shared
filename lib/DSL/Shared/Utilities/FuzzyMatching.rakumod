@@ -45,9 +45,9 @@ sub edit-candidates(Str $word) is export {
 # Fuzzy match checks
 #============================================================
 
-proto is-fuzzy-match($c, $a, $maxDist = 2) is export {*};
+proto is-fuzzy-match($c, $a, $maxDist = 2 --> Bool) is export {*};
 
-multi is-fuzzy-match(Str $candidate, @actuals, UInt $maxDist = 2) {
+multi is-fuzzy-match(Str:D $candidate, @actuals, UInt:D $maxDist = 2 --> Bool) {
 
     if $maxDist == 0 {
         return $candidate ∈ @actuals;
@@ -72,12 +72,14 @@ multi is-fuzzy-match(Str $candidate, @actuals, UInt $maxDist = 2) {
     return False;
 }
 
-multi is-fuzzy-match(Str $candidate, Str $actual, UInt $maxDist = 2) {
+multi is-fuzzy-match(Str:D $candidate, Str:D $actual, UInt:D $maxDist = 2 --> Bool) {
 
-    if $maxDist == 0 {
-        return $candidate eq $actual;
-    }
+    # Optimization
+    if abs($candidate.chars - $actual.chars) > $maxDist { return False; }
+    if $candidate eq $actual { return True; }
+    if $maxDist == 0 { return $candidate eq $actual; }
 
+    # Full blown
     my $dist = dld($candidate, $actual);
 
     if 0 == $dist {
