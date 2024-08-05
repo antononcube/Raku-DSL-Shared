@@ -144,12 +144,16 @@ multi ToWorkflowCode( Str $command,
 
     # Post-processing
     my $res;
-    if @cmdLines.all ~~ Str {
-        # Join with separator
-        $res = @cmdLines.join($sep).trim;
+    if @cmdLines.all ~~ Str:D {
+        # Remove empty lines and join with separator
+        my $sep2 = $sep.trim;
+        $res = @cmdLines.grep({ $_.trim.chars && $_.trim ne $sep2 }).join($sep).trim;
 
         # Remove empty lines with "monad semicolons" only
-        $res = $res.subst(/ ^^ \h* <{ '\'' ~ $sep.trim ~ '\'' }> \h* /, ''):g;
+        # Keeping this here:
+        # it was taking %50 of the computations after dld was replaced with edit-distance.
+        # Because had the regex had to be compiled, etc.
+        # $res = $res.subst(/ ^^ \h* <{ '\'' ~ $sep.trim ~ '\'' }> \h* /, ''):g;
     } else {
         $res = @cmdLines
     }
