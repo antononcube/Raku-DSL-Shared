@@ -53,13 +53,13 @@ multi is-fuzzy-match(Str:D $candidate, @actuals, UInt:D $maxDist = 2 --> Bool) {
         return $candidate ∈ @actuals;
     }
 
-    my %dists = map({ $_ => dld($candidate, $_) }, @actuals);
+    my %dists = @actuals.map({ $_ => dld($candidate, $_, $maxDist) }).map({ $_.key => ($_.value.defined ?? $_.value !! $maxDist + 1) });
 
     my $distPair = %dists.min({ $_.value });
 
     if 0 == $distPair.value {
         return True;
-    } elsif 0 < $distPair.value and $distPair.value <= $maxDist {
+    } elsif 0 < $distPair.value <= $maxDist {
         my %dists2 = grep({ $_.value eq $distPair.value }, %dists);
         if %dists2.elems == 1 {
             note "Possible misspelling of '{ $distPair.key }' as '$candidate'.";
@@ -92,11 +92,13 @@ multi is-fuzzy-match(Str:D $candidate, Str:D $actual, UInt:D $maxDist = 2 --> Bo
     }
 
     # Full blown Damerau–Levenshtein distance comparison
-    my $dist = dld($candidate, $actual);
+    my $dist = dld($candidate, $actual, $maxDist);
+
+    without $dist { return False; }
 
     if 0 == $dist {
         return True;
-    } elsif 0 < $dist && $dist <= $maxDist {
+    } elsif 0 < $dist <= $maxDist {
         note "Possible misspelling of '$actual' as '$candidate'.";
         return True;
     }
