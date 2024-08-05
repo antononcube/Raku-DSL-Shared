@@ -1,7 +1,7 @@
 {
   "name": "DSL::Shared",
   "description": "DSL::Shared provides utilities and grammar roles for making DSL translators.",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
@@ -9,9 +9,9 @@
   "auth": "zef:antononcube",
   "depends": [
     "silently:ver<0.0.6+>",
-    "Text::Levenshtein::Damerau:ver<0.3.0+>",
+    "Hash::Merge:ver<2.0.0+>:api<2+>",
     "Lingua::NumericWordForms:ver<0.5.2+>",
-    "Hash::Merge:ver<2.0.0+>:api<2+>"
+    "Math::DistanceFunctions::Edit:ver<0.1.0+>"
   ],
   "build-depends": [],
   "test-depends": [],

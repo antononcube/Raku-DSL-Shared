@@ -1,8 +1,8 @@
 use v6;
 
-use Text::Levenshtein::Damerau;
-
 unit module DSL::Shared::Utilities::FuzzyMatching;
+
+use Math::DistanceFunctions::Edit;
 
 #============================================================
 # Core fuzzy match functions
@@ -53,7 +53,8 @@ multi is-fuzzy-match(Str:D $candidate, @actuals, UInt:D $maxDist = 2 --> Bool) {
         return $candidate ∈ @actuals;
     }
 
-    my %dists = @actuals.map({ $_ => dld($candidate, $_, $maxDist) }).map({ $_.key => ($_.value.defined ?? $_.value !! $maxDist + 1) });
+    #my %dists = @actuals.map({ $_ => dld($candidate, $_, $maxDist) }).map({ $_.key => ($_.value.defined ?? $_.value !! $maxDist + 1) });
+    my %dists = @actuals.map({ $_ => edit-distance($candidate, $_) });
 
     my $distPair = %dists.min({ $_.value });
 
@@ -80,19 +81,19 @@ multi is-fuzzy-match(Str:D $candidate, Str:D $actual, UInt:D $maxDist = 2 --> Bo
     if $maxDist == 0 { return $candidate eq $actual; }
 
     # Optimization (character profile)
-    my %candidateFreq = $candidate.comb.Bag;
-    my %actualFreq = $actual.comb.Bag;
-
-    my $freqDiff = 0;
-    for %candidateFreq.kv -> $char, $count {
-        $freqDiff += abs($count - (%actualFreq{$char} // 0));
-        if $freqDiff > $maxDist * 2 {
-            return False;
-        }
-    }
+    # my %candidateFreq = $candidate.comb.Bag;
+    # my %actualFreq = $actual.comb.Bag;
+    #
+    # my $freqDiff = 0;
+    # for %candidateFreq.kv -> $char, $count {
+    #     $freqDiff += abs($count - (%actualFreq{$char} // 0));
+    #     if $freqDiff > $maxDist * 2 {
+    #         return False;
+    #     }
+    #  }
 
     # Full blown Damerau–Levenshtein distance comparison
-    my $dist = dld($candidate, $actual, $maxDist);
+    my $dist = edit-distance($candidate, $actual);
 
     without $dist { return False; }
 
