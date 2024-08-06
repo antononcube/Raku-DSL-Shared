@@ -73,8 +73,10 @@ multi ToWorkflowCode( Str $command,
                       :%targetToSeparator!,
                       Str :$target!,
                       :$userID = Whatever,
-                      Str :$format = 'code',
                       :$splitter = Whatever,
+                      UInt:D :$degree = 1,
+                      :$batch = Whatever,
+                      Str :$format = 'code',
                       *%args) {
 
     # Get target (e.g. 'R::tidyverse') using
@@ -96,7 +98,11 @@ multi ToWorkflowCode( Str $command,
     }
 
     # Delegate
-    ToWorkflowCode($command, :$grammar, :$actions, :$rule, :$grammar-args, separator => %targetToSeparator{$specTarget}, :$format, :$splitter)
+    ToWorkflowCode($command,
+            :$grammar, :$actions, :$rule, :$grammar-args,
+            :$splitter, separator => %targetToSeparator{$specTarget},
+            :$degree, :$batch,
+            :$format)
 }
 
 
@@ -107,20 +113,41 @@ multi ToWorkflowCode( Str $command,
                       :$grammar-args = [],
                       :$actions!,
                       :$separator = Whatever,
+                      :$splitter = Whatever,
+                      UInt:D :$degree = 1,
+                      :$batch is copy = 1,
                       Str :$format = 'code',
-                      :$splitter = Whatever ) {
+                     ) {
+
 
 
     # Determine splitter
     my &rxSplit = process-splitter($splitter);
 
-    # Split in single line commands
+    # Split into single line commands
     my @commandLines = $command.trim.split(&rxSplit);
 
-    @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
+    @commandLines = @commandLines.grep({ $_.Str.chars > 0 });
 
     # Parse each single line command
-    my @cmdLines = map { ToWorkflowCodeBasic($_, :$grammar, :$actions, :$rule, args => $grammar-args) }, @commandLines;
+    my @cmdLines = do if @commandLines.elems > 1 && $degree > 1 {
+        # Determine the batch size
+        given $batch {
+            when $_ ~~ Int:D && $_ > 0 { }
+            when Whatever {
+                $batch = @commandLines.elems div $degree;
+                if @cmdLines.elems mod $degree { $batch++ }
+            }
+            default {
+                die 'The value of $batch is expected to be a positive integer or Whatever.'
+            }
+        }
+        # Parallel execution
+        @commandLines.hyper(:$degree, :$batch).map({ ToWorkflowCodeBasic($_, :$grammar, :$actions, :$rule, args => $grammar-args) });
+    } else {
+        # Sequential execution
+        @commandLines.map({ ToWorkflowCodeBasic($_, :$grammar, :$actions, :$rule, args => $grammar-args) });
+    }
 
     # Get the pairs results
     my %cmdPairs = grep { $_ ~~ Pair }, @cmdLines;
