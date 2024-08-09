@@ -3,6 +3,7 @@ use v6;
 unit module DSL::Shared::Utilities::FuzzyMatching;
 
 use Math::DistanceFunctions::Edit;
+use Text::Levenshtein::Damerau;
 
 #============================================================
 # Core fuzzy match functions
@@ -45,16 +46,22 @@ sub edit-candidates(Str $word) is export {
 # Fuzzy match checks
 #============================================================
 
-proto is-fuzzy-match($c, $a, $maxDist = 2 --> Bool) is export {*};
+proto is-fuzzy-match($c, $a, $maxDist = 2, Str:D :$method = 'edit-distance' --> Bool) is export {*};
 
-multi is-fuzzy-match(Str:D $candidate, @actuals, UInt:D $maxDist = 2 --> Bool) {
+multi is-fuzzy-match(Str:D $candidate, @actuals, UInt:D $maxDist = 2, Str:D :$method = 'edit-distance' --> Bool) {
 
     if $maxDist == 0 {
         return $candidate ∈ @actuals;
     }
 
-    #my %dists = @actuals.map({ $_ => dld($candidate, $_, $maxDist) }).map({ $_.key => ($_.value.defined ?? $_.value !! $maxDist + 1) });
-    my %dists = @actuals.map({ $_ => edit-distance($candidate, $_) });
+    my %dists = do given $method {
+        when 'dld' {
+            @actuals.map({ $_ => dld($candidate, $_, $maxDist) }).map({ $_.key => ($_.value.defined ?? $_.value !! $maxDist + 1) })
+        }
+        when 'edit-distance' {
+            @actuals.map({ $_ => edit-distance($candidate, $_) })
+        }
+    }
 
     my $distPair = %dists.min({ $_.value });
 
@@ -73,27 +80,34 @@ multi is-fuzzy-match(Str:D $candidate, @actuals, UInt:D $maxDist = 2 --> Bool) {
     return False;
 }
 
-multi is-fuzzy-match(Str:D $candidate, Str:D $actual, UInt:D $maxDist = 2 --> Bool) {
+multi is-fuzzy-match(Str:D $candidate, Str:D $actual, UInt:D $maxDist = 2, Str:D :$method = 'edit-distance' --> Bool) {
 
     # Optimization (simple)
     if abs($candidate.chars - $actual.chars) > $maxDist { return False; }
     if $candidate eq $actual { return True; }
     if $maxDist == 0 { return $candidate eq $actual; }
 
-    # Optimization (character profile)
-    # my %candidateFreq = $candidate.comb.Bag;
-    # my %actualFreq = $actual.comb.Bag;
-    #
-    # my $freqDiff = 0;
-    # for %candidateFreq.kv -> $char, $count {
-    #     $freqDiff += abs($count - (%actualFreq{$char} // 0));
-    #     if $freqDiff > $maxDist * 2 {
-    #         return False;
-    #     }
-    #  }
-
     # Full blown Damerau–Levenshtein distance comparison
-    my $dist = edit-distance($candidate, $actual);
+    my $dist = do given $method {
+        when 'dld' {
+            # Optimization (character profile)
+            my %candidateFreq = $candidate.comb.Bag;
+            my %actualFreq = $actual.comb.Bag;
+
+            my $freqDiff = 0;
+            for %candidateFreq.kv -> $char, $count {
+                $freqDiff += abs($count - (%actualFreq{$char} // 0));
+                if $freqDiff > $maxDist * 2 {
+                    return False;
+                }
+            }
+            dld($candidate, $actual, $maxDist)
+        }
+        when 'edit-distance' {
+         # (Much) faster than &dld, but often the corresponding NativeCall library is not found.
+         edit-distance($candidate, $actual);
+        }
+    }
 
     without $dist { return False; }
 
