@@ -177,6 +177,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token lower-adjective { 'lower' }
     token lowest-adjective { 'lowest' }
     token make-noun { 'make' }
+    token make-verb { <make-noun> }
     token making-noun { 'making' }
     token manner { <manner-noun> }
     token manner-noun { 'manner' }

@@ -515,6 +515,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token make-noun {*}
     token make-noun:sym<English> { :i 'make' | ([\w]+) <?{ $0.Str !(elem) <are case date have many max name take tape> and is-fuzzy-match($0.Str, 'make', 2) }> }
 
+    proto token make-verb {*}
+    token make-verb:sym<English> { <make-noun> }
+
     proto token making-noun {*}
     token making-noun:sym<English> { :i 'making' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'making', 2) }> }
 
