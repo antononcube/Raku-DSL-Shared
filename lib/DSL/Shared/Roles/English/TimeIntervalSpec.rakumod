@@ -18,6 +18,8 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
     || <number-of-time-units> }
 
   token time-unit {
+    | <second-time-spec-word>
+    | <minute-time-spec-word>
     | <hour-time-spec-word>
     | <day-time-spec-word>
     | <weekend-time-spec-word>
@@ -30,6 +32,8 @@ role DSL::Shared::Roles::English::TimeIntervalSpec
     | <lifetime-time-spec-word> }
 
   token time-units {
+    | <seconds-time-spec-word>
+    | <minutes-time-spec-word>
     | <hours-time-spec-word>
     | <days-time-spec-word>
     | <weekends-time-spec-word>

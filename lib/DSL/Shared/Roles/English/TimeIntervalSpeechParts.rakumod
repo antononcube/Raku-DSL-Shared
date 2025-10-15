@@ -152,6 +152,12 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
   proto token millenniums-time-spec-word {*}
   token millenniums-time-spec-word:sym<English> { :i 'millenniums' | ([\w]+) <?{ $0.Str ne 'millennium' and is-fuzzy-match($0.Str, 'millenniums', 2) }> }
 
+  proto token minute-time-spec-word {*}
+  token minute-time-spec-word:sym<English> { :i 'minute' | ([\w]+) <?{ $0.Str ne 'minutes' and is-fuzzy-match($0.Str, 'minute', 2) }> }
+
+  proto token minutes-time-spec-word {*}
+  token minutes-time-spec-word:sym<English> { :i 'minutes' | ([\w]+) <?{ $0.Str ne 'minute' and is-fuzzy-match($0.Str, 'minutes', 2) }> }
+
   proto token mon-time-spec-word {*}
   token mon-time-spec-word:sym<English> { :i 'mon' | ([\w]+) <?{ $0.Str !(elem) <jan jun mar may month nov now of one sun> and is-fuzzy-match($0.Str, 'mon', 1) }> }
 
@@ -220,6 +226,12 @@ role DSL::Shared::Roles::English::TimeIntervalSpeechParts {
 
   proto token saturdays-time-spec-word {*}
   token saturdays-time-spec-word:sym<English> { :i 'saturdays' | ([\w]+) <?{ $0.Str ne 'saturday' and is-fuzzy-match($0.Str, 'saturdays', 2) }> }
+
+  proto token second-time-spec-word {*}
+  token second-time-spec-word:sym<English> { :i 'second' | ([\w]+) <?{ $0.Str ne 'seconds' and is-fuzzy-match($0.Str, 'second', 2) }> }
+
+  proto token seconds-time-spec-word {*}
+  token seconds-time-spec-word:sym<English> { :i 'seconds' | ([\w]+) <?{ $0.Str ne 'second' and is-fuzzy-match($0.Str, 'seconds', 2) }> }
 
   proto token sep-time-spec-word {*}
   token sep-time-spec-word:sym<English> { :i 'sep' | ([\w]+) <?{ $0.Str !(elem) <dec feb few new sat sun wed> and is-fuzzy-match($0.Str, 'sep', 1) }> }
