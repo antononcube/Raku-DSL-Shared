@@ -200,6 +200,7 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     token names-noun { 'names' }
     token nearest-adjective { 'nearest' }
     token neighbors-noun { 'neighbors' }
+    token new-adjective { 'new' }
     token no-determiner { 'no' }
     token non-prefix { 'non' }
     token number-noun { 'number' }

@@ -584,6 +584,9 @@ role DSL::Shared::Roles::English::CommonSpeechParts {
     proto token neighbors-noun {*}
     token neighbors-noun:sym<English> { :i 'neighbors' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'neighbors', 2) }> }
 
+    proto token new-adjective {*}
+    token new-adjective:sym<English> { :i 'new' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'new', 1) }> }
+
     proto token no-determiner {*}
     token no-determiner:sym<English> { :i 'no' }
 
