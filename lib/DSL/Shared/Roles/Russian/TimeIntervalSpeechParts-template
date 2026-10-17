@@ -56,7 +56,7 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token millennium-time-spec-word { 'тысячелетие' | 'миллениум' };
   token millenniums-time-spec-word { 'тысячелетия' | 'миллениум' };
   token minute-time-spec-word { 'минута' | 'минуту' };
-  token minutes-time-spec-word { 'минути' | 'минут' };
+  token minutes-time-spec-word { 'минуты' | 'минут' };
   token mon-time-spec-word { 'пон' };
   token monday-time-spec-word { 'понедельник' };
   token mondays-time-spec-word { 'понедельники' };

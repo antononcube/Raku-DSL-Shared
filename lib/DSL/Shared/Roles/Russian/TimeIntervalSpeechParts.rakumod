@@ -55,6 +55,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token memorial-time-spec-word:sym<Russian> { :i 'памятный' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'памятный', 2) }> }
   token millennium-time-spec-word:sym<Russian> { :i 'тысячелетие' | ([\w]+) <?{ $0.Str ne 'тысячелетия' and is-ru-fuzzy-match($0.Str, 'тысячелетие', 2) }> | 'миллениум' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'миллениум', 2) }> }
   token millenniums-time-spec-word:sym<Russian> { :i 'тысячелетия' | ([\w]+) <?{ $0.Str ne 'тысячелетие' and is-ru-fuzzy-match($0.Str, 'тысячелетия', 2) }> | 'миллениум' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'миллениум', 2) }> }
+  token minute-time-spec-word:sym<Russian> { :i 'минута' | ([\w]+) <?{ $0.Str !(elem) <минуту минуты минут> and is-ru-fuzzy-match($0.Str, 'минута', 2) }> | 'минуту' | ([\w]+) <?{ $0.Str !(elem) <минута минуты минут> and is-ru-fuzzy-match($0.Str, 'минуту', 2) }> }
+  token minutes-time-spec-word:sym<Russian> { :i 'минуты' | ([\w]+) <?{ $0.Str !(elem) <минута минуту минут> and is-ru-fuzzy-match($0.Str, 'минуты', 2) }> | 'минут' | ([\w]+) <?{ $0.Str !(elem) <минута минуту минуты> and is-ru-fuzzy-match($0.Str, 'минут', 2) }> }
   token mon-time-spec-word:sym<Russian> { :i 'пон' | ([\w]+) <?{ $0.Str !(elem) <ден ноя от сен год> and is-ru-fuzzy-match($0.Str, 'пон', 1) }> }
   token monday-time-spec-word:sym<Russian> { :i 'понедельник' | ([\w]+) <?{ $0.Str ne 'понедельники' and is-ru-fuzzy-match($0.Str, 'понедельник', 2) }> }
   token mondays-time-spec-word:sym<Russian> { :i 'понедельники' | ([\w]+) <?{ $0.Str ne 'понедельник' and is-ru-fuzzy-match($0.Str, 'понедельники', 2) }> }
@@ -78,6 +80,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token sat-time-spec-word:sym<Russian> { :i 'суб' | ([\w]+) <?{ $0.Str !(elem) <сен сря> and is-ru-fuzzy-match($0.Str, 'суб', 1) }> }
   token saturday-time-spec-word:sym<Russian> { :i 'суббота' | ([\w]+) <?{ $0.Str ne 'субботы' and is-ru-fuzzy-match($0.Str, 'суббота', 2) }> }
   token saturdays-time-spec-word:sym<Russian> { :i 'субботы' | ([\w]+) <?{ $0.Str ne 'суббота' and is-ru-fuzzy-match($0.Str, 'субботы', 2) }> }
+  token second-time-spec-word:sym<Russian> { :i 'секунда' | ([\w]+) <?{ $0.Str !(elem) <секунду секунды секунд> and is-ru-fuzzy-match($0.Str, 'секунда', 2) }> | 'секунду' | ([\w]+) <?{ $0.Str !(elem) <секунда секунды секунд> and is-ru-fuzzy-match($0.Str, 'секунду', 2) }> }
+  token seconds-time-spec-word:sym<Russian> { :i 'секунды' | ([\w]+) <?{ $0.Str !(elem) <секунда секунду секунд> and is-ru-fuzzy-match($0.Str, 'секунды', 2) }> | 'секунд' | ([\w]+) <?{ $0.Str !(elem) <секунда секунду секунды> and is-ru-fuzzy-match($0.Str, 'секунд', 2) }> }
   token sep-time-spec-word:sym<Russian> { :i 'сен' | ([\w]+) <?{ $0.Str !(elem) <след век ден дек фев пон дясен суб чет сря> and is-ru-fuzzy-match($0.Str, 'сен', 1) }> }
   token september-time-spec-word:sym<Russian> { :i 'сентябрь' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'сентябрь', 2) }> }
   token start-time-spec-word:sym<Russian> { :i 'старт' | ([\w]+) <?{ $0.Str ne 'март' and is-ru-fuzzy-match($0.Str, 'старт', 2) }> | 'начало' | ([\w]+) <?{ is-ru-fuzzy-match($0.Str, 'начало', 2) }> }
