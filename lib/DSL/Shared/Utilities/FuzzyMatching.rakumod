@@ -244,7 +244,7 @@ multi sub matched-string(@knownRegexes,
 
     my @allMatches;
     if $pair || $all { $bool = False; }
-    if $candidate (elem) @knownRegexes {
+    if !$all && $candidate (elem) @knownRegexes {
         # This is some sort of optimization
         if $bool { return True; }
         else { return $pair ?? ($candidate => $candidate) !! $candidate; }
