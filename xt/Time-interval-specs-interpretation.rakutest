@@ -61,9 +61,6 @@ $*SCHEDULER = mock-time($localDateTime.Instant);
 #============================================================
 # Tests
 #============================================================
-#============================================================
-# Tests
-#============================================================
 
 plan *;
 
@@ -265,5 +262,20 @@ is-deeply ti-interpret('this month')<from to unit>, ti-interpret('the month')<fr
 ## 40
 is-deeply ti-interpret('this week')<from to unit>, ti-interpret('the week')<from to unit>,
         'this week is the same as the week';
+
+## 41
+is-deeply ti-interpret('from yesterday to today')<from to>,
+        (Date.new(2023,2,17), Date.new(2023,2,18)),
+        'from yesterday to today';
+
+## 42
+is-deeply ti-interpret('between christmas and ramadan')<from to>,
+        (Any, Any),
+        'between christmas and ramadan';
+
+## 43
+is-deeply ti-interpret('october eighteen two thousand twenty three')<from to>,
+        (Date.new(2023,10,18), Date.new(2023,10,18)),
+        'october eighteen two thousand twenty three';
 
 done-testing;
