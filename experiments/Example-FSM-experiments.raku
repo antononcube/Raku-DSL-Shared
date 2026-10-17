@@ -3,8 +3,7 @@
 # Relevant part taken from:
 # https://rosettacode.org/wiki/Finite_state_machine#Raku
 
-use lib './lib';
-use lib '.';
+# use lib <. lib>;
 
 use DSL::Shared::FiniteStateMachines::CoreFSM;
 

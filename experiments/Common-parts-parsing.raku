@@ -1,7 +1,6 @@
 use v6;
 
-use lib './lib';
-use lib '.';
+# use lib <. lib>;
 
 use DSL::Shared::Roles::English::CommonParts;
 use DSL::Shared::Roles::English::PipelineCommand;
