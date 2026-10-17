@@ -1,7 +1,6 @@
 use v6.d;
 
-use lib '.';
-use lib './lib';
+# use lib <. lib>;
 
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Shared::Roles::English::TimeIntervalSpec;

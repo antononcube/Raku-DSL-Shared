@@ -1,8 +1,7 @@
 #!/usr/bin/env raku
 use v6.d;
 
-use lib '.';
-use lib './lib';
+# use lib <. lib>;
 
 use DSL::Shared::Actions::English::TimeIntervalSpec;
 use DSL::Shared::Actions::English::TimeIntervalSpecRefPoint;

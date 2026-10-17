@@ -1,7 +1,6 @@
 use v6.d;
 
-use lib '.';
-use lib './lib';
+# use lib <. lib>;
 
 use DSL::Shared::Entity::Actions::WL::System;
 use DSL::Shared::Entity::Grammar::EntityNames;
