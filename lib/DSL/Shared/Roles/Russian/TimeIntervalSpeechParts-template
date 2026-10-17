@@ -55,6 +55,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token memorial-time-spec-word { 'памятный' };
   token millennium-time-spec-word { 'тысячелетие' | 'миллениум' };
   token millenniums-time-spec-word { 'тысячелетия' | 'миллениум' };
+  token minute-time-spec-word { 'минута' | 'минуту' };
+  token minutes-time-spec-word { 'минути' | 'минут' };
   token mon-time-spec-word { 'пон' };
   token monday-time-spec-word { 'понедельник' };
   token mondays-time-spec-word { 'понедельники' };
@@ -78,6 +80,8 @@ role DSL::Shared::Roles::Russian::TimeIntervalSpeechParts {
   token sat-time-spec-word { 'суб' };
   token saturday-time-spec-word { 'суббота' };
   token saturdays-time-spec-word { 'субботы' };
+  token second-time-spec-word { 'секунда' | 'секунду' };
+  token seconds-time-spec-word { 'секунды' | 'секунд' };
   token sep-time-spec-word { 'сен' };
   token september-time-spec-word { 'сентябрь' };
   token start-time-spec-word { 'старт' | 'начало' };

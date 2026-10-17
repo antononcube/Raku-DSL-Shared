@@ -284,7 +284,7 @@ role DSL::Shared::Roles::Russian::CommonSpeechParts {
     token summary { <summary-noun> }
     token summary-noun { 'итог' | 'резюме' }
     token system-noun { 'система' }
-    token table-noun { 'таблица' }
+    token table-noun { 'таблица' | 'таблицу' }
     token tables-noun { 'таблицы' }
     token tabular-adjective { 'табличный' }
     token take-verb { 'бери' | 'забери' | 'забрать' | 'получить' | 'возьми' }

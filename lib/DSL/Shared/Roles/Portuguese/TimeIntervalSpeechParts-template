@@ -55,6 +55,8 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token memorial-time-spec-word { 'memorial' };
   token millennium-time-spec-word { 'milênio' | 'milenar' };
   token millenniums-time-spec-word { 'milênios' | 'milenares' };
+  token minute-time-spec-word { 'minuto' | 'o' \h+ 'minuto' };
+  token minutes-time-spec-word { 'minutos' | 'os' \h+ 'minutos' };
   token mon-time-spec-word { 'segunda' };
   token monday-time-spec-word { 'segunda-feira' };
   token mondays-time-spec-word { 'segundas-feiras' };
@@ -78,6 +80,8 @@ role DSL::Shared::Roles::Portuguese::TimeIntervalSpeechParts {
   token sat-time-spec-word { 'sat' };
   token saturday-time-spec-word { 'sábado' };
   token saturdays-time-spec-word { 'sábados' };
+  token second-time-spec-word { 'segundo' | 'o' \h+ 'segundo' };
+  token seconds-time-spec-word { 'segundos' | 'os' \h+ 'segundos' };
   token sep-time-spec-word { 'sep' };
   token september-time-spec-word { 'setembro' };
   token start-time-spec-word { 'início' };

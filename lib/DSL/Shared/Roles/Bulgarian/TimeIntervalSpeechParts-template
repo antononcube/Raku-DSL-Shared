@@ -55,6 +55,8 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token memorial-time-spec-word { 'паметник' | 'паметен' | 'паметния' };
   token millennium-time-spec-word { 'хилядолетие' | 'хилядолетието' | 'милениум' };
   token millenniums-time-spec-word { 'хилядолетия' | 'хилядолетията' | 'милениуми' };
+  token minute-time-spec-word { 'минута' | 'минутата' };
+  token minutes-time-spec-word { 'минути' | 'минутите' };
   token mon-time-spec-word { 'пон' };
   token monday-time-spec-word { 'понеделник' };
   token mondays-time-spec-word { 'понеделници' };
@@ -78,6 +80,8 @@ role DSL::Shared::Roles::Bulgarian::TimeIntervalSpeechParts {
   token sat-time-spec-word { 'съб' };
   token saturday-time-spec-word { 'събота' };
   token saturdays-time-spec-word { 'съботи' };
+  token second-time-spec-word { 'секунда' | 'секундата' };
+  token seconds-time-spec-word { 'секунди' | 'секундите' };
   token sep-time-spec-word { 'сеп' };
   token september-time-spec-word { 'септември' };
   token start-time-spec-word { 'старт' | 'старта' | 'стартът' };
